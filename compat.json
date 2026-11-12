@@ -1,0 +1,140 @@
+{
+  "v": 1,
+  "mode": "omelette",
+  "root": "project/",
+  "title": "Sam login page design",
+  "entry": "SAM RAM Handoff.html",
+  "pages": [
+    {
+      "path": "SAM RAM Handoff.html",
+      "title": "SAM / RAM Handoff",
+      "kind": "plain"
+    },
+    {
+      "path": "handoff-src.html",
+      "title": "SAM / RAM Handoff",
+      "kind": "plain"
+    },
+    {
+      "path": "RAM Email Deploy.dc.html",
+      "title": "RAM Email Deploy",
+      "kind": "page"
+    },
+    {
+      "path": "RAM Login Deploy.dc.html",
+      "title": "RAM Login Deploy",
+      "kind": "page"
+    },
+    {
+      "path": "RAM Invitation Email.dc.html",
+      "title": "RAM Invitation Email",
+      "kind": "page"
+    },
+    {
+      "path": "RAM 14 Link broken.dc.html",
+      "title": "RAM 14 Link broken",
+      "kind": "page"
+    },
+    {
+      "path": "SAM Login Deploy.dc.html",
+      "title": "SAM Login Deploy",
+      "kind": "component"
+    },
+    {
+      "path": "SAM Invitation Email.dc.html",
+      "title": "SAM Invitation Email",
+      "kind": "component"
+    },
+    {
+      "path": "SAM-Login-standalone.html",
+      "title": "Bundled Page",
+      "kind": "plain"
+    },
+    {
+      "path": "SAM Architecture.dc.html",
+      "title": "SAM Architecture",
+      "kind": "page"
+    },
+    {
+      "path": "SAM Login.dc.html",
+      "title": "SAM Login",
+      "kind": "page"
+    },
+    {
+      "path": "SAM Email Deploy.dc.html",
+      "title": "SAM Email Deploy",
+      "kind": "component"
+    },
+    {
+      "path": "SAM 14 Link broken.dc.html",
+      "title": "SAM 14 Link broken",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 13 Activation link used.dc.html",
+      "title": "SAM 13 Activation link used",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 12 Setup complete.dc.html",
+      "title": "SAM 12 Setup complete",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 06 Welcome.dc.html",
+      "title": "SAM 06 Welcome",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 05 Password updated.dc.html",
+      "title": "SAM 05 Password updated",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 04 New password.dc.html",
+      "title": "SAM 04 New password",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 03 Enter code.dc.html",
+      "title": "SAM 03 Enter code",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 02 Forgot password.dc.html",
+      "title": "SAM 02 Forgot password",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 01 Login.dc.html",
+      "title": "SAM 01 Login",
+      "kind": "page"
+    },
+    {
+      "path": "SAM Excavator Interactive.dc.html",
+      "title": "SAM Excavator Interactive",
+      "kind": "component"
+    }
+  ],
+  "migratorVersion": "artifact-migrator (claude-design-backend ed667f7ac9c1)",
+  "createdAt": "2026-11-12T11:27:18.372Z",
+  "source": {
+    "v": 1,
+    "app": "claude-design",
+    "url": "https://claude.ai/design/p/b0edff4a-d8c9-4117-a93c-12e6e93d9d99",
+    "projectId": "b0edff4a-d8c9-4117-a93c-12e6e93d9d99",
+    "exportedAt": "2026-11-12T11:27:18.372Z"
+  },
+  "report": {
+    "itemsVersion": 2,
+    "pages": {
+      "total": 18,
+      "ok": 18,
+      "partial": 0,
+      "notMigrated": 0
+    },
+    "items": [],
+    "truncated": 0,
+    "truncatedLeftOut": 0
+  }
+}
