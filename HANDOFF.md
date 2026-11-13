@@ -11,7 +11,7 @@ Updated: 2026-11-13
 | RAM login + activation flow | https://ram-login-cd-6643e01dd4.netlify.app | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
 | RAM invitation email | https://ram-invitation-email-cd-f1b4e9ab68.netlify.app | `RAM Email Deploy.dc.html` |
 
-Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as `index.html` next to `support.js`, `image-slot.js`, `excavator-scene.js` and `globe-bg.js`; the RAM site also carries `SAM Login Deploy.dc.html`. The two invitation-email sites were not redeployed.
+Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as `index.html` next to `support.js`, `image-slot.js` and `excavator-scene.js`; the RAM site also carries `SAM Login Deploy.dc.html`. The two invitation-email sites were not redeployed.
 
 The SAM and RAM flows run on the same component. The `brand` prop (`"SAM"` default, `"RAM"`) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).
 
@@ -27,7 +27,6 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 | `#reset` | Set new password | `SAM 04 New password` |
 | `#done` | Password updated | `SAM 05 Password updated` |
 | `#welcome` | Invitation landing: set a password or join with Google / Microsoft | `SAM 06 Welcome` |
-| `#complete` | Account activated | `SAM 12 Setup complete` |
 | `#invalid` | Invitation link broken / expired | `SAM 14 Link broken`, `RAM 14 Link broken` |
 
 `SAM 13 Activation link used` is the login screen with `linkUsed=true`, which shows a notice that the activation link has already been used.
@@ -36,13 +35,13 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 
 ## Flows
 
-1. **Invitation:** Email CTA → `#welcome` → set a password **or** join with Google / Microsoft → `#complete` → Enter SAM
+1. **Invitation:** Email CTA → `#welcome` → set a password **or** join with Google / Microsoft → `#login`, with an "Your account is activated. Sign in to continue." notice and the invited e-mail filled in
 2. **Password recovery:** `#login` → `#recovery` → `#code` → `#reset` → `#done` → `#login`
 3. **Link edge cases:** the link has already been used → login with notice; the link is broken or expired → `#invalid`
 4. **Single sign-on:** `#login` offers "Sign in with Google" and "Sign in with Microsoft" under the Sign in button. Production needs real Google OAuth and Microsoft Entra ID sign-in, and should only accept an account an administrator has added.
 5. **Account not added by an administrator:** signing in with an e-mail, Google account or Microsoft account that no administrator has added shows an error and does not sign in. The e-mail error sits under the e-mail field; the Google / Microsoft error sits under those buttons. Both tell the person to ask their administrator for an invitation.
 
-The onboarding wizard (5 steps) has been removed: an activated account goes straight to `#complete`.
+There is no onboarding: the 5-step wizard and its "Setup complete" / "Account activated" end screen have been removed. Activation ends on the login screen.
 
 Where the email CTA points, by `linkState`:
 - `valid` → `#welcome`
@@ -87,12 +86,11 @@ Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (def
 ## Responsive behaviour
 
 - **Auth screens (≤ 960px):** the photo panel is hidden and the form takes the full width with 20px side padding; the 6 code fields share the row.
-- **Account activated:** the card fills the width on a phone.
 - Checked at 375px and 1280px: no horizontal scrolling on any step.
 
 ## Notes for engineering
 
 - The prototype uses inline styles and local state only. There is no backend: codes, passwords, invites and accounts are not really checked.
 - The email is a design mock. It needs rebuilding as table-based HTML for email clients, and the CTA URLs must be replaced with real signed activation links.
-- Visuals (the 3D excavator scene and globe background) come from `excavator-scene.js` and `globe-bg.js`.
-- Removed in November: the 5-step onboarding wizard, and the old separate copies `SAM Login.dc.html` and `SAM-Login-standalone.html`.
+- The login visual (the excavator scene) comes from `excavator-scene.js`.
+- Removed in November: the 5-step onboarding wizard and its end screen (`SAM 12 Setup complete`, with the globe background `globe-bg.js`), and the old separate copies `SAM Login.dc.html` and `SAM-Login-standalone.html`.

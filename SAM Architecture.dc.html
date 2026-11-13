@@ -11,7 +11,6 @@
 <meta name="design_doc_mode" content="canvas">
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#141414"/><rect x="120" y="120" width="160" height="6" fill="#ff1e00"/><text x="200" y="180" font-family="Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#ffffff" text-anchor="middle">SAM</text></svg></template>
 <script src="./excavator-scene.js"></script>
-<script src="./globe-bg.js"></script>
 <style>
 html, body { margin: 0; padding: 0; background: #141414; }
 a { color: #ffffff; }
@@ -137,19 +136,13 @@ a:hover { color: #ff1e00; }
     <div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">03 · ACTIVATION</div>
-        <div style="font-size:11px;color:#6f6f6f">2 pages</div>
+        <div style="font-size:11px;color:#6f6f6f">1 page</div>
       </div>
       <div style="display:grid;gap:0">
         <a href="#welcome" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
           <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">06</div>
           <div style="font-size:16px;font-weight:700">Welcome / activate</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Set a password or join with Google / Microsoft.</div>
-        </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#complete" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #ff1e00;text-decoration:none;color:#fff" style-hover="background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">12 · EXIT</div>
-          <div style="font-size:16px;font-weight:700">Account activated</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Account is live straight after activation. Hands over to the SAM dashboard.</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Set a password or join with Google / Microsoft. Then back to login with an "account activated" notice.</div>
         </a>
       </div>
     </div>
@@ -196,14 +189,13 @@ class Component extends DCLogic {
 
   renderVals() {
     const r = this.state.route;
-    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "complete"];
+    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid"];
     const isFlow = flowSteps.indexOf(r) > -1 || r === "used";
     const isEmail = r === "email";
     const isEmailDeploy = r === "email-deploy";
     const isExcavator = r === "excavator";
     const labels = { login: "LOGIN", recovery: "RECOVERY", code: "CODE", reset: "NEW PASSWORD",
-      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN",
-      complete: "COMPLETE", used: "LINK USED" };
+      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN", used: "LINK USED" };
     return {
       showEmailLane: this.props.showEmailLane ?? true,
       isFlow, isEmail, isEmailDeploy, isExcavator,
