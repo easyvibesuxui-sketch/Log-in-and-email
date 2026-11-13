@@ -49,7 +49,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 </tr>
 </tbody>
 </table></div>
-<p>These Netlify sites were deployed before the November changes (Google / Microsoft sign-in, the removed onboarding, the account-not-added error, mobile layout). Redeploy them to see the current design.</p>
+<p>Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as <code>index.html</code> next to <code>support.js</code>, <code>image-slot.js</code>, <code>excavator-scene.js</code> and <code>globe-bg.js</code>; the RAM site also carries <code>SAM Login Deploy.dc.html</code>. The two invitation-email sites were not redeployed.</p>
 <p>The SAM and RAM flows run on the same component. The <code>brand</code> prop (<code>"SAM"</code> default, <code>"RAM"</code>) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).</p>
 <h2>Deep links (URL hash)</h2>
 <p>You can open any step directly by adding a hash to the flow URL, e.g. <code>…netlify.app/#reset</code>.</p>
