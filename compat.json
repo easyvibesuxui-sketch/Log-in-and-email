@@ -46,18 +46,8 @@
       "kind": "component"
     },
     {
-      "path": "SAM-Login-standalone.html",
-      "title": "Bundled Page",
-      "kind": "plain"
-    },
-    {
       "path": "SAM Architecture.dc.html",
       "title": "SAM Architecture",
-      "kind": "page"
-    },
-    {
-      "path": "SAM Login.dc.html",
-      "title": "SAM Login",
       "kind": "page"
     },
     {

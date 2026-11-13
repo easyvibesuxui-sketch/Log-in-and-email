@@ -105,7 +105,7 @@ a:hover { color: #ff1e00; }
         <a href="#login" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
           <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">01</div>
           <div style="font-size:16px;font-weight:700">Login</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">E-mail and password, remember me, error state for unknown accounts.</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">E-mail and password or Google / Microsoft, remember me. Error when the account hasn't been added by an administrator.</div>
         </a>
         <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
         <a href="#recovery" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
@@ -143,12 +143,12 @@ a:hover { color: #ff1e00; }
         <a href="#welcome" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
           <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">06</div>
           <div style="font-size:16px;font-weight:700">Welcome / activate</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">First password for the account.</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Set a password or join with Google / Microsoft.</div>
         </a>
         <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
         <a href="#complete" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #ff1e00;text-decoration:none;color:#fff" style-hover="background:#232323">
           <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">12 · EXIT</div>
-          <div style="font-size:16px;font-weight:700">Setup complete</div>
+          <div style="font-size:16px;font-weight:700">Account activated</div>
           <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Account is live straight after activation. Hands over to the SAM dashboard.</div>
         </a>
       </div>
@@ -177,7 +177,7 @@ a:hover { color: #ff1e00; }
 
   <div style="margin-top:56px;border-top:1px solid #2e2e2e;padding-top:20px;display:flex;gap:34px;flex-wrap:wrap;font-size:12px;color:#7d7d7d">
     <div>Every page reuses one component; the step is set per page.</div>
-    <div>Deep links work on this page too: <span style="color:#c9c9c9">…/#onboarding</span></div>
+    <div>Deep links work on this page too: <span style="color:#c9c9c9">…/#welcome</span></div>
   </div>
 
 </div>
@@ -196,13 +196,13 @@ class Component extends DCLogic {
 
   renderVals() {
     const r = this.state.route;
-    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "onboarding", "complete"];
+    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "complete"];
     const isFlow = flowSteps.indexOf(r) > -1 || r === "used";
     const isEmail = r === "email";
     const isEmailDeploy = r === "email-deploy";
     const isExcavator = r === "excavator";
     const labels = { login: "LOGIN", recovery: "RECOVERY", code: "CODE", reset: "NEW PASSWORD",
-      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN", onboarding: "SETUP",
+      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN",
       complete: "COMPLETE", used: "LINK USED" };
     return {
       showEmailLane: this.props.showEmailLane ?? true,

@@ -15,28 +15,192 @@ th{text-align:left;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
 td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertical-align:top;line-height:1.5}
 </style></head><body>
 <template id="__bundler_thumbnail" data-bg-color="#1a1a1a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1a1a1a"/><rect x="30" y="42" width="40" height="16" fill="#ff1e00"/></svg></template>
-<main><h1>SAM / RAM — Auth &amp; Onboarding Handoff</h1>
-<p>Updated: 2026-10-29</p>
+<main><h1>SAM / RAM — Auth &amp; Activation Handoff</h1>
+<p>Updated: 2026-11-13</p>
 <h2>Live prototypes (Netlify)</h2>
-<div class="t"><table><thead><tr><th>Page</th><th>URL</th><th>Source file</th></tr></thead><tbody><tr><td>SAM login + onboarding flow</td><td><a href="https://sam-login-cd-e627cbe96f.netlify.app">https://sam-login-cd-e627cbe96f.netlify.app</a></td><td><code>SAM Login Deploy.dc.html</code></td></tr><tr><td>SAM invitation email</td><td><a href="https://sam-invitation-email-cd-de28f29f59.netlify.app">https://sam-invitation-email-cd-de28f29f59.netlify.app</a></td><td><code>SAM Email Deploy.dc.html</code></td></tr><tr><td>RAM login + onboarding flow</td><td><a href="https://ram-login-cd-6643e01dd4.netlify.app">https://ram-login-cd-6643e01dd4.netlify.app</a></td><td><code>RAM Login Deploy.dc.html</code> (wraps SAM Login Deploy, <code>brand="RAM"</code>)</td></tr><tr><td>RAM invitation email</td><td><a href="https://ram-invitation-email-cd-f1b4e9ab68.netlify.app">https://ram-invitation-email-cd-f1b4e9ab68.netlify.app</a></td><td><code>RAM Email Deploy.dc.html</code></td></tr></tbody></table></div>
-<p>The SAM and RAM flows run on the same component. The <code>brand</code> prop (<code>"SAM"</code> default, <code>"RAM"</code>) only changes branding and copy.</p>
+<div class="t"><table>
+<thead>
+<tr>
+<th>Page</th>
+<th>URL</th>
+<th>Source file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SAM login + activation flow</td>
+<td>https://sam-login-cd-e627cbe96f.netlify.app</td>
+<td><code>SAM Login Deploy.dc.html</code></td>
+</tr>
+<tr>
+<td>SAM invitation email</td>
+<td>https://sam-invitation-email-cd-de28f29f59.netlify.app</td>
+<td><code>SAM Email Deploy.dc.html</code></td>
+</tr>
+<tr>
+<td>RAM login + activation flow</td>
+<td>https://ram-login-cd-6643e01dd4.netlify.app</td>
+<td><code>RAM Login Deploy.dc.html</code> (wraps SAM Login Deploy, <code>brand="RAM"</code>)</td>
+</tr>
+<tr>
+<td>RAM invitation email</td>
+<td>https://ram-invitation-email-cd-f1b4e9ab68.netlify.app</td>
+<td><code>RAM Email Deploy.dc.html</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>These Netlify sites were deployed before the November changes (Google / Microsoft sign-in, the removed onboarding, the account-not-added error, mobile layout). Redeploy them to see the current design.</p>
+<p>The SAM and RAM flows run on the same component. The <code>brand</code> prop (<code>"SAM"</code> default, <code>"RAM"</code>) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).</p>
 <h2>Deep links (URL hash)</h2>
 <p>You can open any step directly by adding a hash to the flow URL, e.g. <code>…netlify.app/#reset</code>.</p>
-<div class="t"><table><thead><tr><th>Hash</th><th>Screen</th><th>Design file</th></tr></thead><tbody><tr><td><code>#login</code></td><td>Sign in</td><td><code>SAM 01 Login</code></td></tr><tr><td><code>#recovery</code></td><td>Forgot password (enter email)</td><td><code>SAM 02 Forgot password</code></td></tr><tr><td><code>#code</code></td><td>Enter 6-digit code</td><td><code>SAM 03 Enter code</code></td></tr><tr><td><code>#reset</code></td><td>Set new password</td><td><code>SAM 04 New password</code></td></tr><tr><td><code>#done</code></td><td>Password updated</td><td><code>SAM 05 Password updated</code></td></tr><tr><td><code>#welcome</code></td><td>Invitation landing / activate account</td><td><code>SAM 06 Welcome</code></td></tr><tr><td><code>#onboarding</code></td><td>Onboarding wizard (5 steps)</td><td>—</td></tr><tr><td><code>#complete</code></td><td>Setup complete</td><td><code>SAM 12 Setup complete</code></td></tr><tr><td><code>#invalid</code></td><td>Invitation link broken / expired</td><td><code>SAM 14 Link broken</code>, <code>RAM 14 Link broken</code></td></tr></tbody></table></div>
+<div class="t"><table>
+<thead>
+<tr>
+<th>Hash</th>
+<th>Screen</th>
+<th>Design file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#login</code></td>
+<td>Sign in (e-mail and password, or Google / Microsoft)</td>
+<td><code>SAM 01 Login</code></td>
+</tr>
+<tr>
+<td><code>#recovery</code></td>
+<td>Forgot password (enter email)</td>
+<td><code>SAM 02 Forgot password</code></td>
+</tr>
+<tr>
+<td><code>#code</code></td>
+<td>Enter 6-digit code</td>
+<td><code>SAM 03 Enter code</code></td>
+</tr>
+<tr>
+<td><code>#reset</code></td>
+<td>Set new password</td>
+<td><code>SAM 04 New password</code></td>
+</tr>
+<tr>
+<td><code>#done</code></td>
+<td>Password updated</td>
+<td><code>SAM 05 Password updated</code></td>
+</tr>
+<tr>
+<td><code>#welcome</code></td>
+<td>Invitation landing: set a password or join with Google / Microsoft</td>
+<td><code>SAM 06 Welcome</code></td>
+</tr>
+<tr>
+<td><code>#complete</code></td>
+<td>Account activated</td>
+<td><code>SAM 12 Setup complete</code></td>
+</tr>
+<tr>
+<td><code>#invalid</code></td>
+<td>Invitation link broken / expired</td>
+<td><code>SAM 14 Link broken</code>, <code>RAM 14 Link broken</code></td>
+</tr>
+</tbody>
+</table></div>
 <p><code>SAM 13 Activation link used</code> is the login screen with <code>linkUsed=true</code>, which shows a notice that the activation link has already been used.</p>
 <p><code>SAM Architecture.dc.html</code> maps all of the screens and links between them.</p>
 <h2>Flows</h2>
-<ol><li><strong>Invitation:</strong> Email CTA → <code>#welcome</code> → set password → <code>#onboarding</code> (steps 1–5) → <code>#complete</code></li><li><strong>Password recovery:</strong> <code>#login</code> → <code>#recovery</code> → <code>#code</code> → <code>#reset</code> → <code>#done</code> → <code>#login</code></li><li><strong>Link edge cases:</strong> the link has already been used → login with notice; the link is broken or expired → <code>#invalid</code></li></ol>
-<p>Where the email CTA points, by <code>linkState</code>:</p>
-<ul><li><code>valid</code> → <code>#welcome</code></li><li><code>used</code> → <code>#login</code></li><li><code>broken</code> → <code>#invalid</code></li></ul>
+<ol>
+<li><strong>Invitation:</strong> Email CTA → <code>#welcome</code> → set a password <strong>or</strong> join with Google / Microsoft → <code>#complete</code> → Enter SAM</li>
+<li><strong>Password recovery:</strong> <code>#login</code> → <code>#recovery</code> → <code>#code</code> → <code>#reset</code> → <code>#done</code> → <code>#login</code></li>
+<li><strong>Link edge cases:</strong> the link has already been used → login with notice; the link is broken or expired → <code>#invalid</code></li>
+<li><strong>Single sign-on:</strong> <code>#login</code> offers "Sign in with Google" and "Sign in with Microsoft" under the Sign in button. Production needs real Google OAuth and Microsoft Entra ID sign-in, and should only accept an account an administrator has added.</li>
+<li><strong>Account not added by an administrator:</strong> signing in with an e-mail, Google account or Microsoft account that no administrator has added shows an error and does not sign in. The e-mail error sits under the e-mail field; the Google / Microsoft error sits under those buttons. Both tell the person to ask their administrator for an invitation.</li>
+</ol>
+<p>The onboarding wizard (5 steps) has been removed: an activated account goes straight to <code>#complete</code>.</p>
+<p>Where the email CTA points, by <code>linkState</code>:
+- <code>valid</code> → <code>#welcome</code>
+- <code>used</code> → <code>#login</code>
+- <code>broken</code> → <code>#invalid</code></p>
 <h2>Validation rules in the prototype</h2>
-<ul><li><strong>Recovery email:</strong> basic <code>name@domain.tld</code> pattern. The button stays disabled until the email is valid.</li><li><strong>Code:</strong> 6 inputs, digits only, one per field. Continue is enabled once all 6 are filled.</li><li><strong>Resend code:</strong> 30-second cooldown with a countdown, and the inputs are cleared.</li><li><strong>New password:</strong> at least 8 characters, 1 digit and 1 uppercase letter. The confirmation field must match, otherwise a mismatch error shows.</li><li><strong>Login error state:</strong> toggled with the <code>errorState</code> prop.</li></ul>
+<ul>
+<li><strong>Login e-mail:</strong> the prototype knows one account, <code>workEmail</code> (default <code>a.keller@syniotec.com</code>, any letter case). Sign in with any other e-mail shows the "not added by an administrator" error; editing the e-mail clears it.</li>
+<li><strong>Google / Microsoft on login:</strong> sign in by default; with <code>ssoError</code> on, they show the "not added by an administrator" error for that provider.</li>
+<li><strong>Recovery email:</strong> basic <code>name@domain.tld</code> pattern. The button stays disabled until the email is valid.</li>
+<li><strong>Code:</strong> 6 inputs, digits only, one per field. Continue is enabled once all 6 are filled.</li>
+<li><strong>Resend code:</strong> 30-second cooldown with a countdown, and the inputs are cleared.</li>
+<li><strong>New password:</strong> at least 8 characters, 1 digit and 1 uppercase letter. The confirmation field must match, otherwise a mismatch error shows.</li>
+</ul>
 <h2>Component props (<code>SAM Login Deploy</code>)</h2>
-<div class="t"><table><thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead><tbody><tr><td><code>startStep</code></td><td>enum</td><td><code>welcome</code></td><td>One of the hash values above. The URL hash overrides it.</td></tr><tr><td><code>startOb</code></td><td>int 1–5</td><td>1</td><td>Starting onboarding sub-step</td></tr><tr><td><code>errorState</code></td><td>boolean</td><td>—</td><td>Shows the login error</td></tr><tr><td><code>linkUsed</code></td><td>boolean</td><td>false</td><td>Shows the "activation link already used" notice</td></tr><tr><td><code>brand</code></td><td><code>SAM</code> | <code>RAM</code></td><td><code>SAM</code></td><td>Branding</td></tr><tr><td><code>firstName</code>, <code>workEmail</code></td><td>text</td><td>—</td><td>Prefill values for onboarding</td></tr></tbody></table></div>
+<div class="t"><table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startStep</code></td>
+<td>enum</td>
+<td><code>welcome</code></td>
+<td>One of the hash values above. The URL hash overrides it.</td>
+</tr>
+<tr>
+<td><code>errorState</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Shows the e-mail "not added by an administrator" error</td>
+</tr>
+<tr>
+<td><code>ssoError</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Google / Microsoft sign-in shows the "not added by an administrator" error</td>
+</tr>
+<tr>
+<td><code>linkUsed</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Shows the "activation link already used" notice</td>
+</tr>
+<tr>
+<td><code>brand</code></td>
+<td><code>SAM</code> | <code>RAM</code></td>
+<td><code>SAM</code></td>
+<td>Branding</td>
+</tr>
+<tr>
+<td><code>firstName</code>, <code>workEmail</code></td>
+<td>text</td>
+<td><code>Anna</code>, <code>a.keller@syniotec.com</code></td>
+<td>Name and invited e-mail on the activation screen; <code>workEmail</code> is also the account the login accepts</td>
+</tr>
+</tbody>
+</table></div>
 <p>Invitation email props: <code>linkState</code> (<code>valid</code>/<code>used</code>/<code>broken</code>), <code>expiryDays</code> (default 7), <code>showAccessList</code>, <code>showLanguageNote</code>.</p>
-<h2>Onboarding defaults</h2>
-<ul><li><strong>Locale:</strong> Germany · Europe / Berlin · EUR · English · DD.MM.YYYY · Metric · week starts Monday</li><li><strong>Security:</strong> 2FA on by default; session timeout 1 hour</li><li><strong>Notifications:</strong> delivery "Both", "Daily digest"</li><li><strong>Toggles on:</strong> pin, device, faults, maint, shift</li><li><strong>Toggles off:</strong> util, product</li></ul>
 <h2>Visual tokens</h2>
-<ul><li><strong>Fonts:</strong> ABC Favorit Expanded (<code>FavoritExp</code>) for headlines, ABC Favorit Extended (<code>FavoritExt</code>) for UI, with Helvetica as fallback. These are licensed Dinamo fonts and are currently inlined in the prototype, so production needs a proper web license.</li><li><strong>Background:</strong> <code>#1a1a1a</code> / <code>#141414</code></li><li><strong>Accent / primary:</strong> <code>#ff1e00</code> (hover <code>#e01a00</code>)</li><li><strong>Disabled button:</strong> <code>#bcbcbc</code></li><li><strong>Text:</strong> <code>#ffffff</code>, secondary <code>#9a9a9a</code> / <code>#cfcfcf</code></li><li><strong>Warning:</strong> <code>#f2a01e</code> · <strong>Success:</strong> <code>#71C562</code> · <strong>Error:</strong> <code>#dd0000</code></li><li><strong>Primary button:</strong> 320px max width, 15px vertical padding, 14px bold, no radius</li><li><strong>Inputs:</strong> floating labels (13px → 10px on focus or when filled), 130ms transition</li><li><strong>Toggles:</strong> 44×24 pill, accent fill when on</li><li><strong>Email:</strong> light ground <code>#ffffff</code> / <code>#f4f2ef</code>, divider <code>#e2e0dc</code>, muted text <code>#8b8781</code></li></ul>
+<ul>
+<li><strong>Fonts:</strong> ABC Favorit Expanded (<code>FavoritExp</code>) for headlines, ABC Favorit Extended (<code>FavoritExt</code>) for UI, with Helvetica as fallback. These are licensed Dinamo fonts and are currently inlined in the prototype, so production needs a proper web license.</li>
+<li><strong>Background:</strong> <code>#1a1a1a</code> / <code>#141414</code></li>
+<li><strong>Accent / primary:</strong> <code>#ff1e00</code> (hover <code>#e01a00</code>)</li>
+<li><strong>Disabled button:</strong> <code>#bcbcbc</code> background, <code>#4a4a4a</code> text (4.7:1)</li>
+<li><strong>Text:</strong> <code>#ffffff</code>, secondary <code>#9a9a9a</code> / <code>#cfcfcf</code></li>
+<li><strong>Warning:</strong> <code>#f2a01e</code> (inline errors) · <strong>Success:</strong> <code>#71C562</code> · <strong>Error:</strong> <code>#dd0000</code></li>
+<li><strong>Primary button:</strong> 320px max width, 15px vertical padding, 14px bold, no radius</li>
+<li><strong>Inputs:</strong> floating labels (13px → 10px on focus or when filled), 130ms transition</li>
+<li><strong>SSO buttons:</strong> transparent, 1px <code>rgba(255,255,255,0.4)</code> border, 48px tall, two across in 320px; they wrap to one per row when narrow</li>
+<li><strong>Email:</strong> light ground <code>#ffffff</code> / <code>#f4f2ef</code>, divider <code>#e2e0dc</code>, muted text <code>#8b8781</code></li>
+</ul>
+<h2>Responsive behaviour</h2>
+<ul>
+<li><strong>Auth screens (≤ 960px):</strong> the photo panel is hidden and the form takes the full width with 20px side padding; the 6 code fields share the row.</li>
+<li><strong>Account activated:</strong> the card fills the width on a phone.</li>
+<li>Checked at 375px and 1280px: no horizontal scrolling on any step.</li>
+</ul>
 <h2>Notes for engineering</h2>
-<ul><li>The prototype uses inline styles and local state only. There is no backend: codes, passwords and invites are not checked.</li><li>The email is a design mock. It needs rebuilding as table-based HTML for email clients, and the CTA URLs must be replaced with real signed activation links.</li><li>Visuals (the 3D excavator scene and globe background) come from <code>excavator-scene.js</code> and <code>globe-bg.js</code>.</li></ul></main></body></html>
+<ul>
+<li>The prototype uses inline styles and local state only. There is no backend: codes, passwords, invites and accounts are not really checked.</li>
+<li>The email is a design mock. It needs rebuilding as table-based HTML for email clients, and the CTA URLs must be replaced with real signed activation links.</li>
+<li>Visuals (the 3D excavator scene and globe background) come from <code>excavator-scene.js</code> and <code>globe-bg.js</code>.</li>
+<li>Removed in November: the 5-step onboarding wizard, and the old separate copies <code>SAM Login.dc.html</code> and <code>SAM-Login-standalone.html</code>.</li>
+</ul></main></body></html>
