@@ -11,7 +11,7 @@ Updated: 2026-11-13
 | RAM login + activation flow | https://ram-login-cd-6643e01dd4.netlify.app | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
 | RAM invitation email | https://ram-invitation-email-cd-f1b4e9ab68.netlify.app | `RAM Email Deploy.dc.html` |
 
-Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as `index.html` next to `support.js`, `image-slot.js` and `excavator-scene.js`; the RAM site also carries `SAM Login Deploy.dc.html`. The two invitation-email sites were not redeployed.
+Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as `index.html` next to `support.js`, `image-slot.js` and `excavator-scene.js`; the RAM site also carries `SAM Login Deploy.dc.html`. The two invitation-email sites were redeployed the same day: their text now says the account can be activated with a password or with a Google or Microsoft account.
 
 The SAM and RAM flows run on the same component. The `brand` prop (`"SAM"` default, `"RAM"`) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).
 
