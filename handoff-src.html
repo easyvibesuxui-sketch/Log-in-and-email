@@ -97,6 +97,26 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 <td>Invitation link broken / expired</td>
 <td><code>SAM 14 Link broken</code>, <code>RAM 14 Link broken</code></td>
 </tr>
+<tr>
+<td><code>#used</code></td>
+<td>Login with the "activation link already used" notice</td>
+<td><code>SAM 13 Activation link used</code></td>
+</tr>
+<tr>
+<td><code>#not-invited</code></td>
+<td>Login: e-mail not added by an administrator (example <code>k.wagner@example.com</code>)</td>
+<td><code>SAM 15 Not invited e-mail</code></td>
+</tr>
+<tr>
+<td><code>#not-invited-google</code></td>
+<td>Login: Google account not added by an administrator</td>
+<td><code>SAM 16 Not invited Google</code></td>
+</tr>
+<tr>
+<td><code>#not-invited-microsoft</code></td>
+<td>Login: Microsoft account not added by an administrator</td>
+<td><code>SAM 17 Not invited Microsoft</code></td>
+</tr>
 </tbody>
 </table></div>
 <p><code>SAM 13 Activation link used</code> is the login screen with <code>linkUsed=true</code>, which shows a notice that the activation link has already been used. On the flow URL it opens with <code>#used</code>.</p>
@@ -151,6 +171,12 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 <td>boolean</td>
 <td>false</td>
 <td>Google / Microsoft sign-in shows the "not added by an administrator" error</td>
+</tr>
+<tr>
+<td><code>loginError</code></td>
+<td><code>none</code> | <code>email</code> | <code>google</code> | <code>microsoft</code></td>
+<td><code>none</code></td>
+<td>Opens Login already showing that error (the <code>#not-invited…</code> hashes do the same)</td>
 </tr>
 <tr>
 <td><code>linkUsed</code></td>

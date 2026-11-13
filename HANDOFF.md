@@ -28,6 +28,10 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 | `#done` | Password updated | `SAM 05 Password updated` |
 | `#welcome` | Invitation landing: set a password or join with Google / Microsoft | `SAM 06 Welcome` |
 | `#invalid` | Invitation link broken / expired | `SAM 14 Link broken`, `RAM 14 Link broken` |
+| `#used` | Login with the "activation link already used" notice | `SAM 13 Activation link used` |
+| `#not-invited` | Login: e-mail not added by an administrator (example `k.wagner@example.com`) | `SAM 15 Not invited e-mail` |
+| `#not-invited-google` | Login: Google account not added by an administrator | `SAM 16 Not invited Google` |
+| `#not-invited-microsoft` | Login: Microsoft account not added by an administrator | `SAM 17 Not invited Microsoft` |
 
 `SAM 13 Activation link used` is the login screen with `linkUsed=true`, which shows a notice that the activation link has already been used. On the flow URL it opens with `#used`.
 
@@ -64,6 +68,7 @@ Where the email CTA points, by `linkState`:
 | `startStep` | enum | `welcome` | One of the hash values above. The URL hash overrides it. |
 | `errorState` | boolean | false | Shows the e-mail "not added by an administrator" error |
 | `ssoError` | boolean | false | Google / Microsoft sign-in shows the "not added by an administrator" error |
+| `loginError` | `none` \| `email` \| `google` \| `microsoft` | `none` | Opens Login already showing that error (the `#not-invited…` hashes do the same) |
 | `linkUsed` | boolean | false | Shows the "activation link already used" notice |
 | `brand` | `SAM` \| `RAM` | `SAM` | Branding |
 | `firstName`, `workEmail` | text | `Max`, `m.becker@baugruppe-nord.de` | Name and invited e-mail on the activation screen; `workEmail` is also the account the login accepts |

@@ -56,6 +56,21 @@
       "kind": "component"
     },
     {
+      "path": "SAM 15 Not invited e-mail.dc.html",
+      "title": "SAM 15 Not invited e-mail",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 16 Not invited Google.dc.html",
+      "title": "SAM 16 Not invited Google",
+      "kind": "page"
+    },
+    {
+      "path": "SAM 17 Not invited Microsoft.dc.html",
+      "title": "SAM 17 Not invited Microsoft",
+      "kind": "page"
+    },
+    {
       "path": "SAM 14 Link broken.dc.html",
       "title": "SAM 14 Link broken",
       "kind": "page"
