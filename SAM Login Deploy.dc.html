@@ -31,6 +31,9 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 @keyframes slideIn { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
 @keyframes checkPop { 0% { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }
 @keyframes ringPulse { 0% { box-shadow: 0 0 0 0 rgba(255,30,0,0.45); } 100% { box-shadow: 0 0 0 12px rgba(255,30,0,0); } }
+@media (max-width: 900px) {
+  .r-ob-head { padding: 20px 20px 0 !important; gap: 16px; }
+}
 @media (max-width: 960px) {
   .r-auth { grid-template-columns: minmax(0, 1fr) !important; }
   .r-auth-visual { display: none !important; }
@@ -38,21 +41,6 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
   .r-auth-brand { margin-bottom: 56px !important; }
   .r-code { gap: 8px !important; }
   .r-code-cell { width: auto !important; flex: 1 1 0; min-width: 0; height: 56px !important; }
-}
-@media (max-width: 900px) {
-  .r-ob-head { padding: 20px 20px 0 !important; gap: 16px; }
-  .r-ob-wrap { padding: 20px 12px 32px !important; }
-  .r-ob-panel { grid-template-columns: minmax(0, 1fr) !important; min-height: 0 !important; }
-  .r-ob-side { border-right: 0 !important; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 18px 18px !important; }
-  .r-ob-steps, .r-ob-saved { display: none !important; }
-  .r-ob-main { padding: 24px 18px 26px !important; }
-  .r-ob-2col { grid-template-columns: minmax(0, 1fr) !important; gap: 28px !important; }
-  .r-ob-foot { flex-wrap: wrap; gap: 12px !important; }
-  .r-ob-foot-r { display: contents !important; }
-  .r-ob-foot-r > span { order: -1; flex: 1 1 100%; text-align: right; }
-  .r-ob-next { width: auto !important; padding: 14px 26px !important; margin-left: auto; }
-  .r-ob-sub { display: none !important; }
-  .r-ob-nowrap { white-space: nowrap; }
 }
 </style>
 </helmet>
@@ -101,7 +89,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
         <input type="email" value="{{ email }}" placeholder="{{ emailHint }}" onChange="{{ onEmail }}" onFocus="{{ focusEmail }}" onBlur="{{ blurEmail }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;color:#fff;outline:none" />
       </div>
       <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
-        <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e">* We couldn't find an account with that email. Please check and try again.</div>
+        <div role="alert" style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e;text-wrap:pretty">* This e-mail hasn't been added to {{ brandName }} by an administrator, so it can't be used to sign in. Ask your administrator to invite you.</div>
       </sc-if>
 
       <div style="height:34px"></div>
@@ -125,7 +113,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
         <a href="#" onClick="{{ goRecovery }}" style="font-size:13px;color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Forgot password</a>
       </div>
 
-      <button type="button" onClick="{{ goEmail }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease" style-hover="background:#e01a00">Sign in</button>
+      <button type="button" onClick="{{ signIn }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease" style-hover="background:#e01a00">Sign in</button>
 
       <div style="display:flex;align-items:center;gap:14px;width:320px;max-width:100%;margin-top:26px">
         <span aria-hidden="true" style="flex:1;height:1px;background:#3a3a3a"></span>
@@ -133,15 +121,18 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
         <span aria-hidden="true" style="flex:1;height:1px;background:#3a3a3a"></span>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px;width:320px;max-width:100%;margin-top:18px">
-        <button type="button" onClick="{{ ssoLogin }}" aria-label="Sign in with Google" style="flex:1 1 130px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 12px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease, background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">
+        <button type="button" onClick="{{ ssoGoogle }}" aria-label="Sign in with Google" style="flex:1 1 130px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 12px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease, background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"></path><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"></path><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"></path><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"></path></svg>
           <span>Google</span>
         </button>
-        <button type="button" onClick="{{ ssoLogin }}" aria-label="Sign in with Microsoft" style="flex:1 1 130px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 12px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease, background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">
+        <button type="button" onClick="{{ ssoMicrosoft }}" aria-label="Sign in with Microsoft" style="flex:1 1 130px;display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 12px;background:transparent;border:1px solid rgba(255,255,255,0.4);color:#fff;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease, background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 23 23"><path fill="#f25022" d="M1 1h10v10H1z"></path><path fill="#7fba00" d="M12 1h10v10H12z"></path><path fill="#00a4ef" d="M1 12h10v10H1z"></path><path fill="#ffb900" d="M12 12h10v10H12z"></path></svg>
           <span>Microsoft</span>
         </button>
       </div>
+      <sc-if value="{{ ssoErr }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="margin-top:12px;max-width:320px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e;text-wrap:pretty">* This {{ ssoErrProvider }} account hasn't been added to {{ brandName }} by an administrator, so it can't be used to sign in. Ask your administrator to invite you.</div>
+      </sc-if>
     </div>
     </sc-if>
 
@@ -336,290 +327,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
       <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1">{{ brandName }}</div>
       <div class="r-ob-sub" style="font-size:9px;letter-spacing:0.15em;margin-top:6px;color:#b0b0b0">{{ brandFull }}</div>
     </div>
-    <div style="display:flex;align-items:center;gap:28px">
-      <span class="r-ob-nowrap" style="font-size:11px;letter-spacing:0.12em;color:#9d9d9d">{{ stepCounter }}</span>
-      <a href="#" onClick="{{ noop }}" class="r-ob-nowrap" style="font-size:12px;color:#dcdcdc;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.28);padding-bottom:2px" style-hover="color:#ff1e00">Save &amp; exit</a>
-    </div>
   </div>
-
-  <sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
-  <div class="r-ob-wrap" style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:34px 40px 56px">
-    <div class="r-ob-panel" style="position:relative;width:100%;max-width:1140px;background:rgba(255,255,255,0.055);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid rgba(255,255,255,0.13);box-shadow:0 46px 130px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.16);display:grid;grid-template-columns:316px 1fr;min-height:604px;animation:panelIn 820ms cubic-bezier(.16,.84,.24,1) both">
-
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.1)">
-        <div style="{{ progressStyle }}"></div>
-      </div>
-
-      <div class="r-ob-side" style="border-right:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);padding:44px 26px 34px;display:flex;flex-direction:column">
-        <div style="padding:0 8px;margin-bottom:34px">
-          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:19px;line-height:1.15;margin-bottom:8px">Complete your profile</div>
-          <div style="font-size:11px;line-height:1.5;color:#9a9a9a">All fields marked * are required before you can enter {{ brandName }}.</div>
-        </div>
-        <div class="r-ob-steps" style="display:flex;flex-direction:column">
-          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
-            <button type="button" onClick="{{ st.go }}" style="{{ st.rowStyle }}">
-              <span style="{{ st.dotStyle }}">
-                <span style="{{ st.numStyle }}">{{ st.num }}</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" style="{{ st.checkStyle }}"><path d="M5 12.5 10 17.5 19 7"></path></svg>
-              </span>
-              <span style="{{ st.titleStyle }}">{{ st.title }}</span>
-            </button>
-          </sc-for>
-        </div>
-        <div class="r-ob-saved" style="margin-top:auto;padding:0 8px;display:flex;align-items:center;gap:10px">
-          <span style="width:6px;height:6px;background:#ff1e00;flex:none;display:block"></span>
-          <span style="font-size:11px;color:#8d8d8d">Saved automatically</span>
-        </div>
-      </div>
-
-      <div class="r-ob-main" style="padding:44px 48px 38px;display:flex;flex-direction:column;min-width:0">
-
-                <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
-        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
-          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Identity and contact</h2>
-          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">This is how your name appears on reports, checklists and handovers.</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px" class="r-ob-2col">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms;position:relative;height:50px">
-              <label style="{{ fFirst.labelStyle }}">First name*</label>
-              <input placeholder="{{ fFirst.placeholder }}" value="{{ fFirst.value }}" onChange="{{ fFirst.onChange }}" onFocus="{{ fFirst.onFocus }}" onBlur="{{ fFirst.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
-              <label style="{{ fLast.labelStyle }}">Last name*</label>
-              <input placeholder="{{ fLast.placeholder }}" value="{{ fLast.value }}" onChange="{{ fLast.onChange }}" onFocus="{{ fLast.onFocus }}" onBlur="{{ fLast.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms;position:relative;height:50px">
-              <label style="{{ fDob.labelStyle }}">Date of birth</label>
-              <input placeholder="{{ fDob.placeholder }}" value="{{ fDob.value }}" onChange="{{ fDob.onChange }}" onFocus="{{ fDob.onFocus }}" onBlur="{{ fDob.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms;position:relative;height:50px">
-              <label style="{{ lockedLabelStyle }}">Work e-mail</label>
-              <div style="position:absolute;left:0;bottom:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,0.14);padding-bottom:8px">
-                <span style="font-size:13px;color:#8d8d8d">{{ workEmail }}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8d8d8d" stroke-width="1.8"><rect x="4" y="10.5" width="16" height="10.5"></rect><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"></path></svg>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms;position:relative;height:50px">
-              <label style="{{ fPhone.labelStyle }}">Mobile number*</label>
-              <input placeholder="{{ fPhone.placeholder }}" value="{{ fPhone.value }}" onChange="{{ fPhone.onChange }}" onFocus="{{ fPhone.onFocus }}" onBlur="{{ fPhone.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;position:relative;height:50px">
-              <label style="{{ fCountry.labelStyle }}">Country</label>
-              <input placeholder="{{ fCountry.placeholder }}" value="{{ fCountry.value }}" onChange="{{ fCountry.onChange }}" onFocus="{{ fCountry.onFocus }}" onBlur="{{ fCountry.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:380ms;position:relative;height:50px;grid-column:1 / -1">
-              <label style="{{ fStreet.labelStyle }}">Street and number</label>
-              <input placeholder="{{ fStreet.placeholder }}" value="{{ fStreet.value }}" onChange="{{ fStreet.onChange }}" onFocus="{{ fStreet.onFocus }}" onBlur="{{ fStreet.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:430ms;display:grid;grid-template-columns:110px 1fr;gap:24px">
-              <div style="position:relative;height:50px">
-                <label style="{{ fZip.labelStyle }}">ZIP*</label>
-                <input value="{{ fZip.value }}" onChange="{{ fZip.onChange }}" onFocus="{{ fZip.onFocus }}" onBlur="{{ fZip.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-              </div>
-              <div style="position:relative;height:50px">
-                <label style="{{ fCity.labelStyle }}">City*</label>
-                <input value="{{ fCity.value }}" onChange="{{ fCity.onChange }}" onFocus="{{ fCity.onFocus }}" onBlur="{{ fCity.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-              </div>
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-        <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
-        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
-          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Organization and signature</h2>
-          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Your department decides which machines, sites and reports you see.</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px" class="r-ob-2col">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms;position:relative;height:50px">
-              <label style="{{ fCompany.labelStyle }}">Company*</label>
-              <input placeholder="{{ fCompany.placeholder }}" value="{{ fCompany.value }}" onChange="{{ fCompany.onChange }}" onFocus="{{ fCompany.onFocus }}" onBlur="{{ fCompany.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
-              <label style="{{ fEmpId.labelStyle }}">Employee ID</label>
-              <input placeholder="{{ fEmpId.placeholder }}" value="{{ fEmpId.value }}" onChange="{{ fEmpId.onChange }}" onFocus="{{ fEmpId.onFocus }}" onBlur="{{ fEmpId.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms;position:relative;height:50px">
-              <label style="{{ fTitle.labelStyle }}">Job title</label>
-              <input placeholder="{{ fTitle.placeholder }}" value="{{ fTitle.value }}" onChange="{{ fTitle.onChange }}" onFocus="{{ fTitle.onFocus }}" onBlur="{{ fTitle.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms;position:relative;height:50px">
-              <label style="{{ fCost.labelStyle }}">Cost centre</label>
-              <input placeholder="{{ fCost.placeholder }}" value="{{ fCost.value }}" onChange="{{ fCost.onChange }}" onFocus="{{ fCost.onFocus }}" onBlur="{{ fCost.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms;grid-column:1 / -1">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Department*</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ deptChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;grid-column:1 / -1">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">E-mail signature</div>
-              <div class="r-ob-2col" style="display:grid;grid-template-columns:1fr 232px;gap:28px;align-items:stretch">
-                <div style="background:rgba(20,20,20,0.32);border:1px solid rgba(255,255,255,0.1);padding:20px 22px">
-                  <div style="font-size:14px;font-weight:500;margin-bottom:3px">{{ sigName }}</div>
-                  <div style="font-size:12px;color:#b4b4b4">{{ sigRole }}</div>
-                  <div style="width:26px;height:1px;background:#ff1e00;margin:13px 0"></div>
-                  <div style="font-size:11px;color:#8d8d8d;line-height:1.6">{{ workEmail }}<br />syniotec · Smart Asset Manager</div>
-                </div>
-                <image-slot id="sam-signature" placeholder="signature scan (PNG)" style="display:block;width:100%;height:100%;min-height:118px"></image-slot>
-              </div>
-              <div style="font-size:11px;color:#8d8d8d;margin-top:12px">Generated from your details. Drop a scan of your handwritten signature to add it.</div>
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-        <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
-        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
-          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Security</h2>
-          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Two-factor authentication is mandatory for every {{ brandName }} account.</div>
-          <div style="display:grid;gap:34px">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Two-factor method*</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ twoFaChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;display:grid;grid-template-columns:1fr 1fr;gap:34px 44px" class="r-ob-2col">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:0ms;position:relative;height:50px">
-              <label style="{{ fRecEmail.labelStyle }}">Recovery e-mail</label>
-              <input placeholder="{{ fRecEmail.placeholder }}" value="{{ fRecEmail.value }}" onChange="{{ fRecEmail.onChange }}" onFocus="{{ fRecEmail.onFocus }}" onBlur="{{ fRecEmail.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:0ms;position:relative;height:50px">
-              <label style="{{ fSecPhone.labelStyle }}">Recovery phone</label>
-              <input placeholder="{{ fSecPhone.placeholder }}" value="{{ fSecPhone.value }}" onChange="{{ fSecPhone.onChange }}" onFocus="{{ fSecPhone.onFocus }}" onBlur="{{ fSecPhone.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Automatic sign-out after inactivity</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ timeoutChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:250ms;display:grid;gap:1px;background:rgba(255,255,255,0.09)">
-              <sc-for list="{{ securityToggles }}" as="t" hint-placeholder-count="2">
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(20,20,20,0.3);padding:15px 18px">
-                  <div>
-                    <div style="font-size:13px;font-weight:500">{{ t.title }}</div>
-                    <div style="font-size:11px;color:#8d8d8d;margin-top:4px">{{ t.sub }}</div>
-                  </div>
-                  <button type="button" onClick="{{ t.go }}" aria-label="Toggle" style="{{ t.trackStyle }}"><span style="{{ t.knobStyle }}"></span></button>
-                </div>
-              </sc-for>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:300ms;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(255,255,255,0.12);padding:15px 18px">
-              <span style="font-size:12px;color:#b4b4b4">Ten single-use backup codes for when your device is unavailable.</span>
-              <a href="#" onClick="{{ noop }}" style="flex:none;font-size:12px;font-weight:500;color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Download backup codes</a>
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-        <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
-        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
-          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Region</h2>
-          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Formats apply to every timestamp, report and export in {{ brandName }}.</div>
-          <div style="display:grid;gap:34px">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px" class="r-ob-2col">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Interface language</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ langChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
-              <label style="{{ fTz.labelStyle }}">Time zone</label>
-              <input placeholder="{{ fTz.placeholder }}" value="{{ fTz.value }}" onChange="{{ fTz.onChange }}" onFocus="{{ fTz.onFocus }}" onBlur="{{ fTz.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Date format</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ dateChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px" class="r-ob-2col">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Units</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ unitChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">First day of the week</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ weekChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;position:relative;height:50px">
-              <label style="{{ fCurrency.labelStyle }}">Currency for costs and rates</label>
-              <input placeholder="{{ fCurrency.placeholder }}" value="{{ fCurrency.value }}" onChange="{{ fCurrency.onChange }}" onFocus="{{ fCurrency.onFocus }}" onBlur="{{ fCurrency.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-        <sc-if value="{{ isStep5 }}" hint-placeholder-val="{{ false }}">
-        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
-          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Notifications</h2>
-          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Choose what reaches you. Critical machine faults are always delivered.</div>
-          <div style="display:grid;gap:32px">
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Delivery</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ deliveryChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;display:grid;gap:1px;background:rgba(255,255,255,0.09)">
-              <sc-for list="{{ notifRows }}" as="n" hint-placeholder-count="5">
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(20,20,20,0.3);padding:15px 18px">
-                  <div>
-                    <div style="font-size:13px;font-weight:500">{{ n.title }}</div>
-                    <div style="font-size:11px;color:#8d8d8d;margin-top:4px">{{ n.sub }}</div>
-                  </div>
-                  <button type="button" onClick="{{ n.go }}" aria-label="Toggle" style="{{ n.trackStyle }}"><span style="{{ n.knobStyle }}"></span></button>
-                </div>
-              </sc-for>
-            </div>
-            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">
-              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Summary rhythm</div>
-              <div style="display:flex;flex-wrap:wrap;gap:10px">
-                <sc-for list="{{ digestChips }}" as="c" hint-placeholder-count="3">
-                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
-                </sc-for>
-              </div>
-            </div>
-          </div>
-        </div>
-        </sc-if>
-
-<div class="r-ob-foot" style="margin-top:auto;padding-top:40px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-          <button type="button" onClick="{{ back }}" style="background:transparent;border:1px solid rgba(255,255,255,0.28);color:#fff;padding:13px 30px;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease,background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">Back</button>
-          <div class="r-ob-foot-r" style="display:flex;align-items:center;gap:26px">
-            <span style="font-size:11px;color:#8d8d8d">{{ hint }}</span>
-            <button type="button" class="r-ob-next" disabled="{{ nextDisabled }}" onClick="{{ next }}" style="{{ nextBtnStyle }}">{{ nextLabel }}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </sc-if>
 
   <sc-if value="{{ isComplete }}" hint-placeholder-val="{{ false }}">
   <div style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:44px 40px 84px">
@@ -627,8 +335,8 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
       <span style="width:56px;height:56px;border:1px solid #ff1e00;background:rgba(255,30,0,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 30px;animation:checkPop 620ms cubic-bezier(.16,.84,.24,1) both,ringPulse 1400ms ease-out 500ms both">
         <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M5 12.5 10 17.5 19 7"></path></svg>
       </span>
-      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:1.06;margin:0 0 14px;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">Profile complete</h1>
-      <p style="margin:0 auto 42px;max-width:400px;font-size:13px;line-height:1.6;color:#c0c0c0;text-wrap:pretty;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms">Your fleet is being assigned to your account. Everything else you can adjust in settings.</p>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:1.06;margin:0 0 14px;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">Account activated</h1>
+      <p style="margin:0 auto 42px;max-width:400px;font-size:13px;line-height:1.6;color:#c0c0c0;text-wrap:pretty;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms">Your fleet is being assigned to your account. You can change your profile and preferences any time in settings.</p>
       <button type="button" onClick="{{ goLogin }}" style="width:300px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease,transform 140ms ease;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:360ms" style-hover="background:#e01a00;transform:translateY(-1px)">Enter {{ brandName }}</button>
     </div>
   </div>
@@ -642,16 +350,12 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 </sc-if>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;errorState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;linkUsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;login&quot;,&quot;recovery&quot;,&quot;code&quot;,&quot;reset&quot;,&quot;done&quot;,&quot;welcome&quot;,&quot;onboarding&quot;,&quot;complete&quot;],&quot;default&quot;:&quot;welcome&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startOb&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;States&quot;},&quot;firstName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Onboarding&quot;},&quot;workEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a.keller@syniotec.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Onboarding&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;errorState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;ssoError&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;linkUsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;login&quot;,&quot;recovery&quot;,&quot;code&quot;,&quot;reset&quot;,&quot;done&quot;,&quot;welcome&quot;,&quot;invalid&quot;,&quot;complete&quot;],&quot;default&quot;:&quot;welcome&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;States&quot;},&quot;firstName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;},&quot;workEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a.keller@syniotec.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 class Component extends DCLogic {
   state = { step: null, email: "", password: "", show: false, remember: false,
             rEmail: "", rTouched: false, code: ["","","","","",""], np1: "", np2: "", npShow: false,
-            sp1: "", sp2: "", spShow: false, faOn: true, faMethod: "", faPhone: "", faCode: ["","","","","",""],
-            ob: 1, focus: {}, dept: "", twoFa: "", lang: "English", dateFmt: "DD.MM.YYYY",
-            timeout: "1 hour", units: "Metric", week: "Monday", delivery: "Both", digest: "Daily digest",
-            form: { country: "Germany", tz: "Europe / Berlin", currency: "EUR" },
-            resent: false, resendLeft: 0,
-            toggles: { pin: true, device: true, faults: true, maint: true, util: false, shift: true, product: false } };
+            sp1: "", sp2: "", spShow: false, focus: {}, loginErr: "",
+            resent: false, resendLeft: 0 };
 
   doResend(e) {
     if (e) e.preventDefault();
@@ -666,34 +370,6 @@ class Component extends DCLogic {
 
   componentWillUnmount() { if (this._rt) clearInterval(this._rt); }
 
-  toggle(key, title, sub) {
-    const on = !!this.state.toggles[key];
-    return {
-      title, sub,
-      go: () => this.setState(s => ({ toggles: { ...s.toggles, [key]: !s.toggles[key] } })),
-      trackStyle: { position: "relative", width: 44, height: 24, flex: "none", padding: 0, cursor: "pointer",
-        borderRadius: 999, border: "1px solid " + (on ? "#ff1e00" : "rgba(255,255,255,0.28)"),
-        background: on ? "#ff1e00" : "rgba(255,255,255,0.07)",
-        transition: "background 180ms ease, border-color 180ms ease" },
-      knobStyle: { position: "absolute", top: 3, left: on ? 23 : 3, width: 16, height: 16, borderRadius: "50%",
-        display: "block", background: on ? "#ffffff" : "rgba(255,255,255,0.6)",
-        transition: "left 200ms cubic-bezier(.16,.84,.24,1), background 180ms ease" }
-    };
-  }
-
-  f(key, hint) {
-    const v = this.state.form[key] || "";
-    const up = !!this.state.focus[key] || !!v;
-    return {
-      value: v,
-      placeholder: up ? (hint || "") : "",
-      labelStyle: this.label(up, "#ffffff"),
-      onChange: e => { const val = e.target.value; this.setState(s => ({ form: { ...s.form, [key]: val } })); },
-      onFocus: () => this.setState(s => ({ focus: { ...s.focus, [key]: true } })),
-      onBlur: () => this.setState(s => ({ focus: { ...s.focus, [key]: false } }))
-    };
-  }
-
   sfield(key, hint) {
     const v = this.state[key] || "";
     const up = !!this.state.focus[key] || !!v;
@@ -705,20 +381,6 @@ class Component extends DCLogic {
       onFocus: () => this.setState(s => ({ focus: { ...s.focus, [key]: true } })),
       onBlur: () => this.setState(s => ({ focus: { ...s.focus, [key]: false } }))
     };
-  }
-
-  chips(list, current, pick) {
-    return list.map(label => {
-      const on = current === label;
-      return {
-        label,
-        go: () => pick(label),
-        style: { background: on ? "#ffffff" : "rgba(255,255,255,0.05)", color: on ? "#141414" : "#dcdcdc",
-          border: "1px solid " + (on ? "#ffffff" : "rgba(255,255,255,0.22)"), padding: "10px 18px",
-          fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: on ? 500 : 400, fontSize: 12,
-          cursor: "pointer", transition: "background 140ms ease, color 140ms ease, border-color 140ms ease" }
-      };
-    });
   }
 
   label(up, color) {
@@ -737,8 +399,6 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    const n = Number(this.props.startOb);
-    if (n >= 1 && n <= 5) this.setState({ ob: n });
     this.toTop();
   }
 
@@ -755,6 +415,11 @@ class Component extends DCLogic {
     } catch (e) {}
   }
 
+  sso(provider) {
+    if (this.props.ssoError) this.setState({ loginErr: provider });
+    else window.location.hash = "email";
+  }
+
   go(step) { return e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ step }); }; }
 
   setCode(i, v) {
@@ -766,10 +431,12 @@ class Component extends DCLogic {
   renderVals() {
     const s = this.state;
     const urlStep = (typeof location !== "undefined" ? (location.hash || "").replace("#", "") : "");
-    const urlSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "onboarding", "complete"];
+    const urlSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "complete"];
     const propStep = urlSteps.indexOf(this.props.startStep) > -1 ? this.props.startStep : null;
     const step = s.step ?? (urlSteps.indexOf(urlStep) > -1 ? urlStep : null) ?? propStep ?? "login";
-    const hasError = this.props.errorState ?? false;
+    const known = [(this.props.workEmail ?? "a.keller@syniotec.com").trim().toLowerCase()];
+    const hasError = (this.props.errorState ?? false) || s.loginErr === "email";
+    const ssoErr = s.loginErr === "Google" || s.loginErr === "Microsoft";
     const emailUp = s.emailFocus || !!s.email;
     const pwUp = s.pwFocus || !!s.password;
     const rUp = s.rFocus || !!s.rEmail;
@@ -780,27 +447,22 @@ class Component extends DCLogic {
 
     const spStrong = s.sp1.length >= 8 && /[0-9]/.test(s.sp1) && /[A-Z]/.test(s.sp1);
     const spMismatch = !!s.sp2 && s.sp1 !== s.sp2;
-    const faCodeFull = s.faCode.every(c => c.length === 1);
     const setupOk = spStrong && !!s.sp2 && s.sp1 === s.sp2;
-
-    const ob = s.ob;
-    const first = (s.form.first || "").trim() || (this.props.firstName ?? "Anna");
-    const last = (s.form.last || "").trim();
-    const stepDefs = ["Identity and contact", "Organization and signature", "Security", "Region", "Notifications"];
-    const valid = { 1: !!(s.form.first && s.form.last && s.form.phone && s.form.zip && s.form.city),
-                    2: !!(s.form.company && s.dept), 3: !!s.twoFa, 4: !!(s.lang && s.dateFmt), 5: true };
-    const total = 5;
-    const firstGap = [1, 2, 3, 4, 5].filter(n => !valid[n])[0] || 0;
-    const canFinish = !firstGap;
 
     return {
       isAuth: ["login", "recovery", "code", "reset", "done", "welcome", "invalid"].indexOf(step) > -1,
-      isFlow: ["onboarding", "complete"].indexOf(step) > -1,
-      isWelcome: step === "welcome", isOnboarding: step === "onboarding", isComplete: step === "complete",
-      goWelcome: this.go("welcome"), startSetup: () => this.setState({ step: "onboarding", ob: 1 }),
-      ssoJoin: () => this.setState({ step: "onboarding", ob: 1 }),
-      ssoLogin: () => { window.location.hash = "email"; },
-      skipSetup: () => this.setState({ step: "complete" }),
+      isFlow: step === "complete",
+      isWelcome: step === "welcome", isComplete: step === "complete",
+      goWelcome: this.go("welcome"), startSetup: () => this.setState({ step: "complete" }),
+      ssoJoin: () => this.setState({ step: "complete" }),
+      ssoGoogle: () => this.sso("Google"), ssoMicrosoft: () => this.sso("Microsoft"),
+      ssoErr, ssoErrProvider: ssoErr ? s.loginErr : "",
+      signIn: e => {
+        if (e && e.preventDefault) e.preventDefault();
+        const em = s.email.trim().toLowerCase();
+        if (em && known.indexOf(em) < 0) { this.setState({ loginErr: "email" }); return; }
+        window.location.hash = "email";
+      },
 
       sp1: this.sfield("sp1"), sp2: this.sfield("sp2"),
       spType: s.spShow ? "text" : "password",
@@ -813,104 +475,10 @@ class Component extends DCLogic {
           background: ok ? "#71C562" : "rgba(255,255,255,0.28)", transition: "background 180ms ease" },
         textStyle: { fontSize: 12, color: ok ? "#ffffff" : "#8d8d8d", transition: "color 180ms ease" }
       })),
-      faOn: s.faOn,
-      toggleFa: () => this.setState(x => ({ faOn: !x.faOn })),
-      faTrackStyle: { position: "relative", width: 52, height: 27, flex: "none", padding: 0, cursor: "pointer",
-        borderRadius: 999, border: "1px solid " + (s.faOn ? "#ff1e00" : "rgba(255,255,255,0.28)"),
-        background: s.faOn ? "#ff1e00" : "rgba(255,255,255,0.07)",
-        transition: "background 180ms ease, border-color 180ms ease" },
-      faKnobStyle: { position: "absolute", top: 3, left: s.faOn ? 28 : 3, width: 19, height: 19, borderRadius: "50%",
-        display: "block", background: s.faOn ? "#ffffff" : "rgba(255,255,255,0.6)",
-        transition: "left 200ms cubic-bezier(.16,.84,.24,1), background 180ms ease" },
-      faCells: s.faCode.map((v, i) => ({
-        value: v,
-        onChange: e => { const code = s.faCode.slice();
-          code[i] = e.target.value.replace(/[^0-9]/g, "").slice(-1); this.setState({ faCode: code }); },
-        onKeyDown: e => {
-          const inputs = e.target.parentNode.querySelectorAll("input");
-          if (e.key === "Backspace" && !s.faCode[i] && i > 0) inputs[i - 1].focus();
-          else if (/^[0-9]$/.test(e.key) && i < 5) setTimeout(() => inputs[i + 1].focus(), 0);
-        }
-      })),
       setupDisabled: !setupOk,
       setupBtnStyle: Object.assign(this.btn(!setupOk), { marginTop: 0, width: "auto", padding: "15px 34px", flex: "0 0 auto", whiteSpace: "nowrap" }),
       firstName: this.props.firstName ?? "Anna",
       workEmail: this.props.workEmail ?? "a.keller@syniotec.com",
-      stepCounter: step === "onboarding" ? "STEP 0" + ob + " / 0" + total : "",
-      progressStyle: { height: "100%", width: (ob / total * 100) + "%", background: "#ff1e00",
-        transition: "width 420ms cubic-bezier(.16,.84,.24,1)" },
-
-      steps: stepDefs.map((title, i) => {
-        const n = i + 1, active = n === ob, done = n < ob && !!valid[n];
-        return {
-          title, num: String(n).padStart(2, "0"),
-          go: () => this.setState({ ob: n }),
-          rowStyle: { display: "flex", alignItems: "center", gap: 14, width: "100%", textAlign: "left",
-            padding: "13px 12px", border: 0, borderLeft: "2px solid " + (active ? "#ff1e00" : "transparent"),
-            background: active ? "rgba(255,255,255,0.07)" : "transparent", cursor: "pointer",
-            fontFamily: "inherit", transition: "background 160ms ease, border-color 160ms ease" },
-          dotStyle: { position: "relative", width: 26, height: 26, flex: "none", display: "flex",
-            alignItems: "center", justifyContent: "center", borderRadius: "50%",
-            border: "1px solid " + (active ? "#ff1e00" : done ? "#ffffff" : "rgba(255,255,255,0.28)"),
-            background: done ? "#ffffff" : active ? "rgba(255,30,0,0.18)" : "transparent",
-            transition: "background 180ms ease, border-color 180ms ease" },
-          numStyle: { fontSize: 10, fontWeight: 500, letterSpacing: "0.02em",
-            color: active ? "#ffffff" : "rgba(255,255,255,0.55)", opacity: done ? 0 : 1,
-            transition: "opacity 160ms ease" },
-          checkStyle: { position: "absolute", width: 13, height: 13, opacity: done ? 1 : 0,
-            transition: "opacity 180ms ease" },
-          titleStyle: { fontSize: 13, fontWeight: active ? 500 : 400,
-            color: active ? "#ffffff" : done ? "#d4d4d4" : "rgba(255,255,255,0.5)",
-            transition: "color 160ms ease" }
-        };
-      }),
-
-      isStep1: ob === 1, isStep2: ob === 2, isStep3: ob === 3, isStep4: ob === 4, isStep5: ob === 5,
-      fFirst: this.f("first"), fLast: this.f("last"), fDob: this.f("dob", "DD / MM / YYYY"), fPhone: this.f("phone", "+49"),
-      fStreet: this.f("street"), fZip: this.f("zip"), fCity: this.f("city"), fCountry: this.f("country"),
-      fCompany: this.f("company"), fTitle: this.f("title"), fEmpId: this.f("empid"), fCost: this.f("cost"),
-      fRecEmail: this.f("recEmail", "name@company.com"), fSecPhone: this.f("secPhone", "+49"),
-      fTz: this.f("tz"), fCurrency: this.f("currency"),
-      lockedLabelStyle: this.label(true, "#8d8d8d"),
-      sigName: (first + " " + last).trim(),
-      sigRole: [s.form.title, s.dept].filter(Boolean).join(" · ") || "Role · Department",
-      langChips: this.chips(["English", "Deutsch", "ქართული"], s.lang, l => this.setState({ lang: l })),
-      deptChips: this.chips(["Fleet operations", "Site management", "Procurement", "Workshop", "Finance"], s.dept,
-        d => this.setState({ dept: d })),
-      twoFaChips: this.chips(["Authenticator app", "SMS code", "Security key"], s.twoFa,
-        v => this.setState({ twoFa: v })),
-      timeoutChips: this.chips(["15 minutes", "1 hour", "8 hours"], s.timeout, v => this.setState({ timeout: v })),
-      dateChips: this.chips(["DD.MM.YYYY", "MM/DD/YYYY", "YYYY-MM-DD"], s.dateFmt, v => this.setState({ dateFmt: v })),
-      unitChips: this.chips(["Metric", "Imperial"], s.units, v => this.setState({ units: v })),
-      weekChips: this.chips(["Monday", "Sunday"], s.week, v => this.setState({ week: v })),
-      deliveryChips: this.chips(["In-app", "E-mail", "Both"], s.delivery, v => this.setState({ delivery: v })),
-      digestChips: this.chips(["Instant", "Daily digest", "Weekly digest"], s.digest, v => this.setState({ digest: v })),
-      securityToggles: [
-        this.toggle("pin", "Require a PIN on the mobile app", "Asked once per shift on shared devices"),
-        this.toggle("device", "Alert me about new device sign-ins", "Sent to your recovery e-mail")
-      ],
-      notifRows: [
-        this.toggle("faults", "Machine faults and alarms", "Immediately, for every asset assigned to you"),
-        this.toggle("maint", "Maintenance due", "Service intervals, inspections, certificates"),
-        this.toggle("util", "Fleet utilisation report", "Idle time, hours, transport movements"),
-        this.toggle("shift", "Shift handover", "Checklists and damage reports from your sites"),
-        this.toggle("product", "Product updates from syniotec", "New " + (this.props.brand === "RAM" ? "RAM" : "SAM") + " features, a few times per year")
-      ],
-      hint: !valid[ob] ? "Fill the required fields"
-        : (ob === total && firstGap) ? "Step 0" + firstGap + " is still incomplete" : "",
-      nextLabel: ob === total ? "Finish setup" : "Continue",
-      nextDisabled: ob === total ? !canFinish : !valid[ob],
-      nextBtnStyle: (() => { const ok = ob === total ? canFinish : valid[ob];
-        return { width: 220, border: 0, padding: "14px 0",
-          fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: 700, fontSize: 13, color: "#ffffff",
-          background: ok ? "#ff1e00" : "rgba(255,255,255,0.16)",
-          cursor: ok ? "pointer" : "not-allowed", transition: "background 140ms ease" }; })(),
-      next: () => { if (!valid[ob]) return;
-        if (ob < total) this.setState({ ob: ob + 1 });
-        else if (canFinish) this.setState({ step: "complete" });
-        else this.setState({ ob: firstGap }); },
-      back: () => { if (ob > 1) this.setState({ ob: ob - 1 }); else this.setState({ step: "welcome" }); },
-
       resendIdle: !this.state.resent, resendSent: !!this.state.resent,
       resend: e => this.doResend(e),
       resendCountdown: this.state.resendLeft > 0 ? "You can request another in " + this.state.resendLeft + "s." : "",
@@ -937,7 +505,7 @@ class Component extends DCLogic {
       email: s.email, password: s.password, remember: s.remember,
       checkOpacity: s.remember ? 1 : 0,
       pwType: s.show ? "text" : "password",
-      onEmail: e => this.setState({ email: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value, loginErr: "" }),
       onPassword: e => this.setState({ password: e.target.value }),
       onRemember: e => this.setState({ remember: e.target.checked }),
       togglePw: () => this.setState(x => ({ show: !x.show })),
