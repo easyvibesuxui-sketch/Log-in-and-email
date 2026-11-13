@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1a1a1a"/><rect x="30" y="42" width="40" height="16" rx="2" fill="#ff1e00"/><text x="50" y="54.5" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">SAM</text></svg></template>
+<script src="./image-slot.js"></script>
+<style>
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Book.otf") format("opentype"); font-weight: 350; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+html, body { margin: 0; padding: 0; background: #1a1a1a; }
+a { color: #ffffff; }
+a:hover { color: #ff1e00; }
+input::placeholder { color: #6b6b6b; }
+input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: background-color 9999s; }
+@keyframes bgIn { from { opacity: 0; transform: scale(1.26); } to { opacity: 1; transform: scale(1.16); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes panelIn { from { opacity: 0; transform: translateY(26px) scale(0.985); filter: blur(10px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
+@keyframes checkPop { 0% { opacity: 0; transform: scale(0.6); } 60% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes ringPulse { 0% { box-shadow: 0 0 0 0 rgba(255,30,0,0.45); } 100% { box-shadow: 0 0 0 12px rgba(255,30,0,0); } }
+</style>
+</helmet>
+<sc-if value="{{ isAuth }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:59% 41%;min-height:100vh;background:#1a1a1a;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#fff">
+
+  <div style="position:relative;overflow:hidden">
+    <x-import component-from-global-scope="excavator-scene" from="./excavator-scene.js" src="./frames/excavator-sheet.jpg" zoom="1.06" focus-y="0.5" parallax="0" hint-size="100%,100%" style="position:absolute;inset:0;width:100%;height:100%;filter:brightness(0.8)"></x-import>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,0) 45%,rgba(26,26,26,0.85) 100%)"></div>
+    <div style="position:absolute;inset:auto 0 0 0;padding:0 56px 44px;pointer-events:none">
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:76px;line-height:1;letter-spacing:-0.01em;color:#fff;margin:0 0 26px">syniotec</div>
+      <p style="max-width:980px;margin:0;font-size:16px;line-height:1.55;font-weight:400;color:#fff;text-wrap:pretty">With syniotec's solutions, we digitalise processes in the construction industry, create absolute transparency in your company and provide a complete overview of your fleet.</p>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;padding:34px 56px 28px;background:#1a1a1a">
+    <div style="margin-bottom:112px">
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:62px;line-height:0.95;letter-spacing:0.01em">SAM</div>
+      <div style="font-size:12px;letter-spacing:0.13em;font-weight:400;margin-top:8px">SMART ASSET MANAGER</div>
+    </div>
+
+    <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:470px;width:100%">
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:23px;line-height:1.1;margin:0 0 6px">Login</h1>
+      <div style="font-size:12px;color:#9a9a9a;margin-bottom:32px">Enter your details to access your account</div>
+
+      <sc-if value="{{ isReturning }}" hint-placeholder-val="{{ false }}">
+      <div style="margin:-6px 0 34px;border:1px solid rgba(255,30,0,0.42);background:rgba(255,30,0,0.09);padding:17px 19px;animation:riseIn 460ms cubic-bezier(.2,.8,.2,1) both">
+        <div style="font-size:12px;font-weight:500;margin-bottom:7px">Your account is already active</div>
+        <div style="font-size:12px;line-height:1.6;color:#c8c8c8;text-wrap:pretty">You set a password with this invitation earlier, so the link now leads here. Sign in with that password &#8212; or <a href="#" onClick="{{ goRecovery }}" style="color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">reset it</a> if you don't remember it.</div>
+      </div>
+      </sc-if>
+
+      <div style="position:relative;height:52px;border-bottom:1px solid #4a4a4a">
+        <label style="{{ emailLabelStyle }}">Email*</label>
+        <input type="email" value="{{ email }}" placeholder="{{ emailHint }}" onChange="{{ onEmail }}" onFocus="{{ focusEmail }}" onBlur="{{ blurEmail }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;color:#fff;outline:none" />
+      </div>
+      <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e">* We couldn't find an account with that email. Please check and try again.</div>
+      </sc-if>
+
+      <div style="height:34px"></div>
+
+      <div style="position:relative;height:52px;border-bottom:1px solid #4a4a4a">
+        <label style="{{ pwLabelStyle }}">Password*</label>
+        <input type="{{ pwType }}" value="{{ password }}" placeholder="{{ pwHint }}" onChange="{{ onPassword }}" onFocus="{{ focusPw }}" onBlur="{{ blurPw }}" style="position:absolute;left:0;bottom:8px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
+        <button type="button" onClick="{{ togglePw }}" aria-label="Show password" style="position:absolute;right:0;bottom:6px;background:none;border:0;padding:0;cursor:pointer;color:#cfcfcf;display:flex;align-items:center" style-hover="color:#ffffff">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
+        </button>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:44px">
+        <label style="display:flex;align-items:center;gap:12px;font-size:13px;cursor:pointer">
+          <span style="position:relative;width:18px;height:18px;flex:none;display:flex">
+            <input type="checkbox" checked="{{ remember }}" onChange="{{ onRemember }}" style="appearance:none;-webkit-appearance:none;width:18px;height:18px;margin:0;border:2px solid #ffffff;background:transparent;cursor:pointer;flex:none" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;inset:0;width:18px;height:18px;pointer-events:none;opacity:{{ checkOpacity }}"><path d="M5 12.5 10 17.5 19 7"></path></svg>
+          </span>
+          <span>Remember me</span>
+        </label>
+        <a href="#" onClick="{{ goRecovery }}" style="font-size:13px;color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Forgot password</a>
+      </div>
+
+      <button type="button" onClick="{{ goEmail }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease" style-hover="background:#e01a00">Sign in</button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isRecovery }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:470px;width:100%">
+      <a href="#" onClick="{{ goLogin }}" style="display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:400;color:#fff;text-decoration:none;margin-bottom:26px" style-hover="color:#ff1e00">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M11 6 5 12l6 6"></path></svg>
+        <span>Go back</span>
+      </a>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">Recovery e-mail</h1>
+      <div style="font-size:13px;color:#c8c8c8;margin-bottom:52px;text-wrap:pretty">Instruction to reset your password will be sent to this e-mail.</div>
+
+      <div style="position:relative;height:52px;border-bottom:1px solid #4a4a4a">
+        <label style="{{ recoveryLabelStyle }}">Email*</label>
+        <input type="email" value="{{ recoveryEmail }}" placeholder="{{ recoveryHint }}" onChange="{{ onRecoveryEmail }}" onFocus="{{ focusRecovery }}" onBlur="{{ blurRecovery }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;color:#fff;outline:none" />
+      </div>
+      <sc-if value="{{ recoveryError }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e">* Enter a valid e-mail address.</div>
+      </sc-if>
+
+      <button type="button" disabled="{{ sendDisabled }}" onClick="{{ goCode }}" style="{{ sendBtnStyle }}">Send code</button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isCode }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:470px;width:100%">
+      <a href="#" onClick="{{ goRecovery }}" style="display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:400;color:#fff;text-decoration:none;margin-bottom:26px" style-hover="color:#ff1e00">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M11 6 5 12l6 6"></path></svg>
+        <span>Go back</span>
+      </a>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">Enter code</h1>
+      <div style="font-size:13px;color:#c8c8c8;margin-bottom:46px;text-wrap:pretty">We sent a 6-digit code to {{ recoveryEmailShown }}. It expires in 10 minutes.</div>
+
+      <div style="display:flex;gap:14px">
+        <sc-for list="{{ codeCells }}" as="cell" hint-placeholder-count="6">
+          <input type="text" inputMode="numeric" maxLength="1" value="{{ cell.value }}" onChange="{{ cell.onChange }}" onKeyDown="{{ cell.onKeyDown }}" style="width:56px;height:64px;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid #4a4a4a;text-align:center;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;color:#fff;outline:none" style-focus="border-bottom-color:#ffffff" />
+        </sc-for>
+      </div>
+
+      <div style="margin-top:26px;min-height:19px">
+        <sc-if value="{{ resendIdle }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:12px;color:#9a9a9a">Didn't get it? <a href="#" onClick="{{ resend }}" style="color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Send again</a></div>
+        </sc-if>
+        <sc-if value="{{ resendSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:9px;font-size:12px;color:#c8c8c8;line-height:1.4">
+            <span style="width:15px;height:15px;flex:none;border-radius:50%;background:#ff1e00;display:flex;align-items:center;justify-content:center">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"></path></svg>
+            </span>
+            <span>New code sent to {{ recoveryEmailShown }}. {{ resendCountdown }}</span>
+          </div>
+        </sc-if>
+      </div>
+
+      <button type="button" disabled="{{ verifyDisabled }}" onClick="{{ goReset }}" style="{{ verifyBtnStyle }}">Verify code</button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isReset }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:470px;width:100%">
+      <a href="#" onClick="{{ goCode }}" style="display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:400;color:#fff;text-decoration:none;margin-bottom:26px" style-hover="color:#ff1e00">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M11 6 5 12l6 6"></path></svg>
+        <span>Go back</span>
+      </a>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">New password</h1>
+      <div style="font-size:13px;color:#c8c8c8;margin-bottom:52px;text-wrap:pretty">At least 8 characters, with one number and one capital letter.</div>
+
+      <div style="position:relative;height:52px;border-bottom:1px solid #4a4a4a">
+        <label style="{{ np1LabelStyle }}">New password*</label>
+        <input type="{{ npType }}" value="{{ np1 }}" onChange="{{ onNp1 }}" onFocus="{{ focusNp1 }}" onBlur="{{ blurNp1 }}" style="position:absolute;left:0;bottom:8px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
+        <button type="button" onClick="{{ toggleNp }}" aria-label="Show password" style="position:absolute;right:0;bottom:6px;background:none;border:0;padding:0;cursor:pointer;color:#cfcfcf;display:flex;align-items:center" style-hover="color:#ffffff">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
+        </button>
+      </div>
+
+      <div style="height:34px"></div>
+
+      <div style="position:relative;height:52px;border-bottom:1px solid #4a4a4a">
+        <label style="{{ np2LabelStyle }}">Repeat password*</label>
+        <input type="{{ npType }}" value="{{ np2 }}" onChange="{{ onNp2 }}" onFocus="{{ focusNp2 }}" onBlur="{{ blurNp2 }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
+      </div>
+      <sc-if value="{{ mismatch }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e">* Passwords don't match.</div>
+      </sc-if>
+
+      <button type="button" disabled="{{ saveDisabled }}" onClick="{{ goDone }}" style="{{ saveBtnStyle }}">Save password</button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:470px;width:100%">
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">Password updated</h1>
+      <div style="font-size:13px;color:#c8c8c8;text-wrap:pretty">You can now sign in with your new password.</div>
+      <button type="button" onClick="{{ goLogin }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease" style-hover="background:#e01a00">Back to login</button>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ isWelcome }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:470px;width:100%">
+      <div style="font-size:10px;letter-spacing:0.18em;color:#ff5b45;margin-bottom:14px">INVITATION ACCEPTED</div>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:23px;line-height:1.1;margin:0 0 6px">Welcome, <span>{{ firstName }}</span></h1>
+      <div style="font-size:12px;color:#9a9a9a;margin-bottom:32px;text-wrap:pretty">Set a password for {{ workEmail }}.</div>
+
+      <div style="font-size:12px;font-weight:500;color:#c8c8c8;margin-bottom:9px">New Password<span style="color:#ff1e00"> *</span></div>
+      <div style="position:relative">
+        <input type="{{ spType }}" placeholder="Enter" value="{{ sp1.value }}" onChange="{{ sp1.onChange }}" style="width:100%;box-sizing:border-box;background:transparent;border:1px solid #3a3a3a;padding:14px 46px 14px 16px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 150ms ease" style-focus="border-color:#ffffff" />
+        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;color:#8d8d8d;display:flex;align-items:center" style-hover="color:#ffffff">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
+        </button>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px">
+        <sc-for list="{{ pwReqs }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="{{ r.dotStyle }}"></span>
+            <span style="{{ r.textStyle }}">{{ r.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="height:26px"></div>
+
+      <div style="font-size:12px;font-weight:500;color:#c8c8c8;margin-bottom:9px">Repeat New Password<span style="color:#ff1e00"> *</span></div>
+      <div style="position:relative">
+        <input type="{{ spType }}" placeholder="Enter" value="{{ sp2.value }}" onChange="{{ sp2.onChange }}" style="width:100%;box-sizing:border-box;background:transparent;border:1px solid #3a3a3a;padding:14px 46px 14px 16px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 150ms ease" style-focus="border-color:#ffffff" />
+        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;color:#8d8d8d;display:flex;align-items:center" style-hover="color:#ffffff">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
+        </button>
+      </div>
+      <sc-if value="{{ spMismatch }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#f2a01e">* Passwords don't match.</div>
+      </sc-if>
+
+      <div style="display:flex;align-items:stretch;gap:14px;flex-wrap:wrap;margin-top:28px">
+        <button type="button" disabled="{{ setupDisabled }}" onClick="{{ startSetup }}" style="{{ setupBtnStyle }}">Join SAM</button>
+      </div>
+    </div>
+    </sc-if>
+
+    <div style="flex:1;min-height:90px"></div>
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <div style="font-size:12px;font-weight:500;margin-bottom:12px">Switch to</div>
+        <a href="#" style="display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500;color:#fff;text-decoration:none" style-hover="color:#ff1e00">
+          <span style="width:34px;height:22px;display:block;background:linear-gradient(#000 0 33.33%,#dd0000 33.33% 66.66%,#ffce00 66.66% 100%);flex:none"></span>
+          <span>Deutsch</span>
+        </a>
+      </div>
+      <a href="#" style="font-size:13px;font-weight:700;color:#fff;text-decoration:none" style-hover="color:#ff1e00">Data policy</a>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isFlow }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;min-height:100vh;overflow:hidden;background:#141414;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#fff;display:flex;flex-direction:column">
+  <x-import component-from-global-scope="globe-bg" from="./globe-bg.js" speed="0.004" radius="3.4" color="#ffffff" opacity="0.55" hint-size="100%,100%" style="position:absolute;inset:0;width:100%;height:100%"></x-import>
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 95% at 50% -10%,rgba(255,30,0,0.08) 0%,rgba(20,20,20,0.16) 44%,rgba(18,18,18,0.55) 100%)"></div>
+
+  <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;padding:30px 48px 0;animation:fadeIn 900ms ease both">
+    <div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1">SAM</div>
+      <div style="font-size:9px;letter-spacing:0.15em;margin-top:6px;color:#b0b0b0">SMART ASSET MANAGER</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:28px">
+      <span style="font-size:11px;letter-spacing:0.12em;color:#9d9d9d">{{ stepCounter }}</span>
+      <a href="#" onClick="{{ noop }}" style="font-size:12px;color:#dcdcdc;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.28);padding-bottom:2px" style-hover="color:#ff1e00">Save &amp; exit</a>
+    </div>
+  </div>
+
+  <sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
+  <div style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:34px 40px 56px">
+    <div style="position:relative;width:100%;max-width:1140px;background:rgba(255,255,255,0.055);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid rgba(255,255,255,0.13);box-shadow:0 46px 130px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.16);display:grid;grid-template-columns:316px 1fr;min-height:604px;animation:panelIn 820ms cubic-bezier(.16,.84,.24,1) both">
+
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,0.1)">
+        <div style="{{ progressStyle }}"></div>
+      </div>
+
+      <div style="border-right:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);padding:44px 26px 34px;display:flex;flex-direction:column">
+        <div style="padding:0 8px;margin-bottom:34px">
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:19px;line-height:1.15;margin-bottom:8px">Complete your profile</div>
+          <div style="font-size:11px;line-height:1.5;color:#9a9a9a">All fields marked * are required before you can enter SAM.</div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+            <button type="button" onClick="{{ st.go }}" style="{{ st.rowStyle }}">
+              <span style="{{ st.dotStyle }}">
+                <span style="{{ st.numStyle }}">{{ st.num }}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" style="{{ st.checkStyle }}"><path d="M5 12.5 10 17.5 19 7"></path></svg>
+              </span>
+              <span style="{{ st.titleStyle }}">{{ st.title }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top:auto;padding:0 8px;display:flex;align-items:center;gap:10px">
+          <span style="width:6px;height:6px;background:#ff1e00;flex:none;display:block"></span>
+          <span style="font-size:11px;color:#8d8d8d">Saved automatically</span>
+        </div>
+      </div>
+
+      <div style="padding:44px 48px 38px;display:flex;flex-direction:column;min-width:0">
+
+                <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
+          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Identity and contact</h2>
+          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">This is how your name appears on reports, checklists and handovers.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms;position:relative;height:50px">
+              <label style="{{ fFirst.labelStyle }}">First name*</label>
+              <input placeholder="{{ fFirst.placeholder }}" value="{{ fFirst.value }}" onChange="{{ fFirst.onChange }}" onFocus="{{ fFirst.onFocus }}" onBlur="{{ fFirst.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
+              <label style="{{ fLast.labelStyle }}">Last name*</label>
+              <input placeholder="{{ fLast.placeholder }}" value="{{ fLast.value }}" onChange="{{ fLast.onChange }}" onFocus="{{ fLast.onFocus }}" onBlur="{{ fLast.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms;position:relative;height:50px">
+              <label style="{{ fDob.labelStyle }}">Date of birth</label>
+              <input placeholder="{{ fDob.placeholder }}" value="{{ fDob.value }}" onChange="{{ fDob.onChange }}" onFocus="{{ fDob.onFocus }}" onBlur="{{ fDob.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms;position:relative;height:50px">
+              <label style="{{ lockedLabelStyle }}">Work e-mail</label>
+              <div style="position:absolute;left:0;bottom:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,0.14);padding-bottom:8px">
+                <span style="font-size:13px;color:#8d8d8d">{{ workEmail }}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8d8d8d" stroke-width="1.8"><rect x="4" y="10.5" width="16" height="10.5"></rect><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"></path></svg>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms;position:relative;height:50px">
+              <label style="{{ fPhone.labelStyle }}">Mobile number*</label>
+              <input placeholder="{{ fPhone.placeholder }}" value="{{ fPhone.value }}" onChange="{{ fPhone.onChange }}" onFocus="{{ fPhone.onFocus }}" onBlur="{{ fPhone.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;position:relative;height:50px">
+              <label style="{{ fCountry.labelStyle }}">Country</label>
+              <input placeholder="{{ fCountry.placeholder }}" value="{{ fCountry.value }}" onChange="{{ fCountry.onChange }}" onFocus="{{ fCountry.onFocus }}" onBlur="{{ fCountry.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:380ms;position:relative;height:50px;grid-column:1 / -1">
+              <label style="{{ fStreet.labelStyle }}">Street and number</label>
+              <input placeholder="{{ fStreet.placeholder }}" value="{{ fStreet.value }}" onChange="{{ fStreet.onChange }}" onFocus="{{ fStreet.onFocus }}" onBlur="{{ fStreet.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:430ms;display:grid;grid-template-columns:110px 1fr;gap:24px">
+              <div style="position:relative;height:50px">
+                <label style="{{ fZip.labelStyle }}">ZIP*</label>
+                <input value="{{ fZip.value }}" onChange="{{ fZip.onChange }}" onFocus="{{ fZip.onFocus }}" onBlur="{{ fZip.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+              </div>
+              <div style="position:relative;height:50px">
+                <label style="{{ fCity.labelStyle }}">City*</label>
+                <input value="{{ fCity.value }}" onChange="{{ fCity.onChange }}" onFocus="{{ fCity.onFocus }}" onBlur="{{ fCity.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
+          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Organization and signature</h2>
+          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Your department decides which machines, sites and reports you see.</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms;position:relative;height:50px">
+              <label style="{{ fCompany.labelStyle }}">Company*</label>
+              <input placeholder="{{ fCompany.placeholder }}" value="{{ fCompany.value }}" onChange="{{ fCompany.onChange }}" onFocus="{{ fCompany.onFocus }}" onBlur="{{ fCompany.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
+              <label style="{{ fEmpId.labelStyle }}">Employee ID</label>
+              <input placeholder="{{ fEmpId.placeholder }}" value="{{ fEmpId.value }}" onChange="{{ fEmpId.onChange }}" onFocus="{{ fEmpId.onFocus }}" onBlur="{{ fEmpId.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms;position:relative;height:50px">
+              <label style="{{ fTitle.labelStyle }}">Job title</label>
+              <input placeholder="{{ fTitle.placeholder }}" value="{{ fTitle.value }}" onChange="{{ fTitle.onChange }}" onFocus="{{ fTitle.onFocus }}" onBlur="{{ fTitle.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms;position:relative;height:50px">
+              <label style="{{ fCost.labelStyle }}">Cost centre</label>
+              <input placeholder="{{ fCost.placeholder }}" value="{{ fCost.value }}" onChange="{{ fCost.onChange }}" onFocus="{{ fCost.onFocus }}" onBlur="{{ fCost.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms;grid-column:1 / -1">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Department*</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ deptChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;grid-column:1 / -1">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">E-mail signature</div>
+              <div style="display:grid;grid-template-columns:1fr 232px;gap:28px;align-items:stretch">
+                <div style="background:rgba(20,20,20,0.32);border:1px solid rgba(255,255,255,0.1);padding:20px 22px">
+                  <div style="font-size:14px;font-weight:500;margin-bottom:3px">{{ sigName }}</div>
+                  <div style="font-size:12px;color:#b4b4b4">{{ sigRole }}</div>
+                  <div style="width:26px;height:1px;background:#ff1e00;margin:13px 0"></div>
+                  <div style="font-size:11px;color:#8d8d8d;line-height:1.6">{{ workEmail }}<br />syniotec · Smart Asset Manager</div>
+                </div>
+                <image-slot id="sam-signature" placeholder="signature scan (PNG)" style="display:block;width:100%;height:100%;min-height:118px"></image-slot>
+              </div>
+              <div style="font-size:11px;color:#8d8d8d;margin-top:12px">Generated from your details. Drop a scan of your handwritten signature to add it.</div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
+          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Security</h2>
+          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Two-factor authentication is mandatory for every SAM account.</div>
+          <div style="display:grid;gap:34px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Two-factor method*</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ twoFaChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;display:grid;grid-template-columns:1fr 1fr;gap:34px 44px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:0ms;position:relative;height:50px">
+              <label style="{{ fRecEmail.labelStyle }}">Recovery e-mail</label>
+              <input placeholder="{{ fRecEmail.placeholder }}" value="{{ fRecEmail.value }}" onChange="{{ fRecEmail.onChange }}" onFocus="{{ fRecEmail.onFocus }}" onBlur="{{ fRecEmail.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:0ms;position:relative;height:50px">
+              <label style="{{ fSecPhone.labelStyle }}">Recovery phone</label>
+              <input placeholder="{{ fSecPhone.placeholder }}" value="{{ fSecPhone.value }}" onChange="{{ fSecPhone.onChange }}" onFocus="{{ fSecPhone.onFocus }}" onBlur="{{ fSecPhone.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Automatic sign-out after inactivity</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ timeoutChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:250ms;display:grid;gap:1px;background:rgba(255,255,255,0.09)">
+              <sc-for list="{{ securityToggles }}" as="t" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(20,20,20,0.3);padding:15px 18px">
+                  <div>
+                    <div style="font-size:13px;font-weight:500">{{ t.title }}</div>
+                    <div style="font-size:11px;color:#8d8d8d;margin-top:4px">{{ t.sub }}</div>
+                  </div>
+                  <button type="button" onClick="{{ t.go }}" aria-label="Toggle" style="{{ t.trackStyle }}"><span style="{{ t.knobStyle }}"></span></button>
+                </div>
+              </sc-for>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:300ms;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(255,255,255,0.12);padding:15px 18px">
+              <span style="font-size:12px;color:#b4b4b4">Ten single-use backup codes for when your device is unavailable.</span>
+              <a href="#" onClick="{{ noop }}" style="flex:none;font-size:12px;font-weight:500;color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Download backup codes</a>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
+          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Region</h2>
+          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Formats apply to every timestamp, report and export in SAM.</div>
+          <div style="display:grid;gap:34px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Interface language</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ langChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;position:relative;height:50px">
+              <label style="{{ fTz.labelStyle }}">Time zone</label>
+              <input placeholder="{{ fTz.placeholder }}" value="{{ fTz.value }}" onChange="{{ fTz.onChange }}" onFocus="{{ fTz.onFocus }}" onBlur="{{ fTz.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:180ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Date format</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ dateChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:34px 44px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:230ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Units</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ unitChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">First day of the week</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ weekChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:330ms;position:relative;height:50px">
+              <label style="{{ fCurrency.labelStyle }}">Currency for costs and rates</label>
+              <input placeholder="{{ fCurrency.placeholder }}" value="{{ fCurrency.value }}" onChange="{{ fCurrency.onChange }}" onFocus="{{ fCurrency.onFocus }}" onBlur="{{ fCurrency.onBlur }}" style="position:absolute;left:0;bottom:0;width:100%;box-sizing:border-box;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,0.26);padding:0 0 8px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 160ms ease" style-focus="border-bottom-color:#ffffff" />
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep5 }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:slideIn 520ms cubic-bezier(.16,.84,.24,1) both">
+          <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:27px;line-height:1.1;margin:0 0 8px">Notifications</h2>
+          <div style="font-size:12px;color:#9a9a9a;margin-bottom:40px">Choose what reaches you. Critical machine faults are always delivered.</div>
+          <div style="display:grid;gap:32px">
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:80ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Delivery</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ deliveryChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:130ms;display:grid;gap:1px;background:rgba(255,255,255,0.09)">
+              <sc-for list="{{ notifRows }}" as="n" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;background:rgba(20,20,20,0.3);padding:15px 18px">
+                  <div>
+                    <div style="font-size:13px;font-weight:500">{{ n.title }}</div>
+                    <div style="font-size:11px;color:#8d8d8d;margin-top:4px">{{ n.sub }}</div>
+                  </div>
+                  <button type="button" onClick="{{ n.go }}" aria-label="Toggle" style="{{ n.trackStyle }}"><span style="{{ n.knobStyle }}"></span></button>
+                </div>
+              </sc-for>
+            </div>
+            <div style="animation:riseIn 520ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">
+              <div style="font-size:10px;font-weight:500;color:#9a9a9a;margin-bottom:14px">Summary rhythm</div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px">
+                <sc-for list="{{ digestChips }}" as="c" hint-placeholder-count="3">
+                  <button type="button" onClick="{{ c.go }}" style="{{ c.style }}">{{ c.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+        </sc-if>
+
+<div style="margin-top:auto;padding-top:40px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+          <button type="button" onClick="{{ back }}" style="background:transparent;border:1px solid rgba(255,255,255,0.28);color:#fff;padding:13px 30px;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:500;font-size:13px;cursor:pointer;transition:border-color 140ms ease,background 140ms ease" style-hover="border-color:#ffffff;background:rgba(255,255,255,0.06)">Back</button>
+          <div style="display:flex;align-items:center;gap:26px">
+            <span style="font-size:11px;color:#8d8d8d">{{ hint }}</span>
+            <button type="button" disabled="{{ nextDisabled }}" onClick="{{ next }}" style="{{ nextBtnStyle }}">{{ nextLabel }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isComplete }}" hint-placeholder-val="{{ false }}">
+  <div style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:44px 40px 84px">
+    <div style="width:100%;max-width:600px;text-align:center;background:rgba(255,255,255,0.055);backdrop-filter:blur(30px) saturate(150%);-webkit-backdrop-filter:blur(30px) saturate(150%);border:1px solid rgba(255,255,255,0.13);box-shadow:0 46px 130px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.16);padding:60px 56px 52px;animation:panelIn 760ms cubic-bezier(.16,.84,.24,1) both">
+      <span style="width:56px;height:56px;border:1px solid #ff1e00;background:rgba(255,30,0,0.14);display:flex;align-items:center;justify-content:center;margin:0 auto 30px;animation:checkPop 620ms cubic-bezier(.16,.84,.24,1) both,ringPulse 1400ms ease-out 500ms both">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M5 12.5 10 17.5 19 7"></path></svg>
+      </span>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:1.06;margin:0 0 14px;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:200ms">Profile complete</h1>
+      <p style="margin:0 auto 42px;max-width:400px;font-size:13px;line-height:1.6;color:#c0c0c0;text-wrap:pretty;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:280ms">Your fleet is being assigned to your account. Everything else you can adjust in settings.</p>
+      <button type="button" onClick="{{ goLogin }}" style="width:300px;max-width:100%;background:#ff1e00;color:#fff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:background 140ms ease,transform 140ms ease;animation:riseIn 560ms cubic-bezier(.2,.8,.2,1) both;animation-delay:360ms" style-hover="background:#e01a00;transform:translateY(-1px)">Enter SAM</button>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 48px 26px;font-size:11px;color:#8d8d8d">
+    <span>syniotec GmbH</span>
+    <a href="#" onClick="{{ noop }}" style="color:#8d8d8d;text-decoration:none" style-hover="color:#ff1e00">Need help?</a>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;errorState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;login&quot;,&quot;returning&quot;,&quot;recovery&quot;,&quot;code&quot;,&quot;reset&quot;,&quot;done&quot;,&quot;welcome&quot;,&quot;onboarding&quot;,&quot;complete&quot;],&quot;default&quot;:&quot;welcome&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;States&quot;},&quot;firstName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Annano&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Onboarding&quot;},&quot;workEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a.keller@syniotec.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Onboarding&quot;}}">
+class Component extends DCLogic {
+  state = { step: null, email: "", password: "", show: false, remember: false,
+            rEmail: "", rTouched: false, code: ["","","","","",""], np1: "", np2: "", npShow: false,
+            sp1: "", sp2: "", spShow: false, faOn: true, faMethod: "", faPhone: "", faCode: ["","","","","",""],
+            ob: 1, focus: {}, dept: "", twoFa: "", lang: "English", dateFmt: "DD.MM.YYYY",
+            timeout: "1 hour", units: "Metric", week: "Monday", delivery: "Both", digest: "Daily digest",
+            form: { country: "Germany", tz: "Europe / Berlin", currency: "EUR" },
+            resent: false, resendLeft: 0,
+            toggles: { pin: true, device: true, faults: true, maint: true, util: false, shift: true, product: false } };
+
+  doResend(e) {
+    if (e) e.preventDefault();
+    if (this._rt) clearInterval(this._rt);
+    this.setState({ resent: true, resendLeft: 30, code: ["","","","","",""] });
+    this._rt = setInterval(() => {
+      const left = this.state.resendLeft - 1;
+      if (left <= 0) { clearInterval(this._rt); this._rt = null; this.setState({ resent: false, resendLeft: 0 }); }
+      else this.setState({ resendLeft: left });
+    }, 1000);
+  }
+
+  componentWillUnmount() { if (this._rt) clearInterval(this._rt); }
+
+  toggle(key, title, sub) {
+    const on = !!this.state.toggles[key];
+    return {
+      title, sub,
+      go: () => this.setState(s => ({ toggles: { ...s.toggles, [key]: !s.toggles[key] } })),
+      trackStyle: { position: "relative", width: 44, height: 24, flex: "none", padding: 0, cursor: "pointer",
+        borderRadius: 999, border: "1px solid " + (on ? "#ff1e00" : "rgba(255,255,255,0.28)"),
+        background: on ? "#ff1e00" : "rgba(255,255,255,0.07)",
+        transition: "background 180ms ease, border-color 180ms ease" },
+      knobStyle: { position: "absolute", top: 3, left: on ? 23 : 3, width: 16, height: 16, borderRadius: "50%",
+        display: "block", background: on ? "#ffffff" : "rgba(255,255,255,0.6)",
+        transition: "left 200ms cubic-bezier(.16,.84,.24,1), background 180ms ease" }
+    };
+  }
+
+  f(key, hint) {
+    const v = this.state.form[key] || "";
+    const up = !!this.state.focus[key] || !!v;
+    return {
+      value: v,
+      placeholder: up ? (hint || "") : "",
+      labelStyle: this.label(up, "#ffffff"),
+      onChange: e => { const val = e.target.value; this.setState(s => ({ form: { ...s.form, [key]: val } })); },
+      onFocus: () => this.setState(s => ({ focus: { ...s.focus, [key]: true } })),
+      onBlur: () => this.setState(s => ({ focus: { ...s.focus, [key]: false } }))
+    };
+  }
+
+  sfield(key, hint) {
+    const v = this.state[key] || "";
+    const up = !!this.state.focus[key] || !!v;
+    return {
+      value: v,
+      placeholder: up ? (hint || "") : "",
+      labelStyle: this.label(up, "#ffffff"),
+      onChange: e => { const val = e.target.value; this.setState({ [key]: val }); },
+      onFocus: () => this.setState(s => ({ focus: { ...s.focus, [key]: true } })),
+      onBlur: () => this.setState(s => ({ focus: { ...s.focus, [key]: false } }))
+    };
+  }
+
+  chips(list, current, pick) {
+    return list.map(label => {
+      const on = current === label;
+      return {
+        label,
+        go: () => pick(label),
+        style: { background: on ? "#ffffff" : "rgba(255,255,255,0.05)", color: on ? "#141414" : "#dcdcdc",
+          border: "1px solid " + (on ? "#ffffff" : "rgba(255,255,255,0.22)"), padding: "10px 18px",
+          fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: on ? 500 : 400, fontSize: 12,
+          cursor: "pointer", transition: "background 140ms ease, color 140ms ease, border-color 140ms ease" }
+      };
+    });
+  }
+
+  label(up, color) {
+    return { position: "absolute", left: 0, pointerEvents: "none", fontWeight: 500,
+      letterSpacing: "0.01em", color, transition: "top 130ms ease, font-size 130ms ease",
+      top: up ? 2 : 28, fontSize: up ? 10 : 13 };
+  }
+
+  btn(disabled) {
+    return { marginTop: 52, width: 320, maxWidth: "100%", border: 0, padding: "15px 0",
+      fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: 700, fontSize: 14,
+      transition: "background 140ms ease",
+      background: disabled ? "#bcbcbc" : "#ff1e00",
+      color: disabled ? "#ffffff" : "#ffffff",
+      cursor: disabled ? "not-allowed" : "pointer" };
+  }
+
+  componentDidUpdate(prev, prevState) {
+    if (prev.startStep !== this.props.startStep) this.setState({ step: null });
+    if (!prevState || prevState.step !== this.state.step) this.toTop();
+  }
+
+  toTop() {
+    try {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    } catch (e) {}
+  }
+
+  go(step) { return e => { if (e && e.preventDefault) e.preventDefault(); this.setState({ step }); }; }
+
+  setCode(i, v) {
+    const code = this.state.code.slice();
+    code[i] = v.replace(/[^0-9]/g, "").slice(-1);
+    this.setState({ code });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const urlStep = (typeof location !== "undefined" ? (location.hash || "").replace("#", "") : "");
+    const urlSteps = ["login", "returning", "recovery", "code", "reset", "done", "welcome", "onboarding", "complete"];
+    const step = s.step ?? (urlSteps.indexOf(urlStep) > -1 ? urlStep : null) ?? this.props.startStep ?? "login";
+    const hasError = (this.props.errorState ?? false) && step === "login";
+    const shownEmail = (step === "returning" && s.email === "" && !s.emailTouched)
+      ? (this.props.workEmail ?? "a.keller@syniotec.com") : s.email;
+    const emailUp = s.emailFocus || !!shownEmail;
+    const pwUp = s.pwFocus || !!s.password;
+    const rUp = s.rFocus || !!s.rEmail;
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.rEmail.trim());
+    const codeFull = s.code.every(c => c.length === 1);
+    const strong = s.np1.length >= 8 && /[0-9]/.test(s.np1) && /[A-Z]/.test(s.np1);
+    const mismatch = !!s.np2 && s.np1 !== s.np2;
+
+    const spStrong = s.sp1.length >= 8 && /[0-9]/.test(s.sp1) && /[A-Z]/.test(s.sp1);
+    const spMismatch = !!s.sp2 && s.sp1 !== s.sp2;
+    const faCodeFull = s.faCode.every(c => c.length === 1);
+    const setupOk = spStrong && !!s.sp2 && s.sp1 === s.sp2;
+
+    const ob = s.ob;
+    const first = (s.form.first || "").trim() || (this.props.firstName ?? "Anna");
+    const last = (s.form.last || "").trim();
+    const stepDefs = ["Identity and contact", "Organization and signature", "Security", "Region", "Notifications"];
+    const valid = { 1: !!(s.form.first && s.form.last && s.form.phone && s.form.zip && s.form.city),
+                    2: !!(s.form.company && s.dept), 3: !!s.twoFa, 4: !!(s.lang && s.dateFmt), 5: true };
+    const total = 5;
+    const firstGap = [1, 2, 3, 4, 5].filter(n => !valid[n])[0] || 0;
+    const canFinish = !firstGap;
+
+    return {
+      isAuth: ["login", "returning", "recovery", "code", "reset", "done", "welcome"].indexOf(step) > -1,
+      isFlow: ["onboarding", "complete"].indexOf(step) > -1,
+      isWelcome: step === "welcome", isOnboarding: step === "onboarding", isComplete: step === "complete",
+      goWelcome: this.go("welcome"), startSetup: () => this.setState({ step: "onboarding", ob: 1 }),
+      skipSetup: () => this.setState({ step: "complete" }),
+
+      sp1: this.sfield("sp1"), sp2: this.sfield("sp2"),
+      spType: s.spShow ? "text" : "password",
+      toggleSp: () => this.setState(x => ({ spShow: !x.spShow })),
+      spMismatch,
+      pwReqs: [["8 characters or more", s.sp1.length >= 8], ["One number", /[0-9]/.test(s.sp1)],
+               ["One capital letter", /[A-Z]/.test(s.sp1)]].map(([label, ok]) => ({
+        label,
+        dotStyle: { width: 6, height: 6, borderRadius: "50%", flex: "none",
+          background: ok ? "#71C562" : "rgba(255,255,255,0.28)", transition: "background 180ms ease" },
+        textStyle: { fontSize: 12, color: ok ? "#ffffff" : "#8d8d8d", transition: "color 180ms ease" }
+      })),
+      faOn: s.faOn,
+      toggleFa: () => this.setState(x => ({ faOn: !x.faOn })),
+      faTrackStyle: { position: "relative", width: 52, height: 27, flex: "none", padding: 0, cursor: "pointer",
+        borderRadius: 999, border: "1px solid " + (s.faOn ? "#ff1e00" : "rgba(255,255,255,0.28)"),
+        background: s.faOn ? "#ff1e00" : "rgba(255,255,255,0.07)",
+        transition: "background 180ms ease, border-color 180ms ease" },
+      faKnobStyle: { position: "absolute", top: 3, left: s.faOn ? 28 : 3, width: 19, height: 19, borderRadius: "50%",
+        display: "block", background: s.faOn ? "#ffffff" : "rgba(255,255,255,0.6)",
+        transition: "left 200ms cubic-bezier(.16,.84,.24,1), background 180ms ease" },
+      faCells: s.faCode.map((v, i) => ({
+        value: v,
+        onChange: e => { const code = s.faCode.slice();
+          code[i] = e.target.value.replace(/[^0-9]/g, "").slice(-1); this.setState({ faCode: code }); },
+        onKeyDown: e => {
+          const inputs = e.target.parentNode.querySelectorAll("input");
+          if (e.key === "Backspace" && !s.faCode[i] && i > 0) inputs[i - 1].focus();
+          else if (/^[0-9]$/.test(e.key) && i < 5) setTimeout(() => inputs[i + 1].focus(), 0);
+        }
+      })),
+      setupDisabled: !setupOk,
+      setupBtnStyle: Object.assign(this.btn(!setupOk), { marginTop: 0, width: "auto", padding: "15px 34px", flex: "0 0 auto", whiteSpace: "nowrap" }),
+      firstName: this.props.firstName ?? "Anna",
+      workEmail: this.props.workEmail ?? "a.keller@syniotec.com",
+      stepCounter: step === "onboarding" ? "STEP 0" + ob + " / 0" + total : "",
+      progressStyle: { height: "100%", width: (ob / total * 100) + "%", background: "#ff1e00",
+        transition: "width 420ms cubic-bezier(.16,.84,.24,1)" },
+
+      steps: stepDefs.map((title, i) => {
+        const n = i + 1, active = n === ob, done = n < ob && !!valid[n];
+        return {
+          title, num: String(n).padStart(2, "0"),
+          go: () => this.setState({ ob: n }),
+          rowStyle: { display: "flex", alignItems: "center", gap: 14, width: "100%", textAlign: "left",
+            padding: "13px 12px", border: 0, borderLeft: "2px solid " + (active ? "#ff1e00" : "transparent"),
+            background: active ? "rgba(255,255,255,0.07)" : "transparent", cursor: "pointer",
+            fontFamily: "inherit", transition: "background 160ms ease, border-color 160ms ease" },
+          dotStyle: { position: "relative", width: 26, height: 26, flex: "none", display: "flex",
+            alignItems: "center", justifyContent: "center", borderRadius: "50%",
+            border: "1px solid " + (active ? "#ff1e00" : done ? "#ffffff" : "rgba(255,255,255,0.28)"),
+            background: done ? "#ffffff" : active ? "rgba(255,30,0,0.18)" : "transparent",
+            transition: "background 180ms ease, border-color 180ms ease" },
+          numStyle: { fontSize: 10, fontWeight: 500, letterSpacing: "0.02em",
+            color: active ? "#ffffff" : "rgba(255,255,255,0.55)", opacity: done ? 0 : 1,
+            transition: "opacity 160ms ease" },
+          checkStyle: { position: "absolute", width: 13, height: 13, opacity: done ? 1 : 0,
+            transition: "opacity 180ms ease" },
+          titleStyle: { fontSize: 13, fontWeight: active ? 500 : 400,
+            color: active ? "#ffffff" : done ? "#d4d4d4" : "rgba(255,255,255,0.5)",
+            transition: "color 160ms ease" }
+        };
+      }),
+
+      isStep1: ob === 1, isStep2: ob === 2, isStep3: ob === 3, isStep4: ob === 4, isStep5: ob === 5,
+      fFirst: this.f("first"), fLast: this.f("last"), fDob: this.f("dob", "DD / MM / YYYY"), fPhone: this.f("phone", "+49"),
+      fStreet: this.f("street"), fZip: this.f("zip"), fCity: this.f("city"), fCountry: this.f("country"),
+      fCompany: this.f("company"), fTitle: this.f("title"), fEmpId: this.f("empid"), fCost: this.f("cost"),
+      fRecEmail: this.f("recEmail", "name@company.com"), fSecPhone: this.f("secPhone", "+49"),
+      fTz: this.f("tz"), fCurrency: this.f("currency"),
+      lockedLabelStyle: this.label(true, "#8d8d8d"),
+      sigName: (first + " " + last).trim(),
+      sigRole: [s.form.title, s.dept].filter(Boolean).join(" · ") || "Role · Department",
+      langChips: this.chips(["English", "Deutsch", "ქართული"], s.lang, l => this.setState({ lang: l })),
+      deptChips: this.chips(["Fleet operations", "Site management", "Procurement", "Workshop", "Finance"], s.dept,
+        d => this.setState({ dept: d })),
+      twoFaChips: this.chips(["Authenticator app", "SMS code", "Security key"], s.twoFa,
+        v => this.setState({ twoFa: v })),
+      timeoutChips: this.chips(["15 minutes", "1 hour", "8 hours"], s.timeout, v => this.setState({ timeout: v })),
+      dateChips: this.chips(["DD.MM.YYYY", "MM/DD/YYYY", "YYYY-MM-DD"], s.dateFmt, v => this.setState({ dateFmt: v })),
+      unitChips: this.chips(["Metric", "Imperial"], s.units, v => this.setState({ units: v })),
+      weekChips: this.chips(["Monday", "Sunday"], s.week, v => this.setState({ week: v })),
+      deliveryChips: this.chips(["In-app", "E-mail", "Both"], s.delivery, v => this.setState({ delivery: v })),
+      digestChips: this.chips(["Instant", "Daily digest", "Weekly digest"], s.digest, v => this.setState({ digest: v })),
+      securityToggles: [
+        this.toggle("pin", "Require a PIN on the mobile app", "Asked once per shift on shared devices"),
+        this.toggle("device", "Alert me about new device sign-ins", "Sent to your recovery e-mail")
+      ],
+      notifRows: [
+        this.toggle("faults", "Machine faults and alarms", "Immediately, for every asset assigned to you"),
+        this.toggle("maint", "Maintenance due", "Service intervals, inspections, certificates"),
+        this.toggle("util", "Fleet utilisation report", "Idle time, hours, transport movements"),
+        this.toggle("shift", "Shift handover", "Checklists and damage reports from your sites"),
+        this.toggle("product", "Product updates from syniotec", "New SAM features, a few times per year")
+      ],
+      hint: !valid[ob] ? "Fill the required fields"
+        : (ob === total && firstGap) ? "Step 0" + firstGap + " is still incomplete" : "",
+      nextLabel: ob === total ? "Finish setup" : "Continue",
+      nextDisabled: ob === total ? !canFinish : !valid[ob],
+      nextBtnStyle: (() => { const ok = ob === total ? canFinish : valid[ob];
+        return { width: 220, border: 0, padding: "14px 0",
+          fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: 700, fontSize: 13, color: "#ffffff",
+          background: ok ? "#ff1e00" : "rgba(255,255,255,0.16)",
+          cursor: ok ? "pointer" : "not-allowed", transition: "background 140ms ease" }; })(),
+      next: () => { if (!valid[ob]) return;
+        if (ob < total) this.setState({ ob: ob + 1 });
+        else if (canFinish) this.setState({ step: "complete" });
+        else this.setState({ ob: firstGap }); },
+      back: () => { if (ob > 1) this.setState({ ob: ob - 1 }); else this.setState({ step: "welcome" }); },
+
+      resendIdle: !this.state.resent, resendSent: !!this.state.resent,
+      resend: e => this.doResend(e),
+      resendCountdown: this.state.resendLeft > 0 ? "You can request another in " + this.state.resendLeft + "s." : "",
+      isLogin: step === "login" || step === "returning",
+      isReturning: step === "returning",
+      isRecovery: step === "recovery", isCode: step === "code",
+      isReset: step === "reset", isDone: step === "done",
+      goEmail: () => { window.location.href = "SAM Invitation Email.dc.html"; },
+      goLogin: this.go("login"),
+      goRecovery: e => { if (e && e.preventDefault) e.preventDefault();
+        this.setState(st => ({ step: "recovery", rEmail: st.rEmail || shownEmail })); },
+      goCode: this.go("code"),
+      goReset: this.go("reset"), goDone: this.go("done"),
+      noop: e => e.preventDefault(),
+
+      hasError,
+      emailLabelStyle: this.label(emailUp, hasError ? "#f2a01e" : "#fff"),
+      pwLabelStyle: this.label(pwUp, "#fff"),
+      emailHint: s.emailFocus ? "E-Mail" : "",
+      pwHint: s.pwFocus ? "Password" : "",
+      focusEmail: () => this.setState({ emailFocus: true }),
+      blurEmail: () => this.setState({ emailFocus: false }),
+      focusPw: () => this.setState({ pwFocus: true }),
+      blurPw: () => this.setState({ pwFocus: false }),
+      email: shownEmail, password: s.password, remember: s.remember,
+      checkOpacity: s.remember ? 1 : 0,
+      pwType: s.show ? "text" : "password",
+      onEmail: e => this.setState({ email: e.target.value, emailTouched: true }),
+      onPassword: e => this.setState({ password: e.target.value }),
+      onRemember: e => this.setState({ remember: e.target.checked }),
+      togglePw: () => this.setState(x => ({ show: !x.show })),
+
+      recoveryEmail: s.rEmail,
+      recoveryEmailShown: validEmail ? s.rEmail.trim() : "your e-mail",
+      recoveryHint: s.rFocus ? "name@company.com" : "",
+      recoveryError: s.rTouched && !!s.rEmail && !validEmail,
+      recoveryLabelStyle: this.label(rUp, s.rTouched && !!s.rEmail && !validEmail ? "#f2a01e" : "#fff"),
+      onRecoveryEmail: e => this.setState({ rEmail: e.target.value }),
+      focusRecovery: () => this.setState({ rFocus: true }),
+      blurRecovery: () => this.setState({ rFocus: false, rTouched: true }),
+      sendDisabled: !validEmail,
+      sendBtnStyle: this.btn(!validEmail),
+
+      codeCells: s.code.map((v, i) => ({
+        value: v,
+        onChange: e => this.setCode(i, e.target.value),
+        onKeyDown: e => {
+          const inputs = e.target.parentNode.querySelectorAll("input");
+          if (e.key === "Backspace" && !s.code[i] && i > 0) inputs[i - 1].focus();
+          else if (/^[0-9]$/.test(e.key) && i < 5) setTimeout(() => inputs[i + 1].focus(), 0);
+        }
+      })),
+      verifyDisabled: !codeFull,
+      verifyBtnStyle: this.btn(!codeFull),
+
+      np1: s.np1, np2: s.np2, npType: s.npShow ? "text" : "password",
+      np1LabelStyle: this.label(s.np1Focus || !!s.np1, "#fff"),
+      np2LabelStyle: this.label(s.np2Focus || !!s.np2, mismatch ? "#f2a01e" : "#fff"),
+      onNp1: e => this.setState({ np1: e.target.value }),
+      onNp2: e => this.setState({ np2: e.target.value }),
+      focusNp1: () => this.setState({ np1Focus: true }),
+      blurNp1: () => this.setState({ np1Focus: false }),
+      focusNp2: () => this.setState({ np2Focus: true }),
+      blurNp2: () => this.setState({ np2Focus: false }),
+      toggleNp: () => this.setState(x => ({ npShow: !x.npShow })),
+      mismatch,
+      saveDisabled: !(strong && s.np1 === s.np2),
+      saveBtnStyle: this.btn(!(strong && s.np1 === s.np2))
+    };
+  }
+}
+</script>
+</body>
+</html>

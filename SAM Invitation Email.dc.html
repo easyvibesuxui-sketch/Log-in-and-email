@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Book.otf") format("opentype"); font-weight: 350; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+html, body { margin: 0; padding: 0; background: #e9e7e3; }
+a { color: #1a1a1a; }
+a:hover { color: #ff1e00; }
+</style>
+</helmet>
+<div style="background:#e9e7e3;padding:48px 20px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
+
+  <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#8b8781">Your SAM account is ready to be activated.</div>
+
+  <div style="max-width:600px;margin:0 auto;background:#ffffff">
+
+    <div style="background:linear-gradient(110deg,#1a1a1a 0%,#3a3a3a 38%,#c9c7c3 72%,#f6f5f3 100%);color:#ffffff;padding:32px 44px 30px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #e2e0dc">
+      <div>
+        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:0.95;letter-spacing:0.01em">SAM</div>
+        <div style="font-size:9px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#6b6b6b">SMART ASSET MANAGER</div>
+      </div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:17px;line-height:1;letter-spacing:-0.01em;padding-top:5px;color:#ff1e00">syniotec</div>
+    </div>
+
+    <div style="padding:48px 44px 40px">
+      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#ff1e00;margin-bottom:18px">INVITATION</div>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 18px;text-wrap:pretty">You have been invited to SAM</h1>
+      <p style="margin:0;font-size:14px;line-height:1.65;color:#3d3d3d;max-width:440px;text-wrap:pretty">Anna Weber has invited you to join the SAM workspace of Baugruppe Nord GmbH. Activate your account to set a password and get the full overview of your fleet.</p>
+
+      <div style="margin-top:34px;border-top:1px solid #e2e0dc">
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:0;padding:14px 0;border-bottom:1px solid #e2e0dc;font-size:13px">
+          <div style="color:#8b8781">Account</div>
+          <div style="font-weight:500">m.becker@baugruppe-nord.de</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:0;padding:14px 0;border-bottom:1px solid #e2e0dc;font-size:13px">
+          <div style="color:#8b8781">Company</div>
+          <div style="font-weight:500">Baugruppe Nord GmbH</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:0;padding:14px 0;border-bottom:1px solid #e2e0dc;font-size:13px">
+          <div style="color:#8b8781">Invited by</div>
+          <div style="font-weight:500">Anna Weber</div>
+        </div>
+      </div>
+
+      <a href="{{ ctaHref }}" style="display:block;width:320px;max-width:100%;margin-top:36px;background:#ff1e00;color:#ffffff;text-align:center;text-decoration:none;padding:16px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;transition:background 140ms ease" style-hover="background:#e01a00;color:#ffffff">Activate account</a>
+
+      <div style="margin-top:18px;font-size:12px;line-height:1.5;color:#8b8781">This invitation link expires in {{ expiryDays }} days. If it has expired, ask your administrator to send a new one.</div>
+
+      <sc-if value="{{ showAccessList }}" hint-placeholder-val="{{ true }}">
+      <div style="margin-top:40px;background:#f4f2ef;padding:28px 30px">
+        <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#8b8781;margin-bottom:18px">WHAT YOU GET ACCESS TO</div>
+        <div style="display:grid;gap:14px;font-size:13px;line-height:1.5">
+          <div style="display:flex;gap:12px"><span style="width:6px;height:6px;background:#ff1e00;flex:none;margin-top:6px"></span><span>Live location and status of every machine in your fleet</span></div>
+          <div style="display:flex;gap:12px"><span style="width:6px;height:6px;background:#ff1e00;flex:none;margin-top:6px"></span><span>Digital time and operating hour records, without paper</span></div>
+          <div style="display:flex;gap:12px"><span style="width:6px;height:6px;background:#ff1e00;flex:none;margin-top:6px"></span><span>Maintenance intervals and service documents in one place</span></div>
+        </div>
+      </div>
+      </sc-if>
+
+      <div style="margin-top:36px;padding-top:22px;border-top:1px solid #e2e0dc;font-size:12px;line-height:1.6;color:#8b8781;text-wrap:pretty">Button not working? Copy this link into your browser:<br /><a href="{{ ctaHref }}" style="color:#1a1a1a;text-decoration:underline;text-underline-offset:3px;word-break:break-all">https://app.syniotec.com/invite/7f3a9c21-4be0</a></div>
+    </div>
+
+    <div style="background:#1a1a1a;color:#ffffff;padding:34px 44px 32px">
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1;letter-spacing:-0.01em;margin-bottom:20px">syniotec</div>
+      <p style="margin:0 0 22px;font-size:12px;line-height:1.6;color:#a5a19b;max-width:420px;text-wrap:pretty">syniotec GmbH · Hansastraße 14 · 80686 München · Germany</p>
+      <div style="display:flex;align-items:center;gap:26px;font-size:12px;font-weight:500">
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Data policy</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Imprint</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Support</a>
+      </div>
+      <sc-if value="{{ showLanguageNote }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid #333331;display:flex;align-items:center;gap:12px;font-size:12px;color:#a5a19b">
+          <span style="width:26px;height:17px;display:block;background:linear-gradient(#000 0 33.33%,#dd0000 33.33% 66.66%,#ffce00 66.66% 100%);flex:none"></span>
+          <a href="#" style="color:#ffffff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1e00">Diese E-Mail auf Deutsch lesen</a>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#8b8781;text-wrap:pretty">You received this email because an administrator of Baugruppe Nord GmbH invited you to SAM. If you were not expecting it, you can ignore this message.</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:1500},&quot;linkState&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;valid&quot;,&quot;used&quot;,&quot;broken&quot;],&quot;default&quot;:&quot;valid&quot;,&quot;tsType&quot;:&quot;'valid' | 'used' | 'broken'&quot;,&quot;section&quot;:&quot;Flow&quot;},&quot;expiryDays&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:7,&quot;min&quot;:1,&quot;max&quot;:30,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showAccessList&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;},&quot;showLanguageNote&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      ctaHref: ({ valid: "./SAM 06 Welcome.dc.html", used: "./SAM 13 Activation link used.dc.html", broken: "./SAM 14 Link broken.dc.html" })[this.props.linkState ?? "valid"] || "./SAM 06 Welcome.dc.html",
+      expiryDays: this.props.expiryDays ?? 7,
+      showAccessList: this.props.showAccessList ?? true,
+      showLanguageNote: this.props.showLanguageNote ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

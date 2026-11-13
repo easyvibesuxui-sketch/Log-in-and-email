@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+html, body { margin: 0; padding: 0; background: #1a1a1a; overflow: hidden; }
+a { color: #ffffff; }
+a:hover { color: #ff1e00; }
+@keyframes hintPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+</style>
+</helmet>
+<div ref="{{ stageRef }}" onPointerMove="{{ onMove }}" onPointerLeave="{{ onLeave }}" onPointerDown="{{ onDown }}" style="position:relative;width:100vw;height:100vh;overflow:hidden;background:#1a1a1a;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#fff;cursor:crosshair;user-select:none">
+
+  <canvas ref="{{ canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,0.35) 0%,rgba(26,26,26,0) 32%,rgba(26,26,26,0.2) 62%,rgba(26,26,26,0.9) 100%);pointer-events:none"></div>
+
+  <div style="position:absolute;top:0;left:0;right:0;display:flex;align-items:flex-start;justify-content:space-between;padding:34px 44px;pointer-events:none">
+    <div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:0.95;letter-spacing:0.01em">SAM</div>
+      <div style="font-size:11px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#e6e6e6">SMART ASSET MANAGER</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.11em;color:#e6e6e6">
+      <span style="width:7px;height:7px;background:#ff1e00;border-radius:50%"></span>
+      <span style="white-space:nowrap">{{ frameLabel }}</span>
+    </div>
+  </div>
+
+  <div style="position:absolute;inset:auto 0 0 0;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:0 44px 40px;pointer-events:none">
+    <div style="max-width:520px">
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#e8e8e8;text-wrap:pretty">Move your cursor across the site. The boom follows it, reaching out and digging in. Click to run a full dig cycle.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.12em;color:#cfcfcf;animation:hintPulse 2.6s ease-in-out infinite;flex:none">
+      <span style="display:block;width:66px;height:1px;background:#ff1e00"></span>
+      <span style="white-space:nowrap">{{ modeLabel }}</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sensitivity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1.6,&quot;min&quot;:0.4,&quot;max&quot;:1.6,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;easing&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:3,&quot;min&quot;:0.3,&quot;max&quot;:3,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;idleLoop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;frameZoom&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:1,&quot;max&quot;:1.5,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Scene&quot;},&quot;parallax&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:60,&quot;step&quot;:2,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Scene&quot;}}">
+class Component extends DCLogic {
+  constructor(p) {
+    super(p);
+    this.canvasRef = React.createRef();
+    this.stageRef = React.createRef();
+    this.state = { frameLabel: "LOADING SEQUENCE", modeLabel: "CURSOR CONTROL" };
+    // sprite sheet geometry
+    this.FW = 480; this.FH = 608; this.COLS = 8; this.N = 48;
+    // reach sub-sequence: bucket travels out from the cab across these frames
+    this.REACH_END = 15;
+    // cab pivot in frame coordinates
+    this.PIV = { x: 112, y: 330 };
+    this.f = 0;            // displayed frame (float)
+    this.target = 0;       // target frame
+    this.mode = "follow";  // idle | follow | dig
+    this.digT = 0;
+    this.idleT = 0;
+    this.lastMove = 0;
+    this.px = 0.5; this.py = 0.5; // normalized pointer for parallax
+    this.pxs = 0.5; this.pys = 0.5;
+  }
+
+  componentDidMount() {
+    this.img = new Image();
+    this.img.onload = () => { this.ready = true; this.setState({ frameLabel: "SEQ 48F / CURSOR-DRIVEN" }); };
+    this.img.src = "./frames/excavator-sheet.jpg";
+    this.resize();
+    this._ro = new ResizeObserver(() => this.resize());
+    if (this.stageRef.current) this._ro.observe(this.stageRef.current);
+    this.prev = performance.now();
+    this.loop = (now) => {
+      const dt = Math.min(0.05, (now - this.prev) / 1000); this.prev = now;
+      this.tick(dt); this.draw();
+      this._raf = requestAnimationFrame(this.loop);
+    };
+    this._raf = requestAnimationFrame(this.loop);
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    if (this._ro) this._ro.disconnect();
+  }
+
+  resize() {
+    const c = this.canvasRef.current; if (!c) return;
+    const r = c.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    c.width = Math.max(1, Math.round(r.width * dpr));
+    c.height = Math.max(1, Math.round(r.height * dpr));
+    this.cw = r.width; this.ch = r.height;
+  }
+
+  // map a screen point to frame-space coordinates using the current cover fit
+  fit() {
+    const s = Math.max((this.cw || 1) / this.FW, (this.ch || 1) / this.FH) * (this.props.frameZoom ?? 1.08);
+    return { s, ox: (this.cw - this.FW * s) / 2, oy: (this.ch - this.FH * s) / 2 };
+  }
+
+  onMove = (e) => {
+    const c = this.canvasRef.current; if (!c) return;
+    const r = c.getBoundingClientRect();
+    const sx = e.clientX - r.left, sy = e.clientY - r.top;
+    this.px = sx / Math.max(1, r.width); this.py = sy / Math.max(1, r.height);
+    const { s, ox, oy } = this.fit();
+    const fx = (sx - ox) / s, fy = (sy - oy) / s;
+    const dx = fx - this.PIV.x, dy = fy - this.PIV.y;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    // only the forward half-plane extends the boom; behind the cab it folds back in
+    const forward = Math.max(0, dx) / Math.max(1, d);
+    const DMIN = 70, DMAX = 340;
+    let t = (d - DMIN) / (DMAX - DMIN);
+    t = Math.max(0, Math.min(1, t)) * (0.25 + 0.75 * forward);
+    this.target = Math.max(0, Math.min(1, t * (this.props.sensitivity ?? 1))) * this.REACH_END;
+    this.lastMove = performance.now();
+    if (this.mode === "idle") { this.mode = "follow"; this.setState({ modeLabel: "CURSOR CONTROL" }); }
+  };
+
+  onLeave = () => { this.target = 0; };
+
+  onDown = () => {
+    if (this.mode === "dig") return;
+    this.mode = "dig"; this.digT = this.REACH_END;
+    this.setState({ modeLabel: "DIG CYCLE" });
+  };
+
+  tick(dt) {
+    const idleAllowed = this.props.idleLoop === true;
+    if (this.mode === "follow" && idleAllowed && performance.now() - this.lastMove > 4000) {
+      this.mode = "idle"; this.idleT = this.f; this.setState({ modeLabel: "IDLE CYCLE" });
+    }
+    if (this.mode === "dig") {
+      this.digT += dt * 22;
+      if (this.digT >= this.N - 1) { this.mode = "follow"; this.lastMove = performance.now(); this.setState({ modeLabel: "CURSOR CONTROL" }); }
+      else { this.f += (this.digT - this.f) * 0.4; return; }
+    }
+    if (this.mode === "idle") {
+      this.idleT = (this.idleT + dt * 7) % (this.N - 1);
+      this.f += (this.idleT - this.f) * 0.25;
+    } else {
+      const k = 1 - Math.pow(0.001, dt * (this.props.easing ?? 1));
+      this.f += (this.target - this.f) * k;
+    }
+    this.pxs += (this.px - this.pxs) * 0.06;
+    this.pys += (this.py - this.pys) * 0.06;
+  }
+
+  draw() {
+    const c = this.canvasRef.current; if (!c || !this.ready) return;
+    const ctx = c.getContext("2d");
+    const dpr = c.width / Math.max(1, this.cw);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, this.cw, this.ch);
+    const i = Math.max(0, Math.min(this.N - 1, Math.round(this.f)));
+    const { s, ox, oy } = this.fit();
+    const par = (this.props.parallax ?? 18);
+    const dx = (0.5 - this.pxs) * par, dy = (0.5 - this.pys) * par * 0.6;
+    ctx.drawImage(this.img,
+      (i % this.COLS) * this.FW, Math.floor(i / this.COLS) * this.FH, this.FW, this.FH,
+      ox + dx, oy + dy, this.FW * s, this.FH * s);
+  }
+
+  renderVals() {
+    return {
+      canvasRef: this.canvasRef,
+      stageRef: this.stageRef,
+      onMove: this.onMove,
+      onLeave: this.onLeave,
+      onDown: this.onDown,
+      frameLabel: this.state.frameLabel,
+      modeLabel: this.state.modeLabel
+    };
+  }
+}
+</script>
+</body>
+</html>

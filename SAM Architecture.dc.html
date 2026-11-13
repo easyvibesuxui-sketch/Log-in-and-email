@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#141414"/><rect x="120" y="120" width="160" height="6" fill="#ff1e00"/><text x="200" y="180" font-family="Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#ffffff" text-anchor="middle">SAM</text></svg></template>
+<script src="./excavator-scene.js"></script>
+<script src="./globe-bg.js"></script>
+<style>
+html, body { margin: 0; padding: 0; background: #141414; }
+a { color: #ffffff; }
+a:hover { color: #ff1e00; }
+</style>
+</helmet>
+<sc-if value="{{ isFlow }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;min-height:100vh;background:#1a1a1a">
+  <dc-import name="SAM Login Deploy" start-step="{{ flowStep }}" link-used="{{ flowLinkUsed }}" hint-size="100%,100vh"></dc-import>
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+    <span>MAP</span>
+    <span style="color:rgba(255,255,255,0.32)">{{ routeLabel }}</span>
+  </a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;min-height:100vh;background:#141414">
+  <dc-import name="SAM Invitation Email" hint-size="100%,100vh"></dc-import>
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+    <span>MAP</span>
+    <span style="color:rgba(255,255,255,0.32)">E-MAIL</span>
+  </a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEmailDeploy }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;min-height:100vh;background:#141414">
+  <dc-import name="SAM Email Deploy" hint-size="100%,100vh"></dc-import>
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+    <span>MAP</span>
+    <span style="color:rgba(255,255,255,0.32)">DEPLOY</span>
+  </a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isExcavator }}" hint-placeholder-val="{{ false }}">
+<div style="position:relative;min-height:100vh;background:#1a1a1a">
+  <dc-import name="SAM Excavator Interactive" hint-size="100%,100vh"></dc-import>
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+    <span>MAP</span>
+    <span style="color:rgba(255,255,255,0.32)">SCENE</span>
+  </a>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMap }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:100vh;background:#141414;color:#fff;font-family:Helvetica,Arial,sans-serif;padding:56px 56px 80px;box-sizing:border-box">
+
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid #2e2e2e;padding-bottom:26px;margin-bottom:46px">
+    <div>
+      <div style="font-size:38px;font-weight:700;letter-spacing:-0.01em;line-height:1">SAM — architecture</div>
+      <div style="font-size:13px;color:#8f8f8f;margin-top:10px">Smart Asset Manager · every screen as its own page</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a href="#login" style="padding:10px 14px;border:1px solid #3a3a3a;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#d8d8d8" style-hover="border-color:#ff1e00;color:#ff1e00">FULL FLOW</a>
+      <a href="#excavator" style="padding:10px 14px;border:1px solid #3a3a3a;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#d8d8d8" style-hover="border-color:#ff1e00;color:#ff1e00">EXCAVATOR SCENE</a>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:44px;align-items:start">
+
+    <sc-if value="{{ showEmailLane }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">01 · INVITATION</div>
+        <div style="font-size:11px;color:#6f6f6f">entry</div>
+      </div>
+      <div style="display:grid;gap:0">
+        <a href="#email" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">E-MAIL</div>
+          <div style="font-size:16px;font-weight:700">Invitation e-mail</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Sent by the admin. Single call to action opens the welcome screen.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#email-deploy" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">E-MAIL</div>
+          <div style="font-size:16px;font-weight:700">Deploy version</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Production build of the same e-mail, ready to hand to development.</div>
+        </a>
+      </div>
+    </div>
+    </sc-if>
+
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">02 · AUTHENTICATION</div>
+        <div style="font-size:11px;color:#6f6f6f">5 pages</div>
+      </div>
+      <div style="display:grid;gap:0">
+        <a href="#login" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">01</div>
+          <div style="font-size:16px;font-weight:700">Login</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">E-mail and password, remember me, error state for unknown accounts.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#recovery" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">02</div>
+          <div style="font-size:16px;font-weight:700">Forgot password</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Recovery e-mail entry. Validation before the code can be sent.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#code" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">03</div>
+          <div style="font-size:16px;font-weight:700">Enter code</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Six digit code, ten minute expiry, resend.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#reset" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">04</div>
+          <div style="font-size:16px;font-weight:700">New password</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Strength rules and confirmation match.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#done" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">05</div>
+          <div style="font-size:16px;font-weight:700">Password updated</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Confirmation, returns to login.</div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">03 · ACTIVATION</div>
+        <div style="font-size:11px;color:#6f6f6f">2 pages</div>
+      </div>
+      <div style="display:grid;gap:0">
+        <a href="#welcome" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">06</div>
+          <div style="font-size:16px;font-weight:700">Welcome / activate</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">First password for the account.</div>
+        </a>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
+        <a href="#complete" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #ff1e00;text-decoration:none;color:#fff" style-hover="background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">12 · EXIT</div>
+          <div style="font-size:16px;font-weight:700">Setup complete</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Account is live straight after activation. Hands over to the SAM dashboard.</div>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+        <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">04 · EDGE CASES</div>
+        <div style="font-size:11px;color:#6f6f6f">2 pages</div>
+      </div>
+      <div style="display:grid;gap:26px">
+        <a href="#used" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">13</div>
+          <div style="font-size:16px;font-weight:700">Activation link used</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Account is already active. Login with a notice above the form.</div>
+        </a>
+        <a href="#invalid" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">14</div>
+          <div style="font-size:16px;font-weight:700">Link broken</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">User was deleted by an admin. Dead end with a support route out.</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:56px;border-top:1px solid #2e2e2e;padding-top:20px;display:flex;gap:34px;flex-wrap:wrap;font-size:12px;color:#7d7d7d">
+    <div>Every page reuses one component; the step is set per page.</div>
+    <div>Deep links work on this page too: <span style="color:#c9c9c9">…/#onboarding</span></div>
+  </div>
+
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showEmailLane&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { route: "" };
+
+  componentDidMount() {
+    this.sync = () => this.setState({ route: (location.hash || "").replace("#", "").toLowerCase() });
+    this.sync();
+    window.addEventListener("hashchange", this.sync);
+  }
+  componentWillUnmount() { window.removeEventListener("hashchange", this.sync); }
+
+  renderVals() {
+    const r = this.state.route;
+    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "onboarding", "complete"];
+    const isFlow = flowSteps.indexOf(r) > -1 || r === "used";
+    const isEmail = r === "email";
+    const isEmailDeploy = r === "email-deploy";
+    const isExcavator = r === "excavator";
+    const labels = { login: "LOGIN", recovery: "RECOVERY", code: "CODE", reset: "NEW PASSWORD",
+      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN", onboarding: "SETUP",
+      complete: "COMPLETE", used: "LINK USED" };
+    return {
+      showEmailLane: this.props.showEmailLane ?? true,
+      isFlow, isEmail, isEmailDeploy, isExcavator,
+      isMap: !(isFlow || isEmail || isEmailDeploy || isExcavator),
+      flowStep: r === "used" ? "login" : (isFlow ? r : "login"),
+      flowLinkUsed: r === "used",
+      routeLabel: labels[r] || "FLOW"
+    };
+  }
+}
+</script>
+</body>
+</html>
