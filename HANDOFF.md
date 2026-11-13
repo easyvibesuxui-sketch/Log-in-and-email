@@ -11,7 +11,7 @@ Updated: 2026-10-29
 | RAM login + onboarding flow | https://ram-login-cd-6643e01dd4.netlify.app | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
 | RAM invitation email | https://ram-invitation-email-cd-f1b4e9ab68.netlify.app | `RAM Email Deploy.dc.html` |
 
-The SAM and RAM flows run on the same component. The `brand` prop (`"SAM"` default, `"RAM"`) only changes branding and copy.
+The SAM and RAM flows run on the same component. The `brand` prop (`"SAM"` default, `"RAM"`) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the onboarding header and step texts).
 
 ## Deep links (URL hash)
 
@@ -59,10 +59,10 @@ Where the email CTA points, by `linkState`:
 |---|---|---|---|
 | `startStep` | enum | `welcome` | One of the hash values above. The URL hash overrides it. |
 | `startOb` | int 1–5 | 1 | Starting onboarding sub-step |
-| `errorState` | boolean | — | Shows the login error |
+| `errorState` | boolean | false | Shows the login error |
 | `linkUsed` | boolean | false | Shows the "activation link already used" notice |
 | `brand` | `SAM` \| `RAM` | `SAM` | Branding |
-| `firstName`, `workEmail` | text | — | Prefill values for onboarding |
+| `firstName`, `workEmail` | text | `Anna`, `a.keller@syniotec.com` | Prefill values for onboarding |
 
 Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (default 7), `showAccessList`, `showLanguageNote`.
 
@@ -79,13 +79,20 @@ Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (def
 - **Fonts:** ABC Favorit Expanded (`FavoritExp`) for headlines, ABC Favorit Extended (`FavoritExt`) for UI, with Helvetica as fallback. These are licensed Dinamo fonts and are currently inlined in the prototype, so production needs a proper web license.
 - **Background:** `#1a1a1a` / `#141414`
 - **Accent / primary:** `#ff1e00` (hover `#e01a00`)
-- **Disabled button:** `#bcbcbc`
+- **Disabled button:** `#bcbcbc` background, `#4a4a4a` text (4.7:1)
 - **Text:** `#ffffff`, secondary `#9a9a9a` / `#cfcfcf`
 - **Warning:** `#f2a01e` · **Success:** `#71C562` · **Error:** `#dd0000`
 - **Primary button:** 320px max width, 15px vertical padding, 14px bold, no radius
 - **Inputs:** floating labels (13px → 10px on focus or when filled), 130ms transition
 - **Toggles:** 44×24 pill, accent fill when on
 - **Email:** light ground `#ffffff` / `#f4f2ef`, divider `#e2e0dc`, muted text `#8b8781`
+- **SSO buttons:** transparent, 1px `rgba(255,255,255,0.4)` border, 48px tall, two across in 320px; they wrap to one per row when narrow
+
+## Responsive behaviour
+
+- **Auth screens (≤ 960px):** the photo panel is hidden and the form takes the full width with 20px side padding; the 6 code fields share the row.
+- **Onboarding (≤ 900px):** one column; the step list and "Saved automatically" are hidden (the header keeps "STEP 0X / 05"); form rows stack; the hint sits above Back / Continue.
+- Checked at 375px and 1280px: no horizontal scrolling on any step.
 
 ## Notes for engineering
 
