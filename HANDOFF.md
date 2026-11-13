@@ -29,7 +29,7 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 | `#welcome` | Invitation landing: set a password or join with Google / Microsoft | `SAM 06 Welcome` |
 | `#invalid` | Invitation link broken / expired | `SAM 14 Link broken`, `RAM 14 Link broken` |
 
-`SAM 13 Activation link used` is the login screen with `linkUsed=true`, which shows a notice that the activation link has already been used.
+`SAM 13 Activation link used` is the login screen with `linkUsed=true`, which shows a notice that the activation link has already been used. On the flow URL it opens with `#used`.
 
 `SAM Architecture.dc.html` maps all of the screens and links between them.
 
@@ -50,7 +50,7 @@ Where the email CTA points, by `linkState`:
 
 ## Validation rules in the prototype
 
-- **Login e-mail:** the prototype knows one account, `workEmail` (default `a.keller@syniotec.com`, any letter case). Sign in with any other e-mail shows the "not added by an administrator" error; editing the e-mail clears it.
+- **Login e-mail:** the prototype knows one account, `workEmail` (default `m.becker@baugruppe-nord.de`, the invited account from the e-mail; any letter case). Sign in with any other e-mail shows the "not added by an administrator" error; editing the e-mail clears it.
 - **Google / Microsoft on login:** sign in by default; with `ssoError` on, they show the "not added by an administrator" error for that provider.
 - **Recovery email:** basic `name@domain.tld` pattern. The button stays disabled until the email is valid.
 - **Code:** 6 inputs, digits only, one per field. Continue is enabled once all 6 are filled.
@@ -66,7 +66,7 @@ Where the email CTA points, by `linkState`:
 | `ssoError` | boolean | false | Google / Microsoft sign-in shows the "not added by an administrator" error |
 | `linkUsed` | boolean | false | Shows the "activation link already used" notice |
 | `brand` | `SAM` \| `RAM` | `SAM` | Branding |
-| `firstName`, `workEmail` | text | `Anna`, `a.keller@syniotec.com` | Name and invited e-mail on the activation screen; `workEmail` is also the account the login accepts |
+| `firstName`, `workEmail` | text | `Max`, `m.becker@baugruppe-nord.de` | Name and invited e-mail on the activation screen; `workEmail` is also the account the login accepts |
 
 Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (default 7), `showAccessList`, `showLanguageNote`.
 

@@ -99,7 +99,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 </tr>
 </tbody>
 </table></div>
-<p><code>SAM 13 Activation link used</code> is the login screen with <code>linkUsed=true</code>, which shows a notice that the activation link has already been used.</p>
+<p><code>SAM 13 Activation link used</code> is the login screen with <code>linkUsed=true</code>, which shows a notice that the activation link has already been used. On the flow URL it opens with <code>#used</code>.</p>
 <p><code>SAM Architecture.dc.html</code> maps all of the screens and links between them.</p>
 <h2>Flows</h2>
 <ol>
@@ -116,7 +116,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 - <code>broken</code> → <code>#invalid</code></p>
 <h2>Validation rules in the prototype</h2>
 <ul>
-<li><strong>Login e-mail:</strong> the prototype knows one account, <code>workEmail</code> (default <code>a.keller@syniotec.com</code>, any letter case). Sign in with any other e-mail shows the "not added by an administrator" error; editing the e-mail clears it.</li>
+<li><strong>Login e-mail:</strong> the prototype knows one account, <code>workEmail</code> (default <code>m.becker@baugruppe-nord.de</code>, the invited account from the e-mail; any letter case). Sign in with any other e-mail shows the "not added by an administrator" error; editing the e-mail clears it.</li>
 <li><strong>Google / Microsoft on login:</strong> sign in by default; with <code>ssoError</code> on, they show the "not added by an administrator" error for that provider.</li>
 <li><strong>Recovery email:</strong> basic <code>name@domain.tld</code> pattern. The button stays disabled until the email is valid.</li>
 <li><strong>Code:</strong> 6 inputs, digits only, one per field. Continue is enabled once all 6 are filled.</li>
@@ -167,7 +167,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 <tr>
 <td><code>firstName</code>, <code>workEmail</code></td>
 <td>text</td>
-<td><code>Anna</code>, <code>a.keller@syniotec.com</code></td>
+<td><code>Max</code>, <code>m.becker@baugruppe-nord.de</code></td>
 <td>Name and invited e-mail on the activation screen; <code>workEmail</code> is also the account the login accepts</td>
 </tr>
 </tbody>

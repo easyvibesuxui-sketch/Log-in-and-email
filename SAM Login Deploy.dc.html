@@ -318,7 +318,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 </sc-if>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;errorState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;ssoError&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;linkUsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;login&quot;,&quot;recovery&quot;,&quot;code&quot;,&quot;reset&quot;,&quot;done&quot;,&quot;welcome&quot;,&quot;invalid&quot;],&quot;default&quot;:&quot;welcome&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;States&quot;},&quot;firstName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Anna&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;},&quot;workEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;a.keller@syniotec.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;errorState&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;ssoError&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;linkUsed&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;States&quot;},&quot;startStep&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;login&quot;,&quot;recovery&quot;,&quot;code&quot;,&quot;reset&quot;,&quot;done&quot;,&quot;welcome&quot;,&quot;invalid&quot;],&quot;default&quot;:&quot;welcome&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;States&quot;},&quot;firstName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Max&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;},&quot;workEmail&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;m.becker@baugruppe-nord.de&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Account&quot;}}">
 class Component extends DCLogic {
   state = { step: null, activated: false, email: "", password: "", show: false, remember: false,
             rEmail: "", rTouched: false, code: ["","","","","",""], np1: "", np2: "", npShow: false,
@@ -392,7 +392,7 @@ class Component extends DCLogic {
 
   activate() {
     this.setState({ step: "login", activated: true, loginErr: "",
-      email: this.props.workEmail ?? "a.keller@syniotec.com", password: "" });
+      email: this.props.workEmail ?? "m.becker@baugruppe-nord.de", password: "" });
   }
 
   setCode(i, v) {
@@ -406,8 +406,8 @@ class Component extends DCLogic {
     const urlStep = (typeof location !== "undefined" ? (location.hash || "").replace("#", "") : "");
     const urlSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid"];
     const propStep = urlSteps.indexOf(this.props.startStep) > -1 ? this.props.startStep : null;
-    const step = s.step ?? (urlSteps.indexOf(urlStep) > -1 ? urlStep : null) ?? propStep ?? "login";
-    const known = [(this.props.workEmail ?? "a.keller@syniotec.com").trim().toLowerCase()];
+    const step = s.step ?? (urlStep === "used" ? "login" : null) ?? (urlSteps.indexOf(urlStep) > -1 ? urlStep : null) ?? propStep ?? "login";
+    const known = [(this.props.workEmail ?? "m.becker@baugruppe-nord.de").trim().toLowerCase()];
     const hasError = (this.props.errorState ?? false) || s.loginErr === "email";
     const ssoErr = s.loginErr === "Google" || s.loginErr === "Microsoft";
     const emailUp = s.emailFocus || !!s.email;
@@ -450,8 +450,8 @@ class Component extends DCLogic {
       })),
       setupDisabled: !setupOk,
       setupBtnStyle: Object.assign(this.btn(!setupOk), { marginTop: 0, width: "auto", padding: "15px 34px", flex: "0 0 auto", whiteSpace: "nowrap" }),
-      firstName: this.props.firstName ?? "Anna",
-      workEmail: this.props.workEmail ?? "a.keller@syniotec.com",
+      firstName: this.props.firstName ?? "Max",
+      workEmail: this.props.workEmail ?? "m.becker@baugruppe-nord.de",
       resendIdle: !this.state.resent, resendSent: !!this.state.resent,
       resend: e => this.doResend(e),
       resendCountdown: this.state.resendLeft > 0 ? "You can request another in " + this.state.resendLeft + "s." : "",
