@@ -35,9 +35,10 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 
 ## Flows
 
-1. **Invitation:** Email CTA → `#welcome` → set password → `#onboarding` (steps 1–5) → `#complete`
+1. **Invitation:** Email CTA → `#welcome` → set password **or** join with Google / Microsoft → `#onboarding` (steps 1–5) → `#complete`
 2. **Password recovery:** `#login` → `#recovery` → `#code` → `#reset` → `#done` → `#login`
 3. **Link edge cases:** the link has already been used → login with notice; the link is broken or expired → `#invalid`
+4. **Single sign-on:** `#login` offers "Sign in with Google" and "Sign in with Microsoft" under the Sign in button. In the prototype they behave like Sign in; production needs real OAuth (Google) and Microsoft Entra ID sign-in, and should only accept the account that matches the invited e-mail.
 
 Where the email CTA points, by `linkState`:
 - `valid` → `#welcome`
