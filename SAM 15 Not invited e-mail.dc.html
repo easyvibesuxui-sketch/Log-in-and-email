@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+html, body { margin: 0; padding: 0; background: #1a1a1a; }
+a { color: #ffffff; }
+a:hover { color: #ff1e00; }
+</style>
+</helmet>
+<div style="position:relative;min-height:100vh;background:#1a1a1a">
+  <dc-import name="SAM Login Deploy" start-step="login" login-error="email" hint-size="100%,100vh"></dc-import>
+  <a href="./SAM Architecture.dc.html" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:'FavoritExt',Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+    <span>MAP</span>
+    <span style="color:rgba(255,255,255,0.32)">NOT INVITED — E-MAIL</span>
+  </a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

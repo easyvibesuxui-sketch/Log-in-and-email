@@ -150,7 +150,7 @@ a:hover { color: #ff1e00; }
     <div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">04 · EDGE CASES</div>
-        <div style="font-size:11px;color:#6f6f6f">2 pages</div>
+        <div style="font-size:11px;color:#6f6f6f">5 pages</div>
       </div>
       <div style="display:grid;gap:26px">
         <a href="#used" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
@@ -162,6 +162,21 @@ a:hover { color: #ff1e00; }
           <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">14</div>
           <div style="font-size:16px;font-weight:700">Link broken</div>
           <div style="font-size:12px;color:#9a9a9a;line-height:1.5">User was deleted by an admin. Dead end with a support route out.</div>
+        </a>
+        <a href="#not-invited" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">15</div>
+          <div style="font-size:16px;font-weight:700">Not invited — e-mail</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Sign in with an e-mail no administrator has added. Error under the e-mail field.</div>
+        </a>
+        <a href="#not-invited-google" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">16</div>
+          <div style="font-size:16px;font-weight:700">Not invited — Google</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Google account not added by an administrator. Error under the sign-in buttons.</div>
+        </a>
+        <a href="#not-invited-microsoft" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">17</div>
+          <div style="font-size:16px;font-weight:700">Not invited — Microsoft</div>
+          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Microsoft account not added by an administrator. Error under the sign-in buttons.</div>
         </a>
       </div>
     </div>
@@ -189,18 +204,19 @@ class Component extends DCLogic {
 
   renderVals() {
     const r = this.state.route;
-    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid"];
+    const flowSteps = ["login", "recovery", "code", "reset", "done", "welcome", "invalid", "not-invited", "not-invited-google", "not-invited-microsoft"];
     const isFlow = flowSteps.indexOf(r) > -1 || r === "used";
     const isEmail = r === "email";
     const isEmailDeploy = r === "email-deploy";
     const isExcavator = r === "excavator";
     const labels = { login: "LOGIN", recovery: "RECOVERY", code: "CODE", reset: "NEW PASSWORD",
-      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN", used: "LINK USED" };
+      done: "UPDATED", welcome: "WELCOME", invalid: "LINK BROKEN", used: "LINK USED",
+      "not-invited": "NOT INVITED", "not-invited-google": "NOT INVITED — GOOGLE", "not-invited-microsoft": "NOT INVITED — MICROSOFT" };
     return {
       showEmailLane: this.props.showEmailLane ?? true,
       isFlow, isEmail, isEmailDeploy, isExcavator,
       isMap: !(isFlow || isEmail || isEmailDeploy || isExcavator),
-      flowStep: r === "used" ? "login" : (isFlow ? r : "login"),
+      flowStep: (r === "used" || r.indexOf("not-invited") === 0) ? "login" : (isFlow ? r : "login"),
       flowLinkUsed: r === "used",
       routeLabel: labels[r] || "FLOW"
     };
