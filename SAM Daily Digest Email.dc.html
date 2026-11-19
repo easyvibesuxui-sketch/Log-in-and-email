@@ -16,9 +16,9 @@
 @font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Book.otf") format("opentype"); font-weight: 350; font-display: swap; }
 @font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
-html, body { margin: 0; padding: 0; background: #e9e7e3; }
-a { color: #1a1a1a; }
-a:hover { color: #ff1e00; }
+html, body { margin: 0; padding: 0; background: #f1f1f1; }
+a { color: #151515; }
+a:hover { color: #ff1900; }
 @media (max-width: 560px) {
   .dg-outer { padding: 24px 12px !important; }
   .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
@@ -39,62 +39,62 @@ a:hover { color: #ff1e00; }
 </style>
 </helmet>
 <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ true }}">
-<div class="dg-outer" style="background:#e9e7e3;padding:48px 20px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
+<div class="dg-outer" style="background:#f1f1f1;padding:48px 20px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#151515;min-height:100vh;box-sizing:border-box">
 
-  <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#5c5853">{{ preheader }}</div>
+  <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#343434">{{ preheader }}</div>
 
   <div style="max-width:600px;margin:0 auto;background:#ffffff">
 
-    <div class="dg-pad" style="background:linear-gradient(110deg,#1a1a1a 0%,#1a1a1a 42%,#3a3a3a 58%,#c9c7c3 82%,#f6f5f3 100%);color:#ffffff;padding:32px 44px 30px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #e2e0dc">
+    <div class="dg-pad" style="background:linear-gradient(110deg,#151515 0%,#151515 42%,#343434 58%,#a7b0b3 82%,#f1f1f1 100%);color:#ffffff;padding:32px 44px 30px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #a7b0b3">
       <div>
         <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:0.95;letter-spacing:0.01em">SAM</div>
-        <div style="font-size:9px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#a5a19b">SMART ASSET MANAGER</div>
+        <div style="font-size:9px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#a7b0b3">SMART ASSET MANAGER</div>
       </div>
-      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:17px;line-height:1;letter-spacing:-0.01em;padding-top:5px;color:#ff1e00">syniotec</div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:17px;line-height:1;letter-spacing:-0.01em;padding-top:5px;color:#ff1900">syniotec</div>
     </div>
 
     <div class="dg-pad" style="padding:44px 44px 8px">
-      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#e01a00;margin-bottom:18px">{{ kicker }}</div>
+      <div style="font-size:10px;letter-spacing:0.14em;font-weight:700;color:#151515;margin-bottom:18px;border-left:3px solid #ff1900;padding-left:8px">{{ kicker }}</div>
       <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">Resource digest</h1>
-      <p style="margin:0;font-size:14px;line-height:1.65;color:#3d3d3d;max-width:470px;text-wrap:pretty">{{ intro }}</p>
+      <p style="margin:0;font-size:14px;line-height:1.65;color:#343434;max-width:470px;text-wrap:pretty">{{ intro }}</p>
 
-      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f4f2ef;padding:14px 18px">
-        <span style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66">PERIOD</span>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f1f1f1;padding:14px 18px">
+        <span style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#343434">PERIOD</span>
         <span style="font-size:14px;font-weight:700">{{ intervalShort }}</span>
-        <span style="font-size:12px;color:#6f6b66">{{ intervalTimes }}</span>
+        <span style="font-size:12px;color:#343434">{{ intervalTimes }}</span>
       </div>
-      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));background:#f4f2ef;border:1px solid #e2e0dc">
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));background:#f1f1f1;border:1px solid #a7b0b3">
         <div style="padding:18px 10px 16px;text-align:center">
           <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalRequests }}</div>
-          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Requests</div>
+          <div style="margin-top:8px;font-size:12px;color:#343434">Requests</div>
         </div>
-        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
+        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #a7b0b3">
           <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalBookings }}</div>
-          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Direct bookings</div>
+          <div style="margin-top:8px;font-size:12px;color:#343434">Direct bookings</div>
         </div>
-        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
+        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #a7b0b3">
           <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalAssigned }}</div>
-          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Bookings</div>
+          <div style="margin-top:8px;font-size:12px;color:#343434">Bookings</div>
         </div>
       </div>
     </div>
 
     <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ true }}">
     <div class="dg-pad" style="padding:30px 44px 6px">
-      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:12px">SUMMARY</div>
-      <div style="border-top:1px solid #1a1a1a">
-        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 14px 10px 17px;border-bottom:1px solid #e2e0dc;font-size:10px;letter-spacing:0.1em;color:#6f6b66;font-weight:500">
+      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#343434;margin-bottom:12px">SUMMARY</div>
+      <div style="border-top:1px solid #151515">
+        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 14px 10px 17px;border-bottom:1px solid #a7b0b3;font-size:10px;letter-spacing:0.1em;color:#343434;font-weight:500">
           <div class="dg-sumhide">PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-          <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#f4f2ef;border-left:3px solid #ff1e00;font-size:13px;align-items:baseline">
-            <div class="dg-sumname" style="min-width:0"><div style="font-size:11px;color:#6f6b66;margin-bottom:3px">{{ p.cc }}</div><a href="{{ p.url }}" style="display:inline;font-weight:500;color:#1a1a1a;text-decoration:underline;text-decoration-color:#a5a19b;text-underline-offset:3px;overflow-wrap:break-word" style-hover="color:#c81800;text-decoration-color:#c81800">{{ p.title }}</a></div>
+          <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#ffe7e5;border-left:3px solid #ff1900;font-size:13px;align-items:baseline">
+            <div class="dg-sumname" style="min-width:0"><div style="font-size:11px;color:#343434;margin-bottom:3px">{{ p.cc }}</div><a href="{{ p.url }}" style="display:inline;font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:3px;overflow-wrap:break-word" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></div>
             <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div>
             <div style="text-align:right;font-weight:700">{{ p.nBookings }}</div>
             <div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
           </div>
         </sc-for>
-        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:14px 14px 14px 17px;margin-top:6px;background:#1a1a1a;color:#ffffff;font-size:13px;font-weight:700">
+        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:14px 14px 14px 17px;margin-top:6px;background:#151515;color:#ffffff;font-size:13px;font-weight:700">
           <div class="dg-sumname">Total</div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
         </div>
       </div>
@@ -103,38 +103,38 @@ a:hover { color: #ff1e00; }
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
     <div class="dg-pad" style="padding:34px 44px 4px">
-      <div style="border-top:3px solid #1a1a1a;padding-top:18px">
-        <div style="font-size:11px;letter-spacing:0.06em;color:#6f6b66;margin-bottom:6px">COST CENTER {{ p.cc }}</div>
-        <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:21px;line-height:1.2;margin:0 0 10px;text-wrap:pretty"><a href="{{ p.url }}" style="color:#1a1a1a;text-decoration:underline;text-decoration-color:#c9c7c3;text-decoration-thickness:1px;text-underline-offset:5px" style-hover="color:#c81800;text-decoration-color:#c81800">{{ p.title }}</a></h2>
-        <div style="font-size:12px;color:#3d3d3d">{{ p.countsLine }}</div>
-        <a href="{{ p.url }}" style="display:inline-block;margin-top:14px;background:#1a1a1a;color:#ffffff;text-decoration:none;padding:11px 18px;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:12px;transition:background 140ms ease" style-hover="background:#3a3a3a;color:#ffffff">Open project in SAM</a>
+      <div style="border-top:3px solid #151515;padding-top:18px">
+        <div style="font-size:11px;letter-spacing:0.06em;color:#343434;margin-bottom:6px">COST CENTER {{ p.cc }}</div>
+        <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:21px;line-height:1.2;margin:0 0 10px;text-wrap:pretty"><a href="{{ p.url }}" style="color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-decoration-thickness:1px;text-underline-offset:5px" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></h2>
+        <div style="font-size:12px;color:#343434">{{ p.countsLine }}</div>
+        <a href="{{ p.url }}" style="display:inline-block;margin-top:14px;background:#ffffff;color:#151515;border:1.5px solid #151515;text-decoration:none;padding:10px 18px;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:12px;transition:background 140ms ease" style-hover="background:#f1f1f1;color:#151515">Open project in SAM</a>
       </div>
 
       <sc-for list="{{ p.types }}" as="t" hint-placeholder-count="3">
       <div style="margin-top:26px">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #1a1a1a;padding-bottom:8px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #151515;padding-bottom:8px">
           <div style="font-size:12px;letter-spacing:0.14em;font-weight:700">{{ t.name }}</div>
-          <div style="font-size:12px;color:#6f6b66">{{ t.countLabel }}</div>
+          <div style="font-size:12px;color:#343434">{{ t.countLabel }}</div>
         </div>
 
         <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="2">
         <div style="margin-top:16px">
-          <div style="font-size:11px;letter-spacing:0.08em;font-weight:500;color:#6f6b66;margin-bottom:10px">{{ g.heading }}</div>
+          <div style="font-size:11px;letter-spacing:0.08em;font-weight:500;color:#343434;margin-bottom:10px">{{ g.heading }}</div>
           <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
-          <a class="dg-card" href="{{ it.url }}" style="{{ it.cardStyle }}" style-hover="background:#faf9f7">
+          <a class="dg-card" href="{{ it.url }}" style="{{ it.cardStyle }}" style-hover="background:#fbfbfb">
             <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:10px">
               <span style="{{ it.badgeStyle }}">{{ it.badge }}</span>
               <span style="font-size:14px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</span>
-              <span style="margin-left:auto;font-size:12px;font-weight:500;color:#1a1a1a;white-space:nowrap;text-decoration:underline;text-underline-offset:3px">View in SAM ›</span>
+              <span style="margin-left:auto;font-size:12px;font-weight:500;color:#151515;white-space:nowrap;text-decoration:underline;text-underline-offset:3px">View in SAM ›</span>
             </div>
             <sc-for list="{{ it.fields }}" as="f" hint-placeholder-count="5">
               <div style="display:grid;grid-template-columns:min(150px, 40%) minmax(0,1fr);gap:0 12px;padding:5px 0;font-size:12px;line-height:1.5">
-                <div style="color:#6f6b66">{{ f.label }}</div>
-                <div style="color:#1a1a1a;overflow-wrap:anywhere">{{ f.value }}</div>
+                <div style="color:#343434">{{ f.label }}</div>
+                <div style="color:#151515;overflow-wrap:anywhere">{{ f.value }}</div>
               </div>
             </sc-for>
             <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
-              <div style="margin-top:10px;background:#f4f2ef;padding:10px 12px;font-size:12px;line-height:1.55;color:#3d3d3d"><span style="font-weight:500;color:#1a1a1a">Additional information: </span>{{ it.info }}</div>
+              <div style="margin-top:10px;background:#f1f1f1;padding:10px 12px;font-size:12px;line-height:1.55;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
             </sc-if>
           </a>
           </sc-for>
@@ -146,106 +146,106 @@ a:hover { color: #ff1e00; }
     </sc-for>
 
     <div class="dg-pad" style="padding:30px 44px 40px">
-      <a href="{{ pdfUrl }}" aria-label="Download this digest as PDF" style="display:flex;align-items:center;justify-content:center;gap:10px;width:320px;max-width:100%;box-sizing:border-box;background:#ff1e00;color:#ffffff;text-decoration:none;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;transition:background 140ms ease" style-hover="background:#e01a00;color:#ffffff">
+      <a href="{{ pdfUrl }}" aria-label="Download this digest as PDF" style="display:flex;align-items:center;justify-content:center;gap:10px;width:320px;max-width:100%;box-sizing:border-box;background:#151515;color:#f1f1f1;text-decoration:none;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;transition:opacity 140ms ease" style-hover="opacity:0.74">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"></path><path d="M14 3v5h5"></path><path d="M12 11v6"></path><path d="m9 14 3 3 3-3"></path></svg>
         <span>Download as PDF</span>
       </a>
-      <div style="margin-top:18px;font-size:12px;line-height:1.6;color:#6f6b66;text-wrap:pretty">This digest is sent Monday to Friday at 07:00 (Europe/Berlin). Monday's digest covers Friday, Saturday and Sunday. <a href="#" style="color:#1a1a1a;text-decoration:underline;text-underline-offset:3px">Change digest settings</a></div>
+      <div style="margin-top:18px;font-size:12px;line-height:1.6;color:#343434;text-wrap:pretty">This digest is sent Monday to Friday at 07:00 (Europe/Berlin). Monday's digest covers Friday, Saturday and Sunday. <a href="#" style="color:#151515;text-decoration:underline;text-underline-offset:3px">Change digest settings</a></div>
     </div>
 
-    <div class="dg-pad" style="background:#1a1a1a;color:#ffffff;padding:34px 44px 32px">
+    <div class="dg-pad" style="background:#151515;color:#ffffff;padding:34px 44px 32px">
       <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1;letter-spacing:-0.01em;margin-bottom:20px">syniotec</div>
-      <p style="margin:0 0 22px;font-size:12px;line-height:1.6;color:#a5a19b;max-width:420px;text-wrap:pretty">syniotec GmbH · Hansastraße 14 · 80686 München · Germany</p>
+      <p style="margin:0 0 22px;font-size:12px;line-height:1.6;color:#a7b0b3;max-width:420px;text-wrap:pretty">syniotec GmbH · Hansastraße 14 · 80686 München · Germany</p>
       <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;font-size:12px;font-weight:500">
-        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Data policy</a>
-        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Imprint</a>
-        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Support</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1900">Data policy</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1900">Imprint</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1900">Support</a>
       </div>
     </div>
   </div>
 
-  <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#5c5853;text-wrap:pretty">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
+  <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#343434;text-wrap:pretty">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
 </div>
 </sc-if>
 
 <sc-if value="{{ isPdf }}" hint-placeholder-val="{{ false }}">
-<div class="pdf-wrap" style="background:#e9e7e3;padding:32px 16px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
+<div class="pdf-wrap" style="background:#f1f1f1;padding:32px 16px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#151515;min-height:100vh;box-sizing:border-box">
   <div class="pdf-sheet" style="max-width:794px;margin:0 auto;background:#ffffff;box-shadow:0 2px 18px rgba(0,0,0,0.08);padding:40px 44px 36px;box-sizing:border-box">
 
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:2px solid #1a1a1a;padding-bottom:14px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:2px solid #151515;padding-bottom:14px">
       <div>
         <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:0.95">SAM</div>
-        <div style="font-size:8px;letter-spacing:0.13em;margin-top:5px;color:#6f6b66">SMART ASSET MANAGER</div>
+        <div style="font-size:8px;letter-spacing:0.13em;margin-top:5px;color:#343434">SMART ASSET MANAGER</div>
       </div>
-      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:15px;color:#e01a00">syniotec</div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:15px;color:#ff1900">syniotec</div>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin-top:20px">
       <div>
-        <div style="font-size:9px;letter-spacing:0.14em;font-weight:500;color:#c81800;margin-bottom:8px">{{ kicker }}</div>
+        <div style="font-size:9px;letter-spacing:0.14em;font-weight:700;color:#151515;margin-bottom:8px;border-left:3px solid #ff1900;padding-left:7px">{{ kicker }}</div>
         <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:24px;line-height:1.1;margin:0">Resource digest</h1>
       </div>
-      <div style="font-size:10px;line-height:1.6;color:#3d3d3d;text-align:right">
-        <div><span style="color:#6f6b66">Period </span><span style="font-weight:700">{{ intervalTimes }}</span></div>
-        <div><span style="color:#6f6b66">Generated </span>{{ generatedAt }}</div>
+      <div style="font-size:10px;line-height:1.6;color:#343434;text-align:right">
+        <div><span style="color:#343434">Period </span><span style="font-weight:700">{{ intervalTimes }}</span></div>
+        <div><span style="color:#343434">Generated </span>{{ generatedAt }}</div>
       </div>
     </div>
 
-    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));border:1px solid #e2e0dc;background:#f4f2ef">
-      <div style="padding:10px 12px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalRequests }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Requests</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalBookings }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Direct bookings</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalAssigned }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Bookings</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ projectCount }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Projects</div></div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));border:1px solid #a7b0b3;background:#f1f1f1">
+      <div style="padding:10px 12px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalRequests }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Requests</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalBookings }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Direct bookings</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalAssigned }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Bookings</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ projectCount }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Projects</div></div>
     </div>
 
-    <div style="margin-top:18px;font-size:9px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:6px">SUMMARY</div>
-    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 10px 6px 13px;font-size:8.5px;letter-spacing:0.1em;color:#6f6b66;font-weight:500;border-top:1px solid #1a1a1a">
+    <div style="margin-top:18px;font-size:9px;letter-spacing:0.14em;font-weight:500;color:#343434;margin-bottom:6px">SUMMARY</div>
+    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 10px 6px 13px;font-size:8.5px;letter-spacing:0.1em;color:#343434;font-weight:500;border-top:1px solid #151515">
       <div>COST CENTER</div><div>PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
     </div>
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-      <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 10px;margin-top:3px;background:#f4f2ef;border-left:3px solid #ff1e00;font-size:10px;align-items:baseline">
-        <div style="color:#6f6b66">{{ p.cc }}</div>
-        <a href="{{ p.url }}" style="font-weight:500;color:#1a1a1a;text-decoration:underline;text-decoration-color:#a5a19b;text-underline-offset:2px">{{ p.title }}</a>
+      <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 10px;margin-top:3px;background:#ffe7e5;border-left:3px solid #ff1900;font-size:10px;align-items:baseline">
+        <div style="color:#343434">{{ p.cc }}</div>
+        <a href="{{ p.url }}" style="font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a>
         <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div><div style="text-align:right;font-weight:700">{{ p.nBookings }}</div><div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
       </div>
     </sc-for>
-    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px 8px 13px;margin-top:3px;background:#1a1a1a;color:#ffffff;font-size:10px;font-weight:700">
+    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px 8px 13px;margin-top:3px;background:#151515;color:#ffffff;font-size:10px;font-weight:700">
       <div>Total</div><div></div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
     </div>
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
     <div style="margin-top:22px">
-      <div class="pdf-keep pdf-head" style="background:#1a1a1a;color:#ffffff;padding:9px 12px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
-        <div style="font-size:11px"><span style="color:#a5a19b">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#ffffff;font-weight:700;text-decoration:none">{{ p.title }}</a></div>
-        <div style="font-size:9px;color:#d8d6d2">{{ p.countsLine }}</div>
+      <div class="pdf-keep pdf-head" style="background:#151515;color:#ffffff;padding:9px 12px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
+        <div style="font-size:11px"><span style="color:#a7b0b3">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#ffffff;font-weight:700;text-decoration:none">{{ p.title }}</a></div>
+        <div style="font-size:9px;color:#f1f1f1">{{ p.countsLine }}</div>
       </div>
 
       <sc-for list="{{ p.types }}" as="t" hint-placeholder-count="3">
       <div style="margin-top:12px">
-        <div class="pdf-keep pdf-head" style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #1a1a1a;padding-bottom:4px">
+        <div class="pdf-keep pdf-head" style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #151515;padding-bottom:4px">
           <div style="font-size:10px;letter-spacing:0.14em;font-weight:700">{{ t.name }}</div>
-          <div style="font-size:9px;color:#6f6b66">{{ t.countLabel }}</div>
+          <div style="font-size:9px;color:#343434">{{ t.countLabel }}</div>
         </div>
-        <div class="pdf-head" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:5px 0;font-size:8px;letter-spacing:0.1em;color:#6f6b66;font-weight:500;border-bottom:1px solid #e2e0dc">
+        <div class="pdf-head" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:5px 0;font-size:8px;letter-spacing:0.1em;color:#343434;font-weight:500;border-bottom:1px solid #a7b0b3">
           <div>TYPE</div><div>ITEM</div><div>DETAILS</div><div style="text-align:right">CREATED</div>
         </div>
         <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="2">
           <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
-          <div class="pdf-keep" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:8px 0;border-bottom:1px solid #e2e0dc;font-size:10px;line-height:1.45">
+          <div class="pdf-keep" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:8px 0;border-bottom:1px solid #a7b0b3;font-size:10px;line-height:1.45">
             <div><span style="{{ it.pdfBadgeStyle }}">{{ it.badge }}</span></div>
             <div style="min-width:0">
               <div style="font-weight:700;overflow-wrap:anywhere">{{ it.title }}</div>
-              <a href="{{ it.url }}" style="font-size:9px;color:#1a1a1a;text-decoration:underline;text-underline-offset:2px">Open in SAM</a>
+              <a href="{{ it.url }}" style="font-size:9px;color:#151515;text-decoration:underline;text-underline-offset:2px">Open in SAM</a>
             </div>
             <div style="min-width:0">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
-                <div style="overflow-wrap:anywhere"><span style="color:#6f6b66">{{ f.label }}: </span>{{ f.value }}</div>
+                <div style="overflow-wrap:anywhere"><span style="color:#343434">{{ f.label }}: </span>{{ f.value }}</div>
               </sc-for>
               <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
-                <div style="margin-top:4px;background:#f4f2ef;padding:4px 7px;color:#3d3d3d"><span style="font-weight:500;color:#1a1a1a">Additional information: </span>{{ it.info }}</div>
+                <div style="margin-top:4px;background:#f1f1f1;padding:4px 7px;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
               </sc-if>
             </div>
-            <div style="text-align:right;color:#3d3d3d">{{ it.createdAt }}</div>
+            <div style="text-align:right;color:#343434">{{ it.createdAt }}</div>
           </div>
           </sc-for>
         </sc-for>
@@ -254,12 +254,12 @@ a:hover { color: #ff1e00; }
     </div>
     </sc-for>
 
-    <div style="margin-top:22px;padding-top:10px;border-top:1px solid #e2e0dc;font-size:8.5px;line-height:1.6;color:#6f6b66">This PDF contains every entry of the SAM resource digest for {{ intervalShort }}. Sent Monday to Friday at 07:00 (Europe/Berlin); Monday's digest covers Friday to Sunday. syniotec GmbH · Hansastraße 14 · 80686 München · Germany</div>
+    <div style="margin-top:22px;padding-top:10px;border-top:1px solid #a7b0b3;font-size:8.5px;line-height:1.6;color:#343434">This PDF contains every entry of the SAM resource digest for {{ intervalShort }}. Sent Monday to Friday at 07:00 (Europe/Berlin); Monday's digest covers Friday to Sunday. syniotec GmbH · Hansastraße 14 · 80686 München · Germany</div>
   </div>
 </div>
 </sc-if>
 </x-dc>
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f4f2ef"/><rect x="0" y="0" width="100" height="26" fill="#1a1a1a"/><rect x="14" y="38" width="72" height="6" fill="#ff1e00"/><rect x="14" y="52" width="60" height="4" fill="#1a1a1a"/><rect x="14" y="62" width="66" height="4" fill="#8b8781"/><rect x="14" y="72" width="50" height="4" fill="#8b8781"/></svg></template>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f1f1f1"/><rect x="0" y="0" width="100" height="26" fill="#151515"/><rect x="14" y="38" width="72" height="6" fill="#ff1900"/><rect x="14" y="52" width="60" height="4" fill="#151515"/><rect x="14" y="62" width="66" height="4" fill="#a7b0b3"/><rect x="14" y="72" width="50" height="4" fill="#a7b0b3"/></svg></template>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;&#39;weekday&#39; | &#39;monday&#39;&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;email&quot;,&quot;pdf&quot;],&quot;default&quot;:&quot;email&quot;,&quot;tsType&quot;:&quot;&#39;email&#39; | &#39;pdf&#39;&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
   renderVals() {
@@ -277,9 +277,9 @@ class Component extends DCLogic {
 
     const REQ = "request", BOOK = "booking", ASG = "assigned";
     const kinds = {
-      request:  { badge: "REQUEST",  heading: "Requests",             bar: "#1a1a1a", bg: "#ffffff", fg: "#1a1a1a" },
-      booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#ff1e00", bg: "#c81800", fg: "#ffffff" },
-      assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#2563eb", bg: "#1d4ed8", fg: "#ffffff" }
+      request:  { badge: "REQUEST",  heading: "Requests",             bar: "#151515", bg: "#ffffff", fg: "#151515" },
+      booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#ff1900", bg: "#ff1900", fg: "#151515" },
+      assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#459af7", bg: "#459af7", fg: "#151515" }
     };
     const item = (kind, title, created, fields, info) => ({ kind, title, created, fields, info: info || "" });
     const F = (label, value) => ({ label, value });
@@ -334,7 +334,7 @@ class Component extends DCLogic {
               fields: i.fields.concat([F(verb, dt(i.created))]),
               details: i.fields, createdAt: dt(i.created),
               pdfBadgeStyle: { display: "inline-block", fontSize: 7.5, letterSpacing: "0.12em", fontWeight: 700, padding: "3px 5px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" },
-              cardStyle: { display: "block", textDecoration: "none", color: "#1a1a1a", background: "#ffffff", border: "1px solid #e2e0dc", borderLeft: "3px solid " + k.bar, padding: "18px 20px 16px", marginBottom: 12, transition: "background 140ms ease" },
+              cardStyle: { display: "block", textDecoration: "none", color: "#151515", background: "#ffffff", border: "1px solid #a7b0b3", borderLeft: "3px solid " + k.bar, padding: "18px 20px 16px", marginBottom: 12, transition: "background 140ms ease" },
               badgeStyle: { fontSize: 9, letterSpacing: "0.14em", fontWeight: 700, padding: "4px 7px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1 }
             };
           });
