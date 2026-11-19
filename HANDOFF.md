@@ -52,7 +52,7 @@ Where the email CTA points, by `linkState`:
 - `used` → `#login`
 - `broken` → `#invalid`
 
-## Daily planning digest e-mail
+## Daily digest e-mail
 
 `SAM Daily Digest Email.dc.html` is the design for the digest sent to the responsible person, further responsible persons and dispatcher of a project when resources were planned for it.
 

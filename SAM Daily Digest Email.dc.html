@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SAM daily planning digest</title>
+<title>SAM daily digest</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -46,7 +46,7 @@ a:hover { color: #ff1e00; }
 
     <div class="dg-pad" style="padding:44px 44px 8px">
       <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#e01a00;margin-bottom:18px">{{ kicker }}</div>
-      <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">Resource planning digest</h1>
+      <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">Resource digest</h1>
       <p style="margin:0;font-size:14px;line-height:1.65;color:#3d3d3d;max-width:470px;text-wrap:pretty">{{ intro }}</p>
 
       <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f4f2ef;padding:14px 18px">
@@ -254,10 +254,10 @@ class Component extends DCLogic {
       intervalShort,
       pdfUrl: "https://app.syniotec.com/digests/" + d(end).split(".").reverse().join("-") + ".pdf",
       intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
-      preheader: total + " new plans in " + projects.length + " projects · " + intervalShort,
+      preheader: total + " new entries in " + projects.length + " projects · " + intervalShort,
       intro: monday
-        ? "Everything that was planned for your projects on Friday, Saturday and Sunday: new requests, direct bookings and bookings of resources to requests."
-        : "Everything that was planned for your projects in the last 24 hours: new requests, direct bookings and bookings of resources to requests."
+        ? "New requests, direct bookings and bookings in your projects on Friday, Saturday and Sunday."
+        : "New requests, direct bookings and bookings in your projects in the last 24 hours."
     };
   }
 }
