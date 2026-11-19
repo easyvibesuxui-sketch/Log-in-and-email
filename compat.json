@@ -108,6 +108,12 @@
       "name": "SAM · E-mail · Daily digest"
     },
     {
+      "path": "SAM Daily Digest PDF.dc.html",
+      "title": "SAM Daily Digest PDF",
+      "kind": "page",
+      "name": "SAM · E-mail · Daily digest (PDF)"
+    },
+    {
       "path": "RAM 01 Login.dc.html",
       "title": "RAM 01 Login",
       "kind": "page",

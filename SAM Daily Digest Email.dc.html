@@ -28,8 +28,17 @@ a:hover { color: #ff1e00; }
   .dg-sumname { grid-column: 1 / -1; }
   .dg-sumhide { display: none; }
 }
+@media print {
+  html, body { background: #ffffff !important; }
+  .pdf-wrap { padding: 0 !important; background: #ffffff !important; min-height: 0 !important; }
+  .pdf-sheet { box-shadow: none !important; padding: 0 !important; max-width: none !important; }
+  .pdf-keep { break-inside: avoid; }
+  .pdf-head { break-after: avoid; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
 </style>
 </helmet>
+<sc-if value="{{ isEmail }}" hint-placeholder-val="{{ true }}">
 <div class="dg-outer" style="background:#e9e7e3;padding:48px 20px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
 
   <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#5c5853">{{ preheader }}</div>
@@ -157,9 +166,101 @@ a:hover { color: #ff1e00; }
 
   <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#5c5853;text-wrap:pretty">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
 </div>
+</sc-if>
+
+<sc-if value="{{ isPdf }}" hint-placeholder-val="{{ false }}">
+<div class="pdf-wrap" style="background:#e9e7e3;padding:32px 16px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
+  <div class="pdf-sheet" style="max-width:794px;margin:0 auto;background:#ffffff;box-shadow:0 2px 18px rgba(0,0,0,0.08);padding:40px 44px 36px;box-sizing:border-box">
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:2px solid #1a1a1a;padding-bottom:14px">
+      <div>
+        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:0.95">SAM</div>
+        <div style="font-size:8px;letter-spacing:0.13em;margin-top:5px;color:#6f6b66">SMART ASSET MANAGER</div>
+      </div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:15px;color:#e01a00">syniotec</div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin-top:20px">
+      <div>
+        <div style="font-size:9px;letter-spacing:0.14em;font-weight:500;color:#c81800;margin-bottom:8px">{{ kicker }}</div>
+        <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:24px;line-height:1.1;margin:0">Resource digest</h1>
+      </div>
+      <div style="font-size:10px;line-height:1.6;color:#3d3d3d;text-align:right">
+        <div><span style="color:#6f6b66">Period </span><span style="font-weight:700">{{ intervalTimes }}</span></div>
+        <div><span style="color:#6f6b66">Generated </span>{{ generatedAt }}</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));border:1px solid #e2e0dc;background:#f4f2ef">
+      <div style="padding:10px 12px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalRequests }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Requests</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalBookings }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Direct bookings</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalAssigned }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Bookings</div></div>
+      <div style="padding:10px 12px;border-left:1px solid #e2e0dc"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ projectCount }}</div><div style="margin-top:5px;font-size:9px;color:#6f6b66">Projects</div></div>
+    </div>
+
+    <div style="margin-top:18px;font-size:9px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:6px">SUMMARY</div>
+    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 10px 6px 13px;font-size:8.5px;letter-spacing:0.1em;color:#6f6b66;font-weight:500;border-top:1px solid #1a1a1a">
+      <div>COST CENTER</div><div>PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
+    </div>
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+      <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 10px;margin-top:3px;background:#f4f2ef;border-left:3px solid #ff1e00;font-size:10px;align-items:baseline">
+        <div style="color:#6f6b66">{{ p.cc }}</div>
+        <a href="{{ p.url }}" style="font-weight:500;color:#1a1a1a;text-decoration:underline;text-decoration-color:#a5a19b;text-underline-offset:2px">{{ p.title }}</a>
+        <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div><div style="text-align:right;font-weight:700">{{ p.nBookings }}</div><div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
+      </div>
+    </sc-for>
+    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px 8px 13px;margin-top:3px;background:#1a1a1a;color:#ffffff;font-size:10px;font-weight:700">
+      <div>Total</div><div></div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
+    </div>
+
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+    <div style="margin-top:22px">
+      <div class="pdf-keep pdf-head" style="background:#1a1a1a;color:#ffffff;padding:9px 12px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
+        <div style="font-size:11px"><span style="color:#a5a19b">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#ffffff;font-weight:700;text-decoration:none">{{ p.title }}</a></div>
+        <div style="font-size:9px;color:#d8d6d2">{{ p.countsLine }}</div>
+      </div>
+
+      <sc-for list="{{ p.types }}" as="t" hint-placeholder-count="3">
+      <div style="margin-top:12px">
+        <div class="pdf-keep pdf-head" style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #1a1a1a;padding-bottom:4px">
+          <div style="font-size:10px;letter-spacing:0.14em;font-weight:700">{{ t.name }}</div>
+          <div style="font-size:9px;color:#6f6b66">{{ t.countLabel }}</div>
+        </div>
+        <div class="pdf-head" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:5px 0;font-size:8px;letter-spacing:0.1em;color:#6f6b66;font-weight:500;border-bottom:1px solid #e2e0dc">
+          <div>TYPE</div><div>ITEM</div><div>DETAILS</div><div style="text-align:right">CREATED</div>
+        </div>
+        <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="2">
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
+          <div class="pdf-keep" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:8px 0;border-bottom:1px solid #e2e0dc;font-size:10px;line-height:1.45">
+            <div><span style="{{ it.pdfBadgeStyle }}">{{ it.badge }}</span></div>
+            <div style="min-width:0">
+              <div style="font-weight:700;overflow-wrap:anywhere">{{ it.title }}</div>
+              <a href="{{ it.url }}" style="font-size:9px;color:#1a1a1a;text-decoration:underline;text-underline-offset:2px">Open in SAM</a>
+            </div>
+            <div style="min-width:0">
+              <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
+                <div style="overflow-wrap:anywhere"><span style="color:#6f6b66">{{ f.label }}: </span>{{ f.value }}</div>
+              </sc-for>
+              <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
+                <div style="margin-top:4px;background:#f4f2ef;padding:4px 7px;color:#3d3d3d"><span style="font-weight:500;color:#1a1a1a">Additional information: </span>{{ it.info }}</div>
+              </sc-if>
+            </div>
+            <div style="text-align:right;color:#3d3d3d">{{ it.createdAt }}</div>
+          </div>
+          </sc-for>
+        </sc-for>
+      </div>
+      </sc-for>
+    </div>
+    </sc-for>
+
+    <div style="margin-top:22px;padding-top:10px;border-top:1px solid #e2e0dc;font-size:8.5px;line-height:1.6;color:#6f6b66">This PDF contains every entry of the SAM resource digest for {{ intervalShort }}. Sent Monday to Friday at 07:00 (Europe/Berlin); Monday's digest covers Friday to Sunday. syniotec GmbH · Hansastraße 14 · 80686 München · Germany</div>
+  </div>
+</div>
+</sc-if>
 </x-dc>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f4f2ef"/><rect x="0" y="0" width="100" height="26" fill="#1a1a1a"/><rect x="14" y="38" width="72" height="6" fill="#ff1e00"/><rect x="14" y="52" width="60" height="4" fill="#1a1a1a"/><rect x="14" y="62" width="66" height="4" fill="#8b8781"/><rect x="14" y="72" width="50" height="4" fill="#8b8781"/></svg></template>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;'weekday' | 'monday'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;&#39;weekday&#39; | &#39;monday&#39;&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;email&quot;,&quot;pdf&quot;],&quot;default&quot;:&quot;email&quot;,&quot;tsType&quot;:&quot;&#39;email&#39; | &#39;pdf&#39;&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const monday = this.props.period === "monday";
@@ -231,6 +332,8 @@ class Component extends DCLogic {
             return {
               url: base + "/plans/" + seq, title: i.title, info: i.info, hasInfo: !!i.info, badge: k.badge,
               fields: i.fields.concat([F(verb, dt(i.created))]),
+              details: i.fields, createdAt: dt(i.created),
+              pdfBadgeStyle: { display: "inline-block", fontSize: 7.5, letterSpacing: "0.12em", fontWeight: 700, padding: "3px 5px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" },
               cardStyle: { display: "block", textDecoration: "none", color: "#1a1a1a", background: "#ffffff", border: "1px solid #e2e0dc", borderLeft: "3px solid " + k.bar, padding: "18px 20px 16px", marginBottom: 12, transition: "background 140ms ease" },
               badgeStyle: { fontSize: 9, letterSpacing: "0.14em", fontWeight: 700, padding: "4px 7px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1 }
             };
@@ -252,7 +355,9 @@ class Component extends DCLogic {
       showSummary: this.props.showSummary ?? true,
       kicker: monday ? "WEEKEND DIGEST · FRIDAY TO SUNDAY" : "DAILY DIGEST",
       intervalShort,
-      pdfUrl: "https://app.syniotec.com/digests/" + d(end).split(".").reverse().join("-") + ".pdf",
+      pdfUrl: "./downloads/SAM-digest-" + d(end).split(".").reverse().join("-") + ".pdf",
+      generatedAt: wd(end) + " (Europe/Berlin)",
+      isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
       intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
       preheader: total + " new entries in " + projects.length + " projects · " + intervalShort,
       intro: monday
