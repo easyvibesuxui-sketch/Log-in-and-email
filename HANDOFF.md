@@ -35,7 +35,7 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…netlif
 
 `SAM 13 Activation link used` is the login screen with `linkUsed=true`, which shows a notice that the activation link has already been used. On the flow URL it opens with `#used`.
 
-`SAM Architecture.dc.html` maps all of the screens and links between them.
+`SAM Architecture.dc.html` maps all of the screens and links between them. Every SAM screen page (`SAM 01`–`SAM 17`) has a RAM twin (`RAM 01`–`RAM 17`, `brand="RAM"`). In the canvas Pages menu the pages are grouped SAM first, then RAM, each with Login pages before E-mails, then the docs.
 
 ## Flows
 
@@ -59,6 +59,7 @@ Where the email CTA points, by `linkState`:
 - **Schedule:** Monday to Friday at 07:00 Europe/Berlin, covering the previous 24 hours. No mails on Saturday and Sunday; Monday's mail covers Friday, Saturday and Sunday (`period` prop: `weekday` | `monday`).
 - **Order:** projects → resource types (Equipment, Person, Crew, Truck transport) → requests, direct bookings (booked without a request), bookings (resources assigned to a request), each in creation order.
 - **Content:** period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (`showSummary`; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (`Electrician › High voltage`).
+- **Links:** project names (summary and section header) and the black "Open project in SAM" button open the project; every item card is a link to that plan ("View in SAM ›"); the main button downloads the digest as PDF. In the summary, project rows are tinted with a red edge and the Total row is dark.
 - Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.
 
 ## Validation rules in the prototype

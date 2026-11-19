@@ -120,7 +120,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 </tbody>
 </table></div>
 <p><code>SAM 13 Activation link used</code> is the login screen with <code>linkUsed=true</code>, which shows a notice that the activation link has already been used. On the flow URL it opens with <code>#used</code>.</p>
-<p><code>SAM Architecture.dc.html</code> maps all of the screens and links between them.</p>
+<p><code>SAM Architecture.dc.html</code> maps all of the screens and links between them. Every SAM screen page (<code>SAM 01</code>–<code>SAM 17</code>) has a RAM twin (<code>RAM 01</code>–<code>RAM 17</code>, <code>brand="RAM"</code>). In the canvas Pages menu the pages are grouped SAM first, then RAM, each with Login pages before E-mails, then the docs.</p>
 <h2>Flows</h2>
 <ol>
 <li><strong>Invitation:</strong> Email CTA → <code>#welcome</code> → set a password <strong>or</strong> join with Google / Microsoft → <code>#login</code>, with an "Your account is activated. Sign in to continue." notice and the invited e-mail filled in</li>
@@ -140,6 +140,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 <li><strong>Schedule:</strong> Monday to Friday at 07:00 Europe/Berlin, covering the previous 24 hours. No mails on Saturday and Sunday; Monday's mail covers Friday, Saturday and Sunday (<code>period</code> prop: <code>weekday</code> | <code>monday</code>).</li>
 <li><strong>Order:</strong> projects → resource types (Equipment, Person, Crew, Truck transport) → requests, direct bookings (booked without a request), bookings (resources assigned to a request), each in creation order.</li>
 <li><strong>Content:</strong> period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (<code>showSummary</code>; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (<code>Electrician › High voltage</code>).</li>
+<li><strong>Links:</strong> project names (summary and section header) and the black "Open project in SAM" button open the project; every item card is a link to that plan ("View in SAM ›"); the main button downloads the digest as PDF. In the summary, project rows are tinted with a red edge and the Total row is dark.</li>
 <li>Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.</li>
 </ul>
 <h2>Validation rules in the prototype</h2>
