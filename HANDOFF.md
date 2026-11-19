@@ -61,7 +61,7 @@ Where the email CTA points, by `linkState`:
 - **Content:** period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (`showSummary`; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (`Electrician › High voltage`).
 - **Links:** project names (summary and section header) and the black "Open project in SAM" button open the project; every item card is a link to that plan ("View in SAM ›"); the main button downloads the digest as PDF. In the summary, project rows are tinted with a red edge and the Total row is dark.
 - **PDF:** "Download as PDF" opens an A4 PDF of the same digest (`variant` prop: `email` | `pdf`; canvas page `SAM Daily Digest PDF`). It has the header, the four totals (requests, direct bookings, bookings, projects), the summary, then one table per project and resource type with Type / Item / Details / Created columns and an "Open in SAM" link per row; page numbers in the footer. Sample files: `downloads/SAM-digest-2026-10-21.pdf` (weekday) and `downloads/SAM-digest-2026-10-26.pdf` (Monday, Friday to Sunday). In production the button needs a real, signed PDF URL.
-- **Colours (Syn design system):** ink Eerie Black `#151515`, secondary text Jet `#343434`, panels and e-mail ground Cultured `#f1f1f1`, dividers and card borders Silver Chalince `#a7b0b3`, brand bars Candy Apple `#ff1900`. Types: Request outlined in Eerie Black; Direct booking Candy Apple and Booking Dodger Blue `#459af7`, both with Eerie Black text (4.7:1 and 6.3:1; white on them would fail). Summary project rows Misty Rose `#ffe7e5` with a Candy Apple edge, Total Eerie Black. "Download as PDF" is a Syn primary button (Eerie Black, Cultured text, hover 74% opacity); "Open project in SAM" an outline button.
+- **Colours (Syn design system):** ink Eerie Black `#151515`, secondary text Jet `#343434`, panels and e-mail ground Cultured `#f1f1f1`, dividers and card borders Silver Chalince `#a7b0b3`, brand bars Candy Apple `#ff1900`. Types: Request outlined in Eerie Black; Direct booking Amber `#fe7d00` and Booking Dodger Blue `#459af7`, both with bold white text as design asked (2.5:1 and 2.9:1, below 4.5:1: Eerie Black text would pass if needed). Summary project rows Cultured `#f1f1f1` with 8px corners (the earlier Misty Rose and red edge read as an error), Total Eerie Black. PDF: the same black header as the e-mails; four separate KPI tiles (12px corners); each project is one card (12px) whose entries are grouped as Requests, Direct bookings and Bookings, each group a card with 8px corners, a light grey header with the coloured type pill, and columns Resource / Item / Details / Created (ordered by resource type, then time). "Download as PDF" is a Syn primary button (Eerie Black, Cultured text, hover 74% opacity); "Open project in SAM" an outline button.
 - Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.
 
 ## Validation rules in the prototype
@@ -90,15 +90,13 @@ Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (def
 ## Visual tokens
 
 - **Fonts:** ABC Favorit Expanded (`FavoritExp`) for headlines, ABC Favorit Extended (`FavoritExt`) for UI, with Helvetica as fallback. These are licensed Dinamo fonts and are currently inlined in the prototype, so production needs a proper web license.
-- **Background:** `#1a1a1a` / `#141414`
-- **Accent / primary:** `#ff1e00` (hover `#e01a00`)
-- **Disabled button:** `#bcbcbc` background, `#4a4a4a` text (4.7:1)
-- **Text:** `#ffffff`, secondary `#9a9a9a` / `#cfcfcf`
-- **Warning:** `#f2a01e` (inline errors) · **Success:** `#71C562` · **Error:** `#dd0000`
+- **Palette:** every screen, e-mail and the map use the Syn design system colours (Figma names). Login and activation are dark: ground Eerie Black `#151515`; text White `#ffffff`, supporting copy Cultured `#f1f1f1`, secondary and placeholders Silver Chalince `#a7b0b3` (8.3:1 on Eerie Black); field lines and outline-button borders Silver Chalince (field boundaries need 3:1); dividers, notices and button hover fills Jet `#343434`.
+- **Primary button (login):** Candy Apple `#ff1900` with Eerie Black text (4.7:1; white on Candy Apple is 3.9:1 and fails at 14px). Hover fades to 74% opacity (Syn hover). Disabled: Gray X `#b9b9b9` with Jet `#343434` text (6.4:1).
+- **Status:** inline errors Honey `#ffb30f` (10.2:1 on Eerie Black; Syn's error red Vermilion `#ec0808` is only 4.0:1 on the dark ground, so it is not used there) · success Mantis `#71c562` · brand red for kickers and required marks Candy Apple `#ff1900`.
 - **Primary button:** 320px max width, 15px vertical padding, 14px bold, no radius
 - **Inputs:** floating labels (13px → 10px on focus or when filled), 130ms transition
-- **SSO buttons:** transparent, 1px `rgba(255,255,255,0.4)` border, 48px tall, two across in 320px; they wrap to one per row when narrow
-- **Email:** light ground `#ffffff` / `#f4f2ef`, divider `#e2e0dc`, muted text `#8b8781`
+- **SSO buttons:** transparent, 1px Silver Chalince `#a7b0b3` border (hover White border, Jet fill), 48px tall, two across in 320px; they wrap to one per row when narrow
+- **Invitation e-mails:** ground Cultured `#f1f1f1`, card White, text Eerie Black, secondary text Jet `#343434`, dividers Silver Chalince, header and footer Eerie Black. "Activate account" is a Syn primary button: Eerie Black with Cultured text, hover 74% opacity; the brand red stays on the logo, the kicker and the list bullets.
 
 ## Responsive behaviour
 
