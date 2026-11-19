@@ -138,8 +138,8 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 <p><code>SAM Daily Digest Email.dc.html</code> is the design for the digest sent to the responsible person, further responsible persons and dispatcher of a project when resources were planned for it.</p>
 <ul>
 <li><strong>Schedule:</strong> Monday to Friday at 07:00 Europe/Berlin, covering the previous 24 hours. No mails on Saturday and Sunday; Monday's mail covers Friday, Saturday and Sunday (<code>period</code> prop: <code>weekday</code> | <code>monday</code>).</li>
-<li><strong>Order:</strong> projects → resource types (Equipment, Person, Crew, Truck transport) → requests, bookings, resources assigned to requests, each in creation order.</li>
-<li><strong>Content:</strong> period, three totals at the top (projects, requests, bookings), a summary with request / booking / assigned counts per project (<code>showSummary</code>; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (<code>Electrician › High voltage</code>).</li>
+<li><strong>Order:</strong> projects → resource types (Equipment, Person, Crew, Truck transport) → requests, direct bookings (booked without a request), bookings (resources assigned to a request), each in creation order.</li>
+<li><strong>Content:</strong> period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (<code>showSummary</code>; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (<code>Electrician › High voltage</code>).</li>
 <li>Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.</li>
 </ul>
 <h2>Validation rules in the prototype</h2>

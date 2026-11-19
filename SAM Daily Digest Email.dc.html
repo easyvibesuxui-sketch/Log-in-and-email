@@ -56,15 +56,15 @@ a:hover { color: #ff1e00; }
       </div>
       <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));background:#f4f2ef;border:1px solid #e2e0dc">
         <div style="padding:18px 10px 16px;text-align:center">
-          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ projectCount }}</div>
-          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Projects</div>
-        </div>
-        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
           <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalRequests }}</div>
           <div style="margin-top:8px;font-size:12px;color:#6f6b66">Requests</div>
         </div>
         <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
           <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalBookings }}</div>
+          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Direct bookings</div>
+        </div>
+        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalAssigned }}</div>
           <div style="margin-top:8px;font-size:12px;color:#6f6b66">Bookings</div>
         </div>
       </div>
@@ -75,7 +75,7 @@ a:hover { color: #ff1e00; }
       <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:12px">SUMMARY</div>
       <div style="border-top:1px solid #1a1a1a">
         <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 0;border-bottom:1px solid #e2e0dc;font-size:10px;letter-spacing:0.1em;color:#6f6b66;font-weight:500">
-          <div class="dg-sumhide">PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">BOOKINGS</div><div style="text-align:right">ASSIGNED</div>
+          <div class="dg-sumhide">PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
           <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;border-bottom:1px solid #e2e0dc;font-size:13px;align-items:baseline">
@@ -175,8 +175,8 @@ class Component extends DCLogic {
     const REQ = "request", BOOK = "booking", ASG = "assigned";
     const kinds = {
       request:  { badge: "REQUEST",  heading: "Requests",             bar: "#1a1a1a", bg: "#ffffff", fg: "#1a1a1a" },
-      booking:  { badge: "BOOKING",  heading: "Bookings",             bar: "#ff1e00", bg: "#c81800", fg: "#ffffff" },
-      assigned: { badge: "ASSIGNED", heading: "Assigned to requests", bar: "#6f6b66", bg: "#f4f2ef", fg: "#1a1a1a" }
+      booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#ff1e00", bg: "#c81800", fg: "#ffffff" },
+      assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#6f6b66", bg: "#f4f2ef", fg: "#1a1a1a" }
     };
     const item = (kind, title, created, fields, info) => ({ kind, title, created, fields, info: info || "" });
     const F = (label, value) => ({ label, value });
@@ -239,7 +239,7 @@ class Component extends DCLogic {
       tr += nr; tb += nb; ta += na; total += nr + nb + na;
       const part = (n, one, many) => n + " " + (n === 1 ? one : many);
       return { cc: p.cc, title: p.title, types, nRequests: nr, nBookings: nb, nAssigned: na,
-        countsLine: [part(nr, "request", "requests"), part(nb, "booking", "bookings"), part(na, "assigned resource", "assigned resources")].join(" · ") };
+        countsLine: [part(nr, "request", "requests"), part(nb, "direct booking", "direct bookings"), part(na, "booking", "bookings")].join(" · ") };
     });
 
     const intervalShort = d(start) + " – " + d(end);
@@ -251,8 +251,8 @@ class Component extends DCLogic {
       intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
       preheader: total + " new plans in " + projects.length + " projects · " + intervalShort,
       intro: monday
-        ? "Everything that was planned for your projects on Friday, Saturday and Sunday: new requests, bookings and resources assigned to requests."
-        : "Everything that was planned for your projects in the last 24 hours: new requests, bookings and resources assigned to requests."
+        ? "Everything that was planned for your projects on Friday, Saturday and Sunday: new requests, direct bookings and bookings of resources to requests."
+        : "Everything that was planned for your projects in the last 24 hours: new requests, direct bookings and bookings of resources to requests."
     };
   }
 }
