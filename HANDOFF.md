@@ -58,7 +58,7 @@ Where the email CTA points, by `linkState`:
 
 - **Schedule:** Monday to Friday at 07:00 Europe/Berlin, covering the previous 24 hours. No mails on Saturday and Sunday; Monday's mail covers Friday, Saturday and Sunday (`period` prop: `weekday` | `monday`).
 - **Order:** projects → resource types (Equipment, Person, Crew, Truck transport) → requests, bookings, resources assigned to requests, each in creation order.
-- **Content:** period, a summary with request / booking / assigned counts per project (`showSummary`), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (`Electrician › High voltage`).
+- **Content:** period, three totals at the top (projects, requests, bookings), a summary with request / booking / assigned counts per project (`showSummary`; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (`Electrician › High voltage`).
 - Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.
 
 ## Validation rules in the prototype

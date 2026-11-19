@@ -24,6 +24,9 @@ a:hover { color: #ff1e00; }
   .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
   .dg-h1 { font-size: 27px !important; }
   .dg-card { padding: 16px 16px 14px !important; }
+  .dg-sumrow { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; row-gap: 6px !important; }
+  .dg-sumname { grid-column: 1 / -1; }
+  .dg-sumhide { display: none; }
 }
 </style>
 </helmet>
@@ -51,25 +54,39 @@ a:hover { color: #ff1e00; }
         <span style="font-size:14px;font-weight:700">{{ intervalShort }}</span>
         <span style="font-size:12px;color:#6f6b66">{{ intervalTimes }}</span>
       </div>
+      <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));background:#f4f2ef;border:1px solid #e2e0dc">
+        <div style="padding:18px 10px 16px;text-align:center">
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ projectCount }}</div>
+          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Projects</div>
+        </div>
+        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalRequests }}</div>
+          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Requests</div>
+        </div>
+        <div style="padding:18px 10px 16px;text-align:center;border-left:1px solid #e2e0dc">
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:30px;line-height:1">{{ totalBookings }}</div>
+          <div style="margin-top:8px;font-size:12px;color:#6f6b66">Bookings</div>
+        </div>
+      </div>
     </div>
 
     <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ true }}">
     <div class="dg-pad" style="padding:30px 44px 6px">
       <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:12px">SUMMARY</div>
       <div style="border-top:1px solid #1a1a1a">
-        <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 0;border-bottom:1px solid #e2e0dc;font-size:10px;letter-spacing:0.1em;color:#6f6b66;font-weight:500">
-          <div>PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">BOOKINGS</div><div style="text-align:right">ASSIGNED</div>
+        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 0;border-bottom:1px solid #e2e0dc;font-size:10px;letter-spacing:0.1em;color:#6f6b66;font-weight:500">
+          <div class="dg-sumhide">PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">BOOKINGS</div><div style="text-align:right">ASSIGNED</div>
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-          <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;border-bottom:1px solid #e2e0dc;font-size:13px;align-items:baseline">
-            <div style="min-width:0"><div style="font-size:11px;color:#6f6b66;margin-bottom:3px">{{ p.cc }}</div><div style="font-weight:500;overflow-wrap:anywhere">{{ p.title }}</div></div>
+          <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;border-bottom:1px solid #e2e0dc;font-size:13px;align-items:baseline">
+            <div class="dg-sumname" style="min-width:0"><div style="font-size:11px;color:#6f6b66;margin-bottom:3px">{{ p.cc }}</div><div style="font-weight:500;overflow-wrap:break-word">{{ p.title }}</div></div>
             <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div>
             <div style="text-align:right;font-weight:700">{{ p.nBookings }}</div>
             <div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
           </div>
         </sc-for>
-        <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;font-size:13px;font-weight:700">
-          <div>Total</div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
+        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;font-size:13px;font-weight:700">
+          <div class="dg-sumname">Total</div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
         </div>
       </div>
     </div>
@@ -227,7 +244,7 @@ class Component extends DCLogic {
 
     const intervalShort = d(start) + " – " + d(end);
     return {
-      projects, totalRequests: tr, totalBookings: tb, totalAssigned: ta,
+      projects, projectCount: projects.length, totalRequests: tr, totalBookings: tb, totalAssigned: ta,
       showSummary: this.props.showSummary ?? true,
       kicker: monday ? "WEEKEND DIGEST · FRIDAY TO SUNDAY" : "DAILY DIGEST",
       intervalShort,
