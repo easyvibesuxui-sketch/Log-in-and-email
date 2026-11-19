@@ -9,65 +9,65 @@
 <x-dc>
 <helmet>
 <meta name="design_doc_mode" content="canvas">
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#141414"/><rect x="120" y="120" width="160" height="6" fill="#ff1e00"/><text x="200" y="180" font-family="Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#ffffff" text-anchor="middle">SAM</text></svg></template>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#151515"/><rect x="120" y="120" width="160" height="6" fill="#ff1900"/><text x="200" y="180" font-family="Helvetica,Arial,sans-serif" font-size="54" font-weight="700" fill="#ffffff" text-anchor="middle">SAM</text></svg></template>
 <script src="./excavator-scene.js"></script>
 <style>
-html, body { margin: 0; padding: 0; background: #141414; }
+html, body { margin: 0; padding: 0; background: #151515; }
 a { color: #ffffff; }
-a:hover { color: #ff1e00; }
+a:hover { color: #ff1900; }
 </style>
 </helmet>
 <sc-if value="{{ isFlow }}" hint-placeholder-val="{{ false }}">
-<div style="position:relative;min-height:100vh;background:#1a1a1a">
+<div style="position:relative;min-height:100vh;background:#151515">
   <dc-import name="SAM Login Deploy" start-step="{{ flowStep }}" link-used="{{ flowLinkUsed }}" hint-size="100%,100vh"></dc-import>
-  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(21,21,21,0.72);backdrop-filter:blur(6px);border:1px solid #343434;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:#f1f1f1;text-decoration:none" style-hover="color:#ffffff;border-color:#a7b0b3">
     <span>MAP</span>
-    <span style="color:rgba(255,255,255,0.32)">{{ routeLabel }}</span>
+    <span style="color:#a7b0b3">{{ routeLabel }}</span>
   </a>
 </div>
 </sc-if>
 
 <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ false }}">
-<div style="position:relative;min-height:100vh;background:#141414">
+<div style="position:relative;min-height:100vh;background:#151515">
   <dc-import name="SAM Invitation Email" hint-size="100%,100vh"></dc-import>
-  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(21,21,21,0.82);backdrop-filter:blur(6px);border:1px solid #343434;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:#f1f1f1;text-decoration:none" style-hover="color:#ffffff;border-color:#a7b0b3">
     <span>MAP</span>
-    <span style="color:rgba(255,255,255,0.32)">E-MAIL</span>
+    <span style="color:#a7b0b3">E-MAIL</span>
   </a>
 </div>
 </sc-if>
 
 <sc-if value="{{ isEmailDeploy }}" hint-placeholder-val="{{ false }}">
-<div style="position:relative;min-height:100vh;background:#141414">
+<div style="position:relative;min-height:100vh;background:#151515">
   <dc-import name="SAM Email Deploy" hint-size="100%,100vh"></dc-import>
-  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(21,21,21,0.82);backdrop-filter:blur(6px);border:1px solid #343434;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:#f1f1f1;text-decoration:none" style-hover="color:#ffffff;border-color:#a7b0b3">
     <span>MAP</span>
-    <span style="color:rgba(255,255,255,0.32)">DEPLOY</span>
+    <span style="color:#a7b0b3">DEPLOY</span>
   </a>
 </div>
 </sc-if>
 
 <sc-if value="{{ isExcavator }}" hint-placeholder-val="{{ false }}">
-<div style="position:relative;min-height:100vh;background:#1a1a1a">
+<div style="position:relative;min-height:100vh;background:#151515">
   <dc-import name="SAM Excavator Interactive" hint-size="100%,100vh"></dc-import>
-  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(26,26,26,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.16);font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.62);text-decoration:none" style-hover="color:#ffffff;border-color:rgba(255,255,255,0.4)">
+  <a href="#map" style="position:fixed;bottom:14px;right:16px;z-index:50;display:flex;align-items:center;gap:7px;padding:7px 11px;background:rgba(21,21,21,0.72);backdrop-filter:blur(6px);border:1px solid #343434;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.1em;color:#f1f1f1;text-decoration:none" style-hover="color:#ffffff;border-color:#a7b0b3">
     <span>MAP</span>
-    <span style="color:rgba(255,255,255,0.32)">SCENE</span>
+    <span style="color:#a7b0b3">SCENE</span>
   </a>
 </div>
 </sc-if>
 
 <sc-if value="{{ isMap }}" hint-placeholder-val="{{ true }}">
-<div style="min-height:100vh;background:#141414;color:#fff;font-family:Helvetica,Arial,sans-serif;padding:56px 56px 80px;box-sizing:border-box">
+<div style="min-height:100vh;background:#151515;color:#fff;font-family:Helvetica,Arial,sans-serif;padding:56px 56px 80px;box-sizing:border-box">
 
-  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid #2e2e2e;padding-bottom:26px;margin-bottom:46px">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;border-bottom:1px solid #343434;padding-bottom:26px;margin-bottom:46px">
     <div>
       <div style="font-size:38px;font-weight:700;letter-spacing:-0.01em;line-height:1">SAM — architecture</div>
-      <div style="font-size:13px;color:#8f8f8f;margin-top:10px">Smart Asset Manager · every screen as its own page</div>
+      <div style="font-size:13px;color:#a7b0b3;margin-top:10px">Smart Asset Manager · every screen as its own page</div>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="#login" style="padding:10px 14px;border:1px solid #3a3a3a;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#d8d8d8" style-hover="border-color:#ff1e00;color:#ff1e00">FULL FLOW</a>
-      <a href="#excavator" style="padding:10px 14px;border:1px solid #3a3a3a;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#d8d8d8" style-hover="border-color:#ff1e00;color:#ff1e00">EXCAVATOR SCENE</a>
+      <a href="#login" style="padding:10px 14px;border:1px solid #343434;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#f1f1f1" style-hover="border-color:#ff1900;color:#ff1900">FULL FLOW</a>
+      <a href="#excavator" style="padding:10px 14px;border:1px solid #343434;font-size:11px;letter-spacing:0.1em;text-decoration:none;color:#f1f1f1" style-hover="border-color:#ff1900;color:#ff1900">EXCAVATOR SCENE</a>
     </div>
   </div>
 
@@ -75,117 +75,117 @@ a:hover { color: #ff1e00; }
 
     <sc-if value="{{ showEmailLane }}" hint-placeholder-val="{{ true }}">
     <div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1900;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">01 · INVITATION</div>
-        <div style="font-size:11px;color:#6f6f6f">entry</div>
+        <div style="font-size:11px;color:#a7b0b3">entry</div>
       </div>
       <div style="display:grid;gap:0">
-        <a href="#email" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">E-MAIL</div>
+        <a href="#email" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#ff1900">E-MAIL</div>
           <div style="font-size:16px;font-weight:700">Invitation e-mail</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Sent by the admin. Single call to action opens the welcome screen.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Sent by the admin. Single call to action opens the welcome screen.</div>
         </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#email-deploy" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#ff5b45">E-MAIL</div>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#343434"></div></div>
+        <a href="#email-deploy" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#ff1900">E-MAIL</div>
           <div style="font-size:16px;font-weight:700">Deploy version</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Production build of the same e-mail, ready to hand to development.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Production build of the same e-mail, ready to hand to development.</div>
         </a>
       </div>
     </div>
     </sc-if>
 
     <div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1900;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">02 · AUTHENTICATION</div>
-        <div style="font-size:11px;color:#6f6f6f">5 pages</div>
+        <div style="font-size:11px;color:#a7b0b3">5 pages</div>
       </div>
       <div style="display:grid;gap:0">
-        <a href="#login" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">01</div>
+        <a href="#login" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">01</div>
           <div style="font-size:16px;font-weight:700">Login</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">E-mail and password or Google / Microsoft, remember me. Error when the account hasn't been added by an administrator.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">E-mail and password or Google / Microsoft, remember me. Error when the account hasn't been added by an administrator.</div>
         </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#recovery" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">02</div>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#343434"></div></div>
+        <a href="#recovery" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">02</div>
           <div style="font-size:16px;font-weight:700">Forgot password</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Recovery e-mail entry. Validation before the code can be sent.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Recovery e-mail entry. Validation before the code can be sent.</div>
         </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#code" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">03</div>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#343434"></div></div>
+        <a href="#code" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">03</div>
           <div style="font-size:16px;font-weight:700">Enter code</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Six digit code, ten minute expiry, resend.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Six digit code, ten minute expiry, resend.</div>
         </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#reset" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">04</div>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#343434"></div></div>
+        <a href="#reset" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">04</div>
           <div style="font-size:16px;font-weight:700">New password</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Strength rules and confirmation match.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Strength rules and confirmation match.</div>
         </a>
-        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#3a3a3a"></div></div>
-        <a href="#done" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">05</div>
+        <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;height:100%;background:#343434"></div></div>
+        <a href="#done" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">05</div>
           <div style="font-size:16px;font-weight:700">Password updated</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Confirmation, returns to login.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Confirmation, returns to login.</div>
         </a>
       </div>
     </div>
 
     <div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1900;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">03 · ACTIVATION</div>
-        <div style="font-size:11px;color:#6f6f6f">1 page</div>
+        <div style="font-size:11px;color:#a7b0b3">1 page</div>
       </div>
       <div style="display:grid;gap:0">
-        <a href="#welcome" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">06</div>
+        <a href="#welcome" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">06</div>
           <div style="font-size:16px;font-weight:700">Welcome / activate</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Set a password or join with Google / Microsoft. Then back to login with an "account activated" notice.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Set a password or join with Google / Microsoft. Then back to login with an "account activated" notice.</div>
         </a>
       </div>
     </div>
 
     <div>
-      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1e00;padding-top:12px;margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;border-top:2px solid #ff1900;padding-top:12px;margin-bottom:20px">
         <div style="font-size:11px;letter-spacing:0.18em;color:#fff;font-weight:700">04 · EDGE CASES</div>
-        <div style="font-size:11px;color:#6f6f6f">5 pages</div>
+        <div style="font-size:11px;color:#a7b0b3">5 pages</div>
       </div>
       <div style="display:grid;gap:26px">
-        <a href="#used" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">13</div>
+        <a href="#used" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">13</div>
           <div style="font-size:16px;font-weight:700">Activation link used</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Account is already active. Login with a notice above the form.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Account is already active. Login with a notice above the form.</div>
         </a>
-        <a href="#invalid" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">14</div>
+        <a href="#invalid" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">14</div>
           <div style="font-size:16px;font-weight:700">Link broken</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">User was deleted by an admin. Dead end with a support route out.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">User was deleted by an admin. Dead end with a support route out.</div>
         </a>
-        <a href="#not-invited" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">15</div>
+        <a href="#not-invited" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">15</div>
           <div style="font-size:16px;font-weight:700">Not invited — e-mail</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Sign in with an e-mail no administrator has added. Error under the e-mail field.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Sign in with an e-mail no administrator has added. Error under the e-mail field.</div>
         </a>
-        <a href="#not-invited-google" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">16</div>
+        <a href="#not-invited-google" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">16</div>
           <div style="font-size:16px;font-weight:700">Not invited — Google</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Google account not added by an administrator. Error under the sign-in buttons.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Google account not added by an administrator. Error under the sign-in buttons.</div>
         </a>
-        <a href="#not-invited-microsoft" style="display:grid;gap:7px;padding:17px 19px;background:#1e1e1e;border:1px solid #313131;text-decoration:none;color:#fff" style-hover="border-color:#ff1e00;background:#232323">
-          <div style="font-size:10px;letter-spacing:0.16em;color:#6f6f6f">17</div>
+        <a href="#not-invited-microsoft" style="display:grid;gap:7px;padding:17px 19px;background:#151515;border:1px solid #343434;text-decoration:none;color:#fff" style-hover="border-color:#ff1900;background:#343434">
+          <div style="font-size:10px;letter-spacing:0.16em;color:#a7b0b3">17</div>
           <div style="font-size:16px;font-weight:700">Not invited — Microsoft</div>
-          <div style="font-size:12px;color:#9a9a9a;line-height:1.5">Microsoft account not added by an administrator. Error under the sign-in buttons.</div>
+          <div style="font-size:12px;color:#a7b0b3;line-height:1.5">Microsoft account not added by an administrator. Error under the sign-in buttons.</div>
         </a>
       </div>
     </div>
 
   </div>
 
-  <div style="margin-top:56px;border-top:1px solid #2e2e2e;padding-top:20px;display:flex;gap:34px;flex-wrap:wrap;font-size:12px;color:#7d7d7d">
+  <div style="margin-top:56px;border-top:1px solid #343434;padding-top:20px;display:flex;gap:34px;flex-wrap:wrap;font-size:12px;color:#a7b0b3">
     <div>Every page reuses one component; the step is set per page.</div>
-    <div>Deep links work on this page too: <span style="color:#c9c9c9">…/#welcome</span></div>
+    <div>Deep links work on this page too: <span style="color:#f1f1f1">…/#welcome</span></div>
   </div>
 
 </div>

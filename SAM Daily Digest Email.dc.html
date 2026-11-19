@@ -33,6 +33,7 @@ a:hover { color: #ff1900; }
   .pdf-wrap { padding: 0 !important; background: #ffffff !important; min-height: 0 !important; }
   .pdf-sheet { box-shadow: none !important; padding: 0 !important; max-width: none !important; }
   .pdf-keep { break-inside: avoid; }
+  .pdf-brand { margin: 0 !important; padding: 22px 24px 20px !important; border-radius: 12px; }
   .pdf-head { break-after: avoid; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
@@ -87,7 +88,7 @@ a:hover { color: #ff1900; }
           <div class="dg-sumhide">PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-          <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#ffe7e5;border-left:3px solid #ff1900;font-size:13px;align-items:baseline">
+          <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#f1f1f1;border-radius:8px;font-size:13px;align-items:baseline">
             <div class="dg-sumname" style="min-width:0"><div style="font-size:11px;color:#343434;margin-bottom:3px">{{ p.cc }}</div><a href="{{ p.url }}" style="display:inline;font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:3px;overflow-wrap:break-word" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></div>
             <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div>
             <div style="text-align:right;font-weight:700">{{ p.nBookings }}</div>
@@ -172,15 +173,15 @@ a:hover { color: #ff1900; }
 <div class="pdf-wrap" style="background:#f1f1f1;padding:32px 16px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#151515;min-height:100vh;box-sizing:border-box">
   <div class="pdf-sheet" style="max-width:794px;margin:0 auto;background:#ffffff;box-shadow:0 2px 18px rgba(0,0,0,0.08);padding:40px 44px 36px;box-sizing:border-box">
 
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:2px solid #151515;padding-bottom:14px">
+    <div class="pdf-brand" style="margin:-40px -44px 0;padding:26px 44px 24px;background:linear-gradient(110deg,#151515 0%,#151515 42%,#343434 58%,#a7b0b3 82%,#f1f1f1 100%);color:#ffffff;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
       <div>
-        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:0.95">SAM</div>
-        <div style="font-size:8px;letter-spacing:0.13em;margin-top:5px;color:#343434">SMART ASSET MANAGER</div>
+        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:28px;line-height:0.95;letter-spacing:0.01em">SAM</div>
+        <div style="font-size:8px;letter-spacing:0.13em;margin-top:6px;color:#a7b0b3">SMART ASSET MANAGER</div>
       </div>
-      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:15px;color:#ff1900">syniotec</div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:15px;padding-top:4px;color:#ff1900">syniotec</div>
     </div>
 
-    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin-top:20px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin-top:24px">
       <div>
         <div style="font-size:9px;letter-spacing:0.14em;font-weight:700;color:#151515;margin-bottom:8px;border-left:3px solid #ff1900;padding-left:7px">{{ kicker }}</div>
         <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:24px;line-height:1.1;margin:0">Resource digest</h1>
@@ -191,66 +192,65 @@ a:hover { color: #ff1900; }
       </div>
     </div>
 
-    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));border:1px solid #a7b0b3;background:#f1f1f1">
-      <div style="padding:10px 12px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalRequests }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Requests</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalBookings }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Direct bookings</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalAssigned }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Bookings</div></div>
-      <div style="padding:10px 12px;border-left:1px solid #a7b0b3"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ projectCount }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Projects</div></div>
+    <div style="margin-top:16px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:10px">
+      <div style="background:#f1f1f1;border-radius:12px;padding:12px 14px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalRequests }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Requests</div></div>
+      <div style="background:#f1f1f1;border-radius:12px;padding:12px 14px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalBookings }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Direct bookings</div></div>
+      <div style="background:#f1f1f1;border-radius:12px;padding:12px 14px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ totalAssigned }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Bookings</div></div>
+      <div style="background:#f1f1f1;border-radius:12px;padding:12px 14px"><div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1">{{ projectCount }}</div><div style="margin-top:5px;font-size:9px;color:#343434">Projects</div></div>
     </div>
 
     <div style="margin-top:18px;font-size:9px;letter-spacing:0.14em;font-weight:500;color:#343434;margin-bottom:6px">SUMMARY</div>
-    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 10px 6px 13px;font-size:8.5px;letter-spacing:0.1em;color:#343434;font-weight:500;border-top:1px solid #151515">
+    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 10px;font-size:8.5px;letter-spacing:0.1em;color:#343434;font-weight:500;border-top:1px solid #151515">
       <div>COST CENTER</div><div>PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">DIRECT BOOKINGS</div><div style="text-align:right">BOOKINGS</div>
     </div>
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-      <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 10px;margin-top:3px;background:#ffe7e5;border-left:3px solid #ff1900;font-size:10px;align-items:baseline">
+      <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 10px;margin-top:4px;background:#f1f1f1;border-radius:8px;font-size:10px;align-items:baseline">
         <div style="color:#343434">{{ p.cc }}</div>
         <a href="{{ p.url }}" style="font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a>
         <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div><div style="text-align:right;font-weight:700">{{ p.nBookings }}</div><div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
       </div>
     </sc-for>
-    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px 8px 13px;margin-top:3px;background:#151515;color:#ffffff;font-size:10px;font-weight:700">
+    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px;margin-top:4px;background:#151515;border-radius:8px;color:#ffffff;font-size:10px;font-weight:700">
       <div>Total</div><div></div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
     </div>
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
-    <div style="margin-top:22px">
-      <div class="pdf-keep pdf-head" style="background:#151515;color:#ffffff;padding:9px 12px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
+    <div style="margin-top:22px;border:1px solid #a7b0b3;border-radius:12px;overflow:hidden">
+      <div class="pdf-keep pdf-head" style="background:#151515;color:#ffffff;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
         <div style="font-size:11px"><span style="color:#a7b0b3">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#ffffff;font-weight:700;text-decoration:none">{{ p.title }}</a></div>
         <div style="font-size:9px;color:#f1f1f1">{{ p.countsLine }}</div>
       </div>
-
-      <sc-for list="{{ p.types }}" as="t" hint-placeholder-count="3">
-      <div style="margin-top:12px">
-        <div class="pdf-keep pdf-head" style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #151515;padding-bottom:4px">
-          <div style="font-size:10px;letter-spacing:0.14em;font-weight:700">{{ t.name }}</div>
-          <div style="font-size:9px;color:#343434">{{ t.countLabel }}</div>
+      <div style="padding:2px 12px 12px">
+      <sc-for list="{{ p.kindGroups }}" as="g" hint-placeholder-count="3">
+      <div style="margin-top:10px;border:1px solid #a7b0b3;border-radius:8px;overflow:hidden">
+        <div class="pdf-keep pdf-head" style="display:flex;justify-content:space-between;align-items:center;background:#f1f1f1;padding:7px 10px">
+          <span style="{{ g.pillStyle }}">{{ g.label }}</span>
+          <div style="font-size:9px;font-weight:700;color:#343434">{{ g.countLabel }}</div>
         </div>
-        <div class="pdf-head" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:5px 0;font-size:8px;letter-spacing:0.1em;color:#343434;font-weight:500;border-bottom:1px solid #a7b0b3">
-          <div>TYPE</div><div>ITEM</div><div>DETAILS</div><div style="text-align:right">CREATED</div>
+        <div class="pdf-head" style="display:grid;grid-template-columns:86px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:5px 10px;font-size:8px;letter-spacing:0.1em;color:#343434;font-weight:500;border-bottom:1px solid #a7b0b3">
+          <div>RESOURCE</div><div>ITEM</div><div>DETAILS</div><div style="text-align:right">CREATED</div>
         </div>
-        <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="2">
-          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
-          <div class="pdf-keep" style="display:grid;grid-template-columns:96px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:8px 0;border-bottom:1px solid #a7b0b3;font-size:10px;line-height:1.45">
-            <div><span style="{{ it.pdfBadgeStyle }}">{{ it.badge }}</span></div>
+        <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+          <div class="pdf-keep pdf-row" style="display:grid;grid-template-columns:86px minmax(0,1.15fr) minmax(0,1.6fr) 84px;gap:0 10px;padding:8px 10px;border-top:1px solid #f1f1f1;font-size:10px;line-height:1.45">
+            <div style="font-size:8.5px;letter-spacing:0.1em;font-weight:700;color:#343434;text-transform:uppercase">{{ it.resource }}</div>
             <div style="min-width:0">
               <div style="font-weight:700;overflow-wrap:anywhere">{{ it.title }}</div>
-              <a href="{{ it.url }}" style="font-size:9px;color:#151515;text-decoration:underline;text-underline-offset:2px">Open in SAM</a>
+              <a href="{{ it.url }}" style="display:inline-block;margin-top:6px;background:#151515;color:#f1f1f1;font-size:8.5px;font-weight:700;letter-spacing:0.02em;text-decoration:none;padding:5px 10px;border-radius:8px">View in SAM</a>
             </div>
             <div style="min-width:0">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
                 <div style="overflow-wrap:anywhere"><span style="color:#343434">{{ f.label }}: </span>{{ f.value }}</div>
               </sc-for>
               <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
-                <div style="margin-top:4px;background:#f1f1f1;padding:4px 7px;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
+                <div style="margin-top:4px;background:#f1f1f1;border-radius:8px;padding:4px 7px;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
               </sc-if>
             </div>
             <div style="text-align:right;color:#343434">{{ it.createdAt }}</div>
           </div>
-          </sc-for>
         </sc-for>
       </div>
       </sc-for>
+      </div>
     </div>
     </sc-for>
 
@@ -278,8 +278,8 @@ class Component extends DCLogic {
     const REQ = "request", BOOK = "booking", ASG = "assigned";
     const kinds = {
       request:  { badge: "REQUEST",  heading: "Requests",             bar: "#151515", bg: "#ffffff", fg: "#151515" },
-      booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#ff1900", bg: "#ff1900", fg: "#151515" },
-      assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#459af7", bg: "#459af7", fg: "#151515" }
+      booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#fe7d00", bg: "#fe7d00", fg: "#ffffff" },
+      assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#459af7", bg: "#459af7", fg: "#ffffff" }
     };
     const item = (kind, title, created, fields, info) => ({ kind, title, created, fields, info: info || "" });
     const F = (label, value) => ({ label, value });
@@ -330,7 +330,7 @@ class Component extends DCLogic {
             const verb = i.kind === REQ ? "Request created" : "Booking created";
             seq += 1;
             return {
-              url: base + "/plans/" + seq, title: i.title, info: i.info, hasInfo: !!i.info, badge: k.badge,
+              url: base + "/plans/" + seq, resource: name, title: i.title, info: i.info, hasInfo: !!i.info, badge: k.badge,
               fields: i.fields.concat([F(verb, dt(i.created))]),
               details: i.fields, createdAt: dt(i.created),
               pdfBadgeStyle: { display: "inline-block", fontSize: 7.5, letterSpacing: "0.12em", fontWeight: 700, padding: "3px 5px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" },
@@ -339,13 +339,21 @@ class Component extends DCLogic {
             };
           });
           if (kind === REQ) nr += items.length; else if (kind === BOOK) nb += items.length; else na += items.length;
-          return { heading: kinds[kind].heading + " (" + items.length + ")", items };
+          return { kind, heading: kinds[kind].heading + " (" + items.length + ")", items };
         }).filter(g => g.items.length);
         return { name: name.toUpperCase(), countLabel: list.length + (list.length === 1 ? " item" : " items"), groups };
       });
+      const kindGroups = [REQ, BOOK, ASG].map(kind => {
+        const items = types.flatMap(t => t.groups.filter(g => g.kind === kind).flatMap(g => g.items));
+        const k = kinds[kind];
+        return { label: k.badge === "REQUEST" ? "REQUESTS" : k.badge === "BOOKING" ? "BOOKINGS" : "DIRECT BOOKINGS",
+          countLabel: items.length + (items.length === 1 ? " item" : " items"), items,
+          pillStyle: { display: "inline-block", fontSize: 8.5, letterSpacing: "0.12em", fontWeight: 700, padding: "4px 8px", borderRadius: 8,
+            border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" } };
+      }).filter(g => g.items.length);
       tr += nr; tb += nb; ta += na; total += nr + nb + na;
       const part = (n, one, many) => n + " " + (n === 1 ? one : many);
-      return { cc: p.cc, title: p.title, url: base, types, nRequests: nr, nBookings: nb, nAssigned: na,
+      return { cc: p.cc, title: p.title, url: base, types, kindGroups, nRequests: nr, nBookings: nb, nAssigned: na,
         countsLine: [part(nr, "request", "requests"), part(nb, "direct booking", "direct bookings"), part(na, "booking", "bookings")].join(" · ") };
     });
 

@@ -12,35 +12,35 @@
 @font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
-html, body { margin: 0; padding: 0; background: #1a1a1a; overflow: hidden; }
+html, body { margin: 0; padding: 0; background: #151515; overflow: hidden; }
 a { color: #ffffff; }
-a:hover { color: #ff1e00; }
+a:hover { color: #ff1900; }
 @keyframes hintPulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
 </style>
 </helmet>
-<div ref="{{ stageRef }}" onPointerMove="{{ onMove }}" onPointerLeave="{{ onLeave }}" onPointerDown="{{ onDown }}" style="position:relative;width:100vw;height:100vh;overflow:hidden;background:#1a1a1a;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#fff;cursor:crosshair;user-select:none">
+<div ref="{{ stageRef }}" onPointerMove="{{ onMove }}" onPointerLeave="{{ onLeave }}" onPointerDown="{{ onDown }}" style="position:relative;width:100vw;height:100vh;overflow:hidden;background:#151515;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#fff;cursor:crosshair;user-select:none">
 
   <canvas ref="{{ canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
 
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,0.35) 0%,rgba(26,26,26,0) 32%,rgba(26,26,26,0.2) 62%,rgba(26,26,26,0.9) 100%);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,21,21,0.35) 0%,rgba(21,21,21,0) 32%,rgba(21,21,21,0.2) 62%,rgba(21,21,21,0.9) 100%);pointer-events:none"></div>
 
   <div style="position:absolute;top:0;left:0;right:0;display:flex;align-items:flex-start;justify-content:space-between;padding:34px 44px;pointer-events:none">
     <div>
       <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:0.95;letter-spacing:0.01em">SAM</div>
-      <div style="font-size:11px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#e6e6e6">SMART ASSET MANAGER</div>
+      <div style="font-size:11px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#f1f1f1">SMART ASSET MANAGER</div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.11em;color:#e6e6e6">
-      <span style="width:7px;height:7px;background:#ff1e00;border-radius:50%"></span>
+    <div style="display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:0.11em;color:#f1f1f1">
+      <span style="width:7px;height:7px;background:#ff1900;border-radius:50%"></span>
       <span style="white-space:nowrap">{{ frameLabel }}</span>
     </div>
   </div>
 
   <div style="position:absolute;inset:auto 0 0 0;display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:0 44px 40px;pointer-events:none">
     <div style="max-width:520px">
-      <p style="margin:0;font-size:15px;line-height:1.55;color:#e8e8e8;text-wrap:pretty">Move your cursor across the site. The boom follows it, reaching out and digging in. Click to run a full dig cycle.</p>
+      <p style="margin:0;font-size:15px;line-height:1.55;color:#f1f1f1;text-wrap:pretty">Move your cursor across the site. The boom follows it, reaching out and digging in. Click to run a full dig cycle.</p>
     </div>
-    <div style="display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.12em;color:#cfcfcf;animation:hintPulse 2.6s ease-in-out infinite;flex:none">
-      <span style="display:block;width:66px;height:1px;background:#ff1e00"></span>
+    <div style="display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:0.12em;color:#a7b0b3;animation:hintPulse 2.6s ease-in-out infinite;flex:none">
+      <span style="display:block;width:66px;height:1px;background:#ff1900"></span>
       <span style="white-space:nowrap">{{ modeLabel }}</span>
     </div>
   </div>
