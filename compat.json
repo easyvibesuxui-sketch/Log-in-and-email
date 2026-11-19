@@ -56,6 +56,11 @@
       "kind": "component"
     },
     {
+      "path": "SAM Daily Digest Email.dc.html",
+      "title": "SAM Daily Digest Email",
+      "kind": "page"
+    },
+    {
       "path": "SAM 15 Not invited e-mail.dc.html",
       "title": "SAM 15 Not invited e-mail",
       "kind": "page"

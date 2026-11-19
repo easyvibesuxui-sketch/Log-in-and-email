@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAM daily planning digest</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExp"; src: url("./uploads/ABCFavoritExpanded-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Book.otf") format("opentype"); font-weight: 350; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FavoritExt"; src: url("./uploads/ABCFavoritExtended-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+html, body { margin: 0; padding: 0; background: #e9e7e3; }
+a { color: #1a1a1a; }
+a:hover { color: #ff1e00; }
+@media (max-width: 560px) {
+  .dg-outer { padding: 24px 12px !important; }
+  .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
+  .dg-h1 { font-size: 27px !important; }
+  .dg-card { padding: 16px 16px 14px !important; }
+}
+</style>
+</helmet>
+<div class="dg-outer" style="background:#e9e7e3;padding:48px 20px;font-family:'FavoritExt',Helvetica,Arial,sans-serif;color:#1a1a1a;min-height:100vh;box-sizing:border-box">
+
+  <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#5c5853">{{ preheader }}</div>
+
+  <div style="max-width:600px;margin:0 auto;background:#ffffff">
+
+    <div class="dg-pad" style="background:linear-gradient(110deg,#1a1a1a 0%,#1a1a1a 42%,#3a3a3a 58%,#c9c7c3 82%,#f6f5f3 100%);color:#ffffff;padding:32px 44px 30px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #e2e0dc">
+      <div>
+        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:34px;line-height:0.95;letter-spacing:0.01em">SAM</div>
+        <div style="font-size:9px;letter-spacing:0.13em;font-weight:400;margin-top:7px;color:#a5a19b">SMART ASSET MANAGER</div>
+      </div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:17px;line-height:1;letter-spacing:-0.01em;padding-top:5px;color:#ff1e00">syniotec</div>
+    </div>
+
+    <div class="dg-pad" style="padding:44px 44px 8px">
+      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#e01a00;margin-bottom:18px">{{ kicker }}</div>
+      <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">Resource planning digest</h1>
+      <p style="margin:0;font-size:14px;line-height:1.65;color:#3d3d3d;max-width:470px;text-wrap:pretty">{{ intro }}</p>
+
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f4f2ef;padding:14px 18px">
+        <span style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66">PERIOD</span>
+        <span style="font-size:14px;font-weight:700">{{ intervalShort }}</span>
+        <span style="font-size:12px;color:#6f6b66">{{ intervalTimes }}</span>
+      </div>
+    </div>
+
+    <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ true }}">
+    <div class="dg-pad" style="padding:30px 44px 6px">
+      <div style="font-size:10px;letter-spacing:0.14em;font-weight:500;color:#6f6b66;margin-bottom:12px">SUMMARY</div>
+      <div style="border-top:1px solid #1a1a1a">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:10px 0;border-bottom:1px solid #e2e0dc;font-size:10px;letter-spacing:0.1em;color:#6f6b66;font-weight:500">
+          <div>PROJECT</div><div style="text-align:right">REQUESTS</div><div style="text-align:right">BOOKINGS</div><div style="text-align:right">ASSIGNED</div>
+        </div>
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;border-bottom:1px solid #e2e0dc;font-size:13px;align-items:baseline">
+            <div style="min-width:0"><div style="font-size:11px;color:#6f6b66;margin-bottom:3px">{{ p.cc }}</div><div style="font-weight:500;overflow-wrap:anywhere">{{ p.title }}</div></div>
+            <div style="text-align:right;font-weight:700">{{ p.nRequests }}</div>
+            <div style="text-align:right;font-weight:700">{{ p.nBookings }}</div>
+            <div style="text-align:right;font-weight:700">{{ p.nAssigned }}</div>
+          </div>
+        </sc-for>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 0;font-size:13px;font-weight:700">
+          <div>Total</div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
+    <div class="dg-pad" style="padding:34px 44px 4px">
+      <div style="border-top:3px solid #1a1a1a;padding-top:18px">
+        <div style="font-size:11px;letter-spacing:0.06em;color:#6f6b66;margin-bottom:6px">COST CENTER {{ p.cc }}</div>
+        <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:21px;line-height:1.2;margin:0 0 10px;text-wrap:pretty">{{ p.title }}</h2>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font-size:12px;color:#3d3d3d">
+          <span>{{ p.countsLine }}</span>
+          <a href="#" style="font-weight:500;color:#1a1a1a;text-decoration:underline;text-underline-offset:3px" style-hover="color:#e01a00">Open project in SAM</a>
+        </div>
+      </div>
+
+      <sc-for list="{{ p.types }}" as="t" hint-placeholder-count="3">
+      <div style="margin-top:26px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:1px solid #1a1a1a;padding-bottom:8px">
+          <div style="font-size:12px;letter-spacing:0.14em;font-weight:700">{{ t.name }}</div>
+          <div style="font-size:12px;color:#6f6b66">{{ t.countLabel }}</div>
+        </div>
+
+        <sc-for list="{{ t.groups }}" as="g" hint-placeholder-count="2">
+        <div style="margin-top:16px">
+          <div style="font-size:11px;letter-spacing:0.08em;font-weight:500;color:#6f6b66;margin-bottom:10px">{{ g.heading }}</div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="1">
+          <div class="dg-card" style="{{ it.cardStyle }}">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:10px">
+              <span style="{{ it.badgeStyle }}">{{ it.badge }}</span>
+              <span style="font-size:14px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</span>
+            </div>
+            <sc-for list="{{ it.fields }}" as="f" hint-placeholder-count="5">
+              <div style="display:grid;grid-template-columns:min(150px, 40%) minmax(0,1fr);gap:0 12px;padding:5px 0;font-size:12px;line-height:1.5">
+                <div style="color:#6f6b66">{{ f.label }}</div>
+                <div style="color:#1a1a1a;overflow-wrap:anywhere">{{ f.value }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:10px;background:#f4f2ef;padding:10px 12px;font-size:12px;line-height:1.55;color:#3d3d3d"><span style="font-weight:500;color:#1a1a1a">Additional information: </span>{{ it.info }}</div>
+            </sc-if>
+          </div>
+          </sc-for>
+        </div>
+        </sc-for>
+      </div>
+      </sc-for>
+    </div>
+    </sc-for>
+
+    <div class="dg-pad" style="padding:30px 44px 40px">
+      <a href="#" style="display:block;width:320px;max-width:100%;background:#ff1e00;color:#ffffff;text-align:center;text-decoration:none;padding:16px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;transition:background 140ms ease" style-hover="background:#e01a00;color:#ffffff">Open planning board</a>
+      <div style="margin-top:18px;font-size:12px;line-height:1.6;color:#6f6b66;text-wrap:pretty">This digest is sent Monday to Friday at 07:00 (Europe/Berlin). Monday's digest covers Friday, Saturday and Sunday. <a href="#" style="color:#1a1a1a;text-decoration:underline;text-underline-offset:3px">Change digest settings</a></div>
+    </div>
+
+    <div class="dg-pad" style="background:#1a1a1a;color:#ffffff;padding:34px 44px 32px">
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:26px;line-height:1;letter-spacing:-0.01em;margin-bottom:20px">syniotec</div>
+      <p style="margin:0 0 22px;font-size:12px;line-height:1.6;color:#a5a19b;max-width:420px;text-wrap:pretty">syniotec GmbH · Hansastraße 14 · 80686 München · Germany</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px;font-size:12px;font-weight:500">
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Data policy</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Imprint</a>
+        <a href="#" style="color:#ffffff;text-decoration:none" style-hover="color:#ff1e00">Support</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#5c5853;text-wrap:pretty">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
+</div>
+</x-dc>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f4f2ef"/><rect x="0" y="0" width="100" height="26" fill="#1a1a1a"/><rect x="14" y="38" width="72" height="6" fill="#ff1e00"/><rect x="14" y="52" width="60" height="4" fill="#1a1a1a"/><rect x="14" y="62" width="66" height="4" fill="#8b8781"/><rect x="14" y="72" width="50" height="4" fill="#8b8781"/></svg></template>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;'weekday' | 'monday'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const monday = this.props.period === "monday";
+    // period start (UTC values used as Berlin wall-clock time, so no time-zone shifts)
+    const start = monday ? Date.UTC(2026, 9, 23, 7, 0) : Date.UTC(2026, 9, 20, 7, 0);
+    const end = monday ? Date.UTC(2026, 9, 26, 7, 0) : Date.UTC(2026, 9, 21, 7, 0);
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const p2 = n => String(n).padStart(2, "0");
+    const d = t => { const x = new Date(t); return p2(x.getUTCDate()) + "." + p2(x.getUTCMonth() + 1) + "." + x.getUTCFullYear(); };
+    const dt = t => d(t) + ", " + p2(new Date(t).getUTCHours()) + ":" + p2(new Date(t).getUTCMinutes());
+    const wd = t => days[new Date(t).getUTCDay()] + " " + dt(t);
+    // creation time inside the period: offset in hours from the start (stretched over Fri-Mon on Mondays)
+    const at = h => start + Math.round(h * (monday ? 3 : 1) * 60) * 60000;
+
+    const REQ = "request", BOOK = "booking", ASG = "assigned";
+    const kinds = {
+      request:  { badge: "REQUEST",  heading: "Requests",             bar: "#1a1a1a", bg: "#ffffff", fg: "#1a1a1a" },
+      booking:  { badge: "BOOKING",  heading: "Bookings",             bar: "#ff1e00", bg: "#c81800", fg: "#ffffff" },
+      assigned: { badge: "ASSIGNED", heading: "Assigned to requests", bar: "#6f6b66", bg: "#f4f2ef", fg: "#1a1a1a" }
+    };
+    const item = (kind, title, created, fields, info) => ({ kind, title, created, fields, info: info || "" });
+    const F = (label, value) => ({ label, value });
+
+    const data = [
+      { cc: "4711-200", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
+        Equipment: [
+          item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
+          item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
+          item(ASG, "EX-1057 · CAT 323 · Excavator, crawler", at(7.1), [F("Booking dates", "26.10.2026 – 13.11.2026"), F("Booked by", "Sabine Hoffmann")])
+        ],
+        Person: [
+          item(REQ, "Machine operator", at(1.4), [F("Qualification", "Machine operator"), F("Certificate", "Excavator licence DGUV 308-001"), F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Requested by", "Jonas Richter")], "Early shift, start 06:30."),
+          item(REQ, "Electrician › High voltage", at(3.0), [F("Qualification", "Electrician › High voltage"), F("Certificate", "Electrically skilled person (EFK)"), F("Requested count", "1"), F("Request dates", "02.11.2026 – 06.11.2026"), F("Requested by", "Jonas Richter")]),
+          item(REQ, "Surveyor › GNSS › Machine control set-up", at(9.5), [F("Qualification", "Surveyor › GNSS › Machine control set-up"), F("Certificate", "—"), F("Requested count", "1"), F("Request dates", "26.10.2026"), F("Requested by", "Lea Schubert")], "Set up the 3D model on both excavators before work starts."),
+          item(BOOK, "Lukas Brandt · P-20318 · Foreman", at(5.2), [F("Qualification", "Site management › Foreman"), F("Booking dates", "26.10.2026 – 20.11.2026"), F("Booked by", "Sabine Hoffmann")], "Also responsible for the concrete works."),
+          item(ASG, "Mehmet Yilmaz · P-20977 · Machine operator", at(8.3), [F("Qualification", "Machine operator"), F("Booking dates", "26.10.2026 – 13.11.2026"), F("Booked by", "Sabine Hoffmann")])
+        ],
+        Crew: [
+          item(REQ, "Concrete crew", at(4.6), [F("Tag", "Foundation"), F("Categories", "Concrete pump × 1, Internal vibrator × 2"), F("Qualifications", "Concrete worker × 4, Foreman × 1"), F("Request dates", "09.11.2026 – 20.11.2026"), F("Requested by", "Jonas Richter")], "Pour of foundation slab axis A–D."),
+          item(BOOK, "Crew Nord 3 · Concrete crew", at(10.2), [F("Crew type", "Concrete crew"), F("Booking dates", "09.11.2026 – 20.11.2026"), F("Booked by", "Sabine Hoffmann")], "Crew brings its own pump."),
+          item(ASG, "Crew Nord 5 · Formwork crew", at(11.8), [F("Crew type", "Formwork crew"), F("Booking dates", "02.11.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Formwork for foundation slab.")
+        ],
+        "Truck transport": [
+          item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
+        ]
+      } },
+      { cc: "4711-315", title: "Sanierung Brücke B75 Lübeck", types: {
+        Equipment: [
+          item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026 – 05.11.2026"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
+        ],
+        Person: [
+          item(ASG, "Anja Vogel · P-21104 · Welder", at(14.0), [F("Qualification", "Welder › Structural steel"), F("Booking dates", "03.11.2026 – 14.11.2026"), F("Booked by", "Tobias Krüger")])
+        ]
+      } }
+    ];
+
+    const order = ["Equipment", "Person", "Crew", "Truck transport"];
+    let tr = 0, tb = 0, ta = 0, total = 0;
+    const projects = data.map(p => {
+      let nr = 0, nb = 0, na = 0;
+      const types = order.filter(name => (p.types[name] || []).length).map(name => {
+        const list = p.types[name];
+        const groups = [REQ, BOOK, ASG].map(kind => {
+          const items = list.filter(i => i.kind === kind).sort((a, b) => a.created - b.created).map(i => {
+            const k = kinds[i.kind];
+            const verb = i.kind === REQ ? "Request created" : "Booking created";
+            return {
+              title: i.title, info: i.info, hasInfo: !!i.info, badge: k.badge,
+              fields: i.fields.concat([F(verb, dt(i.created))]),
+              cardStyle: { border: "1px solid #e2e0dc", borderLeft: "3px solid " + k.bar, padding: "18px 20px 16px", marginBottom: 12 },
+              badgeStyle: { fontSize: 9, letterSpacing: "0.14em", fontWeight: 700, padding: "4px 7px", border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1 }
+            };
+          });
+          if (kind === REQ) nr += items.length; else if (kind === BOOK) nb += items.length; else na += items.length;
+          return { heading: kinds[kind].heading + " (" + items.length + ")", items };
+        }).filter(g => g.items.length);
+        return { name: name.toUpperCase(), countLabel: list.length + (list.length === 1 ? " item" : " items"), groups };
+      });
+      tr += nr; tb += nb; ta += na; total += nr + nb + na;
+      const part = (n, one, many) => n + " " + (n === 1 ? one : many);
+      return { cc: p.cc, title: p.title, types, nRequests: nr, nBookings: nb, nAssigned: na,
+        countsLine: [part(nr, "request", "requests"), part(nb, "booking", "bookings"), part(na, "assigned resource", "assigned resources")].join(" · ") };
+    });
+
+    const intervalShort = d(start) + " – " + d(end);
+    return {
+      projects, totalRequests: tr, totalBookings: tb, totalAssigned: ta,
+      showSummary: this.props.showSummary ?? true,
+      kicker: monday ? "WEEKEND DIGEST · FRIDAY TO SUNDAY" : "DAILY DIGEST",
+      intervalShort,
+      intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
+      preheader: total + " new plans in " + projects.length + " projects · " + intervalShort,
+      intro: monday
+        ? "Everything that was planned for your projects on Friday, Saturday and Sunday: new requests, bookings and resources assigned to requests."
+        : "Everything that was planned for your projects in the last 24 hours: new requests, bookings and resources assigned to requests."
+    };
+  }
+}
+</script>
+</body>
+</html>
