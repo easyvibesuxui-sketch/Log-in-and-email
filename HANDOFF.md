@@ -52,7 +52,7 @@ Where the email CTA points, by `linkState`:
 - `used` → `#login`
 - `broken` → `#invalid`
 
-## Daily planning digest e-mail
+## Daily digest e-mail
 
 `SAM Daily Digest Email.dc.html` is the design for the digest sent to the responsible person, further responsible persons and dispatcher of a project when resources were planned for it.
 
@@ -60,6 +60,7 @@ Where the email CTA points, by `linkState`:
 - **Order:** projects → resource types (Equipment, Person, Crew, Truck transport) → requests, direct bookings (booked without a request), bookings (resources assigned to a request), each in creation order.
 - **Content:** period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (`showSummary`; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (`Electrician › High voltage`).
 - **Links:** project names (summary and section header) and the black "Open project in SAM" button open the project; every item card is a link to that plan ("View in SAM ›"); the main button downloads the digest as PDF. In the summary, project rows are tinted with a red edge and the Total row is dark.
+- **PDF:** "Download as PDF" opens an A4 PDF of the same digest (`variant` prop: `email` | `pdf`; canvas page `SAM Daily Digest PDF`). It has the header, the four totals (requests, direct bookings, bookings, projects), the summary, then one table per project and resource type with Type / Item / Details / Created columns and an "Open in SAM" link per row; page numbers in the footer. Sample files: `downloads/SAM-digest-2026-10-21.pdf` (weekday) and `downloads/SAM-digest-2026-10-26.pdf` (Monday, Friday to Sunday). In production the button needs a real, signed PDF URL.
 - Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.
 
 ## Validation rules in the prototype

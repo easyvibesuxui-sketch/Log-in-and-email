@@ -134,13 +134,14 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #2e2e2e;color:#dcdcdc;vertic
 - <code>valid</code> → <code>#welcome</code>
 - <code>used</code> → <code>#login</code>
 - <code>broken</code> → <code>#invalid</code></p>
-<h2>Daily planning digest e-mail</h2>
+<h2>Daily digest e-mail</h2>
 <p><code>SAM Daily Digest Email.dc.html</code> is the design for the digest sent to the responsible person, further responsible persons and dispatcher of a project when resources were planned for it.</p>
 <ul>
 <li><strong>Schedule:</strong> Monday to Friday at 07:00 Europe/Berlin, covering the previous 24 hours. No mails on Saturday and Sunday; Monday's mail covers Friday, Saturday and Sunday (<code>period</code> prop: <code>weekday</code> | <code>monday</code>).</li>
 <li><strong>Order:</strong> projects → resource types (Equipment, Person, Crew, Truck transport) → requests, direct bookings (booked without a request), bookings (resources assigned to a request), each in creation order.</li>
 <li><strong>Content:</strong> period, three totals at the top (requests, direct bookings, bookings), a summary with those three counts per project (<code>showSummary</code>; on phones each project name gets its own line), then per project its cost center and title and one card per item with the fields from the specification. Person qualifications show 1, 2 or 3 levels as a path (<code>Electrician › High voltage</code>).</li>
 <li><strong>Links:</strong> project names (summary and section header) and the black "Open project in SAM" button open the project; every item card is a link to that plan ("View in SAM ›"); the main button downloads the digest as PDF. In the summary, project rows are tinted with a red edge and the Total row is dark.</li>
+<li><strong>PDF:</strong> "Download as PDF" opens an A4 PDF of the same digest (<code>variant</code> prop: <code>email</code> | <code>pdf</code>; canvas page <code>SAM Daily Digest PDF</code>). It has the header, the four totals (requests, direct bookings, bookings, projects), the summary, then one table per project and resource type with Type / Item / Details / Created columns and an "Open in SAM" link per row; page numbers in the footer. Sample files: <code>downloads/SAM-digest-2026-10-21.pdf</code> (weekday) and <code>downloads/SAM-digest-2026-10-26.pdf</code> (Monday, Friday to Sunday). In production the button needs a real, signed PDF URL.</li>
 <li>Truck transport requests are shown as a fourth resource type; whether they belong in the digest is still open in the specification.</li>
 </ul>
 <h2>Validation rules in the prototype</h2>
