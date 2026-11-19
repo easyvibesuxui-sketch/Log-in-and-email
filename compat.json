@@ -6,119 +6,202 @@
   "entry": "SAM RAM Handoff.html",
   "pages": [
     {
-      "path": "SAM RAM Handoff.html",
-      "title": "SAM / RAM Handoff",
-      "kind": "plain"
-    },
-    {
-      "path": "handoff-src.html",
-      "title": "SAM / RAM Handoff",
-      "kind": "plain"
-    },
-    {
-      "path": "RAM Email Deploy.dc.html",
-      "title": "RAM Email Deploy",
-      "kind": "page"
-    },
-    {
-      "path": "RAM Login Deploy.dc.html",
-      "title": "RAM Login Deploy",
-      "kind": "page"
-    },
-    {
-      "path": "RAM Invitation Email.dc.html",
-      "title": "RAM Invitation Email",
-      "kind": "page"
-    },
-    {
-      "path": "RAM 14 Link broken.dc.html",
-      "title": "RAM 14 Link broken",
-      "kind": "page"
-    },
-    {
-      "path": "SAM Login Deploy.dc.html",
-      "title": "SAM Login Deploy",
-      "kind": "component"
-    },
-    {
-      "path": "SAM Invitation Email.dc.html",
-      "title": "SAM Invitation Email",
-      "kind": "component"
-    },
-    {
-      "path": "SAM Architecture.dc.html",
-      "title": "SAM Architecture",
-      "kind": "page"
-    },
-    {
-      "path": "SAM Email Deploy.dc.html",
-      "title": "SAM Email Deploy",
-      "kind": "component"
-    },
-    {
-      "path": "SAM Daily Digest Email.dc.html",
-      "title": "SAM Daily Digest Email",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 15 Not invited e-mail.dc.html",
-      "title": "SAM 15 Not invited e-mail",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 16 Not invited Google.dc.html",
-      "title": "SAM 16 Not invited Google",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 17 Not invited Microsoft.dc.html",
-      "title": "SAM 17 Not invited Microsoft",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 14 Link broken.dc.html",
-      "title": "SAM 14 Link broken",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 13 Activation link used.dc.html",
-      "title": "SAM 13 Activation link used",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 06 Welcome.dc.html",
-      "title": "SAM 06 Welcome",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 05 Password updated.dc.html",
-      "title": "SAM 05 Password updated",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 04 New password.dc.html",
-      "title": "SAM 04 New password",
-      "kind": "page"
-    },
-    {
-      "path": "SAM 03 Enter code.dc.html",
-      "title": "SAM 03 Enter code",
-      "kind": "page"
+      "path": "SAM 01 Login.dc.html",
+      "title": "SAM 01 Login",
+      "kind": "page",
+      "name": "SAM · Login · 01 Login"
     },
     {
       "path": "SAM 02 Forgot password.dc.html",
       "title": "SAM 02 Forgot password",
-      "kind": "page"
+      "kind": "page",
+      "name": "SAM · Login · 02 Forgot password"
     },
     {
-      "path": "SAM 01 Login.dc.html",
-      "title": "SAM 01 Login",
-      "kind": "page"
+      "path": "SAM 03 Enter code.dc.html",
+      "title": "SAM 03 Enter code",
+      "kind": "page",
+      "name": "SAM · Login · 03 Enter code"
+    },
+    {
+      "path": "SAM 04 New password.dc.html",
+      "title": "SAM 04 New password",
+      "kind": "page",
+      "name": "SAM · Login · 04 New password"
+    },
+    {
+      "path": "SAM 05 Password updated.dc.html",
+      "title": "SAM 05 Password updated",
+      "kind": "page",
+      "name": "SAM · Login · 05 Password updated"
+    },
+    {
+      "path": "SAM 06 Welcome.dc.html",
+      "title": "SAM 06 Welcome",
+      "kind": "page",
+      "name": "SAM · Login · 06 Welcome / activate"
+    },
+    {
+      "path": "SAM 13 Activation link used.dc.html",
+      "title": "SAM 13 Activation link used",
+      "kind": "page",
+      "name": "SAM · Login · 13 Activation link used"
+    },
+    {
+      "path": "SAM 14 Link broken.dc.html",
+      "title": "SAM 14 Link broken",
+      "kind": "page",
+      "name": "SAM · Login · 14 Link broken"
+    },
+    {
+      "path": "SAM 15 Not invited e-mail.dc.html",
+      "title": "SAM 15 Not invited e-mail",
+      "kind": "page",
+      "name": "SAM · Login · 15 Not invited e-mail"
+    },
+    {
+      "path": "SAM 16 Not invited Google.dc.html",
+      "title": "SAM 16 Not invited Google",
+      "kind": "page",
+      "name": "SAM · Login · 16 Not invited Google"
+    },
+    {
+      "path": "SAM 17 Not invited Microsoft.dc.html",
+      "title": "SAM 17 Not invited Microsoft",
+      "kind": "page",
+      "name": "SAM · Login · 17 Not invited Microsoft"
+    },
+    {
+      "path": "SAM Login Deploy.dc.html",
+      "title": "SAM Login Deploy",
+      "kind": "component",
+      "name": "SAM · Login · Full flow (component)"
+    },
+    {
+      "path": "SAM Architecture.dc.html",
+      "title": "SAM Architecture",
+      "kind": "page",
+      "name": "SAM · Login · Architecture map"
     },
     {
       "path": "SAM Excavator Interactive.dc.html",
       "title": "SAM Excavator Interactive",
-      "kind": "component"
+      "kind": "component",
+      "name": "SAM · Login · Excavator scene"
+    },
+    {
+      "path": "SAM Invitation Email.dc.html",
+      "title": "SAM Invitation Email",
+      "kind": "component",
+      "name": "SAM · E-mail · Invitation"
+    },
+    {
+      "path": "SAM Email Deploy.dc.html",
+      "title": "SAM Email Deploy",
+      "kind": "component",
+      "name": "SAM · E-mail · Invitation (deploy)"
+    },
+    {
+      "path": "SAM Daily Digest Email.dc.html",
+      "title": "SAM Daily Digest Email",
+      "kind": "page",
+      "name": "SAM · E-mail · Daily planning digest"
+    },
+    {
+      "path": "RAM 01 Login.dc.html",
+      "title": "RAM 01 Login",
+      "kind": "page",
+      "name": "RAM · Login · 01 Login"
+    },
+    {
+      "path": "RAM 02 Forgot password.dc.html",
+      "title": "RAM 02 Forgot password",
+      "kind": "page",
+      "name": "RAM · Login · 02 Forgot password"
+    },
+    {
+      "path": "RAM 03 Enter code.dc.html",
+      "title": "RAM 03 Enter code",
+      "kind": "page",
+      "name": "RAM · Login · 03 Enter code"
+    },
+    {
+      "path": "RAM 04 New password.dc.html",
+      "title": "RAM 04 New password",
+      "kind": "page",
+      "name": "RAM · Login · 04 New password"
+    },
+    {
+      "path": "RAM 05 Password updated.dc.html",
+      "title": "RAM 05 Password updated",
+      "kind": "page",
+      "name": "RAM · Login · 05 Password updated"
+    },
+    {
+      "path": "RAM 06 Welcome.dc.html",
+      "title": "RAM 06 Welcome",
+      "kind": "page",
+      "name": "RAM · Login · 06 Welcome / activate"
+    },
+    {
+      "path": "RAM 13 Activation link used.dc.html",
+      "title": "RAM 13 Activation link used",
+      "kind": "page",
+      "name": "RAM · Login · 13 Activation link used"
+    },
+    {
+      "path": "RAM 14 Link broken.dc.html",
+      "title": "RAM 14 Link broken",
+      "kind": "page",
+      "name": "RAM · Login · 14 Link broken"
+    },
+    {
+      "path": "RAM 15 Not invited e-mail.dc.html",
+      "title": "RAM 15 Not invited e-mail",
+      "kind": "page",
+      "name": "RAM · Login · 15 Not invited e-mail"
+    },
+    {
+      "path": "RAM 16 Not invited Google.dc.html",
+      "title": "RAM 16 Not invited Google",
+      "kind": "page",
+      "name": "RAM · Login · 16 Not invited Google"
+    },
+    {
+      "path": "RAM 17 Not invited Microsoft.dc.html",
+      "title": "RAM 17 Not invited Microsoft",
+      "kind": "page",
+      "name": "RAM · Login · 17 Not invited Microsoft"
+    },
+    {
+      "path": "RAM Login Deploy.dc.html",
+      "title": "RAM Login Deploy",
+      "kind": "page",
+      "name": "RAM · Login · Full flow (deploy)"
+    },
+    {
+      "path": "RAM Invitation Email.dc.html",
+      "title": "RAM Invitation Email",
+      "kind": "page",
+      "name": "RAM · E-mail · Invitation"
+    },
+    {
+      "path": "RAM Email Deploy.dc.html",
+      "title": "RAM Email Deploy",
+      "kind": "page",
+      "name": "RAM · E-mail · Invitation (deploy)"
+    },
+    {
+      "path": "SAM RAM Handoff.html",
+      "title": "SAM / RAM Handoff",
+      "kind": "plain",
+      "name": "Docs · Handoff"
+    },
+    {
+      "path": "handoff-src.html",
+      "title": "SAM / RAM Handoff",
+      "kind": "plain",
+      "name": "Docs · Handoff (source)"
     }
   ],
   "migratorVersion": "artifact-migrator (claude-design-backend ed667f7ac9c1)",
