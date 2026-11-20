@@ -53,6 +53,10 @@ Where the email CTA points, by `linkState`:
 - `used` → `#login`
 - `broken` → `#invalid`
 
+## PDF designs (RAM Handover Report)
+
+`pdf-designs/` holds the RAM Handover Report PDF template (hand out, hand in, bulk, without booking, compare / Last Answer; English and German), brought in with its full history from `easyvibesuxui-sketch/syn-pdf-and-mail`. Start with `pdf-designs/pdf/ram-handover/README.md`; every variant is in `pdf-designs/pdf/ram-handover/examples/` as HTML, JSON and PDF, and `pdf-designs/HISTORY.md` lists the changes. Review page with comments: https://claude.ai/artifact/2UkZ3Mc3y3zWPTeMs5sWyY
+
 ## Daily digest e-mail
 
 `SAM Daily Digest Email.dc.html` is the design for the digest sent to the responsible person, further responsible persons and dispatcher of a project when resources were planned for it.
