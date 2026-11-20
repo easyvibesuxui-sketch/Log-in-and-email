@@ -82,7 +82,7 @@ a:hover { color: #ff1900; }
     <div class="dg-pad" style="padding:30px 44px 6px">
       <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.14em;color:#343434;margin-bottom:12px">SUMMARY</div>
       <div>
-        <div class="dg-sumrow dg-sumhead" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:0 2px 10px;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;line-height:11px;color:#ff1900">
+        <div class="dg-sumrow dg-sumhead" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:8px 2px;background:#fbfbfb;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;line-height:11px;color:#ff1900">
           <div class="dg-sumhide">Project</div><div style="text-align:right">Requests</div><div style="text-align:right">Direct bookings</div><div style="text-align:right">Bookings</div>
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
@@ -199,7 +199,7 @@ a:hover { color: #ff1900; }
     </div>
 
     <div style="margin-top:18px;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;letter-spacing:0.14em;color:#343434;margin-bottom:6px">SUMMARY</div>
-    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:6px 2px 8px;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:8px;line-height:10px;color:#ff1900">
+    <div style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:7px 2px;background:#fbfbfb;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:8px;line-height:10px;color:#ff1900">
       <div>Cost center</div><div>Project</div><div style="text-align:right">Requests</div><div style="text-align:right">Direct bookings</div><div style="text-align:right">Bookings</div>
     </div>
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
@@ -226,7 +226,7 @@ a:hover { color: #ff1900; }
           <span style="{{ g.pillStyle }}">{{ g.label }}</span>
           <div style="font-size:9px;font-weight:700;color:#343434">{{ g.countLabel }}</div>
         </div>
-        <div class="pdf-head" style="display:grid;grid-template-columns:22px 76px minmax(0,1.15fr) minmax(0,1.6fr) 80px;gap:0 10px;padding:0 2px 8px;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:8px;line-height:10px;color:#ff1900">
+        <div class="pdf-head" style="display:grid;grid-template-columns:22px 76px minmax(0,1.15fr) minmax(0,1.6fr) 80px;gap:0 10px;padding:7px 2px;background:#fbfbfb;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:8px;line-height:10px;color:#ff1900">
           <div></div><div>Resource</div><div>Item</div><div>Details</div><div style="text-align:right">Created</div>
         </div>
         <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
