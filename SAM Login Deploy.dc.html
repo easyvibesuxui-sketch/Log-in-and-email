@@ -84,9 +84,9 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
       <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:23px;line-height:1.1;margin:0 0 6px">Login</h1>
       <div style="font-size:12px;color:#a7b0b3;margin-bottom:32px">Enter your details to access your account</div>
 
-      <div style="position:relative;height:52px;border-bottom:1px solid #a7b0b3">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
         <label style="{{ emailLabelStyle }}">Email*</label>
-        <input type="email" value="{{ email }}" placeholder="{{ emailHint }}" onChange="{{ onEmail }}" onFocus="{{ focusEmail }}" onBlur="{{ blurEmail }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;color:#fff;outline:none" />
+        <input type="email" value="{{ email }}" placeholder="{{ emailHint }}" onChange="{{ onEmail }}" onFocus="{{ focusEmail }}" onBlur="{{ blurEmail }}" style="position:absolute;left:0;bottom:10px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;color:#f1f1f1;outline:none" />
       </div>
       <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
         <div role="alert" style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#ffb30f;text-wrap:pretty">* This e-mail hasn't been added to {{ brandName }} by an administrator, so it can't be used to sign in. Ask your administrator to invite you.</div>
@@ -94,10 +94,10 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 
       <div style="height:34px"></div>
 
-      <div style="position:relative;height:52px;border-bottom:1px solid #a7b0b3">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
         <label style="{{ pwLabelStyle }}">Password*</label>
-        <input type="{{ pwType }}" value="{{ password }}" placeholder="{{ pwHint }}" onChange="{{ onPassword }}" onFocus="{{ focusPw }}" onBlur="{{ blurPw }}" style="position:absolute;left:0;bottom:8px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
-        <button type="button" onClick="{{ togglePw }}" aria-label="Show password" style="position:absolute;right:0;bottom:6px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
+        <input type="{{ pwType }}" value="{{ password }}" placeholder="{{ pwHint }}" onChange="{{ onPassword }}" onFocus="{{ focusPw }}" onBlur="{{ blurPw }}" style="position:absolute;left:0;bottom:10px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;letter-spacing:0.04em;color:#f1f1f1;outline:none" />
+        <button type="button" onClick="{{ togglePw }}" aria-label="Show password" style="position:absolute;right:0;bottom:10px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
         </button>
       </div>
@@ -145,9 +145,9 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
       <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">Recovery e-mail</h1>
       <div style="font-size:13px;color:#f1f1f1;margin-bottom:52px;text-wrap:pretty">Instruction to reset your password will be sent to this e-mail.</div>
 
-      <div style="position:relative;height:52px;border-bottom:1px solid #a7b0b3">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
         <label style="{{ recoveryLabelStyle }}">Email*</label>
-        <input type="email" value="{{ recoveryEmail }}" placeholder="{{ recoveryHint }}" onChange="{{ onRecoveryEmail }}" onFocus="{{ focusRecovery }}" onBlur="{{ blurRecovery }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;color:#fff;outline:none" />
+        <input type="email" value="{{ recoveryEmail }}" placeholder="{{ recoveryHint }}" onChange="{{ onRecoveryEmail }}" onFocus="{{ focusRecovery }}" onBlur="{{ blurRecovery }}" style="position:absolute;left:0;bottom:10px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;color:#f1f1f1;outline:none" />
       </div>
       <sc-if value="{{ recoveryError }}" hint-placeholder-val="{{ false }}">
         <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#ffb30f">* Enter a valid e-mail address.</div>
@@ -197,21 +197,29 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
         <span>Go back</span>
       </a>
       <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">New password</h1>
-      <div style="font-size:13px;color:#f1f1f1;margin-bottom:52px;text-wrap:pretty">At least 8 characters, with one number and one capital letter.</div>
+      <div style="font-size:13px;color:#f1f1f1;margin-bottom:40px;text-wrap:pretty">Choose a new password for your account.</div>
 
-      <div style="position:relative;height:52px;border-bottom:1px solid #a7b0b3">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
         <label style="{{ np1LabelStyle }}">New password*</label>
-        <input type="{{ npType }}" value="{{ np1 }}" onChange="{{ onNp1 }}" onFocus="{{ focusNp1 }}" onBlur="{{ blurNp1 }}" style="position:absolute;left:0;bottom:8px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
-        <button type="button" onClick="{{ toggleNp }}" aria-label="Show password" style="position:absolute;right:0;bottom:6px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
+        <input type="{{ npType }}" value="{{ np1 }}" onChange="{{ onNp1 }}" onFocus="{{ focusNp1 }}" onBlur="{{ blurNp1 }}" style="position:absolute;left:0;bottom:10px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;letter-spacing:0.04em;color:#f1f1f1;outline:none" />
+        <button type="button" onClick="{{ toggleNp }}" aria-label="Show password" style="position:absolute;right:0;bottom:10px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
         </button>
       </div>
 
+      <div style="margin-top:16px;display:grid;gap:6px">
+        <sc-for list="{{ npReqs }}" as="r" hint-placeholder-count="5">
+          <div style="{{ r.textStyle }}">* {{ r.label }}</div>
+        </sc-for>
+      </div>
       <div style="height:34px"></div>
 
-      <div style="position:relative;height:52px;border-bottom:1px solid #a7b0b3">
-        <label style="{{ np2LabelStyle }}">Repeat password*</label>
-        <input type="{{ npType }}" value="{{ np2 }}" onChange="{{ onNp2 }}" onFocus="{{ focusNp2 }}" onBlur="{{ blurNp2 }}" style="position:absolute;left:0;bottom:8px;width:100%;box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:13px;letter-spacing:0.08em;color:#fff;outline:none" />
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
+        <label style="{{ np2LabelStyle }}">Repeat new password*</label>
+        <input type="{{ npType }}" value="{{ np2 }}" onChange="{{ onNp2 }}" onFocus="{{ focusNp2 }}" onBlur="{{ blurNp2 }}" style="position:absolute;left:0;bottom:10px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;letter-spacing:0.04em;color:#f1f1f1;outline:none" />
+        <button type="button" onClick="{{ toggleNp }}" aria-label="Show password" style="position:absolute;right:0;bottom:10px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
+        </button>
       </div>
       <sc-if value="{{ mismatch }}" hint-placeholder-val="{{ false }}">
         <div style="margin-top:9px;font-size:12px;font-weight:500;line-height:1.4;color:#ffb30f">* Passwords don't match.</div>
@@ -244,33 +252,29 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 
     <sc-if value="{{ isWelcome }}" hint-placeholder-val="{{ false }}">
     <div style="max-width:470px;width:100%">
-      <div style="font-size:10px;letter-spacing:0.18em;color:#ff1900;margin-bottom:14px">INVITATION ACCEPTED</div>
-      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:23px;line-height:1.1;margin:0 0 6px">Welcome, <span>{{ firstName }}</span></h1>
-      <div style="font-size:12px;color:#a7b0b3;margin-bottom:32px;text-wrap:pretty">Set a password for {{ workEmail }}, or join with Google or Microsoft.</div>
+      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:12px;letter-spacing:0.14em;color:#ff1900;margin-bottom:14px">INVITATION</div>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.1;margin:0 0 12px">Welcome, <span>{{ firstName }}</span>!</h1>
+      <div style="font-size:13px;line-height:1.45;color:#f1f1f1;margin-bottom:36px;text-wrap:pretty">Set a password for {{ workEmail }} to activate your account, or join with Google or Microsoft.</div>
 
-      <div style="font-size:12px;font-weight:500;color:#f1f1f1;margin-bottom:9px">New Password<span style="color:#ff1900"> *</span></div>
-      <div style="position:relative">
-        <input type="{{ spType }}" placeholder="Enter" value="{{ sp1.value }}" onChange="{{ sp1.onChange }}" style="width:100%;box-sizing:border-box;background:transparent;border:1px solid #a7b0b3;padding:14px 46px 14px 16px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 150ms ease" style-focus="border-color:#ffffff" />
-        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
+        <label style="{{ sp1.labelStyle }}">New password*</label>
+        <input type="{{ spType }}" value="{{ sp1.value }}" onChange="{{ sp1.onChange }}" onFocus="{{ sp1.onFocus }}" onBlur="{{ sp1.onBlur }}" style="position:absolute;left:0;bottom:10px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;letter-spacing:0.04em;color:#f1f1f1;outline:none" />
+        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:0;bottom:10px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
         </button>
       </div>
-
-      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px">
-        <sc-for list="{{ pwReqs }}" as="r" hint-placeholder-count="3">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="{{ r.dotStyle }}"></span>
-            <span style="{{ r.textStyle }}">{{ r.label }}</span>
-          </div>
+      <div style="margin-top:16px;display:grid;gap:6px">
+        <sc-for list="{{ pwReqs }}" as="r" hint-placeholder-count="5">
+          <div style="{{ r.textStyle }}">* {{ r.label }}</div>
         </sc-for>
       </div>
 
-      <div style="height:26px"></div>
+      <div style="height:30px"></div>
 
-      <div style="font-size:12px;font-weight:500;color:#f1f1f1;margin-bottom:9px">Repeat New Password<span style="color:#ff1900"> *</span></div>
-      <div style="position:relative">
-        <input type="{{ spType }}" placeholder="Enter" value="{{ sp2.value }}" onChange="{{ sp2.onChange }}" style="width:100%;box-sizing:border-box;background:transparent;border:1px solid #a7b0b3;padding:14px 46px 14px 16px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color 150ms ease" style-focus="border-color:#ffffff" />
-        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
+      <div style="position:relative;height:64px;border-bottom:1px solid #a7b0b3">
+        <label style="{{ sp2.labelStyle }}">Repeat new password*</label>
+        <input type="{{ spType }}" value="{{ sp2.value }}" onChange="{{ sp2.onChange }}" onFocus="{{ sp2.onFocus }}" onBlur="{{ sp2.onBlur }}" style="position:absolute;left:0;bottom:10px;width:calc(100% - 32px);box-sizing:border-box;background:transparent;border:0;padding:0;font-family:inherit;font-size:16px;letter-spacing:0.04em;color:#f1f1f1;outline:none" />
+        <button type="button" onClick="{{ toggleSp }}" aria-label="Show password" style="position:absolute;right:0;bottom:10px;background:none;border:0;padding:0;cursor:pointer;color:#a7b0b3;display:flex;align-items:center" style-hover="color:#ffffff">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1.8 12S5.5 5.4 12 5.4 22.2 12 22.2 12 18.5 18.6 12 18.6 1.8 12 1.8 12Z"></path><circle cx="12" cy="12" r="3.1"></circle></svg>
         </button>
       </div>
@@ -352,9 +356,9 @@ class Component extends DCLogic {
   }
 
   label(up, color) {
-    return { position: "absolute", left: 0, pointerEvents: "none", fontWeight: 500,
-      letterSpacing: "0.01em", color, transition: "top 130ms ease, font-size 130ms ease",
-      top: up ? 2 : 28, fontSize: up ? 10 : 13 };
+    return { position: "absolute", left: 0, pointerEvents: "none", fontFamily: "'FavoritExp',Helvetica,sans-serif",
+      fontWeight: 500, letterSpacing: "0.04em", color, transition: "top 130ms ease, font-size 130ms ease",
+      top: up ? 0 : 32, fontSize: up ? 12 : 15 };
   }
 
   btn(disabled) {
@@ -424,10 +428,17 @@ class Component extends DCLogic {
     const rUp = s.rFocus || !!s.rEmail;
     const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.rEmail.trim());
     const codeFull = s.code.every(c => c.length === 1);
-    const strong = s.np1.length >= 8 && /[0-9]/.test(s.np1) && /[A-Z]/.test(s.np1);
+    const rules = pw => [["Password requires at least 8 characters", pw.length >= 8],
+      ["Password requires at least 1 number", /[0-9]/.test(pw)],
+      ["Password requires at least 1 uppercase letter", /[A-Z]/.test(pw)],
+      ["Password requires at least 1 lowercase letter", /[a-z]/.test(pw)],
+      ["Password requires at least 1 special character", /[^A-Za-z0-9\s]/.test(pw)]];
+    const reqList = pw => rules(pw).map(([label, ok]) => ({ label,
+      textStyle: { fontSize: 13, lineHeight: "18px", color: ok ? "#71c562" : "#a7b0b3", transition: "color 180ms ease" } }));
+    const strong = rules(s.np1).every(r => r[1]);
     const mismatch = !!s.np2 && s.np1 !== s.np2;
 
-    const spStrong = s.sp1.length >= 8 && /[0-9]/.test(s.sp1) && /[A-Z]/.test(s.sp1);
+    const spStrong = rules(s.sp1).every(r => r[1]);
     const spMismatch = !!s.sp2 && s.sp1 !== s.sp2;
     const setupOk = spStrong && !!s.sp2 && s.sp1 === s.sp2;
 
@@ -450,15 +461,9 @@ class Component extends DCLogic {
       spType: s.spShow ? "text" : "password",
       toggleSp: () => this.setState(x => ({ spShow: !x.spShow })),
       spMismatch,
-      pwReqs: [["8 characters or more", s.sp1.length >= 8], ["One number", /[0-9]/.test(s.sp1)],
-               ["One capital letter", /[A-Z]/.test(s.sp1)]].map(([label, ok]) => ({
-        label,
-        dotStyle: { width: 6, height: 6, borderRadius: "50%", flex: "none",
-          background: ok ? "#71c562" : "#343434", transition: "background 180ms ease" },
-        textStyle: { fontSize: 12, color: ok ? "#ffffff" : "#a7b0b3", transition: "color 180ms ease" }
-      })),
+      pwReqs: reqList(s.sp1), npReqs: reqList(s.np1),
       setupDisabled: !setupOk,
-      setupBtnStyle: Object.assign(this.btn(!setupOk), { marginTop: 0, width: "auto", padding: "15px 34px", flex: "0 0 auto", whiteSpace: "nowrap" }),
+      setupBtnStyle: Object.assign(this.btn(!setupOk), { marginTop: 12 }),
       firstName: this.props.firstName ?? "Max",
       workEmail: this.props.workEmail ?? "m.becker@baugruppe-nord.de",
       resendIdle: !this.state.resent, resendSent: !!this.state.resent,
