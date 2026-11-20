@@ -126,7 +126,7 @@ a:hover { color: #ff1900; }
               <span style="margin-left:auto;color:#ff1900;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;white-space:nowrap">Created {{ it.createdAt }}</span>
             </div>
             <div style="font-size:14px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</div>
-            <span style="display:inline-block;margin-top:8px;background:#151515;color:#f1f1f1;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px">View in SAM</span>
+            <span style="display:inline-block;margin-top:8px;background:#ffffff;color:#151515;border:1px solid #a7b0b3;font-size:11px;font-weight:500;padding:5px 11px;border-radius:8px">View in SAM</span>
             <div style="margin-top:10px;font-size:12px;line-height:1.6">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
                 <div style="overflow-wrap:anywhere"><span style="color:#343434">{{ f.label }}: </span>{{ f.value }}</div>
@@ -235,7 +235,7 @@ a:hover { color: #ff1900; }
             <div style="font-weight:500">{{ it.resource }}</div>
             <div style="min-width:0">
               <div style="font-weight:700;overflow-wrap:anywhere">{{ it.title }}</div>
-              <a href="{{ it.url }}" style="display:inline-block;margin-top:6px;background:#151515;color:#f1f1f1;font-size:8.5px;font-weight:700;letter-spacing:0.02em;text-decoration:none;padding:5px 10px;border-radius:8px">View in SAM</a>
+              <a href="{{ it.url }}" style="display:inline-block;margin-top:6px;background:#ffffff;color:#151515;border:1px solid #a7b0b3;font-size:8.5px;font-weight:500;letter-spacing:0.02em;text-decoration:none;padding:4px 9px;border-radius:8px">View in SAM</a>
             </div>
             <div style="min-width:0">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
