@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAM Handover Report</title>
+<style>
+@font-face { font-family: "FavoritExp"; src: url("fonts/ABCFavoritExpanded-Medium.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "Montserrat"; src: url("fonts/montserrat-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Montserrat"; src: url("fonts/montserrat-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+:root { --ink:#151515; --jet:#343434; --silver:#a7b0b3; --cultured:#f1f1f1; --candy:#ff1900; --white:#ffffff; }
+html, body { margin: 0; background: var(--cultured); color: var(--ink); font-family: Montserrat, Helvetica, Arial, sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 40px 16px 56px; box-sizing: border-box; }
+.head { background: linear-gradient(110deg,#151515 0%,#151515 42%,#343434 58%,#a7b0b3 82%,#f1f1f1 100%); color: var(--white); border-radius: 12px; padding: 24px 28px; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.brand { font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 30px; line-height: 1; }
+.sub { font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .13em; color: var(--silver); margin-top: 6px; }
+.logo { font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; color: var(--candy); font-size: 16px; padding-top: 4px; }
+h1 { font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 26px; margin: 28px 0 8px; }
+p { font-size: 14px; line-height: 1.6; color: var(--jet); margin: 0 0 20px; max-width: 640px; }
+.card { background: var(--white); border: 1px solid var(--silver); border-radius: 12px; overflow: hidden; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--jet); text-align: left; background: var(--cultured); padding: 10px 16px; }
+td { padding: 14px 16px; border-top: 1px solid var(--cultured); vertical-align: top; white-space: nowrap; }
+td:first-child { white-space: normal; width: 100%; }
+.d { font-size: 12px; color: var(--jet); margin-top: 4px; line-height: 1.5; }
+a { display: inline-block; color: var(--cultured); background: var(--ink); text-decoration: none; font-weight: 600; font-size: 12px; padding: 6px 10px; border-radius: 8px; margin: 0 2px 4px 0; }
+a.pdf { color: var(--ink); background: var(--white); border: 1px solid var(--ink); padding: 5px 9px; }
+a:hover { opacity: .74; }
+.note { font-size: 12px; color: var(--jet); margin-top: 16px; }
+@media (max-width: 560px) { td, th { padding: 10px; } td { white-space: normal; } .head { padding: 20px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="head"><div><div class="brand">RAM</div><div class="sub">RENTAL ASSET MANAGER</div></div><div class="logo">syniotec</div></div>
+  <h1>Handover Report</h1>
+  <p>The protocol RAM produces when equipment is handed out to a customer or handed back in: cover, the template's tabs with every field, and a closing page with the signatures. Every variant below opens as a page (HTML) or as the printed A4 PDF, in English and German.</p>
+  <div class="card"><table>
+    <thead><tr><th>Variant</th><th>English</th><th>German</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Hand out</strong><div class="d">With a transport provider (3 people); inventory as Total / Delivered</div></td>
+        <td><a href="examples/hand-out.en.html">EN</a> <a class="pdf" href="examples/hand-out.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-out.de.html">DE</a> <a class="pdf" href="examples/hand-out.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Hand out, direct</strong><div class="d">Without a transport provider (2 people)</div></td>
+        <td><a href="examples/hand-out-direct.en.html">EN</a> <a class="pdf" href="examples/hand-out-direct.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-out-direct.de.html">DE</a> <a class="pdf" href="examples/hand-out-direct.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Hand in</strong><div class="d">3 people; inventory as Total / Returned / Remaining / Lost or damaged</div></td>
+        <td><a href="examples/hand-in.en.html">EN</a> <a class="pdf" href="examples/hand-in.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-in.de.html">DE</a> <a class="pdf" href="examples/hand-in.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Hand in, direct</strong><div class="d">One piece of equipment, 2 people</div></td>
+        <td><a href="examples/hand-in-direct.en.html">EN</a> <a class="pdf" href="examples/hand-in-direct.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-in-direct.de.html">DE</a> <a class="pdf" href="examples/hand-in-direct.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Hand in, compare</strong><div class="d">Filled with compare on: a Last Answer after every field</div></td>
+        <td><a href="examples/hand-in-compare.en.html">EN</a> <a class="pdf" href="examples/hand-in-compare.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-in-compare.de.html">DE</a> <a class="pdf" href="examples/hand-in-compare.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Hand in, not comparable</strong><div class="d">Compare on, but the template changed: the Not comparable banner</div></td>
+        <td><a href="examples/hand-in-not-comparable.en.html">EN</a> <a class="pdf" href="examples/hand-in-not-comparable.en.pdf">PDF</a></td>
+        <td><a href="examples/hand-in-not-comparable.de.html">DE</a> <a class="pdf" href="examples/hand-in-not-comparable.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Bulk</strong><div class="d">Several pieces of equipment, construction site, operating hours per piece</div></td>
+        <td><a href="examples/bulk.en.html">EN</a> <a class="pdf" href="examples/bulk.en.pdf">PDF</a></td>
+        <td><a href="examples/bulk.de.html">DE</a> <a class="pdf" href="examples/bulk.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Without booking</strong><div class="d">The equipment card instead of the booking overview</div></td>
+        <td><a href="examples/without-booking.en.html">EN</a> <a class="pdf" href="examples/without-booking.en.pdf">PDF</a></td>
+        <td><a href="examples/without-booking.de.html">DE</a> <a class="pdf" href="examples/without-booking.de.pdf">PDF</a></td></tr>
+      <tr><td><strong>Field types</strong><div class="d">Every field type of the template, each with its Last Answer</div></td>
+        <td><a href="examples/field-types.en.html">EN</a> <a class="pdf" href="examples/field-types.en.pdf">PDF</a></td>
+        <td><a href="examples/field-types.de.html">DE</a> <a class="pdf" href="examples/field-types.de.pdf">PDF</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note">Template, data format and field types: <code>pdf-designs/pdf/ram-handover/README.md</code> in the repository. Changes: <code>pdf-designs/HISTORY.md</code>.</div>
+</main>
+</body>
+</html>

@@ -198,6 +198,120 @@
       "name": "RAM · E-mail · Invitation (deploy)"
     },
     {
+      "path": "pdf-designs/pdf/ram-handover/index.html",
+      "title": "RAM Handover Report",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover report (overview)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-out.en.html",
+      "title": "Handover Hand out EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand out (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-out.de.html",
+      "title": "Handover Hand out DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand out (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-out-direct.en.html",
+      "title": "Handover Hand out, direct EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand out, direct (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-out-direct.de.html",
+      "title": "Handover Hand out, direct DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand out, direct (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in.en.html",
+      "title": "Handover Hand in EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in.de.html",
+      "title": "Handover Hand in DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-direct.en.html",
+      "title": "Handover Hand in, direct EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, direct (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-direct.de.html",
+      "title": "Handover Hand in, direct DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, direct (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-compare.en.html",
+      "title": "Handover Hand in, compare EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, compare (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-compare.de.html",
+      "title": "Handover Hand in, compare DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, compare (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-not-comparable.en.html",
+      "title": "Handover Hand in, not comparable EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, not comparable (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/hand-in-not-comparable.de.html",
+      "title": "Handover Hand in, not comparable DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Hand in, not comparable (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/bulk.en.html",
+      "title": "Handover Bulk EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Bulk (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/bulk.de.html",
+      "title": "Handover Bulk DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Bulk (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/without-booking.en.html",
+      "title": "Handover Without booking EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Without booking (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/without-booking.de.html",
+      "title": "Handover Without booking DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Without booking (DE)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/field-types.en.html",
+      "title": "Handover Field types EN",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Field types (EN)"
+    },
+    {
+      "path": "pdf-designs/pdf/ram-handover/examples/field-types.de.html",
+      "title": "Handover Field types DE",
+      "kind": "plain",
+      "name": "RAM · PDF · Handover · Field types (DE)"
+    },
+    {
       "path": "SAM RAM Handoff.html",
       "title": "SAM / RAM Handoff",
       "kind": "plain",
