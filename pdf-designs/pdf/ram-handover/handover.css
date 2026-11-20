@@ -1,0 +1,1368 @@
+/*
+ * RAM Handover Report: A4 print stylesheet.
+ *
+ * The body pages follow the InDesign PDFs (Handover Protocol Hand out / Hand in / Bulk / Without Booking /
+ * Last answer); the cover and the closing page share one layout for every report. Every length is in
+ * pt, the PDF's own unit. Colours and fonts are Syn's (tokens/syn.tokens.json).
+ *
+ * Content of any length must stay inside the page: text wraps (overflow-wrap), photos and links wrap,
+ * the cover continues on a second page. Anything wider than the page would make Chromium shrink every
+ * page of the PDF.
+ *
+ * Fonts: ABC Favorit Expanded (titles, labels) and Montserrat (values), both in fonts/.
+ *
+ * Needs a Chromium print engine (Puppeteer, Playwright, Gotenberg): it uses named pages, @page margin
+ * boxes for the footer and page number, and a table header that repeats on every page.
+ */
+
+/* ---------- Fonts ---------------------------------------------------------------------------------- */
+
+/* ABC Favorit Expanded, Syn's title face (licensed, self-hosted in fonts/). Expanded has no Bold, so bold
+   titles use ABC Favorit Extended Bold, as the InDesign PDFs do.
+   The face sits high in its line box: its metrics (ascent 950, descent 390) centre the box 0.28em above the
+   baseline, its capitals centre at 0.35em, so text reads 0.07em high (1px at 14px, the "1px" Syn corrects
+   with --syn-title-offset). Moving 70 units from descent to ascent (102% / 32%) draws every glyph 0.07em
+   lower at every size and keeps the line box the same height, so layout does not move. */
+@font-face {
+  font-family: 'ABC Favorit Expanded';
+  font-weight: 400;
+  src: url('fonts/ABCFavoritExpanded-Regular.woff2') format('woff2');
+  ascent-override: 102%;
+  descent-override: 32%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'ABC Favorit Expanded';
+  font-weight: 500;
+  src: url('fonts/ABCFavoritExpanded-Medium.woff2') format('woff2');
+  ascent-override: 102%;
+  descent-override: 32%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'ABC Favorit Expanded';
+  font-weight: 700;
+  src: url('fonts/ABCFavoritExtended-Bold.woff2') format('woff2');
+  ascent-override: 102%;
+  descent-override: 32%;
+  line-gap-override: 0%;
+}
+
+/* Montserrat (OFL), self-hosted: latin + latin-ext covers German. */
+@font-face { font-family: 'Montserrat'; font-weight: 400; src: url('fonts/montserrat-latin-400-normal.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 400; src: url('fonts/montserrat-latin-ext-400-normal.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Montserrat'; font-weight: 500; src: url('fonts/montserrat-latin-500-normal.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 500; src: url('fonts/montserrat-latin-ext-500-normal.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Montserrat'; font-weight: 600; src: url('fonts/montserrat-latin-600-normal.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 600; src: url('fonts/montserrat-latin-ext-600-normal.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Montserrat'; font-weight: 700; src: url('fonts/montserrat-latin-700-normal.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Montserrat'; font-weight: 700; src: url('fonts/montserrat-latin-ext-700-normal.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+
+/* ---------- Syn tokens used by the report ---------------------------------------------------------- */
+
+:root {
+  --syn-color-primary-candy-apple: #ff1900;
+  --syn-color-secondary-jet: #343434;
+  --syn-color-secondary-silver-chalince: #a7b0b3;
+  --syn-color-secondary-amber: #fe7d00;
+  --syn-color-black-eerie-black: #151515;
+  --syn-color-grey-cultured: #f1f1f1;
+  --syn-color-pending-honey: #ffb30f;
+  --syn-color-success-mantis: #71c562;
+  --syn-color-white-white: #ffffff;
+  --syn-radius-widget: 12px;
+  --syn-radius-xs: 2px;
+  --syn-radius-full: 999px;
+
+  --syn-font-title: 'ABC Favorit Expanded', 'ABCFavorit Expanded', 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  --syn-font-body: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Report roles */
+  --ho-ink: var(--syn-color-black-eerie-black);
+  --ho-ink-soft: var(--syn-color-secondary-jet);
+  --ho-muted: var(--syn-color-secondary-silver-chalince);
+  --ho-brand: var(--syn-color-primary-candy-apple);
+  --ho-link: var(--syn-color-secondary-amber);
+  --ho-fill: var(--syn-color-grey-cultured);
+  --ho-ok: var(--syn-color-success-mantis);
+
+  /* Page geometry (pt) */
+  --ho-page-w: 595.28pt;
+  --ho-page-h: 841.89pt;
+  --ho-margin-x: 28.35pt; /* 10 mm */
+  --ho-inset: 6pt; /* fields start 6pt inside their band */
+  --ho-radius: var(--syn-radius-xs); /* every band, card, photo and link: 2px */
+  --ho-icon-gap: 4px; /* between an icon and its text, everywhere */
+  --ho-icon-size: 10pt; /* every icon: status, label, chevron, file, star, banner */
+  --ho-icon-color: var(--ho-muted); /* utility icons are Silver Chalice */
+  --ho-photo-w: 172.8pt; /* every large photo: fields and galleries */
+  --ho-photo-h: 129.9pt;
+  /* Last Answer: one size for each part, in every field type */
+  --ho-last-img-w: 64px; /* square, 64 x 64px */
+  --ho-last-img-h: 64px;
+  --ho-last-answer: 7.5pt; /* the main answer */
+  --ho-last-sub: 7pt; /* the secondary answer (Condition) */
+  --ho-last-text: 7pt; /* additional information */
+}
+
+/* ---------- Pages ---------------------------------------------------------------------------------- */
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+/* Cover: no header, no footer, not counted (the body pages are numbered from 1). */
+@page cover {
+  margin: 0;
+  counter-reset: page 0;
+}
+
+/* Body pages: running header (table thead), footer and page number in the margin boxes. */
+@page body {
+  margin: 0 0 35.7pt 0;
+
+  @bottom-left {
+    content: var(--ho-footer-text, '');
+    white-space: pre;
+    vertical-align: top;
+    padding: 10pt 0 0 var(--ho-margin-x);
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 6pt;
+    line-height: 9.7pt;
+    color: #a7b0b3;
+  }
+  @bottom-right {
+    content: counter(page);
+    vertical-align: top;
+    text-align: right;
+    width: 112pt;
+    margin: 13.3pt 28.35pt 0 0; /* ends at the right page margin, like the content */
+    padding: 2.6pt 0 0 0;
+    border-top: 0.25pt solid #f1f1f1;
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 7pt;
+    color: #a7b0b3;
+  }
+}
+
+/* Closing page (360 views, rating, signatures, company): no header, no footer. */
+@page closing {
+  margin: 0;
+}
+
+/* ---------- Base ------------------------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  background: var(--syn-color-white-white);
+  color: var(--ho-ink);
+  font-family: var(--syn-font-body);
+  font-size: 8pt;
+  line-height: 1.2;
+  overflow-wrap: anywhere; /* a long word, ID or file name wraps instead of widening the page */
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+}
+
+/* On screen, show the sheets as paper. */
+@media screen {
+  html {
+    background: #d9dcdd;
+  }
+  body {
+    width: var(--ho-page-w);
+    margin: 24px auto;
+    background: none;
+  }
+  .ho-cover,
+  .ho-body,
+  .ho-closing {
+    background: var(--syn-color-white-white);
+    box-shadow: 0 2px 16px rgb(21 21 21 / 0.18);
+    margin-bottom: 24px;
+  }
+}
+
+/* ---------- Type roles ------------------------------------------------------------------------------ */
+
+.ho-label {
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 7pt;
+  line-height: 8.8pt;
+  color: var(--ho-brand);
+}
+
+.ho-value {
+  font-size: 8pt;
+  line-height: 9.6pt;
+  font-weight: 500;
+  color: var(--ho-ink);
+}
+
+.ho-section-title {
+  margin: 0;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 14pt;
+  line-height: 16.8pt;
+  color: var(--ho-ink);
+}
+
+.ho-link-text {
+  font-family: var(--syn-font-title);
+  font-weight: 700;
+  font-size: 9pt;
+  line-height: 11.3pt;
+  color: var(--ho-link);
+}
+
+/* ---------- Rules ----------------------------------------------------------------------------------- */
+
+/* Section divider: two 0.666pt Eerie Black lines, 1.3pt apart. */
+.ho-rule {
+  height: 2pt;
+  border-top: 0.666pt solid var(--ho-ink);
+  border-bottom: 0.666pt solid var(--ho-ink);
+}
+
+/* Cover divider: two hairlines in Silver Chalice. */
+.ho-hairline {
+  height: 1pt;
+  border-top: 0.167pt solid var(--ho-muted);
+  border-bottom: 0.167pt solid var(--ho-muted);
+}
+
+.ho-hairline--single {
+  height: 0;
+  border-bottom: 0;
+}
+
+.ho-dotted {
+  height: 0;
+  border-top: 1pt dotted var(--ho-ink);
+}
+
+/* ---------- Cover ----------------------------------------------------------------------------------- */
+
+.ho-cover {
+  page: cover;
+  position: relative;
+  width: var(--ho-page-w);
+  min-height: calc(var(--ho-page-h) - 0.5pt);
+  padding: 36.6pt var(--ho-margin-x) 40pt;
+  break-after: page;
+  /* A long overview continues on a second cover page, with the same top and bottom padding */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.ho-cover__date {
+  font-size: 6pt;
+  line-height: 7.2pt;
+  color: var(--ho-muted);
+}
+
+.ho-cover__logo {
+  width: 243.4pt;
+  height: 44pt;
+  margin-top: 9.5pt;
+}
+
+.ho-cover__title,
+.ho-cover__row {
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 14pt;
+  line-height: 17.5pt;
+  color: var(--ho-ink-soft);
+}
+
+.ho-cover__title {
+  margin: 21.6pt 0 0;
+}
+
+.ho-block {
+  display: block;
+}
+
+.ho-cover__id-label {
+  margin-top: 17.2pt;
+}
+
+.ho-cover__id {
+  margin-top: 9.9pt;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 20pt;
+  line-height: 24.9pt;
+  color: var(--ho-ink-soft);
+  min-height: 24.9pt;
+}
+
+.ho-cover__row {
+  display: flex;
+}
+
+.ho-cover__row-label {
+  min-width: 109.5pt;
+  padding-right: 12pt;
+  flex: none;
+}
+
+.ho-cover__row > span {
+  min-width: 0;
+}
+
+.ho-cover__row--contract {
+  margin-top: 36pt;
+}
+
+.ho-cover__row--type {
+  margin-top: 26.5pt;
+}
+
+.ho-cover__type {
+  color: var(--ho-brand);
+}
+
+/* One cover for every report: the parties, site, equipment and overview follow the IDs */
+.ho-cover__lower {
+  padding-top: 26.6pt;
+}
+
+.ho-parties {
+  display: grid;
+  grid-template-columns: 220.2pt 193.2pt 1fr;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 8pt;
+  line-height: 10pt;
+  color: var(--ho-ink-soft);
+}
+
+/* Each party: role, then its lines (paged.js drops '+' selectors, so spacing is gap-based) */
+.ho-parties > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12pt;
+  padding-right: 12pt; /* long names wrap clear of the next party */
+}
+
+.ho-parties__role {
+  margin-bottom: 4pt; /* 16pt to the first line with the gap */
+}
+
+.ho-cover__lower > .ho-cover__divider {
+  margin-top: 30.8pt;
+}
+
+.ho-overview__title {
+  margin: 23pt 0 0 2pt;
+  font-family: var(--syn-font-title);
+  font-weight: 700;
+  font-size: 10pt;
+  line-height: 12.6pt;
+  color: var(--ho-ink);
+}
+
+/* Overview table */
+.ho-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 6pt;
+  line-height: 7.5pt;
+  color: var(--ho-ink);
+}
+
+.ho-table th {
+  padding: 0;
+  text-align: left;
+  font-weight: 500;
+  color: var(--ho-brand);
+}
+
+.ho-table td {
+  padding: 0;
+  vertical-align: top;
+}
+
+.ho-overview {
+  margin-top: 26.4pt;
+}
+
+.ho-overview col.ho-col-no { width: 21.3pt; }
+.ho-overview col.ho-col-product { width: 144.2pt; }
+.ho-overview col.ho-col-name { width: 123.6pt; }
+.ho-overview col.ho-col-dates { width: 188.5pt; }
+
+.ho-overview thead th {
+  padding-bottom: 10pt;
+}
+
+.ho-overview__item td {
+  padding-bottom: 11pt;
+}
+
+.ho-overview tr,
+.ho-inventory__block {
+  break-inside: avoid;
+}
+
+/* Between items: Silver hairline pair. */
+.ho-overview__item--ruled td {
+  border-top: 1pt double var(--ho-muted);
+  padding-top: 11.4pt;
+}
+
+.ho-overview__details td {
+  padding-bottom: 10pt;
+}
+
+/* Equipment details strip under an overview row (Bulk) */
+.ho-details {
+  display: flex;
+  gap: 12pt;
+  align-items: baseline;
+  margin: -8pt 0 0;
+  padding: 4pt var(--ho-inset);
+  border-radius: var(--ho-radius);
+  background: var(--ho-fill);
+  font-family: var(--syn-font-title);
+  font-size: 6pt;
+  line-height: 7.5pt;
+}
+
+.ho-details > span {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.ho-details .ho-k {
+  color: var(--ho-muted);
+  font-weight: 400;
+  margin-right: 4pt;
+}
+
+/* Inventory summaries (Fences, Long Fences) */
+.ho-inventory {
+  margin-top: 21.9pt;
+}
+
+.ho-inventory__name {
+  margin-left: 0.7pt;
+  font-family: var(--syn-font-title);
+  font-weight: 700;
+  font-size: 8pt;
+  line-height: 10pt;
+  color: var(--ho-ink);
+}
+
+.ho-inventory .ho-table {
+  margin-top: 13pt;
+}
+
+.ho-inventory .ho-table th {
+  padding-bottom: 10pt;
+}
+
+.ho-inventory .ho-table td {
+  padding-bottom: 8.3pt;
+}
+
+.ho-inventory col { width: 25%; }
+.ho-inventory .ho-col-total { width: 98.6pt; }
+.ho-inventory .ho-col-returned { width: 79.2pt; }
+.ho-inventory .ho-col-remaining { width: 106.4pt; }
+
+.ho-inventory__block > .ho-hairline {
+  margin: 0 0 8.4pt;
+}
+
+.ho-site {
+  margin: 24pt 0 0 2pt;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+}
+
+.ho-site__label {
+  font-size: 6pt;
+  line-height: 7.5pt;
+  color: var(--ho-ink-soft);
+}
+
+.ho-site__value {
+  margin-top: 2.9pt;
+  font-size: 9pt;
+  line-height: 11pt;
+  color: var(--ho-brand);
+}
+
+/* Equipment card on the cover (Without booking) */
+.ho-equipment {
+  margin-top: 34pt;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+}
+
+.ho-equipment__key {
+  font-size: 8pt;
+  line-height: 10pt;
+  color: var(--ho-muted);
+}
+
+.ho-equipment__title {
+  margin-top: 5pt;
+  font-size: 11pt;
+  line-height: 13.7pt;
+  color: var(--ho-ink);
+}
+
+.ho-equipment__grid {
+  display: grid;
+  grid-template-columns: 149.5pt 121.5pt 172pt 1fr;
+  margin-top: 13.8pt;
+}
+
+.ho-equipment__grid .ho-equipment__key {
+  font-size: 6pt;
+  line-height: 7.5pt;
+}
+
+.ho-equipment__grid .ho-equipment__val {
+  margin-top: 9.3pt;
+  font-size: 8pt;
+  line-height: 10pt;
+  color: var(--ho-ink);
+}
+
+/* ---------- Body pages ------------------------------------------------------------------------------ */
+
+.ho-body {
+  page: body;
+  width: var(--ho-page-w);
+}
+
+.ho-body__frame {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ho-body__frame > thead > tr > td,
+.ho-body__frame > tbody > tr > td {
+  padding: 0;
+}
+
+/* Running header */
+.ho-header {
+  position: relative;
+  height: 56pt;
+  padding: 14.2pt var(--ho-margin-x) 0;
+}
+
+.ho-header__logo {
+  width: 78.2pt;
+  height: 14.1pt;
+}
+
+.ho-header__meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8.2pt;
+  font-size: 6pt;
+  line-height: 7.2pt;
+  color: var(--ho-muted);
+}
+
+.ho-content {
+  padding: 0 var(--ho-margin-x);
+}
+
+.ho-section {
+  padding: 11pt 0 15pt;
+}
+
+.ho-section--spaced {
+  padding-top: 19pt;
+}
+
+.ho-section:first-child {
+  padding-top: 4pt;
+}
+
+.ho-content > .ho-section:first-child > .ho-section-title:first-child {
+  margin-top: 16.7pt;
+}
+
+.ho-section > .ho-section-title {
+  margin: 0 0 9.6pt 1.5pt;
+}
+
+.ho-section-title,
+.ho-subtitle,
+.ho-check__head {
+  break-after: avoid;
+}
+
+.ho-subtitle {
+  margin: 0 0 6.6pt 0.3pt;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 10pt;
+  line-height: 12.5pt;
+  color: var(--ho-ink);
+}
+
+/* Field bands: label over value, every second band filled */
+.ho-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 6pt;
+}
+
+.ho-field {
+  padding: 5pt var(--ho-inset);
+  border-radius: var(--ho-radius);
+  break-inside: avoid;
+}
+
+.ho-fields > .ho-field:nth-child(even) {
+  background: var(--ho-fill);
+}
+
+.ho-field--filled {
+  background: var(--ho-fill);
+}
+
+.ho-field__label {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ho-icon-gap);
+}
+
+/* Field type after the label, on the design review page only (render option showFieldTypes) */
+.ho-type {
+  margin-left: 0.25em;
+  font-family: var(--syn-font-body);
+  font-weight: 500;
+  color: var(--ho-muted);
+}
+
+/* Text inside an icon row uses the row's line (the icon's height), so its capitals centre on the icon */
+.ho-yesno > *,
+.ho-link__name > *,
+.ho-field__label--icon > * {
+  line-height: inherit;
+}
+
+/* A label with an icon takes the icon's height as its line, which puts the label's capitals on the
+   icon's centre (7pt ABC Favorit in a 10pt line: capitals centred 5pt from the top). */
+.ho-field__label--icon {
+  line-height: var(--ho-icon-size);
+}
+
+.ho-icon {
+  width: var(--ho-icon-size);
+  height: var(--ho-icon-size);
+  flex: none;
+  color: var(--ho-icon-color);
+}
+
+.ho-field__value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-top: 1.6pt;
+}
+
+.ho-field__photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7.3pt;
+  margin: 4.4pt 0 0;
+}
+
+.ho-photo {
+  width: var(--ho-photo-w);
+  height: var(--ho-photo-h);
+  object-fit: cover;
+  border-radius: var(--ho-radius);
+  background: var(--ho-fill);
+}
+
+.ho-field--with-photos {
+  padding-bottom: var(--ho-inset);
+}
+
+/* Inline value after the label (Attachment 2 Technical check in PDF) */
+.ho-field__inline {
+  font-family: var(--syn-font-body);
+  font-weight: 400;
+  font-size: 8pt;
+  color: var(--ho-ink);
+}
+
+/* Document and video links */
+.ho-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4pt;
+  margin: 4pt 0 0;
+}
+
+.ho-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8pt;
+  min-height: 16pt; /* one line; a long file name wraps and the bar grows */
+  padding: 2pt 3pt 2pt 4pt;
+  border-radius: var(--ho-radius);
+  background: var(--syn-color-white-white);
+  text-decoration: none;
+}
+
+.ho-chevron {
+  width: var(--ho-icon-size);
+  height: var(--ho-icon-size);
+  flex: none;
+  color: var(--ho-icon-color);
+}
+
+.ho-link-text .ho-gap {
+  margin-left: 0.35em;
+}
+
+/* Operating hours per equipment (Bulk) */
+.ho-hours {
+  display: grid;
+  grid-template-columns: 17.8pt 250.2pt 1fr;
+  row-gap: 8pt;
+  align-items: end;
+  padding: 0 0 0 4.9pt;
+}
+
+.ho-hours__no {
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 6pt;
+  line-height: 7.5pt;
+  padding-bottom: 3.8pt;
+}
+
+.ho-hours__cell {
+  padding: 1.4pt 0 2.8pt;
+}
+
+.ho-hours__cell .ho-label {
+  font-size: 6pt;
+  line-height: 7.5pt;
+}
+
+.ho-hours__cell .ho-value {
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 7pt;
+  line-height: 8.8pt;
+}
+
+.ho-hours__cell .ho-value--book {
+  font-weight: 400;
+}
+
+.ho-hours__row {
+  display: contents;
+}
+
+/* Operating hours, then Rental information: 18.4pt gap as in Bulk / Without booking */
+.ho-hours-block {
+  margin-bottom: 18.4pt;
+}
+
+/* ---------- Checklist (Question groups) ------------------------------------------------------------- */
+
+.ho-check__head {
+  display: grid;
+  grid-template-columns: 239pt 128.3pt 1fr;
+  align-items: end;
+  padding: 0 var(--ho-inset) 6pt;
+  border-bottom: 0.5pt solid var(--ho-muted);
+}
+
+.ho-check__head .ho-label:last-child {
+  text-align: center;
+}
+
+.ho-check__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6pt;
+  margin-top: 4pt;
+}
+
+.ho-q {
+  padding: 5pt var(--ho-inset);
+  border-radius: var(--ho-radius);
+  break-inside: avoid;
+}
+
+.ho-q:nth-child(even) {
+  background: var(--ho-fill);
+}
+
+.ho-q__main {
+  display: grid;
+  grid-template-columns: 239pt 128.3pt 1fr;
+  align-items: center;
+  min-height: 10pt;
+}
+
+.ho-q__text {
+  padding-right: 40pt;
+  font-size: 7.5pt;
+  line-height: 9.4pt;
+  font-weight: 500;
+  color: var(--ho-ink);
+}
+
+.ho-q__complete {
+  display: flex;
+  align-items: center;
+  font-size: 7.5pt;
+  line-height: 9.4pt;
+  font-weight: 500;
+}
+
+.ho-q__condition {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7.5pt;
+  line-height: 9.4pt;
+  font-weight: 500;
+}
+
+.ho-yes {
+  color: var(--ho-ok);
+}
+
+.ho-no,
+.ho-na {
+  color: var(--ho-muted);
+}
+
+/* A group's Condition/function OK?: Okay in ink, Not okay grey (.ho-no) */
+.ho-ok {
+  color: var(--ho-ink);
+}
+
+.ho-info {
+  margin: 5pt 0 0;
+  padding-right: 60pt;
+  font-size: 7pt;
+  line-height: 9.6pt;
+  color: var(--ho-ink);
+}
+
+.ho-info__key {
+  color: var(--ho-muted);
+  margin-right: 3pt;
+}
+
+/* Status icons: Yes (Mantis tick), No (Honey cross), Not relevant (Silver dash) */
+.ho-status {
+  width: var(--ho-icon-size);
+  height: var(--ho-icon-size);
+  flex: none;
+}
+
+.ho-yesno {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--ho-icon-gap);
+  line-height: var(--ho-icon-size); /* the icon's height, so icon and text share a centre */
+}
+
+.ho-yesno .ho-sub {
+  margin-left: 8pt;
+}
+
+.ho-k {
+  color: var(--ho-muted);
+  margin-right: 3pt;
+}
+
+.ho-answer-no {
+  color: var(--ho-ink);
+}
+
+/* Field values by type */
+.ho-range {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.ho-dot {
+  width: 2.4pt;
+  height: 2.4pt;
+  margin: 0 5pt;
+  border-radius: 50%;
+  background: var(--ho-muted);
+}
+
+.ho-rating {
+  display: inline-flex;
+  vertical-align: baseline;
+  align-items: baseline;
+}
+
+.ho-rating__score {
+  font-family: var(--syn-font-title);
+  font-weight: 700;
+  margin-right: var(--ho-icon-gap);
+}
+
+.ho-star {
+  width: var(--ho-icon-size);
+  height: var(--ho-icon-size);
+  margin-right: var(--ho-icon-gap);
+  color: var(--ho-link);
+}
+
+.ho-text {
+  margin-top: 0.2pt;
+  max-width: 430pt;
+  white-space: pre-line;
+  font-size: 8pt;
+  line-height: 10.4pt;
+}
+
+.ho-checks {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4pt;
+  margin: 0.2pt 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 8pt;
+  line-height: 10.4pt;
+}
+
+.ho-helper {
+  margin-top: 1.2pt;
+  font-size: 6pt;
+  line-height: 7.2pt;
+  color: var(--ho-muted);
+}
+
+.ho-field .ho-info {
+  margin: 3pt 0 0;
+}
+
+/* Rows that mix sizes and faces (title + value, label + note, icon + text) align on one text
+   baseline (align-items: baseline on each row); icons and the range dot are centred on it. */
+.ho-last__head svg,
+.ho-field__label svg,
+.ho-field__value svg,
+.ho-yesno svg,
+.ho-link__name svg,
+.ho-rating svg,
+.ho-range .ho-dot {
+  align-self: center;
+}
+
+/* ---------- Last Answer ---------------------------------------------------------------------------- */
+
+/* The PDF's Last Answer card (rounded, Silver hairline), under every field when compare is on.
+   Short values sit on the title line; long ones, files and comments follow; photos are thumbnails
+   on the right. */
+.ho-last {
+  margin-top: 4pt;
+  padding: 4pt var(--ho-inset);
+  border: 0.5pt solid var(--ho-muted);
+  border-radius: var(--ho-radius);
+  background: var(--syn-color-white-white);
+  font-size: var(--ho-last-answer);
+  line-height: 9pt;
+  font-weight: 500;
+  break-inside: avoid;
+}
+
+.ho-last--photos {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 10pt;
+  align-items: center;
+}
+
+.ho-last__head {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  column-gap: 5pt;
+  min-height: 9pt;
+}
+
+/* "Last Answer" in the answer's own type (Montserrat 500, --ho-last-answer), grey */
+.ho-last__title {
+  flex: none;
+  font: inherit;
+  color: var(--ho-muted);
+}
+
+.ho-last .ho-rating__score {
+  font-family: var(--syn-font-body);
+  font-weight: 700;
+}
+
+.ho-last .ho-text,
+.ho-last .ho-checks,
+.ho-last .ho-link-text {
+  font-size: var(--ho-last-answer);
+  line-height: 9pt;
+}
+
+.ho-last .ho-sub {
+  font-size: var(--ho-last-sub);
+}
+
+.ho-last__main > .ho-text,
+.ho-last__main > .ho-checks,
+.ho-last__main > .ho-links {
+  margin-top: 3.6pt;
+}
+
+.ho-last .ho-info {
+  margin: 2pt 0 0;
+  padding-right: 0;
+  font-size: var(--ho-last-text);
+  line-height: 9pt;
+  font-weight: 400;
+}
+
+.ho-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4pt;
+  max-width: calc(var(--ho-last-img-w) * 2 + 4pt);
+}
+
+.ho-thumb {
+  width: var(--ho-last-img-w);
+  height: var(--ho-last-img-h);
+  object-fit: cover;
+  border-radius: var(--ho-radius);
+  background: var(--ho-fill);
+}
+
+/* In the checklist: under the question, lined up with "Additional information" */
+.ho-last--row {
+  margin: 5pt 0 0;
+}
+
+.ho-q__photos {
+  justify-content: flex-start;
+  max-width: none;
+  margin: 5pt 0 0;
+}
+
+/* Template changed since the last report: no comparison */
+.ho-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--ho-icon-gap);
+  margin: 0 0 16pt;
+  padding: 6pt 8pt;
+  border: 1pt solid #ffe7e5;
+  border-radius: var(--ho-radius);
+  background: #fffcfc;
+  break-inside: avoid;
+}
+
+.ho-banner__title {
+  font-size: 7pt;
+  line-height: 8.8pt;
+  color: var(--ho-muted);
+}
+
+.ho-banner__text {
+  margin-top: 2.4pt;
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+  font-size: 8pt;
+  line-height: 10pt;
+  color: var(--ho-ink);
+}
+
+/* ---------- Photos ---------------------------------------------------------------------------------- */
+
+.ho-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 7.7pt;
+}
+
+/* One row of photos; a grid does not break across pages, rows of it do. Three photos span the content
+   width exactly: the first on its left edge, the third on its right edge. */
+.ho-photos__row {
+  display: grid;
+  grid-template-columns: repeat(3, var(--ho-photo-w));
+  column-gap: calc((100% - 3 * var(--ho-photo-w)) / 2);
+  break-inside: avoid;
+}
+
+.ho-photos figure {
+  margin: 0;
+}
+
+.ho-photos figcaption {
+  margin: 0 0 4pt; /* caption 4pt above its photo, on its left edge */
+}
+
+.ho-photos--two .ho-photos__row {
+  grid-template-columns: repeat(2, var(--ho-photo-w));
+}
+
+/* A gallery is not a band: no padding, its label and photos on the content's left edge */
+.ho-field--gallery {
+  padding: 0;
+  break-inside: auto;
+}
+
+/* A tab's blocks (field lists, groups, galleries), 14pt apart. Block flow, not flex: Chromium keeps a
+   heading with what follows (break-after: avoid) only through block flow. flow-root keeps the first
+   block's margin inside the tab. */
+.ho-tab {
+  display: flow-root;
+}
+
+.ho-tab > * {
+  margin-top: 14pt;
+}
+
+.ho-tab > :first-child {
+  margin-top: 0;
+}
+
+.ho-tab > .ho-group:first-child {
+  margin-top: 7.1pt; /* 16.7pt under the tab title */
+}
+
+.ho-field--gallery > .ho-field__label {
+  margin: 0 0 4pt;
+  break-after: avoid;
+}
+
+/* ---------- Closing page ---------------------------------------------------------------------------- */
+
+.ho-closing {
+  page: closing;
+  break-before: page;
+  width: var(--ho-page-w);
+  min-height: calc(var(--ho-page-h) - 0.5pt);
+  padding: 44pt var(--ho-margin-x) 12pt; /* one spacing for every closing page, with or without compare */
+}
+
+.ho-closing .ho-section {
+  padding: 0;
+}
+
+.ho-closing .ho-section > .ho-section-title {
+  margin: 0 0 12.1pt 1.5pt;
+}
+
+/* A file or video field with one file and no note: label and link on the band (360 views) */
+.ho-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.3pt 1.2pt 0.5pt 0;
+  text-decoration: none;
+}
+
+.ho-link-row > span {
+  display: block;
+  min-width: 0;
+}
+
+.ho-link-row .ho-link__name {
+  display: flex;
+  margin-top: 4pt; /* the link under its label, as file links elsewhere (.ho-links) */
+}
+
+/* Files inside a Last Answer: icon and name, no bar */
+.ho-links--compact {
+  gap: 3pt;
+  margin: 0;
+}
+
+.ho-links--compact .ho-link {
+  min-height: 0;
+  padding: 0;
+  background: none;
+  justify-content: flex-start;
+}
+
+.ho-link__name {
+  display: inline-flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: var(--ho-icon-gap);
+  line-height: var(--ho-icon-size); /* the icon's height, so icon and text share a centre */
+}
+
+.ho-file-icon {
+  position: relative;
+  top: -0.4pt; /* the file glyph's ink sits low in its box (its PDF mark); measured on the print */
+  width: calc(var(--ho-icon-size) * 18 / 22); /* the file glyph is 18 x 22 */
+  height: var(--ho-icon-size);
+  flex: none;
+}
+
+.ho-links--compact .ho-link-text {
+  font-size: 8pt;
+  line-height: 10pt;
+}
+
+.ho-closing .ho-rule {
+  margin: 14pt 0 19.8pt;
+}
+
+.ho-closing .ho-dotted {
+  margin: 20pt 0 18pt;
+}
+
+.ho-closing .ho-dotted--first {
+  margin-top: 0;
+}
+
+/* Signatures */
+.ho-signers {
+  display: flex;
+  flex-direction: column;
+  gap: 16pt;
+}
+
+.ho-signer {
+  display: grid;
+  grid-template-columns: 1fr 208.1pt;
+  break-inside: avoid;
+}
+
+.ho-signer__who {
+  padding: 4.8pt 0 0 0.9pt;
+}
+
+.ho-signer__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 13.6pt;
+  margin-top: 12.6pt;
+  padding-left: 4.6pt;
+  font-size: 7pt;
+  line-height: 8.4pt;
+}
+
+.ho-signer__name--strong {
+  font-family: var(--syn-font-title);
+  font-weight: 500;
+}
+
+.ho-signature {
+  height: 65pt;
+  background: var(--ho-fill);
+  border: 1pt solid var(--syn-color-white-white);
+  border-radius: var(--ho-radius);
+}
+
+.ho-signature img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ho-signer__stamp {
+  display: flex;
+  flex-direction: column;
+  gap: 14.8pt;
+  padding-top: 23.6pt;
+  font-size: 6pt;
+  line-height: 7.2pt;
+}
+
+.ho-stamp-row {
+  display: flex;
+}
+
+.ho-signer__stamp .ho-stamp-id {
+  margin-left: auto;
+  padding-right: 16.8pt;
+}
+
+/* Company block */
+.ho-company {
+  break-inside: avoid;
+  margin-top: 24pt;
+  color: var(--ho-brand);
+  font-size: 6pt;
+  line-height: 7.2pt;
+}
+
+.ho-company__logo {
+  width: 38pt;
+  height: 6.9pt;
+  margin-left: 0.9pt;
+}
+
+.ho-company__brand {
+  margin: 4.6pt 0 0 1.5pt;
+}
+
+.ho-company__grid {
+  display: grid;
+  grid-template-columns: 151.3pt 109.6pt 152.4pt 1fr;
+  row-gap: 3.8pt;
+  margin-top: 25.8pt;
+}
+
+.ho-company__grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3.8pt;
+}
+
+.ho-company__mgmt {
+  margin: 14.8pt 0 0 1.8pt;
+}
+
+.ho-company__terms {
+  margin-top: 14.8pt;
+}
+
+.ho-company__terms-title {
+  margin-left: 1.9pt;
+}
+
+.ho-company__terms p {
+  margin: 0;
+  max-width: 430pt;
+  line-height: 11pt;
+}
