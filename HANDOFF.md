@@ -13,6 +13,7 @@ The repository is published with GitHub Pages from `main` (root), so every merge
 | SAM invitation email | https://easyvibesuxui-sketch.github.io/Log-in-and-email/sam-invitation/ | `SAM Email Deploy.dc.html` |
 | RAM login + activation flow | https://easyvibesuxui-sketch.github.io/Log-in-and-email/RAM%20Login%20Deploy.dc.html | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
 | RAM activation (invitation CTA) | https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-welcome/ | forwards to `RAM Login Deploy.dc.html#welcome` |
+| RAM link no longer valid | https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-link-invalid/ | forwards to `RAM Login Deploy.dc.html#invalid` |
 | RAM invitation email | https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-invitation/ | `RAM Email Deploy.dc.html` |
 | SAM daily digest e-mail (24 h) | https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest/ | `SAM Daily Digest Email.dc.html` |
 | SAM daily digest PDF | https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest-pdf/ | `SAM Daily Digest PDF.dc.html`; files in `downloads/` and `exports/` |
@@ -34,7 +35,7 @@ You can open any step directly by adding a hash to the flow URL, e.g. `…/SAM%2
 | `#reset` | Set new password | `SAM 04 New password` |
 | `#done` | Password updated | `SAM 05 Password updated` |
 | `#welcome` | Invitation landing: set a password or join with Google / Microsoft | `SAM 06 Welcome` |
-| `#invalid` | Invitation link broken / expired | `SAM 14 Link broken`, `RAM 14 Link broken` |
+| `#invalid` | Invitation link invalid or expired: "This link is no longer valid", with "What you can do: Ask your administrator to send you a new invitation." | `SAM 14 Link broken`, `RAM 14 Link broken` |
 | `#used` | Login with the "activation link already used" notice | `SAM 13 Activation link used` |
 | `#not-invited` | Login: e-mail not added by an administrator (example `k.wagner@example.com`) | `SAM 15 Not invited e-mail` |
 | `#not-invited-google` | Login: Google account not added by an administrator | `SAM 16 Not invited Google` |

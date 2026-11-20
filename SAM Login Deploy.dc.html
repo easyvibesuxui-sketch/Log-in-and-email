@@ -239,14 +239,18 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
 
     <sc-if value="{{ isInvalid }}" hint-placeholder-val="{{ false }}">
     <div style="max-width:470px;width:100%">
-      <div style="display:flex;align-items:center;gap:11px;margin-bottom:22px">
-        <span style="width:17px;height:17px;flex:none;border-radius:50%;background:#ff1900;display:flex;align-items:center;justify-content:center">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v8"></path><path d="M12 18.3h0"></path></svg>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span aria-hidden="true" style="width:18px;height:18px;flex:none;border-radius:50%;background:#a7b0b3;display:flex;align-items:center;justify-content:center">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#151515" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5v8"></path><path d="M12 18.3h0"></path></svg>
         </span>
-        <span style="font-size:10px;letter-spacing:0.18em;color:#ff1900">INVALID LINK</span>
+        <span style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:12px;letter-spacing:0.14em;color:#ff1900">INVITATION</span>
       </div>
-      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 12px">This link is no longer valid</h1>
-      <div style="font-size:13px;line-height:1.55;color:#f1f1f1;text-wrap:pretty">The account this invitation was created for no longer exists. It was removed by an administrator of your organisation, so the activation link can't be opened.</div>
+      <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.1;margin:0 0 20px">This link is no longer valid</h1>
+      <div style="font-size:14px;line-height:1.55;color:#f1f1f1;text-wrap:pretty">The invitation link you used is invalid or has already expired.</div>
+      <div style="margin-top:18px;border:1px solid #343434;padding:14px 18px;font-size:14px;line-height:1.55">
+        <div style="color:#ffffff">What you can do</div>
+        <div style="color:#a7b0b3;margin-top:2px;text-wrap:pretty">Ask your administrator to send you a new invitation.</div>
+      </div>
     </div>
     </sc-if>
 
