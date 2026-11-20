@@ -2,23 +2,29 @@
 
 Updated: 2026-11-13
 
-## Live prototypes (Netlify)
+## Live prototypes (GitHub Pages)
+
+The repository is published with GitHub Pages from `main` (root), so every merge to `main` updates the site. Start page with every link: https://easyvibesuxui-sketch.github.io/Log-in-and-email/
 
 | Page | URL | Source file |
 |---|---|---|
-| SAM login + activation flow | https://sam-login-cd-e627cbe96f.netlify.app | `SAM Login Deploy.dc.html` |
-| SAM invitation email | https://sam-invitation-email-cd-de28f29f59.netlify.app | `SAM Email Deploy.dc.html` |
-| RAM login + activation flow | https://ram-login-cd-6643e01dd4.netlify.app | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
-| RAM invitation email | https://ram-invitation-email-cd-f1b4e9ab68.netlify.app | `RAM Email Deploy.dc.html` |
-| SAM daily digest e-mail (24 h) | https://sam-daily-digest-email.netlify.app | `SAM Daily Digest Email.dc.html` (the sample PDFs are served from `/downloads/`) |
+| SAM login + activation flow | https://easyvibesuxui-sketch.github.io/Log-in-and-email/SAM%20Login%20Deploy.dc.html | `SAM Login Deploy.dc.html` |
+| SAM activation (invitation CTA) | https://easyvibesuxui-sketch.github.io/Log-in-and-email/sam-welcome/ | forwards to `SAM Login Deploy.dc.html#welcome` |
+| SAM invitation email | https://easyvibesuxui-sketch.github.io/Log-in-and-email/sam-invitation/ | `SAM Email Deploy.dc.html` |
+| RAM login + activation flow | https://easyvibesuxui-sketch.github.io/Log-in-and-email/RAM%20Login%20Deploy.dc.html | `RAM Login Deploy.dc.html` (wraps SAM Login Deploy, `brand="RAM"`) |
+| RAM activation (invitation CTA) | https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-welcome/ | forwards to `RAM Login Deploy.dc.html#welcome` |
+| RAM invitation email | https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-invitation/ | `RAM Email Deploy.dc.html` |
+| SAM daily digest e-mail (24 h) | https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest/ | `SAM Daily Digest Email.dc.html` |
+| SAM daily digest PDF | https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest-pdf/ | `SAM Daily Digest PDF.dc.html`; files in `downloads/` and `exports/` |
+| RAM Handover report | https://easyvibesuxui-sketch.github.io/Log-in-and-email/pdf-designs/pdf/ram-handover/ | `pdf-designs/` |
 
-Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as `index.html` next to `support.js`, `image-slot.js` and `excavator-scene.js`; the RAM site also carries `SAM Login Deploy.dc.html`. The two invitation-email sites were redeployed the same day: their text now says the account can be activated with a password or with a Google or Microsoft account.
+The "Activate account" button of both deploy e-mails points to these GitHub links: SAM to `sam-welcome/`, RAM to `ram-welcome/` (link used: `RAM Login Deploy.dc.html#used`, broken: `#invalid`). The older Netlify sites (sam-login-cd-e627cbe96f, ram-login-cd-6643e01dd4, sam-invitation-email-cd-de28f29f59, ram-invitation-email-cd-f1b4e9ab68, sam-daily-digest-email) stopped updating when the Netlify account ran out of credits on 2026-11-20 and show an older version.
 
 The SAM and RAM flows run on the same component. The `brand` prop (`"SAM"` default, `"RAM"`) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).
 
 ## Deep links (URL hash)
 
-You can open any step directly by adding a hash to the flow URL, e.g. `…netlify.app/#reset`.
+You can open any step directly by adding a hash to the flow URL, e.g. `…/SAM%20Login%20Deploy.dc.html#reset`.
 
 | Hash | Screen | Design file |
 |---|---|---|

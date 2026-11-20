@@ -98,7 +98,7 @@ a:hover { color: #ff1900; }
 class Component extends DCLogic {
   renderVals() {
     return {
-      ctaHref: ({ valid: "./SAM 06 Welcome.dc.html", used: "./SAM 13 Activation link used.dc.html", broken: "./RAM 14 Link broken.dc.html" })[this.props.linkState ?? "valid"] || "./SAM 06 Welcome.dc.html",
+      ctaHref: ({ valid: "./RAM 06 Welcome.dc.html", used: "./RAM 13 Activation link used.dc.html", broken: "./RAM 14 Link broken.dc.html" })[this.props.linkState ?? "valid"] || "./RAM 06 Welcome.dc.html",
       expiryDays: this.props.expiryDays ?? 7,
       showAccessList: this.props.showAccessList ?? true,
       showLanguageNote: this.props.showLanguageNote ?? true

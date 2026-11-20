@@ -17,7 +17,8 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #343434;color:#f1f1f1;vertic
 <template id="__bundler_thumbnail" data-bg-color="#151515"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#151515"/><rect x="30" y="42" width="40" height="16" fill="#ff1900"/></svg></template>
 <main><h1>SAM / RAM — Auth &amp; Activation Handoff</h1>
 <p>Updated: 2026-11-13</p>
-<h2>Live prototypes (Netlify)</h2>
+<h2>Live prototypes (GitHub Pages)</h2>
+<p>The repository is published with GitHub Pages from <code>main</code> (root), so every merge to <code>main</code> updates the site. Start page with every link: https://easyvibesuxui-sketch.github.io/Log-in-and-email/</p>
 <div class="t"><table>
 <thead>
 <tr>
@@ -29,35 +30,55 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid #343434;color:#f1f1f1;vertic
 <tbody>
 <tr>
 <td>SAM login + activation flow</td>
-<td>https://sam-login-cd-e627cbe96f.netlify.app</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/SAM%20Login%20Deploy.dc.html</td>
 <td><code>SAM Login Deploy.dc.html</code></td>
 </tr>
 <tr>
+<td>SAM activation (invitation CTA)</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/sam-welcome/</td>
+<td>forwards to <code>SAM Login Deploy.dc.html#welcome</code></td>
+</tr>
+<tr>
 <td>SAM invitation email</td>
-<td>https://sam-invitation-email-cd-de28f29f59.netlify.app</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/sam-invitation/</td>
 <td><code>SAM Email Deploy.dc.html</code></td>
 </tr>
 <tr>
 <td>RAM login + activation flow</td>
-<td>https://ram-login-cd-6643e01dd4.netlify.app</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/RAM%20Login%20Deploy.dc.html</td>
 <td><code>RAM Login Deploy.dc.html</code> (wraps SAM Login Deploy, <code>brand="RAM"</code>)</td>
 </tr>
 <tr>
+<td>RAM activation (invitation CTA)</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-welcome/</td>
+<td>forwards to <code>RAM Login Deploy.dc.html#welcome</code></td>
+</tr>
+<tr>
 <td>RAM invitation email</td>
-<td>https://ram-invitation-email-cd-f1b4e9ab68.netlify.app</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-invitation/</td>
 <td><code>RAM Email Deploy.dc.html</code></td>
 </tr>
 <tr>
 <td>SAM daily digest e-mail (24 h)</td>
-<td>https://sam-daily-digest-email.netlify.app</td>
-<td><code>SAM Daily Digest Email.dc.html</code> (the sample PDFs are served from <code>/downloads/</code>)</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest/</td>
+<td><code>SAM Daily Digest Email.dc.html</code></td>
+</tr>
+<tr>
+<td>SAM daily digest PDF</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/digest-pdf/</td>
+<td><code>SAM Daily Digest PDF.dc.html</code>; files in <code>downloads/</code> and <code>exports/</code></td>
+</tr>
+<tr>
+<td>RAM Handover report</td>
+<td>https://easyvibesuxui-sketch.github.io/Log-in-and-email/pdf-designs/pdf/ram-handover/</td>
+<td><code>pdf-designs/</code></td>
 </tr>
 </tbody>
 </table></div>
-<p>Both login sites were redeployed on 2026-11-13 with the current design (Google / Microsoft sign-in, no onboarding, the account-not-added error, mobile layout). Each site serves its page as <code>index.html</code> next to <code>support.js</code>, <code>image-slot.js</code> and <code>excavator-scene.js</code>; the RAM site also carries <code>SAM Login Deploy.dc.html</code>. The two invitation-email sites were redeployed the same day: their text now says the account can be activated with a password or with a Google or Microsoft account.</p>
+<p>The "Activate account" button of both deploy e-mails points to these GitHub links: SAM to <code>sam-welcome/</code>, RAM to <code>ram-welcome/</code> (link used: <code>RAM Login Deploy.dc.html#used</code>, broken: <code>#invalid</code>). The older Netlify sites (sam-login-cd-e627cbe96f, ram-login-cd-6643e01dd4, sam-invitation-email-cd-de28f29f59, ram-invitation-email-cd-f1b4e9ab68, sam-daily-digest-email) stopped updating when the Netlify account ran out of credits on 2026-11-20 and show an older version.</p>
 <p>The SAM and RAM flows run on the same component. The <code>brand</code> prop (<code>"SAM"</code> default, <code>"RAM"</code>) only changes branding and copy, including every product name in the flow ("Join RAM", "Enter RAM", the error messages).</p>
 <h2>Deep links (URL hash)</h2>
-<p>You can open any step directly by adding a hash to the flow URL, e.g. <code>…netlify.app/#reset</code>.</p>
+<p>You can open any step directly by adding a hash to the flow URL, e.g. <code>…/SAM%20Login%20Deploy.dc.html#reset</code>.</p>
 <div class="t"><table>
 <thead>
 <tr>
