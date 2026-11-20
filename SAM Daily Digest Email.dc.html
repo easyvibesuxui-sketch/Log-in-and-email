@@ -95,7 +95,7 @@ a:hover { color: #ff1900; }
         </div>
         <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
           <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#f1f1f1;border-radius:8px;font-size:13px;align-items:baseline">
-            <div class="dg-sumname" style="min-width:0"><div style="font-size:11px;color:#343434;margin-bottom:3px">{{ p.cc }}</div><a href="{{ p.url }}" style="display:inline;font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:3px;overflow-wrap:break-word" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></div>
+            <div class="dg-sumname" style="min-width:0"><div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#343434;margin-bottom:3px"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;box-sizing:border-box;border:1px solid #a7b0b3;border-radius:50%;background:#ffffff;flex:none;vertical-align:middle"><span style="{{ p.dotStyle }}"></span></span><span>{{ p.cc }}</span></div><a href="{{ p.url }}" style="display:inline;font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:3px;overflow-wrap:break-word" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></div>
             <div class="dg-num" style="text-align:right;font-weight:600"><span class="dg-mlabel">Requests</span>{{ p.nRequests }}</div>
             <div class="dg-num" style="text-align:right;font-weight:600"><span class="dg-mlabel">Direct bookings</span>{{ p.nBookings }}</div>
             <div class="dg-num" style="text-align:right;font-weight:600"><span class="dg-mlabel">Bookings</span>{{ p.nAssigned }}</div>
@@ -112,7 +112,7 @@ a:hover { color: #ff1900; }
     <div class="dg-pad" style="padding:30px 44px 4px">
       <div style="border:1px solid #a7b0b3;border-radius:12px;overflow:hidden">
         <div style="background:#f1f1f1;color:#151515;border-bottom:1px solid #a7b0b3;padding:18px 20px 20px">
-          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.1em;color:#343434;margin-bottom:6px">COST CENTER {{ p.cc }}</div>
+          <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.1em;color:#343434;margin-bottom:6px;display:flex;align-items:center;gap:8px"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;box-sizing:border-box;border:1px solid #a7b0b3;border-radius:50%;background:#ffffff;flex:none;vertical-align:middle"><span style="{{ p.dotStyle }}"></span></span><span>COST CENTER {{ p.cc }}</span></div>
           <h2 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:20px;line-height:1.25;margin:0 0 8px;text-wrap:pretty"><a href="{{ p.url }}" style="color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-decoration-thickness:1px;text-underline-offset:5px" style-hover="color:#ff1900;text-decoration-color:#ff1900">{{ p.title }}</a></h2>
           <div style="font-size:12px;color:#343434">{{ p.countsLine }}</div>
           <a href="{{ p.url }}" style="display:inline-block;margin-top:14px;background:#151515;color:#f1f1f1;text-decoration:none;padding:10px 18px;border-radius:8px;font-family:Montserrat,Helvetica,Arial,sans-serif;font-weight:700;font-size:12px;transition:opacity 140ms ease" style-hover="opacity:0.74">Open project in SAM</a>
@@ -209,19 +209,19 @@ a:hover { color: #ff1900; }
     </div>
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
       <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:9px 2px;border-bottom:3px double #a7b0b3;font-size:10px;align-items:baseline">
-        <div style="color:#343434">{{ p.cc }}</div>
+        <div style="color:#343434;display:flex;align-items:center;gap:5px"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;box-sizing:border-box;border:1px solid #a7b0b3;border-radius:50%;background:#ffffff;flex:none;vertical-align:middle"><span style="{{ p.dotStyle }}"></span></span><span>{{ p.cc }}</span></div>
         <a href="{{ p.url }}" style="font-weight:500;color:#151515;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a>
         <div style="text-align:right;font-weight:600">{{ p.nRequests }}</div><div style="text-align:right;font-weight:600">{{ p.nBookings }}</div><div style="text-align:right;font-weight:600">{{ p.nAssigned }}</div>
       </div>
     </sc-for>
-    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:8px 10px;margin-top:8px;background:#151515;border-radius:8px;color:#ffffff;font-size:10px;font-weight:700">
+    <div class="pdf-keep" style="display:grid;grid-template-columns:76px minmax(0,1fr) repeat(3, 76px);gap:0 8px;padding:9px 2px;border-bottom:3px double #a7b0b3;color:#151515;font-size:10px;font-weight:700">
       <div>Total</div><div></div><div style="text-align:right">{{ totalRequests }}</div><div style="text-align:right">{{ totalBookings }}</div><div style="text-align:right">{{ totalAssigned }}</div>
     </div>
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
     <div style="margin-top:22px;border:1px solid #a7b0b3;border-radius:12px;overflow:hidden">
       <div class="pdf-keep pdf-head" style="background:#f1f1f1;color:#151515;border-bottom:1px solid #a7b0b3;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
-        <div style="font-size:11px"><span style="color:#343434">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#151515;font-weight:700;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a></div>
+        <div style="font-size:11px;display:flex;align-items:center;gap:7px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;box-sizing:border-box;border:1px solid #a7b0b3;border-radius:50%;background:#ffffff;flex:none;vertical-align:middle"><span style="{{ p.dotStyle }}"></span></span><span style="color:#343434">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#151515;font-weight:700;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a></div>
         <div style="font-size:9px;color:#343434">{{ p.countsLine }}</div>
       </div>
       <div style="padding:2px 12px 12px">
@@ -290,7 +290,7 @@ class Component extends DCLogic {
     const F = (label, value) => ({ label, value });
 
     const data = [
-      { cc: "4711-200", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
+      { cc: "4711-200", color: "#fe7d00", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
         Equipment: [
           item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
           item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
@@ -312,7 +312,7 @@ class Component extends DCLogic {
           item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
         ]
       } },
-      { cc: "4711-315", title: "Sanierung Brücke B75 Lübeck", types: {
+      { cc: "4711-315", color: "#71c562", title: "Sanierung Brücke B75 Lübeck", types: {
         Equipment: [
           item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026 – 05.11.2026"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
         ],
@@ -358,7 +358,7 @@ class Component extends DCLogic {
       }).filter(g => g.items.length);
       tr += nr; tb += nb; ta += na; total += nr + nb + na;
       const part = (n, one, many) => n + " " + (n === 1 ? one : many);
-      return { cc: p.cc, title: p.title, url: base, types, kindGroups, nRequests: nr, nBookings: nb, nAssigned: na,
+      return { cc: p.cc, title: p.title, url: base, dotStyle: { display: "block", width: 12, height: 12, borderRadius: "50%", background: p.color }, types, kindGroups, nRequests: nr, nBookings: nb, nAssigned: na,
         countsLine: [part(nr, "request", "requests"), part(nb, "direct booking", "direct bookings"), part(na, "booking", "bookings")].join(" · ") };
     });
 
