@@ -220,9 +220,9 @@ a:hover { color: #ff1900; }
 
     <sc-for list="{{ projects }}" as="p" hint-placeholder-count="2">
     <div style="margin-top:22px;border:1px solid #a7b0b3;border-radius:12px;overflow:hidden">
-      <div class="pdf-keep pdf-head" style="background:#151515;color:#ffffff;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
-        <div style="font-size:11px"><span style="color:#a7b0b3">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#ffffff;font-weight:700;text-decoration:none">{{ p.title }}</a></div>
-        <div style="font-size:9px;color:#f1f1f1">{{ p.countsLine }}</div>
+      <div class="pdf-keep pdf-head" style="background:#f1f1f1;color:#151515;border-bottom:1px solid #a7b0b3;padding:10px 14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px">
+        <div style="font-size:11px"><span style="color:#343434">{{ p.cc }} · </span><a href="{{ p.url }}" style="color:#151515;font-weight:700;text-decoration:underline;text-decoration-color:#a7b0b3;text-underline-offset:2px">{{ p.title }}</a></div>
+        <div style="font-size:9px;color:#343434">{{ p.countsLine }}</div>
       </div>
       <div style="padding:2px 12px 12px">
       <sc-for list="{{ p.kindGroups }}" as="g" hint-placeholder-count="3">
