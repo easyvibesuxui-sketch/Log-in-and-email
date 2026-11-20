@@ -1,0 +1,382 @@
+{
+  "lang": "de",
+  "createdAt": "20.05.2025, 11:00 (Europe/Berlin)",
+  "handoverId": "",
+  "contractId": "RC15484BTT",
+  "brand": {
+    "name": "syniotec",
+    "logo": "syniotec-logo.svg"
+  },
+  "footer": {
+    "slogan": "syniotec Software 2025 / We synchronize you with the future!",
+    "website": "syniotec.com"
+  },
+  "compare": false,
+  "tabs": [
+    {
+      "title": "Mietinformationen",
+      "fields": [
+        {
+          "type": "text",
+          "label": "Lager",
+          "value": "Lager Halensee"
+        },
+        {
+          "type": "text",
+          "label": "Miet-ID",
+          "value": "RC15484BTT"
+        },
+        {
+          "type": "text",
+          "label": "Firma/Kunde",
+          "value": "Reisebüro GmbH"
+        },
+        {
+          "type": "text",
+          "label": "Einsatzort",
+          "value": "Straßenbau Bremen"
+        },
+        {
+          "type": "slider",
+          "label": "Tankfüllstand",
+          "icon": "fuel",
+          "value": 65,
+          "unit": "%",
+          "photos": [
+            {
+              "src": "../assets/photos/tank-gauge.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Anhänge",
+      "fields": [
+        {
+          "type": "description",
+          "label": "Anhang 1",
+          "value": "Kratzer am Frontspiegel",
+          "photos": [
+            {
+              "src": "../assets/photos/attachment-mirror-1.jpg"
+            },
+            {
+              "src": "../assets/photos/attachment-mirror-2.jpg"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "label": "Anhang 2",
+          "note": "Technische Prüfung als PDF",
+          "files": [
+            {
+              "name": "Dokument",
+              "date": "14.02.2020",
+              "url": "#"
+            },
+            {
+              "name": "Dokument",
+              "date": "14.02.2020",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Allgemeine Informationen",
+      "fields": [
+        {
+          "type": "date",
+          "label": "UVV",
+          "value": "26.01.2021"
+        },
+        {
+          "type": "time",
+          "label": "Arbeitszeit",
+          "value": "8:00 AM"
+        },
+        {
+          "type": "yesno",
+          "label": "Reinigung in Ordnung?",
+          "answer": "yes"
+        }
+      ]
+    },
+    {
+      "title": "Fragengruppe",
+      "fields": [
+        {
+          "type": "group",
+          "label": "Gruppe",
+          "heading": "Allgemein",
+          "fields": [
+            {
+              "type": "yesno",
+              "no": "1.1",
+              "label": "Allgemeine Betriebserlaubnis / Zulassungsbescheinigung",
+              "answer": "yes",
+              "condition": false,
+              "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus."
+            },
+            {
+              "type": "yesno",
+              "no": "1.2",
+              "label": "Betriebsanleitung",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.3",
+              "label": "Gefährdungsbeurteilung",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.4",
+              "label": "Letzte Prüfbescheinigung",
+              "answer": "yes",
+              "condition": true
+            },
+            {
+              "type": "yesno",
+              "no": "1.5",
+              "label": "Typenschild / CE-Kennzeichnung",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.6",
+              "label": "Konformitätserklärung",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.7",
+              "label": "Warn- und Hinweisschilder",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.8",
+              "label": "Letzte Prüfbescheinigung",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.9",
+              "label": "Typenschild / CE-Kennzeichnung",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.10",
+              "label": "Letzte Prüfbescheinigung",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.11",
+              "label": "Typenschild / CE-Kennzeichnung",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.12",
+              "label": "Letzte Prüfbescheinigung",
+              "answer": "yes",
+              "condition": true,
+              "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+              "photos": [
+                {
+                  "src": "../assets/photos/answer-cabin-light.jpg"
+                }
+              ]
+            },
+            {
+              "type": "yesno",
+              "no": "1.13",
+              "label": "Typenschild / CE-Kennzeichnung",
+              "answer": "not_relevant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Beleuchtung",
+      "fields": [
+        {
+          "type": "yesno",
+          "label": "Scheinwerfer",
+          "answer": "yes"
+        },
+        {
+          "type": "yesno",
+          "label": "Kabinenbeleuchtung",
+          "answer": "no",
+          "photos": [
+            {
+              "src": "../assets/photos/cabin-lights-1.jpg"
+            },
+            {
+              "src": "../assets/photos/cabin-lights-2.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fotos",
+      "fields": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "label": "Vorderansicht",
+              "src": "../assets/photos/front-view.jpg"
+            },
+            {
+              "label": "Linke Seite 45 Grad",
+              "src": "../assets/photos/left-45.jpg"
+            },
+            {
+              "label": "Rückansicht",
+              "src": "../assets/photos/back-view.jpg"
+            },
+            {
+              "label": "Rechte Seite 45 Grad",
+              "src": "../assets/photos/right-45.jpg"
+            },
+            {
+              "label": "Kabine",
+              "src": "../assets/photos/cabin.jpg"
+            },
+            {
+              "label": "Löffel",
+              "src": "../assets/photos/bucket.jpg"
+            },
+            {
+              "label": "Weiteres Bild",
+              "src": "../assets/photos/other.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "360°-Ansichten",
+      "closing": true,
+      "fields": [
+        {
+          "type": "video",
+          "label": "360°-Ansicht außen",
+          "files": [
+            {
+              "name": "Exterior video.mp4",
+              "url": "#",
+              "kind": "video"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "label": "360°-Ansicht innen",
+          "files": [
+            {
+              "name": "Interior video.mp4",
+              "url": "#",
+              "kind": "video"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bewertung",
+      "closing": true,
+      "fields": [
+        {
+          "type": "rating",
+          "label": "Gerät bewerten",
+          "value": {
+            "score": 3,
+            "max": 5
+          },
+          "comment": "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern"
+        }
+      ]
+    }
+  ],
+  "company": {
+    "name": "syniotec",
+    "brandLine": "Eine Marke der Sharemac GmbH",
+    "columns": [
+      [
+        "Adresse: Am Wall 146",
+        "Stadt: Bremen",
+        "PLZ: 28195",
+        "Land: Deutschland"
+      ],
+      [
+        "T +49 421 83679700",
+        "M info@syniotec.com",
+        "www.syniotec.com"
+      ],
+      [
+        "USt-IdNr.: DE316314130",
+        "Registernr.: HRB 33169"
+      ],
+      [
+        "Bank: Deutsche Bank",
+        "BIC/SWIFT: DEUTDEFFXXX",
+        "IBAN: DE34 5001 0517 3163 9812 79"
+      ]
+    ],
+    "management": "Geschäftsführung: Manuel Kimanov",
+    "termsTitle": "Allgemeine Geschäftsbedingungen",
+    "terms": "Die „Allgemeinen Geschäftsbedingungen“ regeln das Vertragsverhältnis zwischen dem Anbieter einer Leistung und ihrem Nutzer. Im Web heißt dieses Dokument oft auch „Nutzungsbedingungen“, „Terms of Service“ (ToS), EULA („Endbenutzer-Lizenzvertrag“) oder „Rechtliche Hinweise“."
+  },
+  "type": "hand_out",
+  "parties": [
+    {
+      "role": "rentalCompany",
+      "company": "GmbH Große Mode",
+      "address": "28195 Bremen, Deutschland"
+    },
+    {
+      "role": "customer",
+      "company": "GmbH Große Mode",
+      "address": "28195 Bremen, Deutschland"
+    }
+  ],
+  "signatures": [
+    {
+      "role": "rentalCompany",
+      "name": "Max Mustermann",
+      "company": "GmbH Große Mode",
+      "signature": null
+    },
+    {
+      "role": "customer",
+      "name": "Max Mustermann",
+      "company": "GmbH Reisefokus",
+      "email": "max.mustermann@reisefokus.de"
+    }
+  ],
+  "constructionSite": "Straßenbau Bremen",
+  "equipment": {
+    "title": "Volvo 2019 F507",
+    "id": "5645646DB784",
+    "category": "Raupenbagger",
+    "subtitle": "Raupenbagger Volvo",
+    "serialNumber": "6556456"
+  },
+  "operatingHours": [
+    {
+      "hours": "45 h"
+    }
+  ]
+}

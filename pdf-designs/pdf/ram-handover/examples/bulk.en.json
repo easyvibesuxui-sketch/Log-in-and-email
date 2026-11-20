@@ -1,0 +1,429 @@
+{
+  "lang": "en",
+  "createdAt": "20 May 2025, 11:00 (Europe/Berlin)",
+  "handoverId": "RC15484BTT",
+  "contractId": "RC15484BTT",
+  "brand": {
+    "name": "syniotec",
+    "logo": "syniotec-logo.svg"
+  },
+  "footer": {
+    "slogan": "syniotec Software 2025 / We synchronize you with the future!",
+    "website": "syniotec.com"
+  },
+  "compare": false,
+  "tabs": [
+    {
+      "title": "Rental information",
+      "fields": [
+        {
+          "type": "text",
+          "label": "Warehouse",
+          "value": "Halensee Warehouse"
+        },
+        {
+          "type": "text",
+          "label": "Rental ID",
+          "value": "RC15484BTT"
+        },
+        {
+          "type": "text",
+          "label": "Company/customer",
+          "value": "Reisebüro GmbH"
+        },
+        {
+          "type": "text",
+          "label": "Place of use",
+          "value": "Bremen Roadworks"
+        },
+        {
+          "type": "slider",
+          "label": "Tank level",
+          "icon": "fuel",
+          "value": 65,
+          "unit": "%",
+          "photos": [
+            {
+              "src": "../assets/photos/tank-gauge.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Attachments",
+      "fields": [
+        {
+          "type": "description",
+          "label": "Attachment 1",
+          "value": "Scratches on front mirror",
+          "photos": [
+            {
+              "src": "../assets/photos/attachment-mirror-1.jpg"
+            },
+            {
+              "src": "../assets/photos/attachment-mirror-2.jpg"
+            }
+          ]
+        },
+        {
+          "type": "file",
+          "label": "Attachment 2",
+          "note": "Technical check in PDF",
+          "files": [
+            {
+              "name": "Document",
+              "date": "14.02.2020",
+              "url": "#"
+            },
+            {
+              "name": "Document",
+              "date": "14.02.2020",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "General information",
+      "fields": [
+        {
+          "type": "date",
+          "label": "UVV",
+          "value": "26.01.2021"
+        },
+        {
+          "type": "time",
+          "label": "Working hour",
+          "value": "8:00 AM"
+        },
+        {
+          "type": "yesno",
+          "label": "Cleaning in order?",
+          "answer": "yes"
+        }
+      ]
+    },
+    {
+      "title": "Question group",
+      "fields": [
+        {
+          "type": "group",
+          "label": "Group",
+          "heading": "General",
+          "fields": [
+            {
+              "type": "yesno",
+              "no": "1.1",
+              "label": "General operating licence / registration certificate",
+              "answer": "yes",
+              "condition": false,
+              "comment": "The damage always indicates the failure or impairment of a machine or technical system. Machine damage can take many forms and often has a significant impact on efficiency."
+            },
+            {
+              "type": "yesno",
+              "no": "1.2",
+              "label": "Operating instructions",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.3",
+              "label": "Hazard assessment",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.4",
+              "label": "Last test certificate",
+              "answer": "yes",
+              "condition": true
+            },
+            {
+              "type": "yesno",
+              "no": "1.5",
+              "label": "Type plate / CE marking",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.6",
+              "label": "Declaration of conformity",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.7",
+              "label": "Warning signs / information plates",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.8",
+              "label": "Last test certificate",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.9",
+              "label": "Type plate / CE marking",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.10",
+              "label": "Last test certificate",
+              "answer": "no"
+            },
+            {
+              "type": "yesno",
+              "no": "1.11",
+              "label": "Type plate / CE marking",
+              "answer": "not_relevant"
+            },
+            {
+              "type": "yesno",
+              "no": "1.12",
+              "label": "Last test certificate",
+              "answer": "yes",
+              "condition": true,
+              "comment": "The damage always indicates the failure or impairment of a machine or technical system. Machine damage can take many forms and often has a significant impact on efficiency.",
+              "photos": [
+                {
+                  "src": "../assets/photos/answer-cabin-light.jpg"
+                }
+              ]
+            },
+            {
+              "type": "yesno",
+              "no": "1.13",
+              "label": "Type plate / CE marking",
+              "answer": "not_relevant"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lights",
+      "fields": [
+        {
+          "type": "yesno",
+          "label": "Headlights",
+          "answer": "yes"
+        },
+        {
+          "type": "yesno",
+          "label": "Cabin lights",
+          "answer": "no",
+          "photos": [
+            {
+              "src": "../assets/photos/cabin-lights-1.jpg"
+            },
+            {
+              "src": "../assets/photos/cabin-lights-2.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Photos",
+      "fields": [
+        {
+          "type": "gallery",
+          "items": [
+            {
+              "label": "Front view",
+              "src": "../assets/photos/front-view.jpg"
+            },
+            {
+              "label": "Left side 45 degrees",
+              "src": "../assets/photos/left-45.jpg"
+            },
+            {
+              "label": "Back view",
+              "src": "../assets/photos/back-view.jpg"
+            },
+            {
+              "label": "Right side 45 degrees",
+              "src": "../assets/photos/right-45.jpg"
+            },
+            {
+              "label": "Cabin",
+              "src": "../assets/photos/cabin.jpg"
+            },
+            {
+              "label": "Bucket",
+              "src": "../assets/photos/bucket.jpg"
+            },
+            {
+              "label": "Other image",
+              "src": "../assets/photos/other.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "360 views",
+      "closing": true,
+      "fields": [
+        {
+          "type": "video",
+          "label": "360° view exterior",
+          "files": [
+            {
+              "name": "Exterior video.mp4",
+              "url": "#",
+              "kind": "video"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "label": "360° view interior",
+          "files": [
+            {
+              "name": "Interior video.mp4",
+              "url": "#",
+              "kind": "video"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Rating",
+      "closing": true,
+      "fields": [
+        {
+          "type": "rating",
+          "label": "Rate the equipment",
+          "value": {
+            "score": 3,
+            "max": 5
+          },
+          "comment": "The quick brown fox jumps over the lazy dog"
+        }
+      ]
+    }
+  ],
+  "company": {
+    "name": "syniotec",
+    "brandLine": "A brand of Sharemac GmbH",
+    "columns": [
+      [
+        "Address: Am Wall 146",
+        "City: Bremen",
+        "Postcode: 28195",
+        "Country: Germany"
+      ],
+      [
+        "T +49 421 83679700",
+        "M info@syniotec.com",
+        "www.syniotec.com"
+      ],
+      [
+        "VAT ID: DE316314130",
+        "Register no.: HRB 33169"
+      ],
+      [
+        "Bank: Deutsche Bank",
+        "BIC/SWIFT: DEUTDEFFXXX",
+        "IBAN: DE34 5001 0517 3163 9812 79"
+      ]
+    ],
+    "management": "Management: Manuel Kimanov",
+    "termsTitle": "Terms and conditions",
+    "terms": "“Terms and Conditions” is the document governing the contractual relationship between the provider of a service and its user. On the web, this document is often also called “Terms of Service” (ToS), “Terms of Use”, EULA (“End-User License Agreement”), “General Conditions” or “Legal Notes”."
+  },
+  "type": "hand_out",
+  "parties": [
+    {
+      "role": "rentalCompany",
+      "company": "GmbH Große Mode",
+      "address": "28195 Bremen, Germany"
+    },
+    {
+      "role": "customer",
+      "company": "GmbH Große Mode",
+      "address": "28195 Bremen, Germany"
+    }
+  ],
+  "signatures": [
+    {
+      "role": "rentalCompany",
+      "name": "Max Mustermann",
+      "company": "GmbH Große Mode",
+      "signature": null
+    },
+    {
+      "role": "transportProvider",
+      "name": "John Doe",
+      "company": "GmbH Holidayquelle",
+      "signature": null
+    },
+    {
+      "role": "customer",
+      "name": "Max Mustermann",
+      "company": "GmbH Reisefokus",
+      "email": "max.mustermann@reisefokus.de"
+    }
+  ],
+  "constructionSite": "Bremen Roadworks",
+  "overview": [
+    {
+      "no": 1,
+      "product": "Crawler excavator",
+      "name": "Volvo F504",
+      "bookingDates": "01.01.2028 14:42 – 02.02.2029 16:48",
+      "quantity": 1,
+      "details": {
+        "id": "564564",
+        "category": "Crawler excavator",
+        "subtitle": "Volvo excavator over 50 t",
+        "serialNumber": "564564"
+      }
+    },
+    {
+      "no": 2,
+      "product": "Small inventory",
+      "name": "Fence",
+      "bookingDates": "01.01.2028 14:42 – 02.02.2029 16:48",
+      "quantity": 100
+    },
+    {
+      "no": 3,
+      "product": "Big inventory",
+      "name": "Long fence",
+      "bookingDates": "01.01.2028 14:42 – 02.02.2029 16:48",
+      "quantity": 100
+    }
+  ],
+  "inventory": [
+    {
+      "name": "Fences",
+      "total": 100,
+      "delivered": 98
+    },
+    {
+      "name": "Long fences",
+      "total": 100,
+      "delivered": 98
+    }
+  ],
+  "operatingHours": [
+    {
+      "no": 1,
+      "equipment": "Volvo F504",
+      "hours": "45 h"
+    },
+    {
+      "no": 4,
+      "equipment": "Volvo F504",
+      "hours": "45 h"
+    }
+  ]
+}

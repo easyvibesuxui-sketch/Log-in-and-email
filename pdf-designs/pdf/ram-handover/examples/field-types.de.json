@@ -1,0 +1,384 @@
+{
+  "lang": "de",
+  "createdAt": "20.05.2025, 11:00 (Europe/Berlin)",
+  "handoverId": "RC15484BTT",
+  "contractId": "RC15484BTT",
+  "brand": {
+    "name": "syniotec",
+    "logo": "syniotec-logo.svg"
+  },
+  "footer": {
+    "slogan": "syniotec Software 2025 / We synchronize you with the future!",
+    "website": "syniotec.com"
+  },
+  "compare": true,
+  "tabs": [
+    {
+      "title": "Alle Feldtypen",
+      "fields": [
+        {
+          "type": "text",
+          "label": "Problem an der Hydraulikleitung",
+          "value": "Rückseite",
+          "lastAnswer": {
+            "value": "Rückseite"
+          }
+        },
+        {
+          "type": "date",
+          "label": "Datum des Problems",
+          "value": "01.01.2028",
+          "lastAnswer": {
+            "value": "01.01.2027"
+          }
+        },
+        {
+          "type": "time",
+          "label": "Uhrzeit des Problems",
+          "value": "14:42",
+          "lastAnswer": {
+            "value": "09:15"
+          }
+        },
+        {
+          "type": "yesno",
+          "label": "Problem an der Hydraulikleitung",
+          "answer": "yes",
+          "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+          "photos": [
+            {
+              "src": "../assets/photos/attachment-mirror-1.jpg"
+            },
+            {
+              "src": "../assets/photos/attachment-mirror-2.jpg"
+            }
+          ],
+          "lastAnswer": {
+            "answer": "yes",
+            "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+            "photos": [
+              {
+                "src": "../assets/photos/attachment-mirror-1.jpg"
+              },
+              {
+                "src": "../assets/photos/attachment-mirror-2.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "yesno",
+          "label": "Problem an der Hydraulikleitung",
+          "answer": "no",
+          "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+          "lastAnswer": {
+            "answer": "yes"
+          }
+        },
+        {
+          "type": "rating",
+          "label": "Bewertung des Problems",
+          "value": {
+            "score": 3,
+            "max": 5
+          },
+          "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+          "lastAnswer": {
+            "value": {
+              "score": 3,
+              "max": 5
+            },
+            "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus."
+          }
+        },
+        {
+          "type": "range",
+          "label": "Bereich des Problems",
+          "value": {
+            "from": 10,
+            "to": 50
+          },
+          "unit": "%",
+          "lastAnswer": {
+            "value": {
+              "from": 10,
+              "to": 50
+            },
+            "unit": "%"
+          }
+        },
+        {
+          "type": "description",
+          "label": "Beschreibung des Problems",
+          "value": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+          "lastAnswer": {
+            "value": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus."
+          }
+        },
+        {
+          "type": "choice",
+          "label": "Auswahl",
+          "value": "Zeile 2",
+          "lastAnswer": {
+            "value": "Zeile 2"
+          }
+        },
+        {
+          "type": "slider",
+          "label": "Schieberegler",
+          "value": 50,
+          "unit": "%",
+          "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+          "lastAnswer": {
+            "value": 30,
+            "unit": "%"
+          }
+        },
+        {
+          "type": "checks",
+          "label": "Mehrfachauswahl",
+          "value": [
+            "Zweite Option",
+            "Dritte Option"
+          ],
+          "lastAnswer": {
+            "value": [
+              "Erste Option",
+              "Dritte Option"
+            ]
+          }
+        },
+        {
+          "type": "image",
+          "label": "Bild",
+          "photos": [
+            {
+              "src": "../assets/photos/other.jpg"
+            }
+          ],
+          "lastAnswer": {
+            "photos": [
+              {
+                "src": "../assets/photos/back-view.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "file",
+          "label": "Datei",
+          "files": [
+            {
+              "name": "File name.pdf",
+              "url": "#"
+            }
+          ],
+          "lastAnswer": {
+            "files": [
+              {
+                "name": "File name.pdf",
+                "url": "#"
+              }
+            ]
+          }
+        },
+        {
+          "type": "switch",
+          "label": "Schalter",
+          "value": false,
+          "helper": "Motor stoppt, wenn der Schalter aus ist",
+          "lastAnswer": {
+            "value": false,
+            "helper": "Motor stoppt, wenn der Schalter aus ist"
+          }
+        },
+        {
+          "type": "dropdown",
+          "label": "Dropdown",
+          "value": "Nein",
+          "lastAnswer": {
+            "value": "Nein"
+          }
+        },
+        {
+          "type": "count",
+          "label": "Anzahl",
+          "value": 12,
+          "lastAnswer": {
+            "value": 12
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gruppen und Fotos",
+      "fields": [
+        {
+          "type": "group",
+          "label": "Fragengruppe",
+          "heading": "Allgemein",
+          "fields": [
+            {
+              "type": "yesno",
+              "label": "Erste Frage",
+              "answer": "yes",
+              "condition": true,
+              "lastAnswer": {
+                "answer": "no",
+                "comment": "Kleiner Kratzer links, bei der Ausgabe bereits bekannt."
+              }
+            },
+            {
+              "type": "yesno",
+              "label": "Zweite Frage",
+              "answer": "not_relevant",
+              "lastAnswer": {
+                "answer": "not_relevant"
+              }
+            },
+            {
+              "type": "yesno",
+              "label": "Dritte Frage",
+              "answer": "yes",
+              "condition": false,
+              "lastAnswer": {
+                "answer": "yes",
+                "condition": true
+              }
+            },
+            {
+              "type": "yesno",
+              "label": "Vierte Frage",
+              "answer": "no",
+              "comment": "Ein Schaden bedeutet immer den Ausfall oder die Beeinträchtigung einer Maschine oder technischen Anlage. Maschinenschäden haben viele Formen und wirken sich oft stark auf die Effizienz aus.",
+              "lastAnswer": null
+            }
+          ]
+        },
+        {
+          "type": "gallery",
+          "label": "Galerie",
+          "items": [
+            {
+              "label": "Problem 4",
+              "src": "../assets/photos/front-view.jpg",
+              "lastAnswer": {
+                "src": "../assets/photos/front-view.jpg"
+              }
+            },
+            {
+              "label": "Problem 5",
+              "src": "../assets/photos/left-45.jpg",
+              "lastAnswer": {
+                "src": "../assets/photos/left-45.jpg"
+              }
+            },
+            {
+              "label": "Problem 6",
+              "src": "../assets/photos/back-view.jpg",
+              "lastAnswer": {
+                "src": "../assets/photos/back-view.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "ai",
+          "label": "KI-Analyse",
+          "items": [
+            {
+              "label": "Problem 1",
+              "src": "../assets/photos/right-45.jpg",
+              "lastAnswer": {
+                "src": "../assets/photos/right-45.jpg"
+              }
+            },
+            {
+              "label": "Problem 2",
+              "src": "../assets/photos/bucket.jpg",
+              "lastAnswer": {
+                "src": "../assets/photos/bucket.jpg"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "company": {
+    "name": "syniotec",
+    "brandLine": "Eine Marke der Sharemac GmbH",
+    "columns": [
+      [
+        "Adresse: Am Wall 146",
+        "Stadt: Bremen",
+        "PLZ: 28195",
+        "Land: Deutschland"
+      ],
+      [
+        "T +49 421 83679700",
+        "M info@syniotec.com",
+        "www.syniotec.com"
+      ],
+      [
+        "USt-IdNr.: DE316314130",
+        "Registernr.: HRB 33169"
+      ],
+      [
+        "Bank: Deutsche Bank",
+        "BIC/SWIFT: DEUTDEFFXXX",
+        "IBAN: DE34 5001 0517 3163 9812 79"
+      ]
+    ],
+    "management": "Geschäftsführung: Manuel Kimanov",
+    "termsTitle": "Allgemeine Geschäftsbedingungen",
+    "terms": "Die „Allgemeinen Geschäftsbedingungen“ regeln das Vertragsverhältnis zwischen dem Anbieter einer Leistung und ihrem Nutzer. Im Web heißt dieses Dokument oft auch „Nutzungsbedingungen“, „Terms of Service“ (ToS), EULA („Endbenutzer-Lizenzvertrag“) oder „Rechtliche Hinweise“."
+  },
+  "type": "hand_in",
+  "parties": [
+    {
+      "role": "rentalCompany",
+      "name": "Max Mustermann",
+      "company": "GmbH Große Mode"
+    },
+    {
+      "role": "transportProvider",
+      "name": "John Doe",
+      "company": "GmbH Holidayquelle"
+    },
+    {
+      "role": "customer",
+      "name": "Max Mustermann",
+      "company": "GmbH Reisefokus"
+    }
+  ],
+  "signatures": [
+    {
+      "role": "rentalCompany",
+      "name": "Max Mustermann",
+      "company": "GmbH Große Mode",
+      "signature": null
+    },
+    {
+      "role": "transportProvider",
+      "name": "John Doe",
+      "company": "GmbH Holidayquelle",
+      "signature": null
+    },
+    {
+      "role": "customer",
+      "name": "Max Mustermann",
+      "company": "GmbH Reisefokus",
+      "email": "max.mustermann@reisefokus.de"
+    }
+  ],
+  "overview": [
+    {
+      "no": 1,
+      "product": "Raupenbagger",
+      "name": "Volvo F504",
+      "bookingDates": "01.01.2028 14:42 – 02.02.2029 16:48",
+      "quantity": 1
+    }
+  ]
+}

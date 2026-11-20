@@ -1,0 +1,16 @@
+{
+  "name": "syn-pdf-and-mail",
+  "version": "0.1.0",
+  "private": true,
+  "description": "syniotec report PDFs and emails (SAM, RAM), built on the Syn design system.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "handover": "node pdf/ram-handover/build.mjs",
+    "handover:pdf": "node pdf/ram-handover/build.mjs --pdf",
+    "handover:review": "node pdf/ram-handover/review.mjs handover-review.html"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}
