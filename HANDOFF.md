@@ -78,7 +78,7 @@ Where the email CTA points, by `linkState`:
 - **Recovery email:** basic `name@domain.tld` pattern. The button stays disabled until the email is valid.
 - **Code:** 6 inputs, digits only, one per field. Continue is enabled once all 6 are filled.
 - **Resend code:** 30-second cooldown with a countdown, and the inputs are cleared.
-- **New password:** at least 8 characters, 1 digit and 1 uppercase letter. The confirmation field must match, otherwise a mismatch error shows.
+- **New password (activation and reset):** five rules, listed under the field and each turning Mantis green when met: at least 8 characters, 1 number, 1 uppercase letter, 1 lowercase letter, 1 special character. "Join" / "Save password" stay disabled until all five are met and the repeat field matches; otherwise a mismatch error shows.
 
 ## Component props (`SAM Login Deploy`)
 
@@ -101,7 +101,7 @@ Invitation email props: `linkState` (`valid`/`used`/`broken`), `expiryDays` (def
 - **Primary button (login):** Candy Apple `#ff1900` with Eerie Black text (4.7:1; white on Candy Apple is 3.9:1 and fails at 14px). Hover fades to 74% opacity (Syn hover). Disabled: Gray X `#b9b9b9` with Jet `#343434` text (6.4:1).
 - **Status:** inline errors Honey `#ffb30f` (10.2:1 on Eerie Black; Syn's error red Vermilion `#ec0808` is only 4.0:1 on the dark ground, so it is not used there) · success Mantis `#71c562` · brand red for kickers and required marks Candy Apple `#ff1900`.
 - **Primary button:** 320px max width, 15px vertical padding, 14px bold, no radius
-- **Inputs:** floating labels (13px → 10px on focus or when filled), 130ms transition
+- **Inputs:** one style on every login screen (login, forgot password, new password, activation): 64px line with a Silver Chalince underline, floating label in ABC Favorit Expanded Medium (15px in the field → 12px above it when focused or filled, 130ms), 16px value, eye toggle on password fields. The activation screen uses the same underline fields, no boxed inputs.
 - **SSO buttons:** transparent, 1px Silver Chalince `#a7b0b3` border (hover White border, Jet fill), 48px tall, two across in 320px; they wrap to one per row when narrow
 - **Invitation e-mails:** ground Cultured `#f1f1f1`, card White, text Eerie Black, secondary text Jet `#343434`, dividers Silver Chalince, header and footer Eerie Black. "Activate account" is a Syn primary button: Eerie Black with Cultured text, hover 74% opacity; the brand red stays on the logo, the kicker and the list bullets.
 
