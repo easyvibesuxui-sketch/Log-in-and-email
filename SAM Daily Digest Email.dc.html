@@ -101,7 +101,7 @@ a:hover { color: #ff1900; }
             <div class="dg-num" style="text-align:right;font-weight:600"><span class="dg-mlabel">Bookings</span>{{ p.nAssigned }}</div>
           </div>
         </sc-for>
-        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:14px;margin-top:6px;background:#151515;border-radius:8px;color:#ffffff;font-size:13px;font-weight:700">
+        <div class="dg-sumrow" style="display:grid;grid-template-columns:minmax(0,1fr) repeat(3,minmax(54px,72px));gap:0 8px;padding:12px 14px;margin-top:6px;background:#f1f1f1;border-radius:8px;color:#151515;font-size:13px;font-weight:700">
           <div class="dg-sumname">Total</div><div class="dg-num" style="text-align:right;font-weight:600">{{ totalRequests }}</div><div class="dg-num" style="text-align:right;font-weight:600">{{ totalBookings }}</div><div class="dg-num" style="text-align:right;font-weight:600">{{ totalAssigned }}</div>
         </div>
       </div>
@@ -290,7 +290,7 @@ class Component extends DCLogic {
     const F = (label, value) => ({ label, value });
 
     const data = [
-      { cc: "4711-200", color: "#fe7d00", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
+      { cc: "4711-200", color: "#f4b642", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
         Equipment: [
           item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
           item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
@@ -312,7 +312,7 @@ class Component extends DCLogic {
           item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
         ]
       } },
-      { cc: "4711-315", color: "#71c562", title: "Sanierung Brücke B75 Lübeck", types: {
+      { cc: "4711-315", color: "#411817", title: "Sanierung Brücke B75 Lübeck", types: {
         Equipment: [
           item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026 – 05.11.2026"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
         ],
