@@ -98,7 +98,7 @@ a:hover { color: #ff1900; }
 class Component extends DCLogic {
   renderVals() {
     return {
-      ctaHref: ({ valid: "https://ram-login-cd-6643e01dd4.netlify.app/#welcome", used: "https://ram-login-cd-6643e01dd4.netlify.app/#login", broken: "https://ram-login-cd-6643e01dd4.netlify.app/#invalid" })[this.props.linkState ?? "valid"] || "https://ram-login-cd-6643e01dd4.netlify.app/#welcome",
+      ctaHref: ({ valid: "https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-welcome/", used: "https://easyvibesuxui-sketch.github.io/Log-in-and-email/RAM%20Login%20Deploy.dc.html#used", broken: "https://easyvibesuxui-sketch.github.io/Log-in-and-email/RAM%20Login%20Deploy.dc.html#invalid" })[this.props.linkState ?? "valid"] || "https://easyvibesuxui-sketch.github.io/Log-in-and-email/ram-welcome/",
       expiryDays: this.props.expiryDays ?? 7,
       showAccessList: this.props.showAccessList ?? true,
       showLanguageNote: this.props.showLanguageNote ?? true
