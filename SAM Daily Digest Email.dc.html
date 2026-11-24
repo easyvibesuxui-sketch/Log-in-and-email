@@ -60,13 +60,12 @@ a:hover { color: #ff1900; }
     </div>
 
     <div class="dg-pad" style="padding:44px 44px 8px">
-      <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.14em;color:#151515;margin-bottom:18px;border-left:3px solid #ff1900;padding-left:8px">{{ kicker }}</div>
-      <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">Resource digest</h1>
+      <h1 class="dg-h1" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.14;letter-spacing:-0.01em;margin:0 0 16px;text-wrap:pretty">{{ title }}</h1>
       <p style="margin:0;font-size:14px;line-height:1.65;color:#343434;max-width:470px;text-wrap:pretty">{{ intro }}</p>
 
       <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f1f1f1;border-radius:12px;padding:14px 18px">
         <span style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.14em;color:#343434">PERIOD</span>
-        <span style="font-size:14px;font-weight:700;color:#151515">{{ intervalTimes }}</span>
+        <span style="font-size:14px;font-weight:500;color:#151515">{{ intervalTimes }}</span>
       </div>
       <div class="dg-kpi" style="margin-top:10px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:10px">
         <div style="background:#f1f1f1;border-radius:12px;padding:14px 16px"><div style="font-weight:600;font-size:26px;line-height:1">{{ totalRequests }}</div><div style="margin-top:6px;font-size:12px;color:#343434">Requests</div></div>
@@ -143,11 +142,7 @@ a:hover { color: #ff1900; }
     </sc-for>
 
     <div class="dg-pad" style="padding:30px 44px 40px">
-      <a href="{{ pdfUrl }}" aria-label="Download this digest as PDF" style="display:flex;align-items:center;justify-content:center;gap:10px;width:320px;max-width:100%;box-sizing:border-box;background:#151515;color:#f1f1f1;text-decoration:none;padding:15px 0;border-radius:8px;font-family:Montserrat,Helvetica,Arial,sans-serif;font-weight:700;font-size:14px;transition:opacity 140ms ease" style-hover="opacity:0.74">
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"></path><path d="M14 3v5h5"></path><path d="M12 11v6"></path><path d="m9 14 3 3 3-3"></path></svg>
-        <span>Download as PDF</span>
-      </a>
-      <div style="margin-top:18px;font-size:12px;line-height:1.6;color:#343434;text-wrap:pretty">This digest is sent Monday to Friday at 07:00 (Europe/Berlin). Monday's digest covers Friday, Saturday and Sunday. <a href="#" style="color:#151515;text-decoration:underline;text-underline-offset:3px">Change digest settings</a></div>
+      <div style="font-size:12px;line-height:1.6;color:#343434;text-wrap:pretty">This digest is sent Monday to Friday at 07:00 (Europe/Berlin). Monday's digest covers Friday, Saturday and Sunday.</div>
     </div>
 
     <div class="dg-pad" style="background:#151515;color:#ffffff;padding:34px 44px 32px">
@@ -179,11 +174,10 @@ a:hover { color: #ff1900; }
 
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;margin-top:24px">
       <div>
-        <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;letter-spacing:0.14em;color:#151515;margin-bottom:8px;border-left:3px solid #ff1900;padding-left:7px">{{ kicker }}</div>
-        <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:24px;line-height:1.1;margin:0">Resource digest</h1>
+        <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:24px;line-height:1.1;margin:0">{{ title }}</h1>
       </div>
       <div style="font-size:10px;line-height:1.6;color:#343434;text-align:right">
-        <div><span style="color:#343434">Period </span><span style="font-weight:700">{{ intervalTimes }}</span></div>
+        <div><span style="color:#343434">Period </span><span style="font-weight:500;color:#151515">{{ intervalTimes }}</span></div>
         <div><span style="color:#343434">Generated </span>{{ generatedAt }}</div>
       </div>
     </div>
@@ -284,21 +278,21 @@ class Component extends DCLogic {
     const data = [
       { cc: "4711-200", color: "#f4b642", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
         Equipment: [
-          item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
-          item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
-          item(ASG, "EX-1057 · CAT 323 · Excavator, crawler", at(7.1), [F("Booking dates", "26.10.2026 – 13.11.2026"), F("Booked by", "Sabine Hoffmann")])
+          item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
+          item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026, 07:00 – 06.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
+          item(ASG, "EX-1057 · CAT 323 · Excavator, crawler", at(7.1), [F("Booking dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")])
         ],
         Person: [
-          item(REQ, "Machine operator", at(1.4), [F("Qualification", "Machine operator"), F("Certificate", "Excavator licence DGUV 308-001"), F("Requested count", "2"), F("Request dates", "26.10.2026 – 13.11.2026"), F("Requested by", "Jonas Richter")], "Early shift, start 06:30."),
-          item(REQ, "Electrician › High voltage", at(3.0), [F("Qualification", "Electrician › High voltage"), F("Certificate", "Electrically skilled person (EFK)"), F("Requested count", "1"), F("Request dates", "02.11.2026 – 06.11.2026"), F("Requested by", "Jonas Richter")]),
-          item(REQ, "Surveyor › GNSS › Machine control set-up", at(9.5), [F("Qualification", "Surveyor › GNSS › Machine control set-up"), F("Certificate", "—"), F("Requested count", "1"), F("Request dates", "26.10.2026"), F("Requested by", "Lea Schubert")], "Set up the 3D model on both excavators before work starts."),
-          item(BOOK, "Lukas Brandt · P-20318 · Foreman", at(5.2), [F("Qualification", "Site management › Foreman"), F("Booking dates", "26.10.2026 – 20.11.2026"), F("Booked by", "Sabine Hoffmann")], "Also responsible for the concrete works."),
-          item(ASG, "Mehmet Yilmaz · P-20977 · Machine operator", at(8.3), [F("Qualification", "Machine operator"), F("Booking dates", "26.10.2026 – 13.11.2026"), F("Booked by", "Sabine Hoffmann")])
+          item(REQ, "Machine operator", at(1.4), [F("Qualification", "Machine operator"), F("Certificate", "Excavator licence DGUV 308-001"), F("Requested count", "2"), F("Request dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Requested by", "Jonas Richter")], "Early shift, start 06:30."),
+          item(REQ, "Electrician › High voltage", at(3.0), [F("Qualification", "Electrician › High voltage"), F("Certificate", "Electrically skilled person (EFK)"), F("Requested count", "1"), F("Request dates", "02.11.2026, 07:00 – 06.11.2026, 16:00"), F("Requested by", "Jonas Richter")]),
+          item(REQ, "Surveyor › GNSS › Machine control set-up", at(9.5), [F("Qualification", "Surveyor › GNSS › Machine control set-up"), F("Certificate", "—"), F("Requested count", "1"), F("Request dates", "26.10.2026, 07:00 – 16:00"), F("Requested by", "Lea Schubert")], "Set up the 3D model on both excavators before work starts."),
+          item(BOOK, "Lukas Brandt · P-20318 · Foreman", at(5.2), [F("Qualification", "Site management › Foreman"), F("Booking dates", "26.10.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Also responsible for the concrete works."),
+          item(ASG, "Mehmet Yilmaz · P-20977 · Machine operator", at(8.3), [F("Qualification", "Machine operator"), F("Booking dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")])
         ],
         Crew: [
-          item(REQ, "Concrete crew", at(4.6), [F("Tag", "Foundation"), F("Categories", "Concrete pump × 1, Internal vibrator × 2"), F("Qualifications", "Concrete worker × 4, Foreman × 1"), F("Request dates", "09.11.2026 – 20.11.2026"), F("Requested by", "Jonas Richter")], "Pour of foundation slab axis A–D."),
-          item(BOOK, "Crew Nord 3 · Concrete crew", at(10.2), [F("Crew type", "Concrete crew"), F("Booking dates", "09.11.2026 – 20.11.2026"), F("Booked by", "Sabine Hoffmann")], "Crew brings its own pump."),
-          item(ASG, "Crew Nord 5 · Formwork crew", at(11.8), [F("Crew type", "Formwork crew"), F("Booking dates", "02.11.2026 – 06.11.2026"), F("Booked by", "Sabine Hoffmann")], "Formwork for foundation slab.")
+          item(REQ, "Concrete crew", at(4.6), [F("Tag", "Foundation"), F("Categories", "Concrete pump × 1, Internal vibrator × 2"), F("Qualifications", "Concrete worker × 4, Foreman × 1"), F("Request dates", "09.11.2026, 07:00 – 20.11.2026, 16:00"), F("Requested by", "Jonas Richter")], "Pour of foundation slab axis A–D."),
+          item(BOOK, "Crew Nord 3 · Concrete crew", at(10.2), [F("Crew type", "Concrete crew"), F("Booking dates", "09.11.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Crew brings its own pump."),
+          item(ASG, "Crew Nord 5 · Formwork crew", at(11.8), [F("Crew type", "Formwork crew"), F("Booking dates", "02.11.2026, 07:00 – 06.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Formwork for foundation slab.")
         ],
         "Truck transport": [
           item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
@@ -306,10 +300,10 @@ class Component extends DCLogic {
       } },
       { cc: "4711-315", color: "#411817", title: "Sanierung Brücke B75 Lübeck", types: {
         Equipment: [
-          item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026 – 05.11.2026"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
+          item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026, 07:00 – 05.11.2026, 16:00"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
         ],
         Person: [
-          item(ASG, "Anja Vogel · P-21104 · Welder", at(14.0), [F("Qualification", "Welder › Structural steel"), F("Booking dates", "03.11.2026 – 14.11.2026"), F("Booked by", "Tobias Krüger")])
+          item(ASG, "Anja Vogel · P-21104 · Welder", at(14.0), [F("Qualification", "Welder › Structural steel"), F("Booking dates", "03.11.2026, 07:00 – 14.11.2026, 16:00"), F("Booked by", "Tobias Krüger")])
         ]
       } }
     ];
@@ -358,9 +352,8 @@ class Component extends DCLogic {
     return {
       projects, projectCount: projects.length, totalRequests: tr, totalBookings: tb, totalAssigned: ta,
       showSummary: this.props.showSummary ?? true,
-      kicker: monday ? "WEEKEND DIGEST · FRIDAY TO SUNDAY" : "DAILY DIGEST",
+      title: monday ? "Weekend Resource Digest" : "Daily Resource Digest",
       intervalShort,
-      pdfUrl: "./downloads/SAM-digest-" + d(end).split(".").reverse().join("-") + ".pdf",
       generatedAt: wd(end) + " (Europe/Berlin)",
       isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
       intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
