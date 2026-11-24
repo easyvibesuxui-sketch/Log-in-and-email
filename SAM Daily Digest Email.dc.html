@@ -48,7 +48,6 @@ a:hover { color: #ff1900; }
 <sc-if value="{{ isEmail }}" hint-placeholder-val="{{ true }}">
 <div class="dg-outer" style="background:#f1f1f1;padding:48px 20px;font-family:Montserrat,Helvetica,Arial,sans-serif;color:#151515;min-height:100vh;box-sizing:border-box">
 
-  <div style="max-width:600px;margin:0 auto 14px;font-size:11px;letter-spacing:0.06em;color:#343434">{{ preheader }}</div>
 
   <div style="max-width:600px;margin:0 auto;background:#ffffff">
 
@@ -67,8 +66,7 @@ a:hover { color: #ff1900; }
 
       <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:#f1f1f1;border-radius:12px;padding:14px 18px">
         <span style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;letter-spacing:0.14em;color:#343434">PERIOD</span>
-        <span style="font-size:14px;font-weight:700">{{ intervalShort }}</span>
-        <span style="font-size:12px;color:#343434">{{ intervalTimes }}</span>
+        <span style="font-size:14px;font-weight:700;color:#151515">{{ intervalTimes }}</span>
       </div>
       <div class="dg-kpi" style="margin-top:10px;display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:10px">
         <div style="background:#f1f1f1;border-radius:12px;padding:14px 16px"><div style="font-weight:600;font-size:26px;line-height:1">{{ totalRequests }}</div><div style="margin-top:6px;font-size:12px;color:#343434">Requests</div></div>
@@ -126,7 +124,6 @@ a:hover { color: #ff1900; }
               <span style="margin-left:auto;color:#ff1900;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9px;white-space:nowrap">Created {{ it.createdAt }}</span>
             </div>
             <div style="font-size:14px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</div>
-            <span style="display:inline-block;margin-top:8px;background:#ffffff;color:#151515;border:1px solid #a7b0b3;font-size:11px;font-weight:500;padding:5px 11px;border-radius:8px">View in SAM</span>
             <div style="margin-top:10px;font-size:12px;line-height:1.6">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
                 <div style="overflow-wrap:anywhere"><span style="color:#343434">{{ f.label }}: </span>{{ f.value }}</div>
@@ -234,8 +231,7 @@ a:hover { color: #ff1900; }
             <div style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:8px;line-height:13px;color:#151515">{{ it.no }}</div>
             <div style="font-weight:500">{{ it.resource }}</div>
             <div style="min-width:0">
-              <div style="font-weight:700;overflow-wrap:anywhere">{{ it.title }}</div>
-              <a href="{{ it.url }}" style="display:inline-block;margin-top:6px;background:#ffffff;color:#151515;border:1px solid #a7b0b3;font-size:8.5px;font-weight:500;letter-spacing:0.02em;text-decoration:none;padding:4px 9px;border-radius:8px">View in SAM</a>
+              <a href="{{ it.url }}" style="display:block;font-weight:700;overflow-wrap:anywhere;color:#151515;text-decoration:none">{{ it.title }}</a>
             </div>
             <div style="min-width:0">
               <sc-for list="{{ it.details }}" as="f" hint-placeholder-count="4">
@@ -368,7 +364,6 @@ class Component extends DCLogic {
       generatedAt: wd(end) + " (Europe/Berlin)",
       isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
       intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
-      preheader: total + " new entries in " + projects.length + " projects · " + intervalShort,
       intro: monday
         ? "New requests, direct bookings and bookings in your projects on Friday, Saturday and Sunday."
         : "New requests, direct bookings and bookings in your projects in the last 24 hours."
