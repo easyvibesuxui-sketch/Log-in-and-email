@@ -354,9 +354,9 @@ class Component extends DCLogic {
       showSummary: this.props.showSummary ?? true,
       title: monday ? "Weekend Resource Digest" : "Daily Resource Digest",
       intervalShort,
-      generatedAt: wd(end) + " (Europe/Berlin)",
+      generatedAt: wd(end),
       isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
-      intervalTimes: wd(start) + " – " + wd(end) + " (Europe/Berlin)",
+      intervalTimes: wd(start) + " – " + wd(end),
       intro: monday
         ? "New requests, direct bookings and bookings in your projects on Friday, Saturday and Sunday."
         : "New requests, direct bookings and bookings in your projects in the last 24 hours."
