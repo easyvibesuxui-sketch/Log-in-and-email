@@ -33,6 +33,13 @@ a:hover { color: #ff1900; }
   .dg-mlabel { display: block !important; }
   .dg-field { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding: 5px 0 !important; }
   .dg-field > div:first-child { font-size: 11px; }
+  .dgb-head { display: none !important; }
+  .dgb-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; row-gap: 10px !important; }
+  .dgb-main { grid-column: 1 / -1; }
+  .dgb-no { display: none !important; }
+  .dgb-noin { display: inline !important; }
+  .dgb-info { grid-column: 1 / -1 !important; margin-top: 0 !important; }
+  .dgb-row .dg-mlabel { min-height: 0 !important; margin-bottom: 1px !important; }
 }
 @media print {
   html, body { background: #ffffff !important; }
@@ -49,7 +56,7 @@ a:hover { color: #ff1900; }
 <div class="dg-outer" style="background:#f1f1f1;padding:48px 20px;font-family:Montserrat,Helvetica,Arial,sans-serif;color:#151515;min-height:100vh;box-sizing:border-box">
 
 
-  <div style="max-width:600px;margin:0 auto;background:#ffffff">
+  <div style="{{ sheetStyle }}">
 
     <div class="dg-pad" style="background:linear-gradient(110deg,#151515 0%,#151515 42%,#343434 58%,#a7b0b3 82%,#f1f1f1 100%);color:#ffffff;padding:32px 44px 30px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid #a7b0b3">
       <div>
@@ -115,6 +122,7 @@ a:hover { color: #ff1900; }
             <span style="{{ g.pillStyle }}">{{ g.label }}</span>
             <span style="font-size:12px;font-weight:700;color:#343434">{{ g.countLabel }}</span>
           </div>
+          <sc-if value="{{ isListA }}" hint-placeholder-val="{{ true }}">
           <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
           <a class="dg-card" href="{{ it.url }}" style="display:block;text-decoration:none;color:#151515;padding:14px 2px;transition:background 140ms ease" style-hover="background:#fbfbfb">
             <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
@@ -134,6 +142,34 @@ a:hover { color: #ff1900; }
           </a>
           <sc-if value="{{ it.ruled }}" hint-placeholder-val="{{ true }}"><div style="height:0;border-top:3px double #a7b0b3"></div></sc-if>
           </sc-for>
+          </sc-if>
+          <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
+          <div class="dgb-head" style="{{ g.gridHead }}">
+            <div>#</div><div>Item</div><sc-if value="{{ g.isReq }}" hint-placeholder-val="{{ true }}"><div style="text-align:right">Qty</div></sc-if><div>{{ g.datesLabel }}</div><div>{{ g.byLabel }}</div><div style="text-align:right">Created</div>
+          </div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+          <a class="dg-card dgb-row" href="{{ it.url }}" style="{{ g.gridRow }}" style-hover="background:#fbfbfb">
+            <div class="dgb-no" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;line-height:18px;color:#151515">{{ it.no }}</div>
+            <div class="dgb-main" style="min-width:0">
+              <div style="font-size:11px;font-weight:500;color:#343434;line-height:18px"><span class="dgb-noin" style="display:none;font-family:'FavoritExp',Helvetica,sans-serif;font-size:10px;color:#151515;margin-right:8px">{{ it.no }}</span>{{ it.resource }}</div>
+              <div style="font-size:13px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</div>
+              <sc-if value="{{ it.hasExtra }}" hint-placeholder-val="{{ true }}">
+              <div style="margin-top:4px;font-size:11.5px;line-height:1.55;overflow-wrap:anywhere"><sc-for list="{{ it.extra }}" as="f" hint-placeholder-count="2"><span style="color:#a7b0b3">{{ f.sep }}</span><span style="color:#343434">{{ f.label }}: </span><span>{{ f.value }}</span></sc-for></div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ g.isReq }}" hint-placeholder-val="{{ true }}">
+            <div class="dg-num" style="font-size:12px;font-weight:600;line-height:18px;text-align:right"><div class="dg-mlabel">Qty</div>{{ it.qty }}</div>
+            </sc-if>
+            <div style="font-size:12px;line-height:18px"><div class="dg-mlabel">{{ g.datesLabel }}</div><div style="white-space:nowrap">{{ it.dateFrom }}</div><div style="white-space:nowrap">{{ it.dateTo }}</div></div>
+            <div style="font-size:12px;line-height:18px;overflow-wrap:anywhere"><div class="dg-mlabel">{{ g.byLabel }}</div>{{ it.by }}</div>
+            <div class="dg-num" style="font-size:12px;line-height:18px;text-align:right;color:#343434"><div class="dg-mlabel">Created</div><div style="white-space:nowrap">{{ it.createdDate }}</div><div>{{ it.createdTime }}</div></div>
+            <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
+              <div class="dgb-info" style="grid-column:2 / -1;margin-top:8px;background:#f1f1f1;border-radius:8px;padding:7px 10px;font-size:11.5px;line-height:1.5;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
+            </sc-if>
+          </a>
+          <sc-if value="{{ it.ruled }}" hint-placeholder-val="{{ true }}"><div style="height:0;border-top:3px double #a7b0b3"></div></sc-if>
+          </sc-for>
+          </sc-if>
         </div>
         </sc-for>
         </div>
@@ -156,7 +192,7 @@ a:hover { color: #ff1900; }
     </div>
   </div>
 
-  <div style="max-width:600px;margin:18px auto 0;font-size:11px;line-height:1.6;color:#343434;text-wrap:pretty">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
+  <div style="{{ noteStyle }}">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div>
 </div>
 </sc-if>
 
@@ -251,7 +287,7 @@ a:hover { color: #ff1900; }
 </sc-if>
 </x-dc>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f1f1f1"/><rect x="0" y="0" width="100" height="26" fill="#151515"/><rect x="14" y="38" width="72" height="6" fill="#ff1900"/><rect x="14" y="52" width="60" height="4" fill="#151515"/><rect x="14" y="62" width="66" height="4" fill="#a7b0b3"/><rect x="14" y="72" width="50" height="4" fill="#a7b0b3"/></svg></template>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;&#39;weekday&#39; | &#39;monday&#39;&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;email&quot;,&quot;pdf&quot;],&quot;default&quot;:&quot;email&quot;,&quot;tsType&quot;:&quot;&#39;email&#39; | &#39;pdf&#39;&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:720,&quot;height&quot;:3200},&quot;period&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;weekday&quot;,&quot;monday&quot;],&quot;default&quot;:&quot;weekday&quot;,&quot;tsType&quot;:&quot;&#39;weekday&#39; | &#39;monday&#39;&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showSummary&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Blocks&quot;},&quot;variant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;email&quot;,&quot;email-b&quot;,&quot;pdf&quot;],&quot;default&quot;:&quot;email&quot;,&quot;tsType&quot;:&quot;&#39;email&#39; | &#39;email-b&#39; | &#39;pdf&#39;&quot;,&quot;section&quot;:&quot;Content&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     const monday = this.props.period === "monday";
@@ -340,10 +376,26 @@ class Component extends DCLogic {
         return { name: name.toUpperCase(), countLabel: list.length + (list.length === 1 ? " item" : " items"), groups };
       });
       const kindGroups = [REQ, BOOK, ASG].map(kind => {
-        const items = types.flatMap(t => t.groups.filter(g => g.kind === kind).flatMap(g => g.items)).map((it, i, all) => Object.assign({}, it, { no: "#" + (i + 1), ruled: i < all.length - 1 }));
+        const items = types.flatMap(t => t.groups.filter(g => g.kind === kind).flatMap(g => g.items)).map((it, i, all) => {
+          // grid (B) columns: dates, by and count get their own column; the rest stays under the title
+          const dates = it.details.find(f => / dates$/.test(f.label));
+          const by = it.details.find(f => / by$/.test(f.label));
+          const qty = it.details.find(f => f.label === "Requested count");
+          const extra = it.details.filter(f => f !== dates && f !== by && f !== qty);
+          const [from, to] = dates ? dates.value.split(" – ") : ["—"];
+          const [cd, ct] = it.createdAt.split(", ");
+          return Object.assign({}, it, { no: "#" + (i + 1), ruled: i < all.length - 1,
+            dateFrom: to ? from + " –" : from, dateTo: to || "", by: by ? by.value : "—", qty: qty ? qty.value : "—",
+            extra: extra.map((f, n) => ({ label: f.label, value: f.value, sep: n ? " · " : "" })), hasExtra: extra.length > 0, createdDate: cd, createdTime: ct || "" });
+        });
         const k = kinds[kind];
+        const isReq = kind === REQ;
+        const cols = isReq ? "24px minmax(0,1fr) 34px 128px 100px 72px" : "24px minmax(0,1fr) 128px 100px 72px";
         return { label: k.badge === "REQUEST" ? "REQUESTS" : k.badge === "BOOKING" ? "BOOKINGS" : "DIRECT BOOKINGS",
           countLabel: items.length + (items.length === 1 ? " item" : " items"), items,
+          isReq, datesLabel: isReq ? "Request dates" : "Booking dates", byLabel: isReq ? "Requested by" : "Booked by",
+          gridHead: { display: "grid", gridTemplateColumns: cols, gap: "0 12px", padding: "7px 2px", background: "#fbfbfb", fontFamily: "'FavoritExp',Helvetica,sans-serif", fontWeight: 500, fontSize: 9, lineHeight: "12px", color: "#ff1900" },
+          gridRow: { display: "grid", gridTemplateColumns: cols, gap: "0 12px", alignItems: "start", padding: "12px 2px", textDecoration: "none", color: "#151515", transition: "background 140ms ease" },
           pillStyle: { display: "inline-block", fontFamily: "'FavoritExp',Helvetica,sans-serif", fontSize: 8.5, letterSpacing: "0.12em", fontWeight: 500, padding: "4px 8px", borderRadius: 8,
             border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" } };
       }).filter(g => g.items.length);
@@ -361,6 +413,9 @@ class Component extends DCLogic {
       intervalShort,
       generatedAt: wd(end),
       isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
+      isGrid: this.props.variant === "email-b", isListA: this.props.variant !== "email-b",
+      sheetStyle: { maxWidth: this.props.variant === "email-b" ? 760 : 600, margin: "0 auto", background: "#ffffff" },
+      noteStyle: { maxWidth: this.props.variant === "email-b" ? 760 : 600, margin: "18px auto 0", fontSize: 11, lineHeight: 1.6, color: "#343434", textWrap: "pretty" },
       intervalTimes: wd(start) + " – " + wd(end),
       intro: monday
         ? "New requests, direct bookings and bookings in your projects on Friday, Saturday and Sunday."
