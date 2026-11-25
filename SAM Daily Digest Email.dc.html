@@ -272,38 +272,43 @@ class Component extends DCLogic {
       booking:  { badge: "DIRECT BOOKING", heading: "Direct bookings", bar: "#fe7d00", bg: "#fe7d00", fg: "#ffffff" },
       assigned: { badge: "BOOKING", heading: "Bookings (assigned to requests)", bar: "#459af7", bg: "#459af7", fg: "#ffffff" }
     };
-    const item = (kind, title, created, fields, info) => ({ kind, title, created, fields, info: info || "" });
+    const item = (kind, title, created, fields, info) => ({ kind, title, created, fields: fields.filter(Boolean), info: info || "" });
     const F = (label, value) => ({ label, value });
+    // Equipment request weight: min and max are separate optional fields.
+    // Both: "20 t – 25 t"; only min: "min. 20 t"; only max: "max. 25 t"; neither: no Weight line.
+    const W = (min, max) => min != null && max != null ? F("Weight", min + " t – " + max + " t")
+      : min != null ? F("Weight", "min. " + min + " t") : max != null ? F("Weight", "max. " + max + " t") : null;
 
     const data = [
       { cc: "4711-200", color: "#f4b642", title: "Neubau Logistikzentrum Hamburg-Billbrook", types: {
         Equipment: [
-          item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Tag", "Earthworks"), F("Weight", "20 t – 25 t"), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
+          item(REQ, "Excavator, crawler", at(2.2), [F("Requested count", "2"), F("Request dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Tag", "Earthworks"), W(20, 25), F("Requested by", "Jonas Richter")], "GPS machine control required for both machines."),
           item(BOOK, "EX-1042 · Liebherr R 926 · Excavator, crawler", at(6.7), [F("Booking dates", "26.10.2026, 07:00 – 06.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Deliver to gate 2, site entrance Billbrookdeich."),
           item(ASG, "EX-1057 · CAT 323 · Excavator, crawler", at(7.1), [F("Booking dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")])
         ],
         Person: [
           item(REQ, "Machine operator", at(1.4), [F("Certificate", "Excavator licence DGUV 308-001"), F("Requested count", "2"), F("Request dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Requested by", "Jonas Richter")], "Early shift, start 06:30."),
           item(REQ, "Electrician › High voltage", at(3.0), [F("Certificate", "Electrically skilled person (EFK)"), F("Requested count", "1"), F("Request dates", "02.11.2026, 07:00 – 06.11.2026, 16:00"), F("Requested by", "Jonas Richter")]),
-          item(REQ, "Surveyor › GNSS › Machine control set-up", at(9.5), [F("Certificate", "—"), F("Requested count", "1"), F("Request dates", "26.10.2026, 07:00 – 16:00"), F("Requested by", "Lea Schubert")], "Set up the 3D model on both excavators before work starts."),
-          item(BOOK, "Lukas Brandt · P-20318 · Foreman", at(5.2), [F("Qualification", "Site management › Foreman"), F("Booking dates", "26.10.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Also responsible for the concrete works."),
-          item(ASG, "Mehmet Yilmaz · P-20977 · Machine operator", at(8.3), [F("Qualification", "Machine operator"), F("Booking dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")])
+          item(REQ, "Surveyor › GNSS › Machine control set-up", at(9.5), [F("Certificate", "—"), F("Requested count", "1"), F("Request dates", "26.10.2026, 07:00 – 26.10.2026, 16:00"), F("Requested by", "Lea Schubert")], "Set up the 3D model on both excavators before work starts."),
+          item(BOOK, "Lukas Brandt · P-20318 · Site management › Foreman", at(5.2), [F("Booking dates", "26.10.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Also responsible for the concrete works."),
+          item(ASG, "Mehmet Yilmaz · P-20977 · Machine operator", at(8.3), [F("Booking dates", "26.10.2026, 07:00 – 13.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")])
         ],
         Crew: [
           item(REQ, "Concrete crew", at(4.6), [F("Tag", "Foundation"), F("Categories", "Concrete pump × 1, Internal vibrator × 2"), F("Qualifications", "Concrete worker × 4, Foreman × 1"), F("Request dates", "09.11.2026, 07:00 – 20.11.2026, 16:00"), F("Requested by", "Jonas Richter")], "Pour of foundation slab axis A–D."),
-          item(BOOK, "Crew Nord 3 · Concrete crew", at(10.2), [F("Crew type", "Concrete crew"), F("Booking dates", "09.11.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Crew brings its own pump."),
-          item(ASG, "Crew Nord 5 · Formwork crew", at(11.8), [F("Crew type", "Formwork crew"), F("Booking dates", "02.11.2026, 07:00 – 06.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Formwork for foundation slab.")
+          item(BOOK, "Crew Nord 3 · Concrete crew", at(10.2), [F("Booking dates", "09.11.2026, 07:00 – 20.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Crew brings its own pump."),
+          item(ASG, "Crew Nord 5 · Formwork crew", at(11.8), [F("Booking dates", "02.11.2026, 07:00 – 06.11.2026, 16:00"), F("Booked by", "Sabine Hoffmann")], "Formwork for foundation slab.")
         ],
         "Truck transport": [
-          item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
+          item(REQ, "Low-loader", at(7.4), [F("Equipment", "EX-1042 · Liebherr R 926"), F("Dimensions (L × H × W)", "9.80 × 3.20 × 3.00 m"), F("Weight", "25.4 t"), F("Request dates", "26.10.2026, 06:00 – 26.10.2026, 14:00"), F("Requested by", "Sabine Hoffmann")], "Permit for oversize transport is in place.")
         ]
       } },
       { cc: "4711-315", color: "#411817", title: "Sanierung Brücke B75 Lübeck", types: {
         Equipment: [
-          item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026, 07:00 – 05.11.2026, 16:00"), F("Tag", "Bridge deck"), F("Weight", "40 t – 60 t"), F("Requested by", "Tobias Krüger")])
+          item(REQ, "Mobile crane", at(12.5), [F("Requested count", "1"), F("Request dates", "03.11.2026, 07:00 – 05.11.2026, 16:00"), F("Tag", "Bridge deck"), W(40, null), F("Requested by", "Tobias Krüger")]),
+          item(REQ, "Telehandler", at(13.1), [F("Requested count", "1"), F("Request dates", "04.11.2026, 07:00 – 14.11.2026, 16:00"), F("Tag", "Bridge deck"), W(null, 4), F("Requested by", "Tobias Krüger")])
         ],
         Person: [
-          item(ASG, "Anja Vogel · P-21104 · Welder", at(14.0), [F("Qualification", "Welder › Structural steel"), F("Booking dates", "03.11.2026, 07:00 – 14.11.2026, 16:00"), F("Booked by", "Tobias Krüger")])
+          item(ASG, "Anja Vogel · P-21104 · Welder › Structural steel", at(14.0), [F("Booking dates", "03.11.2026, 07:00 – 14.11.2026, 16:00"), F("Booked by", "Tobias Krüger")])
         ]
       } }
     ];
