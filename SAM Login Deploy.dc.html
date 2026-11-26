@@ -113,7 +113,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
         <a href="#" onClick="{{ goRecovery }}" style="font-size:13px;color:#fff;text-decoration:underline;text-underline-offset:3px" style-hover="color:#ff1900">Forgot password</a>
       </div>
 
-      <button type="button" onClick="{{ signIn }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1900;color:#151515;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 140ms ease" style-hover="opacity:0.74">Sign in</button>
+      <button type="button" onClick="{{ signIn }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1900;color:#ffffff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 140ms ease" style-hover="opacity:0.74">Sign in</button>
 
       <div style="display:flex;align-items:center;gap:14px;width:320px;max-width:100%;margin-top:26px">
         <span aria-hidden="true" style="flex:1;height:1px;background:#343434"></span>
@@ -233,7 +233,7 @@ input:-webkit-autofill { -webkit-text-fill-color: #ffffff; transition: backgroun
     <div style="max-width:470px;width:100%">
       <h1 style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:32px;line-height:1.05;margin:0 0 10px">Password updated</h1>
       <div style="font-size:13px;color:#f1f1f1;text-wrap:pretty">You can now sign in with your new password.</div>
-      <button type="button" onClick="{{ goLogin }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1900;color:#151515;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 140ms ease" style-hover="opacity:0.74">Back to login</button>
+      <button type="button" onClick="{{ goLogin }}" style="margin-top:52px;width:320px;max-width:100%;background:#ff1900;color:#ffffff;border:0;padding:15px 0;font-family:'FavoritExt',Helvetica,sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity 140ms ease" style-hover="opacity:0.74">Back to login</button>
     </div>
     </sc-if>
 
@@ -370,7 +370,7 @@ class Component extends DCLogic {
       fontFamily: "'FavoritExt',Helvetica,sans-serif", fontWeight: 700, fontSize: 14,
       transition: "background 140ms ease",
       background: disabled ? "#b9b9b9" : "#ff1900",
-      color: disabled ? "#343434" : "#151515",
+      color: disabled ? "#343434" : "#ffffff",
       cursor: disabled ? "not-allowed" : "pointer" };
   }
 
