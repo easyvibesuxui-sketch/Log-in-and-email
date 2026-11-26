@@ -15,6 +15,21 @@ html, body { margin: 0; padding: 0; background: #f1f1f1; }
 a { color: #151515; }
 a:hover { color: #ff1900; }
 .dg-mlabel { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #ff1900; margin-bottom: 4px; line-height: 10px; min-height: 20px; }
+.dgb-c { padding: 0 6px; min-width: 0; }
+.dgb-ml { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.04em; color: #ff1900; line-height: 12px; }
+@media (max-width: 860px) {
+  .dgb-head { display: none !important; }
+  .dgb-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 6px !important; padding: 12px 6px !important; }
+  .dgb-no, .dgb-empty { display: none !important; }
+  .dgb-noin { display: inline !important; }
+  .dgb-res, .dgb-item, .dgb-sub { grid-column: 1 / -1 !important; }
+  .dgb-item { font-size: 13px; }
+  .dgb-sub { margin-top: 0 !important; }
+  .dgb-num { text-align: left !important; }
+  .dgb-ml { display: block !important; }
+  .dgb-res { order: 0; } .dgb-item { order: 1; } .dgb-start { order: 2; } .dgb-end { order: 3; }
+  .dgb-qty { order: 4; } .dgb-by { order: 5; } .dgb-cr { order: 6; } .dgb-sub { order: 7; }
+}
 @media (max-width: 560px) {
   .dg-outer { padding: 24px 12px !important; }
   .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
@@ -28,13 +43,6 @@ a:hover { color: #ff1900; }
   .dg-mlabel { display: block !important; }
   .dg-field { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding: 5px 0 !important; }
   .dg-field > div:first-child { font-size: 11px; }
-  .dgb-head { display: none !important; }
-  .dgb-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; row-gap: 10px !important; }
-  .dgb-main { grid-column: 1 / -1; }
-  .dgb-no { display: none !important; }
-  .dgb-noin { display: inline !important; }
-  .dgb-info { grid-column: 1 / -1 !important; margin-top: 0 !important; }
-  .dgb-row .dg-mlabel { min-height: 0 !important; margin-bottom: 1px !important; }
 }
 
 </style>
@@ -43,7 +51,7 @@ a:hover { color: #ff1900; }
 <div class="dg-outer" style="background: rgb(241, 241, 241); padding: 48px 20px; font-family: Montserrat, Helvetica, Arial, sans-serif; color: rgb(21, 21, 21); min-height: 100vh; box-sizing: border-box;">
 
 
-  <div style="max-width: 760px; margin: 0px auto; background: rgb(255, 255, 255);">
+  <div style="max-width: 960px; margin: 0px auto; background: rgb(255, 255, 255);">
 
     <div class="dg-pad" style="background: linear-gradient(110deg, rgb(21, 21, 21) 0%, rgb(21, 21, 21) 42%, rgb(52, 52, 52) 58%, rgb(167, 176, 179) 82%, rgb(241, 241, 241) 100%); color: rgb(255, 255, 255); padding: 32px 44px 30px; display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 1px solid rgb(167, 176, 179);">
       <div>
@@ -109,273 +117,200 @@ a:hover { color: #ff1900; }
           </div>
         </div>
 
-        <div style="padding: 2px 16px 16px;">
         
-        <div style="margin-top: 18px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0px 2px 6px;">
-            <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span>
-            <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">6 items</span></span>
+        
+        <div class="dgb-table" style="padding: 0px 0px 4px;">
+          <div class="dgb-head" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; background: rgb(251, 251, 251); border-bottom: 1px solid rgb(167, 176, 179); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0); align-items: end;">
+            <div class="dgb-c">#</div><div class="dgb-c">Resource</div><div class="dgb-c">Item</div><div class="dgb-c" style="text-align: right;">Qty</div><div class="dgb-c">Start</div><div class="dgb-c">End</div><div class="dgb-c">Requested / booked by</div><div class="dgb-c" style="text-align: right;">Created</div>
           </div>
           
+          <div class="dgb-group" style="display: flex; align-items: center; gap: 10px; padding: 10px 6px 6px; border-top-width: medium; border-top-style: none; border-top-color: currentcolor;"><span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span><span style="font-size: 11px; font-weight: 600; color: rgb(52, 52, 52);"><span class="sc-interp">6 items</span></span></div>
           
-          <div class="dgb-head" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; padding: 7px 2px; background: rgb(251, 251, 251); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0);">
-            <div>#</div><div>Item</div><div style="text-align: right;">Qty</div><div><span class="sc-interp">Request dates</span></div><div><span class="sc-interp">Requested by</span></div><div style="text-align: right;">Created</div>
-          </div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/1" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Excavator, crawler</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Earthworks</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">20 t – 25 t</span></span></div>
-              
-            </div>
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/1" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Excavator, crawler</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">2</span></div>
             
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">2</span></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">13.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Jonas Richter</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 09:12</span></div>
             
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">13.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Jonas Richter</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">09:12</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">GPS machine control required for both machines.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/4" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Machine operator</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">Excavator licence DGUV 308-001</span></span></div>
-              
-            </div>
-            
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">2</span></div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">13.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Jonas Richter</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">08:24</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Early shift, start 06:30.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/5" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Electrician › High voltage</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">Electrically skilled person (EFK)</span></span></div>
-              
-            </div>
-            
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">1</span></div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">02.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">06.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Jonas Richter</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">10:00</span></div></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/6" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#4</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#4</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Surveyor › GNSS › Machine control set-up</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">—</span></span></div>
-              
-            </div>
-            
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">1</span></div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Lea Schubert</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">16:30</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Set up the 3D model on both excavators before work starts.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/9" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#5</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#5</span></span><span class="sc-interp">Crew</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Concrete crew</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Foundation</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Categories</span>: </span><span><span class="sc-interp">Concrete pump × 1, Internal vibrator × 2</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Qualifications</span>: </span><span><span class="sc-interp">Concrete worker × 4, Foreman × 1</span></span></div>
-              
-            </div>
-            
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">—</span></div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">09.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">20.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Jonas Richter</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">11:36</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Pour of foundation slab axis A–D.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/12" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#6</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#6</span></span><span class="sc-interp">Truck transport</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Low-loader</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Equipment</span>: </span><span><span class="sc-interp">EX-1042 · Liebherr R 926</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Dimensions (L × H × W)</span>: </span><span><span class="sc-interp">9.80 × 3.20 × 3.00 m</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">25.4 t</span></span></div>
-              
-            </div>
-            
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">—</span></div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 06:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 14:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">14:24</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Permit for oversize transport is in place.</span></div>
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Earthworks</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">20 t – 25 t</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">GPS machine control required for both machines.</span></span></div>
             
           </a>
           
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/4" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Machine operator</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">2</span></div>
+            
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">13.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Jonas Richter</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 08:24</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">Excavator licence DGUV 308-001</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Early shift, start 06:30.</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/5" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Electrician › High voltage</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">1</span></div>
+            
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">02.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">06.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Jonas Richter</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 10:00</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">Electrically skilled person (EFK)</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/6" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#4</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#4</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Surveyor › GNSS › Machine control set-up</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">1</span></div>
+            
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">26.10.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Lea Schubert</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 16:30</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Certificate</span>: </span><span><span class="sc-interp">—</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Set up the 3D model on both excavators before work starts.</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/9" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#5</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#5</span></span><span class="sc-interp">Crew</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Concrete crew</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">—</span></div>
+            
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">09.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">20.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Jonas Richter</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 11:36</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Foundation</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Categories</span>: </span><span><span class="sc-interp">Concrete pump × 1, Internal vibrator × 2</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Qualifications</span>: </span><span><span class="sc-interp">Concrete worker × 4, Foreman × 1</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Pour of foundation slab axis A–D.</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/12" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor;">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#6</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#6</span></span><span class="sc-interp">Truck transport</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Low-loader</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">—</span></div>
+            
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 06:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">26.10.2026, 14:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 14:24</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Equipment</span>: </span><span><span class="sc-interp">EX-1042 · Liebherr R 926</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Dimensions (L × H × W)</span>: </span><span><span class="sc-interp">9.80 × 3.20 × 3.00 m</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">25.4 t</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Permit for oversize transport is in place.</span></span></div>
+            
+          </a>
+          
+          
+          <div class="dgb-group" style="display: flex; align-items: center; gap: 10px; padding: 12px 6px 6px; border-top: 3px double rgb(167, 176, 179);"><span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(254, 125, 0); background: rgb(254, 125, 0); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">DIRECT BOOKINGS</span></span><span style="font-size: 11px; font-weight: 600; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span></div>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/2" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">EX-1042 · Liebherr R 926 · Excavator, crawler</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">06.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 13:42</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Deliver to gate 2, site entrance Billbrookdeich.</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/7" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Lukas Brandt · P-20318 · Site management › Foreman</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">20.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 12:12</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Also responsible for the concrete works.</span></span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/10" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor;">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Crew</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Crew Nord 3 · Concrete crew</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">09.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">20.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 17:12</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Crew brings its own pump.</span></span></div>
+            
+          </a>
+          
+          
+          <div class="dgb-group" style="display: flex; align-items: center; gap: 10px; padding: 12px 6px 6px; border-top: 3px double rgb(167, 176, 179);"><span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span><span style="font-size: 11px; font-weight: 600; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span></div>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/3" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">EX-1057 · CAT 323 · Excavator, crawler</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">13.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 14:06</span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/8" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Mehmet Yilmaz · P-20977 · Machine operator</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">26.10.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">13.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 15:18</span></div>
+            
+          </a>
+          
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/11" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor;">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Crew</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Crew Nord 5 · Formwork crew</span></div>
+            
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">02.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">06.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Sabine Hoffmann</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 18:48</span></div>
+            
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(21, 21, 21); font-weight: 600;"><span class="sc-interp">Additional information</span>: </span><span><span class="sc-interp">Formwork for foundation slab.</span></span></div>
+            
+          </a>
           
           
         </div>
         
-        <div style="margin-top: 18px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0px 2px 6px;">
-            <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(254, 125, 0); background: rgb(254, 125, 0); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">DIRECT BOOKINGS</span></span>
-            <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span>
-          </div>
-          
-          
-          <div class="dgb-head" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; padding: 7px 2px; background: rgb(251, 251, 251); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0);">
-            <div>#</div><div>Item</div><div><span class="sc-interp">Booking dates</span></div><div><span class="sc-interp">Booked by</span></div><div style="text-align: right;">Created</div>
-          </div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/2" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">EX-1042 · Liebherr R 926 · Excavator, crawler</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">06.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">13:42</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Deliver to gate 2, site entrance Billbrookdeich.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/7" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Lukas Brandt · P-20318 · Site management › Foreman</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">20.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">12:12</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Also responsible for the concrete works.</span></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/10" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Crew</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Crew Nord 3 · Concrete crew</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">09.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">20.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">17:12</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Crew brings its own pump.</span></div>
-            
-          </a>
-          
-          
-          
-        </div>
-        
-        <div style="margin-top: 18px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0px 2px 6px;">
-            <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span>
-            <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span>
-          </div>
-          
-          
-          <div class="dgb-head" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; padding: 7px 2px; background: rgb(251, 251, 251); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0);">
-            <div>#</div><div>Item</div><div><span class="sc-interp">Booking dates</span></div><div><span class="sc-interp">Booked by</span></div><div style="text-align: right;">Created</div>
-          </div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/3" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">EX-1057 · CAT 323 · Excavator, crawler</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">13.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">14:06</span></div></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/8" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Mehmet Yilmaz · P-20977 · Machine operator</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">26.10.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">13.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">15:18</span></div></div>
-            
-          </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-200/plans/11" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#3</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#3</span></span><span class="sc-interp">Crew</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Crew Nord 5 · Formwork crew</span></div>
-              
-            </div>
-            
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">02.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">06.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Sabine Hoffmann</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">18:48</span></div></div>
-            
-              <div class="dgb-info" style="grid-column: 2 / -1; margin-top: 8px; background: rgb(241, 241, 241); border-radius: 8px; padding: 7px 10px; font-size: 11.5px; line-height: 1.5; color: rgb(52, 52, 52);"><span style="font-weight: 500; color: rgb(21, 21, 21);">Additional information: </span><span class="sc-interp">Formwork for foundation slab.</span></div>
-            
-          </a>
-          
-          
-          
-        </div>
-        
-        </div>
       </div>
     </div>
     
@@ -389,90 +324,64 @@ a:hover { color: #ff1900; }
           </div>
         </div>
 
-        <div style="padding: 2px 16px 16px;">
         
-        <div style="margin-top: 18px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0px 2px 6px;">
-            <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span>
-            <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">2 items</span></span>
+        
+        <div class="dgb-table" style="padding: 0px 0px 4px;">
+          <div class="dgb-head" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; background: rgb(251, 251, 251); border-bottom: 1px solid rgb(167, 176, 179); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0); align-items: end;">
+            <div class="dgb-c">#</div><div class="dgb-c">Resource</div><div class="dgb-c">Item</div><div class="dgb-c" style="text-align: right;">Qty</div><div class="dgb-c">Start</div><div class="dgb-c">End</div><div class="dgb-c">Requested / booked by</div><div class="dgb-c" style="text-align: right;">Created</div>
           </div>
           
+          <div class="dgb-group" style="display: flex; align-items: center; gap: 10px; padding: 10px 6px 6px; border-top-width: medium; border-top-style: none; border-top-color: currentcolor;"><span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span><span style="font-size: 11px; font-weight: 600; color: rgb(52, 52, 52);"><span class="sc-interp">2 items</span></span></div>
           
-          <div class="dgb-head" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; padding: 7px 2px; background: rgb(251, 251, 251); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0);">
-            <div>#</div><div>Item</div><div style="text-align: right;">Qty</div><div><span class="sc-interp">Request dates</span></div><div><span class="sc-interp">Requested by</span></div><div style="text-align: right;">Created</div>
-          </div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/1" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Mobile crane</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Bridge deck</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">min. 40 t</span></span></div>
-              
-            </div>
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/1" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom: 1px solid rgb(241, 241, 241);">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Equipment</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Mobile crane</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">1</span></div>
             
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">1</span></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">03.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">05.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Tobias Krüger</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 19:30</span></div>
             
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">03.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">05.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Tobias Krüger</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">19:30</span></div></div>
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Bridge deck</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">min. 40 t</span></span></div>
             
           </a>
-          <div style="height: 0px; border-top: 3px double rgb(167, 176, 179);"></div>
           
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/2" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 34px 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Equipment</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Telehandler</span></div>
-              
-              <div style="margin-top: 4px; font-size: 11.5px; line-height: 1.55; overflow-wrap: anywhere;"><span style="color: rgb(167, 176, 179);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Bridge deck</span></span><span style="color: rgb(167, 176, 179);"><span class="sc-interp"> · </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">max. 4 t</span></span></div>
-              
-            </div>
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/2" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor;">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#2</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#2</span></span><span class="sc-interp">Equipment</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Telehandler</span></div>
+            <div class="dgb-c dgb-num dgb-qty" style="text-align: right; font-weight: 600;"><span class="dgb-ml">Qty</span><span class="sc-interp">1</span></div>
             
-            <div class="dg-num" style="font-size: 12px; font-weight: 600; line-height: 18px; text-align: right;"><div class="dg-mlabel">Qty</div><span class="sc-interp">1</span></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">04.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">14.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Requested by</span></span><span class="sc-interp">Tobias Krüger</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 20:06</span></div>
             
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Request dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">04.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">14.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Requested by</span></div><span class="sc-interp">Tobias Krüger</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">20:06</span></div></div>
+            <div class="dgb-c dgb-sub" style="grid-column: 3 / -1; margin-top: 3px; font-size: 11px; line-height: 1.5; color: rgb(21, 21, 21); overflow-wrap: anywhere;"><span style="color: rgb(52, 52, 52);"><span class="sc-interp"></span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Tag</span>: </span><span><span class="sc-interp">Bridge deck</span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">  ·  </span></span><span style="color: rgb(52, 52, 52);"><span class="sc-interp">Weight</span>: </span><span><span class="sc-interp">max. 4 t</span></span></div>
             
           </a>
           
           
+          <div class="dgb-group" style="display: flex; align-items: center; gap: 10px; padding: 12px 6px 6px; border-top: 3px double rgb(167, 176, 179);"><span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span><span style="font-size: 11px; font-weight: 600; color: rgb(52, 52, 52);"><span class="sc-interp">1 item</span></span></div>
           
-        </div>
-        
-        <div style="margin-top: 18px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0px 2px 6px;">
-            <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span>
-            <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">1 item</span></span>
-          </div>
-          
-          
-          <div class="dgb-head" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; padding: 7px 2px; background: rgb(251, 251, 251); font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9px; line-height: 12px; color: rgb(255, 25, 0);">
-            <div>#</div><div>Item</div><div><span class="sc-interp">Booking dates</span></div><div><span class="sc-interp">Booked by</span></div><div style="text-align: right;">Created</div>
-          </div>
-          
-          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/3" style="display: grid; grid-template-columns: 24px minmax(0px, 1fr) 128px 100px 72px; gap: 0px 12px; align-items: start; padding: 12px 2px; text-decoration: none; color: rgb(21, 21, 21); transition: background 140ms;">
-            <div class="dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 10px; line-height: 18px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
-            <div class="dgb-main" style="min-width: 0px;">
-              <div style="font-size: 11px; font-weight: 500; color: rgb(52, 52, 52); line-height: 18px;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-size: 10px; color: rgb(21, 21, 21); margin-right: 8px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Person</span></div>
-              <div style="font-size: 13px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere;"><span class="sc-interp">Anja Vogel · P-21104 · Welder › Structural steel</span></div>
-              
-            </div>
+          <a class="dg-card dgb-row scp2" href="https://app.syniotec.com/projects/4711-315/plans/3" style="display: grid; grid-template-columns: 30px 108px minmax(0px, 1fr) 36px 110px 110px 126px 112px; column-gap: 0px; padding: 8px 0px; align-items: baseline; text-decoration: none; color: rgb(21, 21, 21); font-size: 12px; line-height: 18px; transition: background 140ms; border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor;">
+            <div class="dgb-c dgb-no" style="font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21);"><span class="sc-interp">#1</span></div>
+            <div class="dgb-c dgb-res" style="color: rgb(52, 52, 52); font-weight: 500;"><span class="dgb-noin" style="display: none; font-family: FavoritExp, Helvetica, sans-serif; font-weight: 500; font-size: 9.5px; color: rgb(21, 21, 21); margin-right: 6px;"><span class="sc-interp">#1</span></span><span class="sc-interp">Person</span></div>
+            <div class="dgb-c dgb-item" style="font-weight: 700; color: rgb(21, 21, 21);"><span class="sc-interp">Anja Vogel · P-21104 · Welder › Structural steel</span></div>
             
-            <div style="font-size: 12px; line-height: 18px;"><div class="dg-mlabel"><span class="sc-interp">Booking dates</span></div><div style="white-space: nowrap;"><span class="sc-interp">03.11.2026, 07:00 –</span></div><div style="white-space: nowrap;"><span class="sc-interp">14.11.2026, 16:00</span></div></div>
-            <div style="font-size: 12px; line-height: 18px; overflow-wrap: anywhere;"><div class="dg-mlabel"><span class="sc-interp">Booked by</span></div><span class="sc-interp">Tobias Krüger</span></div>
-            <div class="dg-num" style="font-size: 12px; line-height: 18px; text-align: right; color: rgb(52, 52, 52);"><div class="dg-mlabel">Created</div><div style="white-space: nowrap;"><span class="sc-interp">20.10.2026</span></div><div><span class="sc-interp">21:00</span></div></div>
+            <div class="dgb-c dgb-empty"></div>
+            <div class="dgb-c dgb-start" style="white-space: nowrap;"><span class="dgb-ml">Start</span><span class="sc-interp">03.11.2026, 07:00</span></div>
+            <div class="dgb-c dgb-end" style="white-space: nowrap;"><span class="dgb-ml">End</span><span class="sc-interp">14.11.2026, 16:00</span></div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml"><span class="sc-interp">Booked by</span></span><span class="sc-interp">Tobias Krüger</span></div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align: right; white-space: nowrap; color: rgb(52, 52, 52);"><span class="dgb-ml">Created</span><span class="sc-interp">20.10.2026, 21:00</span></div>
             
           </a>
           
           
-          
         </div>
         
-        </div>
       </div>
     </div>
     
@@ -492,6 +401,6 @@ a:hover { color: #ff1900; }
     </div>
   </div>
 
-  <div style="max-width: 760px; margin: 18px auto 0px; font-size: 11px; line-height: 1.6; color: rgb(52, 52, 52); text-wrap: pretty;">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div></div>
+  <div style="max-width: 960px; margin: 18px auto 0px; font-size: 11px; line-height: 1.6; color: rgb(52, 52, 52); text-wrap: pretty;">You receive this e-mail because you are the responsible person, a further responsible person or the dispatcher of these projects in SAM.</div></div>
 </body>
 </html>

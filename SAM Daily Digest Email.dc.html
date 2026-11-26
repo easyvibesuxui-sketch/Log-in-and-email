@@ -20,6 +20,21 @@ html, body { margin: 0; padding: 0; background: #f1f1f1; }
 a { color: #151515; }
 a:hover { color: #ff1900; }
 .dg-mlabel { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #ff1900; margin-bottom: 4px; line-height: 10px; min-height: 20px; }
+.dgb-c { padding: 0 6px; min-width: 0; }
+.dgb-ml { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.04em; color: #ff1900; line-height: 12px; }
+@media (max-width: 860px) {
+  .dgb-head { display: none !important; }
+  .dgb-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 6px !important; padding: 12px 6px !important; }
+  .dgb-no, .dgb-empty { display: none !important; }
+  .dgb-noin { display: inline !important; }
+  .dgb-res, .dgb-item, .dgb-sub { grid-column: 1 / -1 !important; }
+  .dgb-item { font-size: 13px; }
+  .dgb-sub { margin-top: 0 !important; }
+  .dgb-num { text-align: left !important; }
+  .dgb-ml { display: block !important; }
+  .dgb-res { order: 0; } .dgb-item { order: 1; } .dgb-start { order: 2; } .dgb-end { order: 3; }
+  .dgb-qty { order: 4; } .dgb-by { order: 5; } .dgb-cr { order: 6; } .dgb-sub { order: 7; }
+}
 @media (max-width: 560px) {
   .dg-outer { padding: 24px 12px !important; }
   .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
@@ -33,13 +48,6 @@ a:hover { color: #ff1900; }
   .dg-mlabel { display: block !important; }
   .dg-field { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding: 5px 0 !important; }
   .dg-field > div:first-child { font-size: 11px; }
-  .dgb-head { display: none !important; }
-  .dgb-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; row-gap: 10px !important; }
-  .dgb-main { grid-column: 1 / -1; }
-  .dgb-no { display: none !important; }
-  .dgb-noin { display: inline !important; }
-  .dgb-info { grid-column: 1 / -1 !important; margin-top: 0 !important; }
-  .dgb-row .dg-mlabel { min-height: 0 !important; margin-bottom: 1px !important; }
 }
 @media print {
   html, body { background: #ffffff !important; }
@@ -115,6 +123,7 @@ a:hover { color: #ff1900; }
           </div>
         </div>
 
+        <sc-if value="{{ isListA }}" hint-placeholder-val="{{ true }}">
         <div style="padding:2px 16px 16px">
         <sc-for list="{{ p.kindGroups }}" as="g" hint-placeholder-count="3">
         <div style="margin-top:18px">
@@ -122,7 +131,6 @@ a:hover { color: #ff1900; }
             <span style="{{ g.pillStyle }}">{{ g.label }}</span>
             <span style="font-size:12px;font-weight:700;color:#343434">{{ g.countLabel }}</span>
           </div>
-          <sc-if value="{{ isListA }}" hint-placeholder-val="{{ true }}">
           <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
           <a class="dg-card" href="{{ it.url }}" style="display:block;text-decoration:none;color:#151515;padding:14px 2px;transition:background 140ms ease" style-hover="background:#fbfbfb">
             <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:6px">
@@ -142,37 +150,36 @@ a:hover { color: #ff1900; }
           </a>
           <sc-if value="{{ it.ruled }}" hint-placeholder-val="{{ true }}"><div style="height:0;border-top:3px double #a7b0b3"></div></sc-if>
           </sc-for>
-          </sc-if>
-          <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
-          <div class="dgb-head" style="{{ g.gridHead }}">
-            <div>#</div><div>Item</div><sc-if value="{{ g.isReq }}" hint-placeholder-val="{{ true }}"><div style="text-align:right">Qty</div></sc-if><div>{{ g.datesLabel }}</div><div>{{ g.byLabel }}</div><div style="text-align:right">Created</div>
-          </div>
-          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
-          <a class="dg-card dgb-row" href="{{ it.url }}" style="{{ g.gridRow }}" style-hover="background:#fbfbfb">
-            <div class="dgb-no" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:10px;line-height:18px;color:#151515">{{ it.no }}</div>
-            <div class="dgb-main" style="min-width:0">
-              <div style="font-size:11px;font-weight:500;color:#343434;line-height:18px"><span class="dgb-noin" style="display:none;font-family:'FavoritExp',Helvetica,sans-serif;font-size:10px;color:#151515;margin-right:8px">{{ it.no }}</span>{{ it.resource }}</div>
-              <div style="font-size:13px;font-weight:700;line-height:1.35;overflow-wrap:anywhere">{{ it.title }}</div>
-              <sc-if value="{{ it.hasExtra }}" hint-placeholder-val="{{ true }}">
-              <div style="margin-top:4px;font-size:11.5px;line-height:1.55;overflow-wrap:anywhere"><sc-for list="{{ it.extra }}" as="f" hint-placeholder-count="2"><span style="color:#a7b0b3">{{ f.sep }}</span><span style="color:#343434">{{ f.label }}: </span><span>{{ f.value }}</span></sc-for></div>
-              </sc-if>
-            </div>
-            <sc-if value="{{ g.isReq }}" hint-placeholder-val="{{ true }}">
-            <div class="dg-num" style="font-size:12px;font-weight:600;line-height:18px;text-align:right"><div class="dg-mlabel">Qty</div>{{ it.qty }}</div>
-            </sc-if>
-            <div style="font-size:12px;line-height:18px"><div class="dg-mlabel">{{ g.datesLabel }}</div><div style="white-space:nowrap">{{ it.dateFrom }}</div><div style="white-space:nowrap">{{ it.dateTo }}</div></div>
-            <div style="font-size:12px;line-height:18px;overflow-wrap:anywhere"><div class="dg-mlabel">{{ g.byLabel }}</div>{{ it.by }}</div>
-            <div class="dg-num" style="font-size:12px;line-height:18px;text-align:right;color:#343434"><div class="dg-mlabel">Created</div><div style="white-space:nowrap">{{ it.createdDate }}</div><div>{{ it.createdTime }}</div></div>
-            <sc-if value="{{ it.hasInfo }}" hint-placeholder-val="{{ true }}">
-              <div class="dgb-info" style="grid-column:2 / -1;margin-top:8px;background:#f1f1f1;border-radius:8px;padding:7px 10px;font-size:11.5px;line-height:1.5;color:#343434"><span style="font-weight:500;color:#151515">Additional information: </span>{{ it.info }}</div>
-            </sc-if>
-          </a>
-          <sc-if value="{{ it.ruled }}" hint-placeholder-val="{{ true }}"><div style="height:0;border-top:3px double #a7b0b3"></div></sc-if>
-          </sc-for>
-          </sc-if>
         </div>
         </sc-for>
         </div>
+        </sc-if>
+        <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ false }}">
+        <div class="dgb-table" style="padding:0 0 4px">
+          <div class="dgb-head" style="{{ gridHead }}">
+            <div class="dgb-c">#</div><div class="dgb-c">Resource</div><div class="dgb-c">Item</div><div class="dgb-c" style="text-align:right">Qty</div><div class="dgb-c">Start</div><div class="dgb-c">End</div><div class="dgb-c">Requested / booked by</div><div class="dgb-c" style="text-align:right">Created</div>
+          </div>
+          <sc-for list="{{ p.kindGroups }}" as="g" hint-placeholder-count="3">
+          <div class="dgb-group" style="{{ g.groupStyle }}"><span style="{{ g.pillStyle }}">{{ g.label }}</span><span style="font-size:11px;font-weight:600;color:#343434">{{ g.countLabel }}</span></div>
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+          <a class="dg-card dgb-row" href="{{ it.url }}" style="{{ it.rowStyle }}" style-hover="background:#fbfbfb">
+            <div class="dgb-c dgb-no" style="font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9.5px;color:#151515">{{ it.no }}</div>
+            <div class="dgb-c dgb-res" style="color:#343434;font-weight:500"><span class="dgb-noin" style="display:none;font-family:'FavoritExp',Helvetica,sans-serif;font-weight:500;font-size:9.5px;color:#151515;margin-right:6px">{{ it.no }}</span>{{ it.resource }}</div>
+            <div class="dgb-c dgb-item" style="font-weight:700;color:#151515">{{ it.title }}</div>
+            <sc-if value="{{ it.hasQty }}" hint-placeholder-val="{{ true }}"><div class="dgb-c dgb-num dgb-qty" style="text-align:right;font-weight:600"><span class="dgb-ml">Qty</span>{{ it.qty }}</div></sc-if>
+            <sc-if value="{{ it.noQty }}" hint-placeholder-val="{{ false }}"><div class="dgb-c dgb-empty"></div></sc-if>
+            <div class="dgb-c dgb-start" style="white-space:nowrap"><span class="dgb-ml">Start</span>{{ it.start }}</div>
+            <div class="dgb-c dgb-end" style="white-space:nowrap"><span class="dgb-ml">End</span>{{ it.end }}</div>
+            <div class="dgb-c dgb-by"><span class="dgb-ml">{{ g.byLabel }}</span>{{ it.by }}</div>
+            <div class="dgb-c dgb-num dgb-cr" style="text-align:right;white-space:nowrap;color:#343434"><span class="dgb-ml">Created</span>{{ it.createdAt }}</div>
+            <sc-if value="{{ it.hasSub }}" hint-placeholder-val="{{ true }}">
+            <div class="dgb-c dgb-sub" style="grid-column:3 / -1;margin-top:3px;font-size:11px;line-height:1.5;color:#151515;overflow-wrap:anywhere"><sc-for list="{{ it.sub }}" as="f" hint-placeholder-count="2"><span style="color:#343434">{{ f.sep }}</span><span style="{{ f.labelStyle }}">{{ f.label }}: </span><span>{{ f.value }}</span></sc-for></div>
+            </sc-if>
+          </a>
+          </sc-for>
+          </sc-for>
+        </div>
+        </sc-if>
       </div>
     </div>
     </sc-for>
@@ -351,6 +358,8 @@ class Component extends DCLogic {
 
     const order = ["Equipment", "Person", "Crew", "Truck transport"];
     let tr = 0, tb = 0, ta = 0, total = 0;
+    // version B (grid): # · Resource · Item · Qty · Start · End · By · Created
+    const gridBase = { display: "grid", gridTemplateColumns: "30px 108px minmax(0,1fr) 36px 110px 110px 126px 112px", columnGap: 0 };
     const projects = data.map(p => {
       let nr = 0, nb = 0, na = 0, seq = 0;
       const base = "https://app.syniotec.com/projects/" + p.cc;
@@ -384,21 +393,26 @@ class Component extends DCLogic {
           const extra = it.details.filter(f => f !== dates && f !== by && f !== qty);
           const [from, to] = dates ? dates.value.split(" – ") : ["—"];
           const [cd, ct] = it.createdAt.split(", ");
+          const sub = extra.map(f => ({ label: f.label, value: f.value, labelStyle: { color: "#343434" } }))
+            .concat(it.info ? [{ label: "Additional information", value: it.info, labelStyle: { color: "#151515", fontWeight: 600 } }] : [])
+            .map((f, n) => Object.assign(f, { sep: n ? "  ·  " : "" }));
+          const isReqItem = kind === REQ;
           return Object.assign({}, it, { no: "#" + (i + 1), ruled: i < all.length - 1,
-            dateFrom: to ? from + " –" : from, dateTo: to || "", by: by ? by.value : "—", qty: qty ? qty.value : "—",
-            extra: extra.map((f, n) => ({ label: f.label, value: f.value, sep: n ? " · " : "" })), hasExtra: extra.length > 0, createdDate: cd, createdTime: ct || "" });
+            start: from, end: to || "—", by: by ? by.value : "—",
+            qty: qty ? qty.value : "—", hasQty: isReqItem, noQty: !isReqItem,
+            sub, hasSub: sub.length > 0,
+            rowStyle: Object.assign({}, gridBase, { padding: "8px 0", alignItems: "baseline", textDecoration: "none", color: "#151515", fontSize: 12, lineHeight: "18px", transition: "background 140ms ease",
+              borderBottom: i < all.length - 1 ? "1px solid #f1f1f1" : "none" }) });
         });
         const k = kinds[kind];
         const isReq = kind === REQ;
-        const cols = isReq ? "24px minmax(0,1fr) 34px 128px 100px 72px" : "24px minmax(0,1fr) 128px 100px 72px";
         return { label: k.badge === "REQUEST" ? "REQUESTS" : k.badge === "BOOKING" ? "BOOKINGS" : "DIRECT BOOKINGS",
           countLabel: items.length + (items.length === 1 ? " item" : " items"), items,
-          isReq, datesLabel: isReq ? "Request dates" : "Booking dates", byLabel: isReq ? "Requested by" : "Booked by",
-          gridHead: { display: "grid", gridTemplateColumns: cols, gap: "0 12px", padding: "7px 2px", background: "#fbfbfb", fontFamily: "'FavoritExp',Helvetica,sans-serif", fontWeight: 500, fontSize: 9, lineHeight: "12px", color: "#ff1900" },
-          gridRow: { display: "grid", gridTemplateColumns: cols, gap: "0 12px", alignItems: "start", padding: "12px 2px", textDecoration: "none", color: "#151515", transition: "background 140ms ease" },
+          byLabel: isReq ? "Requested by" : "Booked by",
           pillStyle: { display: "inline-block", fontFamily: "'FavoritExp',Helvetica,sans-serif", fontSize: 8.5, letterSpacing: "0.12em", fontWeight: 500, padding: "4px 8px", borderRadius: 8,
             border: "1px solid " + k.bar, background: k.bg, color: k.fg, lineHeight: 1, whiteSpace: "nowrap" } };
-      }).filter(g => g.items.length);
+      }).filter(g => g.items.length).map((g, n) => Object.assign(g, {
+        groupStyle: { display: "flex", alignItems: "center", gap: 10, padding: n ? "12px 6px 6px" : "10px 6px 6px", borderTop: n ? "3px double #a7b0b3" : "none" } }));
       tr += nr; tb += nb; ta += na; total += nr + nb + na;
       const part = (n, one, many) => n + " " + (n === 1 ? one : many);
       return { cc: p.cc, title: p.title, url: base, dotStyle: { display: "block", width: 12, height: 12, borderRadius: "50%", background: p.color }, types, kindGroups, nRequests: nr, nBookings: nb, nAssigned: na,
@@ -414,8 +428,9 @@ class Component extends DCLogic {
       generatedAt: wd(end),
       isPdf: this.props.variant === "pdf", isEmail: this.props.variant !== "pdf",
       isGrid: this.props.variant === "email-b", isListA: this.props.variant !== "email-b",
-      sheetStyle: { maxWidth: this.props.variant === "email-b" ? 760 : 600, margin: "0 auto", background: "#ffffff" },
-      noteStyle: { maxWidth: this.props.variant === "email-b" ? 760 : 600, margin: "18px auto 0", fontSize: 11, lineHeight: 1.6, color: "#343434", textWrap: "pretty" },
+      gridHead: Object.assign({}, gridBase, { padding: "8px 0", background: "#fbfbfb", borderBottom: "1px solid #a7b0b3", fontFamily: "'FavoritExp',Helvetica,sans-serif", fontWeight: 500, fontSize: 9, lineHeight: "12px", color: "#ff1900", alignItems: "end" }),
+      sheetStyle: { maxWidth: this.props.variant === "email-b" ? 960 : 600, margin: "0 auto", background: "#ffffff" },
+      noteStyle: { maxWidth: this.props.variant === "email-b" ? 960 : 600, margin: "18px auto 0", fontSize: 11, lineHeight: 1.6, color: "#343434", textWrap: "pretty" },
       intervalTimes: wd(start) + " – " + wd(end),
       intro: monday
         ? "New requests, direct bookings and bookings in your projects on Friday, Saturday and Sunday."

@@ -15,6 +15,21 @@ html, body { margin: 0; padding: 0; background: #f1f1f1; }
 a { color: #151515; }
 a:hover { color: #ff1900; }
 .dg-mlabel { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; color: #ff1900; margin-bottom: 4px; line-height: 10px; min-height: 20px; }
+.dgb-c { padding: 0 6px; min-width: 0; }
+.dgb-ml { display: none; font-family: 'FavoritExp',Helvetica,sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.04em; color: #ff1900; line-height: 12px; }
+@media (max-width: 860px) {
+  .dgb-head { display: none !important; }
+  .dgb-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 6px !important; padding: 12px 6px !important; }
+  .dgb-no, .dgb-empty { display: none !important; }
+  .dgb-noin { display: inline !important; }
+  .dgb-res, .dgb-item, .dgb-sub { grid-column: 1 / -1 !important; }
+  .dgb-item { font-size: 13px; }
+  .dgb-sub { margin-top: 0 !important; }
+  .dgb-num { text-align: left !important; }
+  .dgb-ml { display: block !important; }
+  .dgb-res { order: 0; } .dgb-item { order: 1; } .dgb-start { order: 2; } .dgb-end { order: 3; }
+  .dgb-qty { order: 4; } .dgb-by { order: 5; } .dgb-cr { order: 6; } .dgb-sub { order: 7; }
+}
 @media (max-width: 560px) {
   .dg-outer { padding: 24px 12px !important; }
   .dg-pad { padding-left: 22px !important; padding-right: 22px !important; }
@@ -28,13 +43,6 @@ a:hover { color: #ff1900; }
   .dg-mlabel { display: block !important; }
   .dg-field { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; padding: 5px 0 !important; }
   .dg-field > div:first-child { font-size: 11px; }
-  .dgb-head { display: none !important; }
-  .dgb-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; row-gap: 10px !important; }
-  .dgb-main { grid-column: 1 / -1; }
-  .dgb-no { display: none !important; }
-  .dgb-noin { display: inline !important; }
-  .dgb-info { grid-column: 1 / -1 !important; margin-top: 0 !important; }
-  .dgb-row .dg-mlabel { min-height: 0 !important; margin-bottom: 1px !important; }
 }
 
 </style>
@@ -109,6 +117,7 @@ a:hover { color: #ff1900; }
           </div>
         </div>
 
+        
         <div style="padding: 2px 16px 16px;">
         
         <div style="margin-top: 18px;">
@@ -116,7 +125,6 @@ a:hover { color: #ff1900; }
             <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span>
             <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">6 items</span></span>
           </div>
-          
           
           <a class="dg-card scp2" href="https://app.syniotec.com/projects/4711-200/plans/1" style="display: block; text-decoration: none; color: rgb(21, 21, 21); padding: 14px 2px; transition: background 140ms;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;">
@@ -266,8 +274,6 @@ a:hover { color: #ff1900; }
           </a>
           
           
-          
-          
         </div>
         
         <div style="margin-top: 18px;">
@@ -275,7 +281,6 @@ a:hover { color: #ff1900; }
             <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(254, 125, 0); background: rgb(254, 125, 0); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">DIRECT BOOKINGS</span></span>
             <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span>
           </div>
-          
           
           <a class="dg-card scp2" href="https://app.syniotec.com/projects/4711-200/plans/2" style="display: block; text-decoration: none; color: rgb(21, 21, 21); padding: 14px 2px; transition: background 140ms;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;">
@@ -337,8 +342,6 @@ a:hover { color: #ff1900; }
           </a>
           
           
-          
-          
         </div>
         
         <div style="margin-top: 18px;">
@@ -346,7 +349,6 @@ a:hover { color: #ff1900; }
             <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span>
             <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">3 items</span></span>
           </div>
-          
           
           <a class="dg-card scp2" href="https://app.syniotec.com/projects/4711-200/plans/3" style="display: block; text-decoration: none; color: rgb(21, 21, 21); padding: 14px 2px; transition: background 140ms;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;">
@@ -404,11 +406,11 @@ a:hover { color: #ff1900; }
           </a>
           
           
-          
-          
         </div>
         
         </div>
+        
+        
       </div>
     </div>
     
@@ -422,6 +424,7 @@ a:hover { color: #ff1900; }
           </div>
         </div>
 
+        
         <div style="padding: 2px 16px 16px;">
         
         <div style="margin-top: 18px;">
@@ -429,7 +432,6 @@ a:hover { color: #ff1900; }
             <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(21, 21, 21); background: rgb(255, 255, 255); color: rgb(21, 21, 21); line-height: 1; white-space: nowrap;"><span class="sc-interp">REQUESTS</span></span>
             <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">2 items</span></span>
           </div>
-          
           
           <a class="dg-card scp2" href="https://app.syniotec.com/projects/4711-315/plans/1" style="display: block; text-decoration: none; color: rgb(21, 21, 21); padding: 14px 2px; transition: background 140ms;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;">
@@ -479,8 +481,6 @@ a:hover { color: #ff1900; }
           </a>
           
           
-          
-          
         </div>
         
         <div style="margin-top: 18px;">
@@ -488,7 +488,6 @@ a:hover { color: #ff1900; }
             <span style="display: inline-block; font-family: FavoritExp, Helvetica, sans-serif; font-size: 8.5px; letter-spacing: 0.12em; font-weight: 500; padding: 4px 8px; border-radius: 8px; border: 1px solid rgb(69, 154, 247); background: rgb(69, 154, 247); color: rgb(255, 255, 255); line-height: 1; white-space: nowrap;"><span class="sc-interp">BOOKINGS</span></span>
             <span style="font-size: 12px; font-weight: 700; color: rgb(52, 52, 52);"><span class="sc-interp">1 item</span></span>
           </div>
-          
           
           <a class="dg-card scp2" href="https://app.syniotec.com/projects/4711-315/plans/3" style="display: block; text-decoration: none; color: rgb(21, 21, 21); padding: 14px 2px; transition: background 140ms;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px;">
@@ -508,11 +507,11 @@ a:hover { color: #ff1900; }
           </a>
           
           
-          
-          
         </div>
         
         </div>
+        
+        
       </div>
     </div>
     
